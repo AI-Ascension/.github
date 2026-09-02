@@ -1,0 +1,64 @@
+name: Link check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - $default-branch
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: link-check-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  links:
+    name: links
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Check Markdown links
+        shell: bash
+        run: |
+          set -uo pipefail
+          fail=0
+          declare -A seen
+          mapfile -t files < <(git ls-files '*.md' '**/*.md' | sort -u)
+          for file in "${files[@]}"; do
+            dir=$(dirname "$file")
+            # Relative link targets: ](path) and ](path#anchor), excluding absolute URLs and mailto.
+            while IFS= read -r raw; do
+              target=${raw#](}
+              target=${target%)}
+              target=${target%% \"*}
+              case "$target" in
+                http://*|https://*|mailto:*|'#'*|'') continue ;;
+              esac
+              path=${target%%#*}
+              if [[ ! -e "$dir/$path" ]]; then
+                echo "::error file=$file::missing relative link target: $target"
+                fail=1
+              fi
+            done < <(grep -oE '\]\([^)]+\)' "$file" || true)
+            # Absolute URLs anywhere in the file, each fetched once.
+            while IFS= read -r url; do
+              url=${url%%[.,;:]}
+              [[ -n "${seen[$url]:-}" ]] && continue
+              seen[$url]=1
+              if ! curl --silent --show-error --location --fail --output /dev/null \
+                   --max-time 20 --retry 2 --retry-delay 3 \
+                   --user-agent "ai-ascension-link-check" "$url"; then
+                echo "::error file=$file::unreachable URL: $url"
+                fail=1
+              fi
+            done < <(grep -oE 'https?://[^][ <>()"'"'"'`]+' "$file" || true)
+          done
+          exit "$fail"

@@ -1,0 +1,83 @@
+name: Proof recipe or showcase
+description: Submit a fixture, a contract observation with a runnable check, an adapter example, or a showcase of a real run you performed.
+title: "[recipe] "
+labels:
+  - proof-recipe
+  - first-task
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A proof recipe shows an input, an observable result, the boundary crossed, and the decision
+        taken, and can be reproduced by someone else from the command you give. The starter recipe
+        (`recipes/gateway-lease-fence` in the site repository) is the model. Only real runs are
+        featured; nothing is invented. Deterministic replays are labeled as replays, not as live
+        game compatibility.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options:
+        - Fixture (a new case for an existing recipe)
+        - Contract observation with a runnable check
+        - Adapter example against a published schema
+        - Showcase of a real run
+    validations:
+      required: true
+  - type: textarea
+    id: shows
+    attributes:
+      label: What it shows
+      description: Input, observable result, boundary crossed, and decision, in plain words.
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Command
+      description: The exact command(s) a reviewer runs, from a clean checkout, including the repository and commit or revision it depends on.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected hash or output
+      description: The SHA-256 of stdout, or the exact output if it is short. State the mode (deterministic replay, or a real run and against what).
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence-label
+    attributes:
+      label: Evidence label you propose
+      options:
+        - confirmed (deterministic; anyone can reproduce it at the commit given)
+        - source-derived (it demonstrates what the documents state)
+        - inferred (it supports a conclusion but does not observe it directly)
+        - proposed (an example or sketch, not yet runnable)
+        - unverified (I ran it once and have not reproduced it)
+    validations:
+      required: true
+  - type: textarea
+    id: links
+    attributes:
+      label: Links
+      description: Branch, gist, or pull request holding the recipe; source lines and test names it mirrors.
+    validations:
+      required: false
+  - type: input
+    id: referral
+    attributes:
+      label: How did you find this? (optional; used only to understand referrals)
+      description: Leave blank if you prefer. A word or a link is enough. Nothing else is tracked.
+    validations:
+      required: false
+  - type: checkboxes
+    id: hygiene
+    attributes:
+      label: Hygiene
+      options:
+        - label: This submission contains no game files, credentials, private data, personal paths, or copied third-party source, and the recipe reads none of them.
+          required: true
+        - label: The command above needs no model, provider, or API key, or the submission says exactly which one and why.
+          required: true

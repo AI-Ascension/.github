@@ -1,0 +1,69 @@
+name: Evidence
+description: A public claim, label, or description that looks wrong, unsupported, or confusing.
+title: "[evidence] "
+labels:
+  - evidence
+  - unverified-claim
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Every public statement about this project carries one of five labels: `confirmed`,
+        `source-derived`, `proposed`, `inferred`, `unverified`. If a statement's label seems too
+        strong, too weak, missing, or simply unclear, this is the place. You do not need to be
+        right; a doubt is enough to open the issue.
+  - type: input
+    id: where
+    attributes:
+      label: Where the claim appears
+      description: A site page URL, a README path and commit, the organization profile, or a repository description.
+      placeholder: https://ai-ascension.github.io/evidence.html
+    validations:
+      required: true
+  - type: textarea
+    id: claim
+    attributes:
+      label: The claim, quoted exactly
+    validations:
+      required: true
+  - type: dropdown
+    id: current-label
+    attributes:
+      label: Label it currently carries
+      options:
+        - confirmed
+        - source-derived
+        - proposed
+        - inferred
+        - unverified
+        - no label shown
+    validations:
+      required: true
+  - type: dropdown
+    id: proposed-label
+    attributes:
+      label: Label you think it should carry
+      options:
+        - confirmed
+        - source-derived
+        - proposed
+        - inferred
+        - unverified
+        - the claim should be removed
+        - unsure; it is unclear rather than wrong
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why
+      description: What you checked, or what confused you. If you ran a command, paste it and its result.
+    validations:
+      required: true
+  - type: checkboxes
+    id: hygiene
+    attributes:
+      label: Hygiene
+      options:
+        - label: This report contains no game files, credentials, private data, or personal paths.
+          required: true

@@ -1,0 +1,6 @@
+{
+  "name": "Link check",
+  "description": "Checks every Markdown link in the repository: relative targets must exist in the tree and absolute URLs must answer. Uses only a pinned checkout action and a shell step.",
+  "categories": ["Documentation"],
+  "filePatterns": ["README.md", "*.md", "docs/**/*.md"]
+}

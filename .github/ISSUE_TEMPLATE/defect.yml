@@ -1,0 +1,70 @@
+name: Defect
+description: Something a repository does, or a test asserts, that does not match what its documents say.
+title: "[defect] "
+labels:
+  - defect
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Keep to one defect per issue. Do not attach game files, save data, credentials,
+        personal paths, or multiplayer identifiers; redact logs before pasting them. Anything
+        exploitable belongs in the private channel described in SECURITY.md, not here.
+  - type: input
+    id: location
+    attributes:
+      label: Repository and commit
+      description: For example `sts2-gateway@e7bce21` or a site page URL.
+      placeholder: sts2-gateway@e7bce21
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: What you did
+      description: The exact commands or actions, in order. Prefer copy-paste over description.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: Quote the document, test name, or contract that set the expectation.
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: What you observed
+      description: The actual output, error shape, or status, quoted.
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: Platform and Rust version
+      placeholder: Windows 11 x86-64, rustc 1.97.1
+    validations:
+      required: false
+  - type: dropdown
+    id: evidence-label
+    attributes:
+      label: Evidence label for your observation
+      description: How sure is what you observed? Unknown is not "no".
+      options:
+        - confirmed (I ran a command or test at a named commit and can share the result)
+        - source-derived (I am quoting the repository's own documents)
+        - inferred (I reasoned from confirmed facts but did not observe it)
+        - unverified (I have not checked)
+    validations:
+      required: true
+  - type: checkboxes
+    id: hygiene
+    attributes:
+      label: Hygiene
+      options:
+        - label: This report contains no game files, save data, credentials, personal paths, multiplayer identifiers, or copied third-party source.
+          required: true
+        - label: This is not a security issue, or I have already reported it privately per SECURITY.md.
+          required: true

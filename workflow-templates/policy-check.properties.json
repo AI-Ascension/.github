@@ -1,0 +1,6 @@
+{
+  "name": "Repository policy",
+  "description": "Runs the repository's Rust policy tool in strict mode on the pinned 1.97.1 toolchain: language boundary, file budgets, licensing, and documentation link rules.",
+  "categories": ["Rust", "Code quality"],
+  "filePatterns": ["policy.toml", "rust-toolchain.toml", "tools/repo-policy/Cargo.toml"]
+}

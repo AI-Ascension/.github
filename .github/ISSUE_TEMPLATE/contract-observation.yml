@@ -1,0 +1,69 @@
+name: Contract observation
+description: Something you observed about a public contract (route, tool, schema, fence, error shape) that the documents should state, sharpen, or correct.
+title: "[contract] "
+labels:
+  - contract-observation
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A contract observation is not a defect report: it records a behavior you saw, at a commit,
+        that the public contract does not yet describe precisely, or an example (such as an MCP
+        adapter sketch against the tool schema) that would make the contract easier to use.
+        Everything here is in-memory today; observations about runtime or game behavior are
+        `unverified` unless you ran something and say so.
+  - type: input
+    id: seam
+    attributes:
+      label: Seam
+      description: Which contract? Name the repository, crate, test file, route, tool, or schema.
+      placeholder: sts2-mcp-server tests/seam.rs, tool sts2_get_state
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: Commit observed at
+      placeholder: 5faed9761866f89b922f01d3d389f3db55b9cf5e
+    validations:
+      required: true
+  - type: textarea
+    id: observation
+    attributes:
+      label: Observation
+      description: Input, observable result, boundary crossed, and the decision taken (allowed, denied, rejected before the boundary).
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What the contract should say, or the example you propose
+      description: A sentence for the document, a test name, a schema fragment, or an adapter example. Original text only.
+    validations:
+      required: false
+  - type: dropdown
+    id: evidence-label
+    attributes:
+      label: Evidence label you propose for the observation
+      options:
+        - confirmed (a command or test at the commit above shows it)
+        - source-derived (the repository's documents state it)
+        - inferred (follows from confirmed facts, not observed directly)
+        - proposed (a design or example, not yet built)
+        - unverified (not checked)
+    validations:
+      required: true
+  - type: textarea
+    id: links
+    attributes:
+      label: Links
+      description: Source lines, test names, or site pages that support the observation.
+    validations:
+      required: false
+  - type: checkboxes
+    id: hygiene
+    attributes:
+      label: Hygiene
+      options:
+        - label: This observation contains no game files, credentials, private data, or copied third-party source.
+          required: true

@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security or conduct concern (private)
+    url: https://github.com/AI-Ascension/.github/blob/main/SECURITY.md
+    about: Never file security details in a public issue. This page explains the private reporting channel.
+  - name: Run the 45-second proof first
+    url: https://ai-ascension.github.io/proof.html
+    about: A deterministic replay of one gateway contract test, in the browser, with no account or install. Many questions about "what works today" are answered by its labels.
+  - name: What is tested versus proposed
+    url: https://ai-ascension.github.io/evidence.html
+    about: The claim-to-test mapping for every public statement, with its evidence label and pinned commit.

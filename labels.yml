@@ -1,0 +1,41 @@
+# Shared label set for every AI-Ascension repository.
+# This file is data, not a workflow: maintainers apply it per repository (for example with
+# `gh label create --force` from this list). Colors are the identity tokens: confirmed 2F7F66,
+# proposed 9A7B1C, unverified A8402F, ember 9C5B12, ink-dim 5E564A, ledger 4E6A8F, plum 6F5A94.
+
+- name: first-task
+  color: 2F7F66
+  description: A bounded first contribution that needs no game, model, or credentials.
+- name: proof-recipe
+  color: 9C5B12
+  description: A fixture, runnable check, adapter example, or showcase of a real run.
+- name: contract-observation
+  color: 4E6A8F
+  description: An observed behavior of a public contract that the documents should state.
+- name: evidence
+  color: 9A7B1C
+  description: A public claim, label, or description that looks wrong, unsupported, or unclear.
+- name: unverified-claim
+  color: A8402F
+  description: A statement on a public surface whose label may be stronger than its evidence.
+- name: security
+  color: A8402F
+  description: Security-relevant; details belong in the private channel per SECURITY.md.
+- name: defect
+  color: 9C5B12
+  description: Behavior or a test that does not match the repository's own documents.
+- name: docs
+  color: 5E564A
+  description: Documentation or public-page clarity.
+- name: wedge:player
+  color: 6F5A94
+  description: Curious player or observer path.
+- name: wedge:rust
+  color: 6F5A94
+  description: Rust or systems contributor path.
+- name: wedge:mcp
+  color: 6F5A94
+  description: AI, MCP, or automation builder path.
+- name: wedge:security
+  color: 6F5A94
+  description: Maintainer or security operator path.

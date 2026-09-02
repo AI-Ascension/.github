@@ -1,0 +1,19 @@
+# Dependabot template for AI-Ascension repositories.
+# Copy this file to `.github/dependabot.yml` in the target repository; Dependabot reads it only
+# from that path. Cargo updates cover the workspace at the repository root; github-actions updates
+# keep pinned action SHAs current (Dependabot preserves the `# vX.Y.Z` comment on SHA pins).
+
+version: 2
+
+updates:
+  - package-ecosystem: cargo
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
