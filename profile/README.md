@@ -52,7 +52,7 @@ Every public claim carries one of five labels:
 - <img src="https://raw.githubusercontent.com/AI-Ascension/.github/main/profile/assets/stamps/inferred.svg" width="14" height="14" alt=""> `inferred` — a conclusion drawn from confirmed facts but not itself observed.
 - <img src="https://raw.githubusercontent.com/AI-Ascension/.github/main/profile/assets/stamps/unverified.svg" width="14" height="14" alt=""> `unverified` — not checked; treated as unknown, never as "no".
 
-Current stamp: `confirmed` for the deterministic in-memory tests at the pinned commits above; `unverified` for runtime, host, and game behavior; `proposed` for the live path. The public proof replays `stale_epoch_and_wrong_instance_are_denied_before_transport` and `fixed_transport_is_bounded_and_fail_closed` from `crates/gateway/tests/control_plane.rs` at `sts2-gateway@e7bce21`; the claim-to-test mapping is on the [evidence page](https://ai-ascension.github.io/evidence.html). Star and fork counts are counts, not evidence.
+Current stamp: `confirmed` for the deterministic in-memory tests at the pinned commits above; `unverified` for runtime, host, and game behavior; `proposed` for the live path. The public proof replays `stale_epoch_and_wrong_instance_are_denied_before_transport` and `fixed_transport_is_bounded_and_fail_closed` from `crates/gateway/tests/control_plane.rs` at `sts2-gateway@e7bce21`; the claim-to-test mapping is on the [evidence page](https://ai-ascension.github.io/evidence.html). Star and fork counts are counts, not evidence. The planned four-model live race this path is built for is described at [aiascension.tech](https://aiascension.tech/); it is `proposed` until streams exist.
 
 ## Contribute
 
