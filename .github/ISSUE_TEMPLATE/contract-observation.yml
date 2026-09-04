@@ -10,8 +10,9 @@ body:
         A contract observation is not a defect report: it records a behavior you saw, at a commit,
         that the public contract does not yet describe precisely, or an example (such as an MCP
         adapter sketch against the tool schema) that would make the contract easier to use.
-        Everything here is in-memory today; observations about runtime or game behavior are
-        `unverified` unless you ran something and say so.
+        Distinguish the pinned in-memory proof from later runtime source and dated host reports.
+        State whether you ran the behavior yourself or inspected someone else's evidence, and
+        identify the exact source/package, host, and limits of any runtime claim.
   - type: input
     id: seam
     attributes:

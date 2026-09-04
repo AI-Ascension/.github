@@ -22,9 +22,9 @@ List each claim this change makes on a public surface, with its label
 
 ## Checklist
 
-- [ ] Rust-only; no other product-language source was added.
+- [ ] Source languages and tooling follow the target repository's policy and documented exceptions.
 - [ ] No game files, host assemblies, saves, credentials, personal paths, or private data are included.
 - [ ] No copied or transliterated third-party implementation source.
-- [ ] No claim states or implies live runtime, host, listener, or game compatibility.
-- [ ] `cargo run --locked --package repo-policy -- --strict`, `cargo fmt --all --check`, clippy with `-D warnings`, and `cargo test --workspace --all-targets --all-features` pass locally (or the section above says which did not run).
+- [ ] Runtime, host, listener, and game claims identify their exact evidence, version, and limits; historical or synthetic evidence is not presented as current live validation.
+- [ ] The target repository's documented checks pass locally (or the section above says which did not run). For Rust workspaces these include strict repository policy, formatting, clippy with `-D warnings`, and workspace tests where provided.
 - [ ] Remaining risks and `unverified` items are listed above.

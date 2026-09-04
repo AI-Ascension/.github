@@ -3,7 +3,7 @@
 These rules apply across every `AI-Ascension` repository. Each product repository adds its own
 `CONTRIBUTING.md`, `docs/ARCHITECTURE.md`, `docs/COMPATIBILITY.md`, and decision records; when they
 say more, they win for that repository. Nothing here requires you to understand all six
-repositories. One boundary and one bounded task is enough.
+product repositories. One boundary and one bounded task is enough.
 
 ## Evidence labels
 
@@ -17,16 +17,21 @@ Every claim in an issue, pull request, README, or site page carries exactly one 
 | `inferred` | A conclusion drawn from confirmed facts but not itself observed. |
 | `unverified` | Not checked. Unknown is not "no"; write `unverified`, not a guess. |
 
-What is `confirmed` today: deterministic, in-memory tests at the pinned commits listed on the
-[evidence page](https://ai-ascension.github.io/evidence.html), and the static contents of each
-repository. Runtime, host, and game behavior are `unverified` everywhere. Do not write that
-anything runs against the game, that a listener exists, or that any version is compatible.
+The site's pinned proof establishes deterministic, in-memory behavior at its recorded commits,
+not the complete current runtime. Later default branches include runtime executables and a dated
+bounded host-probe record. See [STATUS.md](STATUS.md) for the exact sources and evidence limits.
+Do not generalize that record to gameplay, autonomous runs, other hosts, or current artifacts;
+equally, do not claim that no listener or host integration exists. Label an inspected report
+`source-derived` when you have not independently reproduced its runtime result.
 
 ## Boundary rules for every repository
 
-- Rust-only trees; Python is prohibited. Product logic, tooling, generators, and tests are Rust,
-  and each repository's policy tool (`cargo run --locked --package repo-policy -- --strict`)
-  enforces this.
+- Follow the target repository's language boundary and documented exceptions. The six STS2
+  product repositories are Rust-first and prohibit Python; game-mod explicitly permits its
+  narrow managed C# loader and supporting tooling. The static site and observability stack
+  have different source/configuration boundaries. Where provided, run the repository's policy
+  tool (`cargo run --locked --package repo-policy -- --strict`); these shared documents do not
+  authorize new exceptions.
 - No proprietary game files: no binaries, data, art, saves, or host assemblies, in source or in
   fixtures, ever.
 - No copied harness source. Write original code; do not transliterate another implementation or

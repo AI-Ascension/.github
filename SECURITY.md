@@ -29,10 +29,12 @@ window, and credit the reporter when asked and appropriate.
 Any listener into a game process is game-control authority: it can expose profile or run state and
 request mutations, so unexpected binding, proxy inheritance, authentication bypass, cross-origin
 access, path disclosure, unsafe FFI, host-thread violations, queue loss, and mutation replay are all
-security-relevant here. Today nothing is live: no repository exposes a listener, runs a process
-supervisor, connects to a game, or authenticates at an external boundary (`unverified` for all
-runtime behavior; `confirmed` only for deterministic in-memory tests at the pinned commits). A
-report about a gap between a documented contract and a test is still welcome; file it as a security
+security-relevant here. Current source includes authenticated gateway/mod listeners, subprocess
+launchers, and managed host integration; a dated report records one bounded runtime-v1 host probe.
+This does not establish a running deployment or reliable autonomous gameplay. See
+[STATUS.md](STATUS.md) for source pins and limits. Treat enabled listeners and launchers as real
+security boundaries even where live compatibility remains unverified. A report about a gap
+between a documented contract and a test is still welcome; file it as a security
 note through the private channel above, or as a contract observation if it is not exploitable.
 
 Do not test anything from this project against another person, a public lobby, a valued profile, or
