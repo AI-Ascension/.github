@@ -14,6 +14,7 @@ as the organization profile at <https://github.com/AI-Ascension>.
 | `profile/assets/` | Identity assets (banners, wordmarks, glyphs, avatar, evidence stamps). Provenance: [`profile/assets/README.md`](profile/assets/README.md). |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Organization-level contribution rules, first safe tasks, and how to run the proof recipe. |
 | [`SECURITY.md`](SECURITY.md) | Private reporting guidance and the project risk boundary. |
+| [`STATUS.md`](STATUS.md) | Dated current-source pointers and the limits of historical host evidence. |
 | [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Expected conduct and how to report a concern. |
 | [`GOVERNANCE.md`](GOVERNANCE.md) | Authority order, roles, evidence promotion, description synchronization. |
 | [`SUPPORT.md`](SUPPORT.md) | Where to ask and what to include. |
@@ -25,7 +26,8 @@ as the organization profile at <https://github.com/AI-Ascension>.
 | [`labels.yml`](labels.yml) | The shared label set as data; maintainers apply it per repository. |
 
 The public site is <https://ai-ascension.github.io/>. The proof it links to is a deterministic
-replay of `sts2-gateway` tests at a pinned commit; runtime and game compatibility are `unverified`.
+replay of `sts2-gateway` tests at a pinned commit, not a live game demonstration. Later runtime
+source and the bounded host-probe report are distinguished in [STATUS.md](STATUS.md).
 
 ## License
 
