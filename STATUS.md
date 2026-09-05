@@ -52,9 +52,6 @@ the 2026-09-04 pins above; those remain the historical record for that date.
 On 2026-09-05 the owner selected the Exo semantic-catalog lane (`RUNTIME_V3_LANE=exo`) for the two
 incompatible Runtime-v3 gameplay proposals whose conflict is recorded in ADR 0007. The six-position
 stack merged in fixed order and each repository's default-branch CI passed at the resulting head.
-The initial stack heads remain recorded in the table below. Two later source-only follow-ups corrected
-function-budget findings in the game-mod and harness; the current default-branch pointers after those
-follow-ups are recorded in the next table.
 
 | Component | Default-branch source after the merge | Runtime-v3 position merged |
 | --- | --- | --- |
@@ -65,64 +62,9 @@ follow-ups are recorded in the next table.
 | MCP adapter | [`b3684bf`](https://github.com/AI-Ascension/sts2-mcp-server/tree/b3684bf005f09622c39b154b4c081e867105edcf) | 5/6 — `sts2-mcp-server#8` |
 | Harness | [`ffa2564`](https://github.com/AI-Ascension/sts2-harness/tree/ffa2564836c7364ab1692cc81307e1bdecff428a) | 6/6 — `sts2-harness#10` |
 
-### Current default heads after source-only budget follow-ups
-
-These are the current `source-derived` default-branch pointers. The follow-up changes preserve the
-Runtime-v3 wire fields, validation behavior, artifact bytes, and evidence boundary; they only split
-functions by responsibility and document those boundaries.
-
-| Component | Current default-branch source | Initial lane and follow-up |
-| --- | --- | --- |
-| Protocol | [`3470bd6`](https://github.com/AI-Ascension/sts2-protocol/tree/3470bd6291d87d4d3259ebe075ce3417d26812cf) | 1/6 — `#8`; source-only module-budget correction [`#12`](https://github.com/AI-Ascension/sts2-protocol/pull/12) from [`4bfc120`](https://github.com/AI-Ascension/sts2-protocol/tree/4bfc120d4221182ca3e80bed0174fb787b6b4690) |
-| Game-core | [`87e0f3d`](https://github.com/AI-Ascension/sts2-game-core/tree/87e0f3d9355c0827e989d9fbc31804440852519b) | 2/6 — `sts2-game-core#6`; no budget follow-up |
-| Game-mod | [`f9b81f4`](https://github.com/AI-Ascension/sts2-game-mod/tree/f9b81f4759d23419278af93d7656aacba9bc2adc) | 3/6 — `#15`; source-only function-budget correction [`#27`](https://github.com/AI-Ascension/sts2-game-mod/pull/27) at [`bc46e44`](https://github.com/AI-Ascension/sts2-game-mod/tree/bc46e44337b459c5a0aeada5abab72cd78244a41); current corrections [`#28`](https://github.com/AI-Ascension/sts2-game-mod/pull/28) and [`#29`](https://github.com/AI-Ascension/sts2-game-mod/pull/29) |
-| Gateway | [`52bd147`](https://github.com/AI-Ascension/sts2-gateway/tree/52bd147667667d62d8d10c7de861d996f365600b) | 4/6 — `sts2-gateway#7`; no budget follow-up |
-| MCP adapter | [`b3684bf`](https://github.com/AI-Ascension/sts2-mcp-server/tree/b3684bf005f09622c39b154b4c081e867105edcf) | 5/6 — `sts2-mcp-server#8`; no budget follow-up |
-| Harness | [`3b9a70f`](https://github.com/AI-Ascension/sts2-harness/tree/3b9a70fdf07467498cdce1556177258ed7dc4a45) | 6/6 — `#10`, then source-only function-budget correction [`#19`](https://github.com/AI-Ascension/sts2-harness/pull/19) |
-
-The game-mod follow-up reports 17 changed or new members with a maximum of 57 nonblank lines;
-the harness follow-up reports 529 changed or new functions with a maximum of 58 nonblank lines.
-Both report zero changed functions over 60 or 80 lines, and their repository policy, formatting,
-Clippy, tests, artifact checks, and applicable source-only checks passed. These are source and
-static-test results; they do not establish host loading or gameplay.
-
-### Game-mod corrections — 2026-09-05
-
-The current game-mod default branch is [`f9b81f4`](https://github.com/AI-Ascension/sts2-game-mod/tree/f9b81f4759d23419278af93d7656aacba9bc2adc),
-which includes two additional source-only corrections after the function-budget follow-up:
-
-- [`sts2-game-mod#28`](https://github.com/AI-Ascension/sts2-game-mod/pull/28), merged at
-  [`8dca989`](https://github.com/AI-Ascension/sts2-game-mod/commit/8dca98904464b5b47dec5de88518e6c237fafad7),
-  adds the missing Runtime-v2 `SHA256SUMS` CI check and its testing documentation. Frozen
-  Runtime-v2 bytes are unchanged; this is checksum-integrity coverage.
-- [`sts2-game-mod#29`](https://github.com/AI-Ascension/sts2-game-mod/pull/29), merged at the
-  current head, adds local safety explanations for five native unsafe blocks and corrects the
-  provenance wording for the historical overlay evidence, with the repeat-seed limitation recorded
-  in the changelog. The patch changes comments and documentation only; executable behavior, ABI,
-  HTTP contracts, managed sources, frozen artifact bytes, and packaging remain unchanged.
-
-These corrections add source, CI, and documentation evidence only. They do not establish a live host,
-gameplay, provider, profile, or save run.
-
-### Protocol correction — 2026-09-05
-
-The current protocol default branch is [`3470bd6`](https://github.com/AI-Ascension/sts2-protocol/tree/3470bd6291d87d4d3259ebe075ce3417d26812cf),
-which includes [`sts2-protocol#12`](https://github.com/AI-Ascension/sts2-protocol/pull/12), merged at
-[`3470bd6`](https://github.com/AI-Ascension/sts2-protocol/commit/3470bd6291d87d4d3259ebe075ce3417d26812cf).
-This source-only correction removes two Runtime-v3 policy size exemptions by splitting action,
-transition, and recovery types into `action.rs` and artifact metadata and request context into
-`metadata.rs`. Public reexports, message validation, and constructor bodies remain available at
-their existing paths. Schemas, golden fixtures, artifact bytes, digests, dependencies, toolchain,
-and lint configuration are unchanged.
-
-The protocol's pinned metadata, formatting, Clippy, tests, strict policy, and every artifact
-checksum inventory passed at this head. This is source and static-test evidence only; consumer
-integration and live gameplay remain unverified.
-
 What this does and does not establish:
 
-- It is `confirmed` that each repository's declared gates passed for the initial stack heads and
-  the source-only follow-up or correction heads shown above: formatting,
+- It is `confirmed` that each repository's declared gates passed at the head above: formatting,
   Clippy at `-D warnings`, the workspace test suites, the frozen artifact checksum inventories,
   and each repository's `repo-policy --strict` budget check. That is a statement about commands
   at commits, and nothing more.
@@ -147,3 +89,71 @@ Keep historical proof pins intact and add dated evidence rather than silently re
 Do not say “nothing touches the game” when describing current source, or use the bounded probe
 as proof of gameplay. Repository and organization descriptions are separate GitHub settings;
 this document does not change them or authorize deployments.
+
+## Final source supplement — 2026-09-05, 14:00 UTC
+
+The snapshots above are retained as historical records at their original source pins. This
+`source-derived` supplement replaces the later claims in governance PRs #4 and #5 that all
+follow-ups only split functions without changing behavior. In particular, harness PR #19 includes
+an allocation behavior correction. Earlier source and host evidence keeps its original scope.
+
+### Intermediate follow-up stage — historical source pointers
+
+| Component | Intermediate source | Scope |
+| --- | --- | --- |
+| Game-mod | [`bc46e44`](https://github.com/AI-Ascension/sts2-game-mod/tree/bc46e44337b459c5a0aeada5abab72cd78244a41) | [`#27`](https://github.com/AI-Ascension/sts2-game-mod/pull/27): function-budget correction, before #28 and #29. |
+| Harness | [`3b9a70f`](https://github.com/AI-Ascension/sts2-harness/tree/3b9a70fdf07467498cdce1556177258ed7dc4a45) | [`#19`](https://github.com/AI-Ascension/sts2-harness/pull/19): function-budget refactoring and allocation correction; also the final source below. |
+
+`source-derived`: the game-mod follow-up reports 17 changed or new members, maximum 57 nonblank
+lines. The harness count of 529 changed or new functions, maximum 58 nonblank lines and zero over
+60 or 80, belongs to the initial audit at `0149db1ebef3eec89a8183b5ae14b180587e305b`, against
+`e9235847bb9b438ce91111ebf60f8f6298cb7976`. It is not a final-head audit. Initial harness CI failed
+file-size and argument-count gates; the final PR head `51f7a8a8773442b2dcea8458331aac7dc6d9d256`
+resolved those failures and passed CI, followed by separate successful merge-head checks below.
+
+### Final default-source pointers and exact-head CI
+
+`source-derived`: these are the six Rust product default-branch source pointers inspected for
+this supplement. `confirmed`: the linked GitHub Actions runs completed successfully at each
+listed full commit. CI results establish source/static-test evidence at those commits only.
+
+| Component | Final default-branch source | Successful main CI / policy runs |
+| --- | --- | --- |
+| Protocol | [`3470bd6`](https://github.com/AI-Ascension/sts2-protocol/tree/3470bd6291d87d4d3259ebe075ce3417d26812cf) | [CI](https://github.com/AI-Ascension/sts2-protocol/actions/runs/33970128073) / [policy](https://github.com/AI-Ascension/sts2-protocol/actions/runs/33970128065) |
+| Game-core | [`87e0f3d`](https://github.com/AI-Ascension/sts2-game-core/tree/87e0f3d9355c0827e989d9fbc31804440852519b) | [CI](https://github.com/AI-Ascension/sts2-game-core/actions/runs/33942193166) / [policy](https://github.com/AI-Ascension/sts2-game-core/actions/runs/33942193023) |
+| Game-mod | [`f9b81f4`](https://github.com/AI-Ascension/sts2-game-mod/tree/f9b81f4759d23419278af93d7656aacba9bc2adc) | [CI](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/33970297978) / [policy](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/33970297977) |
+| Gateway | [`52bd147`](https://github.com/AI-Ascension/sts2-gateway/tree/52bd147667667d62d8d10c7de861d996f365600b) | [CI](https://github.com/AI-Ascension/sts2-gateway/actions/runs/33942336516) / [policy](https://github.com/AI-Ascension/sts2-gateway/actions/runs/33942336523) |
+| MCP adapter | [`b3684bf`](https://github.com/AI-Ascension/sts2-mcp-server/tree/b3684bf005f09622c39b154b4c081e867105edcf) | [CI](https://github.com/AI-Ascension/sts2-mcp-server/actions/runs/33942406614) / [policy](https://github.com/AI-Ascension/sts2-mcp-server/actions/runs/33942406619) |
+| Harness | [`3b9a70f`](https://github.com/AI-Ascension/sts2-harness/tree/3b9a70fdf07467498cdce1556177258ed7dc4a45) | [CI](https://github.com/AI-Ascension/sts2-harness/actions/runs/33969740064) / [policy](https://github.com/AI-Ascension/sts2-harness/actions/runs/33969740048) |
+
+`source-derived` changes since the initial Exo stack:
+
+- Protocol [`#12`](https://github.com/AI-Ascension/sts2-protocol/pull/12) removes the two Runtime-v3
+  file-size exemptions by moving action, transition, and recovery types to `action.rs`, and
+  artifact metadata and request context to `metadata.rs`. Public reexports retain their paths;
+  message validation and constructor bodies are unchanged. Schemas, golden fixtures, artifact
+  bytes, digests, dependencies, toolchain, and lint configuration are preserved. Its metadata,
+  formatting, Clippy, tests, strict policy, and every artifact checksum inventory passed at the
+  final head; consumer integration and live gameplay remain `unverified`.
+- Game-mod [`#28`](https://github.com/AI-Ascension/sts2-game-mod/pull/28), merged at
+  [`8dca989`](https://github.com/AI-Ascension/sts2-game-mod/commit/8dca98904464b5b47dec5de88518e6c237fafad7),
+  adds the missing Runtime-v2 checksum CI gate for all 23 inventory entries; frozen bytes are
+  unchanged. [`#29`](https://github.com/AI-Ascension/sts2-game-mod/pull/29) adds local safety
+  explanations for five native unsafe blocks, removes a personal screenshot path from the
+  historical overlay report without inventing provenance, and documents the merged opt-in
+  repeat-seed practice change. #29 changes comments and documentation only, preserving executable
+  behavior, ABI, HTTP contracts, managed sources, frozen artifacts, and packaging.
+- Harness [`#19`](https://github.com/AI-Ascension/sts2-harness/pull/19) also sends the independently
+  configured `x-mcp-session-id` allocation header and attempts cleanup after failed allocation
+  validation using an attributable returned lease fence. Substitution requires matching
+  instance/caller/session identity and a safe lease/epoch. A lease is marked released only after
+  a response confirms `released`; rejected or failed cleanup does not establish release.
+  Synthetic listener tests cover the header, returned-fence cleanup, and rejected confirmation.
+  Frozen protocol artifact bytes are preserved. This is a functional correction as well as
+  refactoring, and does not establish successful live allocation or cleanup.
+
+`unverified`: gameplay, autonomous runs, settlement, restart recovery, multi-instance behavior,
+provider execution, host loading, current-package compatibility, and release readiness are not
+established by these source/CI checks. The managed bridge still lacks a concrete
+`IRuntimeV3HostSource`. No host or provider run is added by this supplement; the September 2
+runtime-v1 probe remains a dated, bounded, source-derived report with its original limitations.
