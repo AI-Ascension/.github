@@ -52,6 +52,9 @@ the 2026-09-04 pins above; those remain the historical record for that date.
 On 2026-09-05 the owner selected the Exo semantic-catalog lane (`RUNTIME_V3_LANE=exo`) for the two
 incompatible Runtime-v3 gameplay proposals whose conflict is recorded in ADR 0007. The six-position
 stack merged in fixed order and each repository's default-branch CI passed at the resulting head.
+The initial stack heads remain recorded in the table below. Two later source-only follow-ups corrected
+function-budget findings in the game-mod and harness; the current default-branch pointers after those
+follow-ups are recorded in the next table.
 
 | Component | Default-branch source after the merge | Runtime-v3 position merged |
 | --- | --- | --- |
@@ -62,9 +65,31 @@ stack merged in fixed order and each repository's default-branch CI passed at th
 | MCP adapter | [`b3684bf`](https://github.com/AI-Ascension/sts2-mcp-server/tree/b3684bf005f09622c39b154b4c081e867105edcf) | 5/6 — `sts2-mcp-server#8` |
 | Harness | [`ffa2564`](https://github.com/AI-Ascension/sts2-harness/tree/ffa2564836c7364ab1692cc81307e1bdecff428a) | 6/6 — `sts2-harness#10` |
 
+### Current default heads after source-only budget follow-ups
+
+These are the current `source-derived` default-branch pointers. The follow-up changes preserve the
+Runtime-v3 wire fields, validation behavior, artifact bytes, and evidence boundary; they only split
+functions by responsibility and document those boundaries.
+
+| Component | Current default-branch source | Initial lane and follow-up |
+| --- | --- | --- |
+| Protocol | [`4bfc120`](https://github.com/AI-Ascension/sts2-protocol/tree/4bfc120d4221182ca3e80bed0174fb787b6b4690) | 1/6 — `sts2-protocol#8`; no budget follow-up |
+| Game-core | [`87e0f3d`](https://github.com/AI-Ascension/sts2-game-core/tree/87e0f3d9355c0827e989d9fbc31804440852519b) | 2/6 — `sts2-game-core#6`; no budget follow-up |
+| Game-mod | [`bc46e44`](https://github.com/AI-Ascension/sts2-game-mod/tree/bc46e44337b459c5a0aeada5abab72cd78244a41) | 3/6 — `#15`, then source-only function-budget correction [`#27`](https://github.com/AI-Ascension/sts2-game-mod/pull/27) |
+| Gateway | [`52bd147`](https://github.com/AI-Ascension/sts2-gateway/tree/52bd147667667d62d8d10c7de861d996f365600b) | 4/6 — `sts2-gateway#7`; no budget follow-up |
+| MCP adapter | [`b3684bf`](https://github.com/AI-Ascension/sts2-mcp-server/tree/b3684bf005f09622c39b154b4c081e867105edcf) | 5/6 — `sts2-mcp-server#8`; no budget follow-up |
+| Harness | [`3b9a70f`](https://github.com/AI-Ascension/sts2-harness/tree/3b9a70fdf07467498cdce1556177258ed7dc4a45) | 6/6 — `#10`, then source-only function-budget correction [`#19`](https://github.com/AI-Ascension/sts2-harness/pull/19) |
+
+The game-mod follow-up reports 17 changed or new members with a maximum of 57 nonblank lines;
+the harness follow-up reports 529 changed or new functions with a maximum of 58 nonblank lines.
+Both report zero changed functions over 60 or 80 lines, and their repository policy, formatting,
+Clippy, tests, artifact checks, and applicable source-only checks passed. These are source and
+static-test results; they do not establish host loading or gameplay.
+
 What this does and does not establish:
 
-- It is `confirmed` that each repository's declared gates passed at the head above: formatting,
+- It is `confirmed` that each repository's declared gates passed for the initial stack heads and
+  the two source-only follow-up heads shown above: formatting,
   Clippy at `-D warnings`, the workspace test suites, the frozen artifact checksum inventories,
   and each repository's `repo-policy --strict` budget check. That is a statement about commands
   at commits, and nothing more.
