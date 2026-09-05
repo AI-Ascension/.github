@@ -1,6 +1,6 @@
 {
   "name": "Link check",
-  "description": "Checks every Markdown link in the repository: relative targets must exist in the tree and absolute URLs must answer. Uses only a pinned checkout action and a shell step.",
+  "description": "Checks simple inline Markdown destinations, single-line reference definitions, and HTTP(S) URLs. Supports angle-bracket destinations; relative files must exist and URLs must answer. Does not validate fragments or implement the full Markdown grammar. Uses a pinned checkout action and a shell step.",
   "categories": ["Documentation"],
   "filePatterns": ["README.md", "*.md", "docs/**/*.md"]
 }
