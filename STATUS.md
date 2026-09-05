@@ -73,7 +73,7 @@ functions by responsibility and document those boundaries.
 
 | Component | Current default-branch source | Initial lane and follow-up |
 | --- | --- | --- |
-| Protocol | [`4bfc120`](https://github.com/AI-Ascension/sts2-protocol/tree/4bfc120d4221182ca3e80bed0174fb787b6b4690) | 1/6 — `sts2-protocol#8`; no budget follow-up |
+| Protocol | [`3470bd6`](https://github.com/AI-Ascension/sts2-protocol/tree/3470bd6291d87d4d3259ebe075ce3417d26812cf) | 1/6 — `#8`; source-only module-budget correction [`#12`](https://github.com/AI-Ascension/sts2-protocol/pull/12) from [`4bfc120`](https://github.com/AI-Ascension/sts2-protocol/tree/4bfc120d4221182ca3e80bed0174fb787b6b4690) |
 | Game-core | [`87e0f3d`](https://github.com/AI-Ascension/sts2-game-core/tree/87e0f3d9355c0827e989d9fbc31804440852519b) | 2/6 — `sts2-game-core#6`; no budget follow-up |
 | Game-mod | [`f9b81f4`](https://github.com/AI-Ascension/sts2-game-mod/tree/f9b81f4759d23419278af93d7656aacba9bc2adc) | 3/6 — `#15`; source-only function-budget correction [`#27`](https://github.com/AI-Ascension/sts2-game-mod/pull/27) at [`bc46e44`](https://github.com/AI-Ascension/sts2-game-mod/tree/bc46e44337b459c5a0aeada5abab72cd78244a41); current corrections [`#28`](https://github.com/AI-Ascension/sts2-game-mod/pull/28) and [`#29`](https://github.com/AI-Ascension/sts2-game-mod/pull/29) |
 | Gateway | [`52bd147`](https://github.com/AI-Ascension/sts2-gateway/tree/52bd147667667d62d8d10c7de861d996f365600b) | 4/6 — `sts2-gateway#7`; no budget follow-up |
@@ -104,10 +104,25 @@ which includes two additional source-only corrections after the function-budget 
 These corrections add source, CI, and documentation evidence only. They do not establish a live host,
 gameplay, provider, profile, or save run.
 
+### Protocol correction — 2026-09-05
+
+The current protocol default branch is [`3470bd6`](https://github.com/AI-Ascension/sts2-protocol/tree/3470bd6291d87d4d3259ebe075ce3417d26812cf),
+which includes [`sts2-protocol#12`](https://github.com/AI-Ascension/sts2-protocol/pull/12), merged at
+[`3470bd6`](https://github.com/AI-Ascension/sts2-protocol/commit/3470bd6291d87d4d3259ebe075ce3417d26812cf).
+This source-only correction removes two Runtime-v3 policy size exemptions by splitting action,
+transition, and recovery types into `action.rs` and artifact metadata and request context into
+`metadata.rs`. Public reexports, message validation, and constructor bodies remain available at
+their existing paths. Schemas, golden fixtures, artifact bytes, digests, dependencies, toolchain,
+and lint configuration are unchanged.
+
+The protocol's pinned metadata, formatting, Clippy, tests, strict policy, and every artifact
+checksum inventory passed at this head. This is source and static-test evidence only; consumer
+integration and live gameplay remain unverified.
+
 What this does and does not establish:
 
 - It is `confirmed` that each repository's declared gates passed for the initial stack heads and
-  the two source-only follow-up heads shown above: formatting,
+  the source-only follow-up or correction heads shown above: formatting,
   Clippy at `-D warnings`, the workspace test suites, the frozen artifact checksum inventories,
   and each repository's `repo-policy --strict` budget check. That is a statement about commands
   at commits, and nothing more.
