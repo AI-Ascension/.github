@@ -34,11 +34,17 @@ jobs:
           mapfile -t files < <(git ls-files '*.md' '**/*.md' | sort -u)
           for file in "${files[@]}"; do
             dir=$(dirname "$file")
-            # Relative link targets: ](path) and ](path#anchor), excluding absolute URLs and mailto.
-            while IFS= read -r raw; do
-              target=${raw#](}
-              target=${target%)}
-              target=${target%% \"*}
+            # Simple inline destinations and single-line reference definitions.
+            # Angle brackets permit spaces and parentheses; titles are not part of the path.
+            # This is not a full Markdown parser and does not validate fragments.
+            while IFS= read -r target; do
+              target="${target#"${target%%[![:space:]]*}"}"
+              if [[ "$target" == '<'* ]]; then
+                target=${target#<}
+                target=${target%%>*}
+              else
+                target=${target%%[[:space:]]*}
+              fi
               case "$target" in
                 http://*|https://*|mailto:*|'#'*|'') continue ;;
               esac
@@ -47,7 +53,10 @@ jobs:
                 echo "::error file=$file::missing relative link target: $target"
                 fail=1
               fi
-            done < <(grep -oE '\]\([^)]+\)' "$file" || true)
+            done < <(
+              grep -oE '\]\((<[^>]*>|[^)])+\)' "$file" | sed 's/^](//; s/)$//' || true
+              sed -nE 's/^[[:space:]]{0,3}\[[^]]+\]:[[:space:]]*(.*)$/\1/p' "$file"
+            )
             # Absolute URLs anywhere in the file, each fetched once.
             while IFS= read -r url; do
               url=${url%%[.,;:]}
