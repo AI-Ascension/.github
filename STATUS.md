@@ -75,7 +75,7 @@ functions by responsibility and document those boundaries.
 | --- | --- | --- |
 | Protocol | [`4bfc120`](https://github.com/AI-Ascension/sts2-protocol/tree/4bfc120d4221182ca3e80bed0174fb787b6b4690) | 1/6 — `sts2-protocol#8`; no budget follow-up |
 | Game-core | [`87e0f3d`](https://github.com/AI-Ascension/sts2-game-core/tree/87e0f3d9355c0827e989d9fbc31804440852519b) | 2/6 — `sts2-game-core#6`; no budget follow-up |
-| Game-mod | [`bc46e44`](https://github.com/AI-Ascension/sts2-game-mod/tree/bc46e44337b459c5a0aeada5abab72cd78244a41) | 3/6 — `#15`, then source-only function-budget correction [`#27`](https://github.com/AI-Ascension/sts2-game-mod/pull/27) |
+| Game-mod | [`f9b81f4`](https://github.com/AI-Ascension/sts2-game-mod/tree/f9b81f4759d23419278af93d7656aacba9bc2adc) | 3/6 — `#15`; source-only function-budget correction [`#27`](https://github.com/AI-Ascension/sts2-game-mod/pull/27) at [`bc46e44`](https://github.com/AI-Ascension/sts2-game-mod/tree/bc46e44337b459c5a0aeada5abab72cd78244a41); current corrections [`#28`](https://github.com/AI-Ascension/sts2-game-mod/pull/28) and [`#29`](https://github.com/AI-Ascension/sts2-game-mod/pull/29) |
 | Gateway | [`52bd147`](https://github.com/AI-Ascension/sts2-gateway/tree/52bd147667667d62d8d10c7de861d996f365600b) | 4/6 — `sts2-gateway#7`; no budget follow-up |
 | MCP adapter | [`b3684bf`](https://github.com/AI-Ascension/sts2-mcp-server/tree/b3684bf005f09622c39b154b4c081e867105edcf) | 5/6 — `sts2-mcp-server#8`; no budget follow-up |
 | Harness | [`3b9a70f`](https://github.com/AI-Ascension/sts2-harness/tree/3b9a70fdf07467498cdce1556177258ed7dc4a45) | 6/6 — `#10`, then source-only function-budget correction [`#19`](https://github.com/AI-Ascension/sts2-harness/pull/19) |
@@ -85,6 +85,24 @@ the harness follow-up reports 529 changed or new functions with a maximum of 58 
 Both report zero changed functions over 60 or 80 lines, and their repository policy, formatting,
 Clippy, tests, artifact checks, and applicable source-only checks passed. These are source and
 static-test results; they do not establish host loading or gameplay.
+
+### Game-mod corrections — 2026-09-05
+
+The current game-mod default branch is [`f9b81f4`](https://github.com/AI-Ascension/sts2-game-mod/tree/f9b81f4759d23419278af93d7656aacba9bc2adc),
+which includes two additional source-only corrections after the function-budget follow-up:
+
+- [`sts2-game-mod#28`](https://github.com/AI-Ascension/sts2-game-mod/pull/28), merged at
+  [`8dca989`](https://github.com/AI-Ascension/sts2-game-mod/commit/8dca98904464b5b47dec5de88518e6c237fafad7),
+  adds the missing Runtime-v2 `SHA256SUMS` CI check and its testing documentation. Frozen
+  Runtime-v2 bytes are unchanged; this is checksum-integrity coverage.
+- [`sts2-game-mod#29`](https://github.com/AI-Ascension/sts2-game-mod/pull/29), merged at the
+  current head, adds local safety explanations for five native unsafe blocks and corrects the
+  provenance wording for the historical overlay evidence, with the repeat-seed limitation recorded
+  in the changelog. The patch changes comments and documentation only; executable behavior, ABI,
+  HTTP contracts, managed sources, frozen artifact bytes, and packaging remain unchanged.
+
+These corrections add source, CI, and documentation evidence only. They do not establish a live host,
+gameplay, provider, profile, or save run.
 
 What this does and does not establish:
 
