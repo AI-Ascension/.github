@@ -6,7 +6,7 @@
 
 ## Inspect how AI requests to a game get fenced, one Rust contract at a time.
 
-Start with deterministic, in-memory contract tests you can replay here and re-run with cargo. Later default branches include runtime executables and a dated, bounded Slay the Spire 2 host-probe report. **Reliable autonomous gameplay and broader compatibility remain unverified.** See the [September 4 source/evidence snapshot](https://github.com/AI-Ascension/.github/blob/main/STATUS.md) for exact pins and limits; this profile has not independently reproduced the host report.
+Start with deterministic, in-memory contract tests you can replay here and re-run with cargo. Later default branches include runtime executables and a dated, bounded Slay the Spire 2 host-probe report. **Reliable autonomous gameplay and broader compatibility remain unverified.** See the [September 4 and September 5 source/evidence snapshots](https://github.com/AI-Ascension/.github/blob/main/STATUS.md) for exact pins and limits; this profile has not independently reproduced the host report.
 
 **[Run the 45-second proof](https://ai-ascension.github.io/proof.html)** — browser only; no account, no install, no game files, no model.
 

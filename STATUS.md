@@ -4,6 +4,9 @@ The public browser proof is a historical deterministic gateway replay. Its pinne
 does not describe every capability of later default branches. Conversely, unmerged proposals
 must not be credited to default branches.
 
+A later dated snapshot for 2026-09-05 is appended below. The 2026-09-04 pins and their
+labels in this section are historical and are retained unchanged.
+
 ## Current default-source boundary
 
 These are `source-derived` pointers, not new runtime executions:
@@ -40,6 +43,45 @@ Gameplay settlement, reliable autonomous runs, restart recovery, multi-instance 
 provider execution, and compatibility beyond the recorded host/package require separate evidence.
 The existence of runtime source is not proof of deployment. Open Runtime-v3/gameplay proposals
 must be assessed at their own exact heads and as an integrated combination before stronger claims.
+
+## Later snapshot — 2026-09-05: Runtime-v3 gameplay lane merged
+
+These are `source-derived` pointers, not new runtime executions. They do not supersede or relabel
+the 2026-09-04 pins above; those remain the historical record for that date.
+
+On 2026-09-05 the owner selected the Exo semantic-catalog lane (`RUNTIME_V3_LANE=exo`) for the two
+incompatible Runtime-v3 gameplay proposals whose conflict is recorded in ADR 0007. The six-position
+stack merged in fixed order and each repository's default-branch CI passed at the resulting head.
+
+| Component | Default-branch source after the merge | Runtime-v3 position merged |
+| --- | --- | --- |
+| Protocol | [`4bfc120`](https://github.com/AI-Ascension/sts2-protocol/tree/4bfc120d4221182ca3e80bed0174fb787b6b4690) | 1/6 — `sts2-protocol#8` |
+| Game-core | [`87e0f3d`](https://github.com/AI-Ascension/sts2-game-core/tree/87e0f3d9355c0827e989d9fbc31804440852519b) | 2/6 — `sts2-game-core#6` |
+| Game-mod | [`7aa51ee`](https://github.com/AI-Ascension/sts2-game-mod/tree/7aa51ee003f5b69ff36e7ba9951f3d58fb8bb162) | 3/6 — `sts2-game-mod#15` |
+| Gateway | [`52bd147`](https://github.com/AI-Ascension/sts2-gateway/tree/52bd147667667d62d8d10c7de861d996f365600b) | 4/6 — `sts2-gateway#7` |
+| MCP adapter | [`b3684bf`](https://github.com/AI-Ascension/sts2-mcp-server/tree/b3684bf005f09622c39b154b4c081e867105edcf) | 5/6 — `sts2-mcp-server#8` |
+| Harness | [`ffa2564`](https://github.com/AI-Ascension/sts2-harness/tree/ffa2564836c7364ab1692cc81307e1bdecff428a) | 6/6 — `sts2-harness#10` |
+
+What this does and does not establish:
+
+- It is `confirmed` that each repository's declared gates passed at the head above: formatting,
+  Clippy at `-D warnings`, the workspace test suites, the frozen artifact checksum inventories,
+  and each repository's `repo-policy --strict` budget check. That is a statement about commands
+  at commits, and nothing more.
+- It is **not** evidence of gameplay, autonomous runs, settlement, restart recovery, multi-instance
+  behavior, provider execution, or host compatibility. No game was launched, no mod was loaded into
+  a host, no profile or save was touched, and no model provider was called during this pass.
+- The managed bridge has no concrete `IRuntimeV3HostSource`. That remains an explicit `unverified`
+  integration limitation and is not evidence of a completed live run.
+- The bounded `play_card` lane was closed as superseded, not merged. Its six branches are preserved
+  and unmodified, and the independent Runtime-v2 work those branches also carried was split out and
+  merged separately beforehand so that no independent contribution was lost.
+- The September 2 runtime-v1 host probe described above is unchanged by this merge and keeps its
+  original date, scope, and labels. Nothing in this snapshot promotes a `proposed` or `unverified`
+  claim to `confirmed`.
+
+Two co-op proposals remain open and unmerged, `sts2-protocol#11` and `sts2-mcp-server#16`; their
+admission is blocked pending contract admission and they are credited to no default branch.
 
 ## Updating public claims
 
