@@ -157,3 +157,48 @@ provider execution, host loading, current-package compatibility, and release rea
 established by these source/CI checks. The managed bridge still lacks a concrete
 `IRuntimeV3HostSource`. No host or provider run is added by this supplement; the September 2
 runtime-v1 probe remains a dated, bounded, source-derived report with its original limitations.
+
+## Reviewed bounded evidence snapshot — 2026-09-06
+
+This supplement records the default-branch source heads and dated owner evidence reviewed on
+2026-09-06 for the project-wide acceptance audit. The commit links and evidence links below are
+pinned to that reviewed snapshot; the historical pins and labels above remain historical. This
+update does not turn a source, build, or component result into a release, deployment, or general
+compatibility claim.
+
+| Repository | Reviewed default-branch head | Evidence at the reviewed head |
+| --- | --- | --- |
+| `sts2-game-core` | [`87e0f3d`](https://github.com/AI-Ascension/sts2-game-core/commit/87e0f3d9355c0827e989d9fbc31804440852519b) | host-independent source and tests |
+| `sts2-game-mod` | [`3ee5be4`](https://github.com/AI-Ascension/sts2-game-mod/commit/3ee5be4be104248d64b938fc5763c8b96fbec9be) | [native terminal observation](https://github.com/AI-Ascension/sts2-game-mod/blob/3ee5be4be104248d64b938fc5763c8b96fbec9be/docs/evidence/native-victory-observation-20260906.md), [GPU lifecycle](https://github.com/AI-Ascension/sts2-game-mod/blob/3ee5be4be104248d64b938fc5763c8b96fbec9be/docs/evidence/train-gpu-lifecycle-20260906.md) |
+| `sts2-gateway` | [`218ec8e`](https://github.com/AI-Ascension/sts2-gateway/commit/218ec8e6604f166ecf07d36cbc6e81cb6591efa0) | [gateway README](https://github.com/AI-Ascension/sts2-gateway/blob/218ec8e6604f166ecf07d36cbc6e81cb6591efa0/README.md) and co-op producer |
+| `sts2-harness` | [`14ed0c3`](https://github.com/AI-Ascension/sts2-harness/commit/14ed0c338f23274ad065fd9ee5fdfdaae316cb38) | [Windows campaign/replay](https://github.com/AI-Ascension/sts2-harness/blob/14ed0c338f23274ad065fd9ee5fdfdaae316cb38/docs/evidence/seeded-astra-campaign-20260906.md), [Linux campaign/replay](https://github.com/AI-Ascension/sts2-harness/blob/14ed0c338f23274ad065fd9ee5fdfdaae316cb38/docs/evidence/linux-seeded-campaign-20260906.md) |
+| `sts2-mcp-server` | [`7fbe380`](https://github.com/AI-Ascension/sts2-mcp-server/commit/7fbe380cfbee1b46736ae57019eb56b3e4179dc0) | [read-only co-op executable evidence](https://github.com/AI-Ascension/sts2-mcp-server/blob/7fbe380cfbee1b46736ae57019eb56b3e4179dc0/docs/evidence/coop-synchronization-20260906.md) |
+| `sts2-protocol` | [`fe2a872`](https://github.com/AI-Ascension/sts2-protocol/commit/fe2a872b01c5425d03e2faf3a938d39b1de33b78) | [co-op admission decision](https://github.com/AI-Ascension/sts2-protocol/blob/fe2a872b01c5425d03e2faf3a938d39b1de33b78/docs/decisions/0013-coop-synchronization-admission.md) |
+| `.github` | [`22a5077`](https://github.com/AI-Ascension/.github/commit/22a5077e5f6a43259a9924dcd6c516dd13e2d1df) | this status record and shared policy |
+| `AI-Ascension.github.io` | [`1991771`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/19917719dbe1b8ee9cd61fac89f556f93cb3a9e3) | public evidence ledger and repository map |
+| `ai-agent-observability` | [`b258803`](https://github.com/AI-Ascension/ai-agent-observability/commit/b25880376d3a3334c77f58637267db93581c4c77) | source topology only; live gameplay telemetry remains unverified |
+
+### What the dated runtime records establish
+
+- **Native Windows and Linux campaigns:** the v0.107.1 owner records show visible Astra-controlled
+  setup-to-Defeat campaigns through harness → MCP → gateway → mod. The Windows campaign settled
+  333 actions and its fresh process replay completed all 333. The Linux campaign settled 431
+  actions after one controller restart following a catalog-read failure, and its fresh process
+  replay completed all 431 with an independent audit. These records are bounded to the named seed,
+  host build, actions, and replay procedure.
+- **Terminal Victory observation:** forced Windows and Linux fixtures observe a living-player native
+  Victory surface, disabled input, and an empty legal catalog. The fixtures bypass ordinary play;
+  they do not establish a model-played campaign Victory.
+- **Co-op synchronization:** the consumed `coop-synchronization-v1` profile is a read-only
+  coordinator report produced by gateway and read by MCP. Its executable check covered convergence,
+  disagreement, disconnect/recovery, stale leases, and rejected reports with zero downstream game
+  connections. It provides no native peer identity, action, vote, shared-effect, or multiplayer
+  game authority.
+
+### Remaining acceptance boundaries
+
+Model-played Victory, all characters/seeds/branches, broader restart and host-version coverage,
+native multiplayer, clean-install/update/rollback and Workshop publication lifecycle, and current
+main evidence of real gameplay telemetry reaching both observability backends remain `unverified`.
+The project has no public release or deployment claim from these records. Keep each evidence link
+scoped to its named guest, host version, fixture, process, and operation set.

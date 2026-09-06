@@ -26,8 +26,9 @@ as the organization profile at <https://github.com/AI-Ascension>.
 | [`labels.yml`](labels.yml) | The shared label set as data; maintainers apply it per repository. |
 
 The public site is <https://ai-ascension.github.io/>. The proof it links to is a deterministic
-replay of `sts2-gateway` tests at a pinned commit, not a live game demonstration. Later runtime
-source and the bounded host-probe report are distinguished in [STATUS.md](STATUS.md).
+replay of `sts2-gateway` tests at a pinned commit, not a live game demonstration. Later bounded
+runtime, campaign/replay, and read-only coordinator-synchronization evidence are distinguished from
+that proof in [STATUS.md](STATUS.md).
 
 ## License
 
