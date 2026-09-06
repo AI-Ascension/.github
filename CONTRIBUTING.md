@@ -18,11 +18,12 @@ Every claim in an issue, pull request, README, or site page carries exactly one 
 | `unverified` | Not checked. Unknown is not "no"; write `unverified`, not a guess. |
 
 The site's pinned proof establishes deterministic, in-memory behavior at its recorded commits,
-not the complete current runtime. Later default branches include runtime executables and a dated
-bounded host-probe record. See [STATUS.md](STATUS.md) for the exact sources and evidence limits.
-Do not generalize that record to gameplay, autonomous runs, other hosts, or current artifacts;
-equally, do not claim that no listener or host integration exists. Label an inspected report
-`source-derived` when you have not independently reproduced its runtime result.
+not the complete current runtime. Later default branches include runtime executables, bounded
+Windows/Linux campaign and replay records, and a read-only coordinator-synchronization check. See
+[STATUS.md](STATUS.md) for the exact sources and evidence limits. Do not generalize those records
+to model-played Victory, native multiplayer, other hosts, or current release artifacts; equally, do
+not claim that no listener or host integration exists. Label an inspected report `source-derived`
+when you have not independently reproduced its runtime result.
 
 ## Boundary rules for every repository
 
