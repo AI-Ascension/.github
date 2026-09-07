@@ -1,0 +1,54 @@
+schema_version = 1
+profile_id = "org-governance"
+repository = "AI-Ascension/.github"
+owner = "ORG"
+source_bundle = "AI-Ascension/.github"
+source_commit = "542f460e4432974cbc7fe78c83d60cfafeecf86a"
+source_digest = "sha256:ec619f3750706961274208b1dafe732dcd76649774f16114a2dd0a0f6308bd4d"
+distribution = "local"
+scopes = [
+    "markdown",
+    "yaml",
+    "json",
+    "rust",
+]
+
+[checks]
+fast = [
+    "git-diff-check",
+    "standards-validate",
+]
+required = [
+    "standards-lock",
+    "schema-shape",
+]
+extended = ["link-check"]
+
+[checks.commands.git-diff-check]
+command = "git diff --check"
+target = "."
+
+[checks.commands.link-check]
+command = "bash tests/link-check-template.sh"
+target = "."
+
+[checks.commands.schema-shape]
+command = "cargo +1.97.1 run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- validate --root ."
+target = "."
+
+[checks.commands.standards-lock]
+command = "cargo +1.97.1 run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- validate --root ."
+target = "."
+
+[checks.commands.standards-validate]
+command = "cargo +1.97.1 run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- validate --root ."
+target = "."
+
+[evidence]
+runtime = "unverified"
+deployment = "unverified"
+provider = "unverified"
+
+[exceptions]
+file = ""
+status = "none"
