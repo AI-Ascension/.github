@@ -1,7 +1,10 @@
 # Standards verification recipe
 
 This recipe separates metadata, owner checks, and external evidence. It is intended for a local
-checkout and has no network, provider, game, mail, deployment, or remote-settings side effect.
+checkout and has no provider, game, mail, deployment, or remote-settings side effect.
+Provision the pinned compiler and locked dependencies first; Cargo may download missing dependencies.
+With that cache present, append `--offline` before `--` to Cargo build/run/test invocations
+when a no-network check is required. The validator binary itself performs no network access.
 
 ## Canonical source
 

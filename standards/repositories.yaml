@@ -30,7 +30,7 @@ repositories:
     owner: MOD
     profile_id: rust-managed
     adoption: prepared
-    language_scopes: [rust, csharp, shell, json]
+    language_scopes: [rust, csharp, shell, powershell, json]
     exclusion_reason: null
   - repository: AI-Ascension/sts2-gateway
     repository_id: 1354378018

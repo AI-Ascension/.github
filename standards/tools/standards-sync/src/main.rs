@@ -1424,7 +1424,7 @@ fn rust_required() -> Vec<CheckSpec> {
         ),
         check(
             "cargo-doc-tests",
-            "cargo test --workspace --doc --locked",
+            "cargo test --workspace --all-features --doc --locked",
             ".",
         ),
     ]
@@ -1606,6 +1606,16 @@ fn profile_plan(profile_id: &str, repository: &str) -> Result<ProfilePlan> {
                     ".",
                 ),
                 check(
+                    "powershell-syntax",
+                    "pwsh -NoProfile -NonInteractive -File tools/standards/check-powershell.ps1",
+                    ".",
+                ),
+                check(
+                    "powershell-syntax-negative",
+                    "pwsh -NoProfile -NonInteractive -File tools/standards/check-powershell.ps1 -SelfTest",
+                    ".",
+                ),
+                check(
                     "managed-process-bridge",
                     "pwsh -NoProfile -NonInteractive -File experiments/managed-rust-interop/dev-cycle-process-tests.ps1",
                     ".",
@@ -1699,7 +1709,7 @@ fn profile_plan(profile_id: &str, repository: &str) -> Result<ProfilePlan> {
                 ),
             ];
             ProfilePlan {
-                scopes: vec!["rust", "csharp", "shell", "json", "contracts"],
+                scopes: vec!["rust", "csharp", "shell", "powershell", "json", "contracts"],
                 fast: rust_fast(false),
                 required,
                 extended,
