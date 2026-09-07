@@ -8,6 +8,18 @@
 
 Start with deterministic, in-memory contract tests you can replay here and re-run with cargo. Later default branches include runtime executables, bounded Windows/Linux Slay the Spire 2 campaign and replay records, and a read-only coordinator-synchronization check. **Model-played Victory, native multiplayer, reliable autonomous coverage, and broader compatibility remain unverified.** See the [dated source/evidence snapshots](https://github.com/AI-Ascension/.github/blob/main/STATUS.md) for exact pins and limits; this profile has not independently reproduced those runtime records.
 
+## Current candidate boundary — 2026-09-07
+
+These open candidates provide source and component checks for the Runtime-v4 path. Their checks do not establish a host run, provider settlement, or release.
+
+| Candidate | Public state | Scope at this date |
+| --- | --- | --- |
+| [`sts2-gateway` draft PR #22](https://github.com/AI-Ascension/sts2-gateway/pull/22) | `9cbd2c4` · mergeable · Rust quality and policy checks passed | Bounded route and consumer source path; live host settlement remains unverified. |
+| [`sts2-mcp-server` draft PR #27](https://github.com/AI-Ascension/sts2-mcp-server/pull/27) | `9228574` · mergeable · foundation quality and policy checks passed | Runtime-v4 expert mapping source; merge to the default branch and native settlement remain pending. |
+| [`sts2-harness` draft PR #36](https://github.com/AI-Ascension/sts2-harness/pull/36) | `5f17cd6` · based on `cb17b6c` · mergeable · Rust quality and policy checks passed | Catalog-recovery source integration; 223 workspace tests plus separate independent oracles reviewed; provider, native, host-restart, and gameplay settlement remain unverified. |
+
+Native final artifact and installation, model-played Victory, native co-op actions and recovery, Workshop lifecycle, live observability ingestion/correlation, deployment, and release acceptance remain unverified. Refer to the [dated status record](https://github.com/AI-Ascension/.github/blob/main/STATUS.md) for the wider repository matrix and evidence limits.
+
 **[Run the 45-second proof](https://ai-ascension.github.io/proof.html)** — browser only; no account, no install, no game files, no model.
 
 ## Pick your path
