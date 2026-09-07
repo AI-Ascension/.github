@@ -6,8 +6,8 @@ inventory. The source is prepared in isolated branches named
 `codex/standards-baseline-20260907`; no branch was pushed or merged.
 
 The canonical bundle is pinned to commit
-`ce4ca6dc4a202a276cf5387ae5c43011e3bbe88f` of `AI-Ascension/.github`, with digest
-`sha256:af5c0138aff3356cb1bb520c90e61bfc68efc1f8d4fa6f436570e7e3b231190a`.
+`0f743fd4cce4428f813a6d6f50c51d4fb901561b` of `AI-Ascension/.github`, with digest
+`sha256:326b45c4ee3421788da0ec5c258b0c1fc9f562034a2fcac260c50223b5b9f13d`.
 Every local lock preserves `published: false`, hashes all 36 bundle files and
 hashes the generated root profile configuration. This is local byte provenance,
 not a remote signature or protected owner approval.
@@ -16,18 +16,18 @@ not a remote signature or protected owner approval.
 
 | Repository | Validated implementation commit | Local result |
 | --- | --- | --- |
-| `aiascension.tech` | `1badbe918861c5bc7391d4286ec60ab6d71a4eae` | 49 PHP tests/121 assertions; 2 Node tests; 3 Chromium cases |
-| `sts2-game-core` | `3b76263bc49eae30078b1166f74ff8f3cdf6c701` | 57 tests + 2 doctests; native gates pass |
-| `sts2-game-mod` | `5be592629bfa5dbdfa21b312cddd78aaa914d4f3` | 93 tests + 5 doctests; native gates pass; 13 managed projects/26 settings pairs and source probes pass |
-| `sts2-gateway` | `41bc31b6a11cc76ead4f78c4c944781aa2e40cbf` | 138 tests + 2 doctests; native gates pass |
-| `sts2-mcp-server` | `28b316787d12fa4f87fab0acdd920b6a330ceffd` | 128 tests + 2 doctests; native gates pass; 1 default-ignored peer case separately passes |
-| `sts2-harness` | `ed511856c4f0b85b498052f893b79cd36aa563c7` | 197 tests + 2 doctests; native gates pass |
-| `sts2-protocol` | `286ea64eec8e6b72b7fbe3acc3d6f8807ed569ac` | 69 tests + 2 doctests; native gates pass |
-| `.github` | `328c2e5686107436c727a7242e3295b1c646fcc6` | 15 tool tests; 3 positive/9 negative fixtures; 15 link cases; 12 adopter validations |
-| `AI-Ascension.github.io` | `53db8396071a6eb87f77e8c4559c8e1280e5e033` | 10 Node tests; 3 Chromium cases; both historical recipes match |
-| `ai-agent-observability` | `4d01b73340d65d30a1b8b06d8c7aa9f922e04e8a` | Shell/bootstrap/config gates pass; 43 model and 18 rendered negative cases; buildx unverified |
-| `ascension-watchdog` | `0365a7d76c44380941bc9aa54b20ea71645ad4d3` | 7 Markdown, 2 JSON and 1 YAML inputs checked; product absent as intended |
-| `ascension-map-visualizer` | `b85f0ccb9ca0c093b006d5b7451f315a26cf46c0` | 3 Markdown, 1 TOML and 1 YAML inputs checked; product absent as intended |
+| `aiascension.tech` | `fdb23feb7cdcd55b6508fecbe575e03dd8bfbab9` | 49 PHP tests/121 assertions; 2 Node tests; 3 Chromium cases |
+| `sts2-game-core` | `bb72a7e09639588714d323174df310a18768e30a` | 57 tests + 2 doctests; native gates pass |
+| `sts2-game-mod` | `b52674be3c24e4af502d29635b1f55fba765503c` | 93 tests + 5 doctests; native gates pass; 13 managed projects/26 settings pairs and source probes pass |
+| `sts2-gateway` | `8d19ffd6a61b38b47293c45cd0fa97d6bcc06f08` | 138 tests + 2 doctests; native gates pass |
+| `sts2-mcp-server` | `bc4c1fba00b3706ed6fbfbcf80f7a5dcfa7f1bd2` | 128 tests + 2 doctests; native gates pass; 1 default-ignored peer case separately passes |
+| `sts2-harness` | `a87c9e26eae96d9de334bff2ab4318c64f86aa2a` | 197 tests + 2 doctests; native gates pass |
+| `sts2-protocol` | `1114288b7fccbe1bc0076757723d6f20d0fdf644` | 69 tests + 2 doctests; native gates pass |
+| `.github` | `0f30e04e4eabcd50b035e76eba424d49979c1da0` | 15 tool tests; 3 positive/9 negative fixtures; 15 link cases; 12 adopter validations |
+| `AI-Ascension.github.io` | `0004bc545497abd7531a2b071d9f0d78928e6b35` | 10 Node tests; 3 Chromium cases; both historical recipes match |
+| `ai-agent-observability` | `1f35d7b7c5784392e27c7ba936089e8748f20dea` | Shell/bootstrap/config gates pass; 43 model and 18 rendered negative cases; buildx unverified |
+| `ascension-watchdog` | `47eda974594ff330ab82d5c51feba209cdb824c2` | 7 Markdown, 2 JSON and 1 YAML inputs checked; product absent as intended |
+| `ascension-map-visualizer` | `c34978f4ff707f17bc82d38fdcd853ad583134d9` | 3 Markdown, 1 TOML and 1 YAML inputs checked; product absent as intended |
 | `ascension-brand-overhaul` | `851ea5e0744fca10e86fea4dbc36118c4bb68a75` | Explicitly excluded; historical checksum failure leaves 40/41 baseline tests passing |
 
 The canonical row identifies the implementation/lock commit before this report.
@@ -116,9 +116,11 @@ issue, not a green adoption or an authorized suppression.
 | Protected-check activation | Not inspected/changed as an activation action; external owner configuration remains separate |
 | Runtime/deployment/release | No host/game/provider/mail/service/deployment/release result claimed |
 
-The referenced companion package and original acceptance matrix were not supplied
-or found. [The implemented matrix](../../tests/ACCEPTANCE_MATRIX.md) derives from
-the explicit prompt and cannot prove fidelity to that unseen input. The requested
+The operator subsequently supplied the proposed BASELINE.md and AUDIT_FINDINGS.md;
+[the companion comparison](COMPANION_COMPARISON.md) records their reconciliation.
+The original manifests, exception schema, sources.json and acceptance matrix remain
+unavailable. [The implemented matrix](../../tests/ACCEPTANCE_MATRIX.md) therefore
+derives from the explicit prompt and received prose, not those unseen package files. The requested
 three descendant layers were unavailable in the child tool environment; actual
 execution metadata showed eleven native Luna/max descendants across waves, all at
 depth one. A stopped alternate-client attempt was not counted as valid ancestry.

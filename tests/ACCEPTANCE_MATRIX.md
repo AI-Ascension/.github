@@ -1,8 +1,9 @@
 # Implemented acceptance matrix
 
-This matrix is derived from the explicit implementation prompt. The separately
-referenced companion package was not supplied or found; this file does not claim
-to reproduce its unseen acceptance cases. Executable assertions and observed
+This matrix derives from the explicit implementation prompt and was cross-checked
+against the subsequently supplied BASELINE.md and AUDIT_FINDINGS.md. Original
+package acceptance cases and manifests remain unavailable; this file does not
+claim to reproduce those unseen inputs. Executable assertions and observed
 results are distinguished from unavailable external acceptance.
 
 | Case | Executable evidence | Result and boundary |

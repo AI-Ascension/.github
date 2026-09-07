@@ -70,9 +70,9 @@ and logs remain private; no hidden reasoning transcript is part of this ledger.
   checksum mismatch causes its validator and one of 41 package tests to fail.
   Its owner must reconcile the source/archive before adoption; no historical
   checksum was rewritten.
-- The referenced companion package and `tests/ACCEPTANCE_MATRIX.md` were not supplied
-  or found. The operator was asked once; this work implements the explicit prompt
-  cases and cannot claim conformance to an unseen matrix.
+- The proposed BASELINE.md and AUDIT_FINDINGS.md were subsequently received and
+  compared. Original manifests, exception schema, sources.json and acceptance cases
+  remain unavailable; the implemented matrix cannot claim fidelity to those files.
 - Exact-host `sts2.dll`/Godot assemblies, actual Windows bridge execution, native
   unload/thread behavior, cPanel PHP/extensions and mail delivery remain unverified.
   Source-linked probes and Linux checks do not prove those boundaries.
