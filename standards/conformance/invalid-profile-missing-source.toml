@@ -1,0 +1,22 @@
+schema_version = 1
+profile_id = "fixture-profile"
+repository = "AI-Ascension/fixture"
+owner = "TEST"
+source_bundle = "AI-Ascension/.github"
+distribution = "local"
+scopes = ["rust"]
+
+[checks]
+fast = ["standards-validate"]
+required = ["repo-policy-strict"]
+extended = []
+
+[evidence]
+runtime = "unverified"
+deployment = "unverified"
+provider = "unverified"
+
+[exceptions]
+file = ""
+status = "none"
+

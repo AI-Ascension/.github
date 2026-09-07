@@ -1,0 +1,3 @@
+# Local builds of the dependency-free standards checker.
+standards/tools/standards-sync/target/
+
