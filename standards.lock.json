@@ -4,12 +4,12 @@
   "profile_id": "org-governance",
   "source": {
     "repository": "AI-Ascension/.github",
-    "commit": "c2ce3cc2950c19777fd582a96a49a10a33380bd2",
-    "bundle_digest": "sha256:1acee4ce76769e8c5e78253bc20d42d0da580160cb9c5481ac982ad496b3a515",
+    "commit": "d1daa01bbe0f3839bbc6cff80190b8845cb67359",
+    "bundle_digest": "sha256:1c21d7a45a0638e127984ab0c5e50cacccce8ce32c53c874ebfaaa4ff09b8542",
     "distribution": "local",
     "published": false
   },
-  "profile_sha256": "76fd3b779535cd2893a24647badfacd16151a611f92951526e7fc835bbcf0af0",
+  "profile_sha256": "04cd6ab83dc31b127751a7162e5994f1ea28b14ac712b64e8c10453460441e1a",
   "files": [
     {
       "path": "standards/BASELINE.md",
@@ -137,7 +137,7 @@
     },
     {
       "path": "standards/tools/standards-sync/README.md",
-      "sha256": "4c518bf3dbde8d5d8851b29bc9fc9d9ecf4ecad8d0cc3c8074b7fa12d3baa3db"
+      "sha256": "180674ca7eed9a3740996d33dbc0ce67562d667a89bd5b32dd9e73c5972eef6f"
     },
     {
       "path": "standards/tools/standards-sync/rust-toolchain.toml",
@@ -145,15 +145,15 @@
     },
     {
       "path": "standards/tools/standards-sync/src/bootstrap.rs",
-      "sha256": "575a4cdfdf2a8b7af68be26a07dc8ee3390ad830211267b7497ce51ece80b80a"
+      "sha256": "87f6cd90b0888b5ad5e68298e21e6c629c1f5bdc5917301d4b80a4fd1b8ddbe1"
     },
     {
       "path": "standards/tools/standards-sync/src/conformance_tests.rs",
-      "sha256": "e62532f9822ba2add75a914675a31979911fae67400096ab89d16f2647b77607"
+      "sha256": "f8875e9287280c12b27af04fb21d38be4681f1f2fb109016f7e864ee3d90488e"
     },
     {
       "path": "standards/tools/standards-sync/src/main.rs",
-      "sha256": "e9b246640da102a2de216a8309a23208d026a987cd882c3521ed5c2741bd32cd"
+      "sha256": "fb86fd46bfb0ffcf033fa3f6a1419160ac3f705647edce0d2122493acd1259a4"
     }
   ],
   "protected_paths": [

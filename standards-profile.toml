@@ -3,8 +3,8 @@ profile_id = "org-governance"
 repository = "AI-Ascension/.github"
 owner = "ORG"
 source_bundle = "AI-Ascension/.github"
-source_commit = "c2ce3cc2950c19777fd582a96a49a10a33380bd2"
-source_digest = "sha256:1acee4ce76769e8c5e78253bc20d42d0da580160cb9c5481ac982ad496b3a515"
+source_commit = "d1daa01bbe0f3839bbc6cff80190b8845cb67359"
+source_digest = "sha256:1c21d7a45a0638e127984ab0c5e50cacccce8ce32c53c874ebfaaa4ff09b8542"
 distribution = "local"
 scopes = [
     "markdown",
