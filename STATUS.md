@@ -202,3 +202,41 @@ native multiplayer, clean-install/update/rollback and Workshop publication lifec
 main evidence of real gameplay telemetry reaching both observability backends remain `unverified`.
 The project has no public release or deployment claim from these records. Keep each evidence link
 scoped to its named guest, host version, fixture, process, and operation set.
+
+## Current acceptance boundary — 2026-09-07
+
+This supplement records the prepared source candidates and the evidence scope at this date. The
+release surface is part of `sts2-game-mod`; the organization contains nine repositories. A source,
+build, or component check does not establish a host run, provider settlement, deployment, or release.
+
+| Repository | Prepared candidate | Scope established at this boundary |
+| --- | --- | --- |
+| [`sts2-protocol`](https://github.com/AI-Ascension/sts2-protocol) | Runtime-v4 gameplay `520721f5f0f6b7a6078bf0b2d9f8d3c5545a9c97`; co-op `fe2a872b01c5425d03e2faf3a938d39b1de33b78` | Protocol artifacts and synchronization contracts are prepared; native action, vote, effect, and peer gameplay remain unverified. |
+| [`sts2-game-core`](https://github.com/AI-Ascension/sts2-game-core) | `87e0f3d9355c0827e989d9fbc31804440852519b` | Host-independent game semantics and tests; no native host or provider result. |
+| [`sts2-game-mod`](https://github.com/AI-Ascension/sts2-game-mod) | Integrated `b53789d6ae5c3c391b2d32ab0656737b5a868b68` | Managed/native builds, the 220-type default audit, and the local bundle identity checks pass; no host load or gameplay run. |
+| [`sts2-gateway`](https://github.com/AI-Ascension/sts2-gateway) | Consumer `17b93bf35e5256f6adf690aa148fa57d4f56c523` | Bounded route and consumer checks; live host settlement and deployment remain unverified. |
+| [`sts2-mcp-server`](https://github.com/AI-Ascension/sts2-mcp-server) | Consumer `c71e453265c73f134a421796ff8f9cfc624e774d` | Binding and expert-mapping checks; live MCP-to-game settlement remains unverified. |
+| [`sts2-harness`](https://github.com/AI-Ascension/sts2-harness) | Consumer `181754e5f1ad049c989c1ea72bba9b28affa6bb9` | Formatting, policy, Clippy, 213 workspace tests, and locked release builds pass; provider and gameplay settlement remain unverified. |
+| [`.github`](https://github.com/AI-Ascension/.github) | Status preparation from main `0cbdf744d515b16c042eb6e16b1537d8ccf11771` | Dated acceptance summary; no product release or runtime completion claim. |
+| [`AI-Ascension.github.io`](https://github.com/AI-Ascension/AI-Ascension.github.io) | Site preparation `4f94cb1d85c4b84c59138ff36e9e697b55491850`; [PR #11](https://github.com/AI-Ascension/AI-Ascension.github.io/pull/11) merged at [`e81dd4e`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f) | Static documentation tests, merge, and Pages deployment pass; this establishes the reviewed site documentation only, not gameplay or release readiness. |
+| [`ai-agent-observability`](https://github.com/AI-Ascension/ai-agent-observability) | Integration `6ce281090f9e5862b1209f4062941c68b4047f7e` | Deployment and privacy source preparation; current-main gameplay ingestion and backend persistence remain unverified. |
+
+The b53789d native outputs are reproducible at the recorded source boundary: Windows is 1,470,920
+bytes with SHA-256 `8989565f71399d68ad752a0a3125bdd3bdeec399406813e08d8dc0bdb509dc0b`, and Linux is
+656,472 bytes with SHA-256 `9c04f03333c443717c200a6fa38bd2943bb5c0fa7f143519489bc0e62c9441fa`.
+Twelve package-path regression tests and the managed type audit pass with no forbidden or missing types. These results cover source,
+build, and bundle identity only; they do not establish installation, loading, or compatibility.
+
+A local Windows PowerShell 5.1 parser run for the transport candidates is clean, but Train-guest Windows NetSecurity
+rule creation and readback remain unverified. Native launch is paused while the reserved host lacks a
+safe storage margin. Model-controlled native gameplay, final platform campaigns and fresh replays,
+co-op action and disconnect/rejoin recovery, provider settlement, and live observability correlation
+remain open.
+
+A Steam destination item was created as item `3797477798` with legal agreement still required. It
+was create-only: no content or preview was uploaded, and visibility, subscription, discovery,
+loading, update, rollback, deployment, and public release were not established. Agreement acceptance
+and a separate item-state check are required before Workshop lifecycle verification.
+
+These candidates and checks are prepared evidence, not merge approval. Remote heads, pull-request
+state, and required checks must be re-queried before any PR, merge, deployment, or publication.
