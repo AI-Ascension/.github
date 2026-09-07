@@ -28,11 +28,11 @@ command = "git diff --check"
 target = "."
 
 [checks.commands.standards-validate]
-command = "cargo run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- validate --root ."
+command = "cargo +1.97.1 run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- validate --root ."
 target = "."
 
 [checks.commands.repo-policy-strict]
-command = "cargo run --locked --package repo-policy -- --strict"
+command = "cargo +1.97.1 run --locked --package repo-policy -- --strict"
 target = "."
 
 [checks.commands.contract-conformance]
