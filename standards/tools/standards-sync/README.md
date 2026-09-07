@@ -15,6 +15,8 @@ From a repository containing standards/, standards-profile.toml, and standards.l
 Validation checks exact source/profile metadata, safe and sorted lock paths, every local file's
 SHA-256, the bundle digest, required rules and profile IDs, all 13 reviewed repository records,
 self-identifying schemas, and valid/negative fixture inventory. A mismatch exits nonzero. The
+checker reports metadata validation only; it does not execute the profile commands or approve
+manual semantic rules. Use `--as-of YYYY-MM-DD` when a reproducible exception date is needed. The
 checker never updates a lock or changes a source file.
 
 ## Distribute locally
@@ -30,8 +32,9 @@ and create the two root metadata files in one deterministic operation:
 The command verifies that the supplied commit is a local Git commit whose complete standards/
 tree is byte-identical to the source checkout, then computes the bundle digest over sorted
 standards/<path>, NUL, file bytes, NUL records; emits published:false; and refuses to overwrite a
-differing managed file. A caller must stage the resulting paths explicitly and obtain owner review
-before a local adopter claims ready.
+differing managed file. It accepts only the reviewed repository/profile/owner combinations and
+rejects explicitly excluded repositories. A caller must stage the resulting paths explicitly and
+obtain owner review before a local adopter claims ready.
 
 The command has no GitHub, registry, deployment, game, host, mail, or provider access. Remote
 publication is a separate operation and is never inferred from published:false or a passing local

@@ -56,7 +56,12 @@ lint or test job cannot promote a host, provider, game, deployment, or release c
 `standards/rules.yaml` is the machine-readable rule ledger. A `mandatory` rule blocks its listed
 check when it fails. An `advisory` rule reports guidance after an approved migration; it must not
 be silently promoted to a blocking failure. Each rule has a stable ID, purpose, scope, checker,
-and exception eligibility. The schemas under `standards/schemas/` define the accepted shape.
+verification mode, and exception eligibility. An `automated` rule names an executable command that
+covers the assertion. A `manual` rule has `command: null` and remains unverified until an owner
+review or source-linked test records the semantic result. `standards-sync validate` checks metadata
+and bytes; it never reports identity, ownership, lifecycle, privacy, evidence, or review approval
+as passed merely because the metadata parses. The schemas under `standards/schemas/` define the
+accepted shape.
 
 ## Exceptions
 
@@ -84,6 +89,7 @@ cargo run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- 
 ```
 
 The command validates the canonical profile, lock, rule ledger, repository inventory, schemas,
-and conformance fixture inventory. It has no network, provider, game, mail, service, or deployment
-side effect.
-
+and conformance fixture inventory. It accepts `--as-of YYYY-MM-DD` for deterministic exception
+expiry checks. Production validation does not accept a `local-review:` fixture token or an unqueried
+GitHub review URL as independent approval evidence. It has no network, provider, game, mail, service,
+or deployment side effect.

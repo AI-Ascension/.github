@@ -4,54 +4,53 @@ profiles:
     purpose: Governance, documentation, schema, and workflow source for the canonical standards repository.
     scopes: [markdown, yaml, json, rust]
     fast: [git-diff-check, standards-validate]
-    required: [standards-lock, schema-shape]
+    required: [standards-conformance]
     extended: [link-check]
   - id: rust-pure
     purpose: Host-independent Rust core or contract repository with frozen artifact checks.
     scopes: [rust, json, contracts]
     fast: [git-diff-check, standards-validate, cargo-metadata, cargo-fmt]
-    required: [repo-policy-strict, cargo-clippy, cargo-test, artifact-checksums]
-    extended: [contract-conformance]
+    required: [repo-policy-strict, cargo-clippy, cargo-test, cargo-doc-tests]
+    extended: [artifact-checksums, contract-conformance]
   - id: rust-service
     purpose: Rust gateway, MCP adapter, or harness repository with owned lifecycle and transport seams.
     scopes: [rust, json, contracts]
     fast: [git-diff-check, standards-validate, cargo-metadata, cargo-fmt]
-    required: [repo-policy-strict, cargo-clippy, cargo-test, artifact-checksums]
-    extended: [contract-conformance, synthetic-boundary-tests]
+    required: [repo-policy-strict, cargo-clippy, cargo-test, cargo-doc-tests]
+    extended: [artifact-checksums, contract-conformance, synthetic-boundary-tests]
   - id: rust-managed
     purpose: Rust game-mod repository with a narrow managed/native source-only boundary.
     scopes: [rust, csharp, shell, json, contracts]
-    fast: [git-diff-check, standards-validate, cargo-metadata, cargo-fmt]
-    required: [repo-policy-strict, cargo-clippy, cargo-test, artifact-checksums, managed-source-probes]
-    extended: [managed-bridge-tests, exact-host-build]
+    fast: [git-diff-check, standards-validate, cargo-fmt]
+    required: [repo-policy-strict, cargo-clippy, cargo-test, cargo-doc-tests, managed-source-probes]
+    extended: [artifact-checksums, managed-bridge-tests, exact-host-build]
   - id: web-php
     purpose: Static site with a PHP subscription endpoint and Composer-managed tests.
     scopes: [html, css, javascript, php]
-    fast: [git-diff-check, standards-validate, composer-validate]
-    required: [phpunit, origin-regressions, persistence-regressions]
-    extended: [browser-check]
+    fast: [git-diff-check, standards-validate, composer-validate, composer-lint]
+    required: [phpstan, phpunit]
+    extended: [composer-verify]
   - id: web-static
     purpose: Static HTML/CSS/vanilla JavaScript documentation site with pinned Rust recipes.
     scopes: [html, css, javascript, rust]
-    fast: [git-diff-check, standards-validate, node-tests]
-    required: [fixture-integrity, local-link-check]
-    extended: [browser-check, pinned-recipe]
+    fast: [git-diff-check, standards-validate, npm-format-check, npm-lint, node-tests]
+    required: []
+    extended: [browser-check, pinned-gateway-recipe, pinned-mcp-recipe]
   - id: operations
     purpose: Shell, Compose, Dockerfile, systemd, and deployment configuration repository.
     scopes: [shell, yaml, dockerfile, systemd]
-    fast: [git-diff-check, standards-validate, bash-n, shellcheck]
-    required: [compose-invariants, compose-config, dockerfile-check]
-    extended: [synthetic-bootstrap]
+    fast: [git-diff-check, standards-validate, shellcheck]
+    required: [bootstrap-tests, validation-regressions, compose-policy-regressions, compose-invariants, compose-config, compose-required-settings, compose-structured, dockerfile-mlflow, dockerfile-laminar]
+    extended: []
   - id: planning-bootstrap
     purpose: Prompt or bootstrap repository awaiting an accepted product manifest.
     scopes: [markdown, json, rust-planned, browser-planned]
-    fast: [git-diff-check, standards-validate, package-shape]
+    fast: [git-diff-check, standards-validate]
     required: []
     extended: []
   - id: brand-package
     purpose: Python standard-library prompt package with JSON schemas and offline package checks.
     scopes: [python, html, json, markdown]
-    fast: [git-diff-check, standards-validate, python-syntax]
-    required: [package-validation, unit-tests, schema-meta-validation]
-    extended: [offline-art-board]
-
+    fast: [git-diff-check]
+    required: [unit-tests]
+    extended: [package-validation, schema-meta-validation, offline-art-board]

@@ -5,6 +5,7 @@ use sha2::{Digest, Sha256};
 use std::collections::{BTreeMap, BTreeSet};
 use std::env;
 use std::fs;
+use std::fs::OpenOptions;
 use std::io;
 use std::path::{Path, PathBuf};
 use std::process::{self, Command};
@@ -20,6 +21,8 @@ const EVIDENCE_STATES: &[&str] = &[
     "unverified",
     "unsupported",
 ];
+
+const FIXTURE_AS_OF: &str = "2026-09-07";
 
 const REQUIRED_SCHEMA_FILES: &[&str] = &[
     "exception.schema.json",
@@ -73,6 +76,7 @@ struct Cli {
     profile_id: String,
     owner: String,
     source_commit: String,
+    as_of: Option<String>,
 }
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
@@ -170,7 +174,8 @@ struct Rule {
     classification: String,
     scope: Vec<String>,
     check: String,
-    command: String,
+    verification: String,
+    command: Option<String>,
     exception_eligible: bool,
     failure_behavior: String,
 }
@@ -247,7 +252,7 @@ fn main() {
     };
 
     let result = match args.command.as_str() {
-        "validate" => validate_root(&args.root),
+        "validate" => validate_root(&args.root, args.as_of.as_deref()),
         "fixture-check" => fixture_check(&args.root),
         "sync" => sync_bundle(&args),
         "help" | "--help" | "-h" => {
@@ -269,7 +274,7 @@ fn fail(error: &str) -> ! {
 
 fn print_help() {
     println!(
-        "standards-sync/1\n\nCommands:\n  validate [--root PATH]\n  fixture-check --root standards/conformance\n  sync --source-root PATH --target-root PATH --repository OWNER/NAME --profile-id ID --owner OWNER --source-commit COMMIT\n\nAll operations are local and read-only except sync's deterministic copy into its target."
+        "standards-sync/1\n\nCommands:\n  validate [--root PATH] [--as-of YYYY-MM-DD]\n  fixture-check --root standards/conformance\n  sync --source-root PATH --target-root PATH --repository OWNER/NAME --profile-id ID --owner OWNER --source-commit COMMIT\n\nAll operations are local and read-only except sync's deterministic copy into its target."
     );
 }
 
@@ -296,6 +301,7 @@ fn parse_cli() -> Result<Cli> {
             "--profile-id" => cli.profile_id = value()?,
             "--owner" => cli.owner = value()?,
             "--source-commit" => cli.source_commit = value()?,
+            "--as-of" => cli.as_of = Some(value()?),
             flag => return Err(format!("unknown option '{flag}'")),
         }
     }
@@ -303,7 +309,7 @@ fn parse_cli() -> Result<Cli> {
     Ok(cli)
 }
 
-fn validate_root(root: &Path) -> Result<()> {
+fn validate_root(root: &Path, as_of: Option<&str>) -> Result<()> {
     let root = root
         .canonicalize()
         .map_err(|error| format!("cannot read root {}: {error}", root.display()))?;
@@ -325,10 +331,11 @@ fn validate_root(root: &Path) -> Result<()> {
     validate_repository_map(&standards.join("repositories.yaml"), &profile_ids)?;
     validate_schemas(&standards.join("schemas"))?;
     validate_conformance_inventory(&standards.join("conformance"))?;
-    validate_profile_exception(&root, &profile, &rule_ids)?;
+    let as_of = as_of_days(as_of)?;
+    validate_profile_exception(&root, &profile, &rule_ids, as_of, false)?;
 
     println!(
-        "validated profile={} repository={} source_commit={} files={} bundle_digest={}",
+        "validated metadata profile={} repository={} source_commit={} files={} bundle_digest={} (manual semantic review remains separate)",
         profile.profile_id,
         profile.repository,
         profile.source_commit,
@@ -437,15 +444,7 @@ fn validate_check_sets(checks: &CheckSets) -> Result<()> {
         {
             return Err(format!("check '{name}' has an unsafe or empty command"));
         }
-        let executable = specification
-            .command
-            .split_whitespace()
-            .next()
-            .ok_or_else(|| format!("check '{name}' has no executable"))?;
-        if !executable
-            .bytes()
-            .all(|byte| byte.is_ascii_alphanumeric() || matches!(byte, b'.' | b'_' | b'/' | b'-'))
-        {
+        if !has_safe_executable(&specification.command) {
             return Err(format!("check '{name}' has no executable command token"));
         }
         if !valid_target(&specification.target) {
@@ -583,12 +582,39 @@ fn validate_rules(path: &Path) -> Result<BTreeMap<String, bool>> {
         {
             return Err(format!("rule {} has an invalid scope", rule.id));
         }
-        if !valid_check_name(&rule.check)
-            || rule.command.is_empty()
-            || rule.command.len() > 240
-            || contains_shell_operator(&rule.command)
-        {
-            return Err(format!("rule {} has an invalid check command", rule.id));
+        if !valid_check_name(&rule.check) {
+            return Err(format!("rule {} has an invalid check name", rule.id));
+        }
+        match rule.verification.as_str() {
+            "automated" => {
+                let command = rule.command.as_deref().ok_or_else(|| {
+                    format!("automated rule {} must name an executable command", rule.id)
+                })?;
+                if command.is_empty()
+                    || command.len() > 240
+                    || contains_shell_operator(command)
+                    || !has_safe_executable(command)
+                {
+                    return Err(format!(
+                        "rule {} has an invalid executable command",
+                        rule.id
+                    ));
+                }
+            }
+            "manual" => {
+                if rule.command.is_some() {
+                    return Err(format!(
+                        "manual rule {} must not claim an executable command",
+                        rule.id
+                    ));
+                }
+            }
+            _ => {
+                return Err(format!(
+                    "rule {} verification must be automated or manual",
+                    rule.id
+                ));
+            }
         }
         match (
             rule.severity.as_str(),
@@ -730,6 +756,32 @@ fn validate_repository_map(path: &Path, profile_ids: &BTreeSet<String>) -> Resul
                 ));
             }
         }
+    }
+    Ok(())
+}
+
+fn validate_sync_identity(path: &Path, args: &Cli) -> Result<()> {
+    let document = parse_yaml::<RepositoryMap>(path)?;
+    let entry = document
+        .repositories
+        .iter()
+        .find(|entry| entry.repository == args.repository)
+        .ok_or_else(|| format!("repository {} is not in the reviewed map", args.repository))?;
+    if entry.owner != args.owner || entry.profile_id != args.profile_id {
+        return Err(format!(
+            "sync identity for {} must use owner={} and profile_id={}",
+            args.repository, entry.owner, entry.profile_id
+        ));
+    }
+    if entry.adoption == "excluded" {
+        return Err(format!(
+            "repository {} is explicitly excluded: {}",
+            args.repository,
+            entry
+                .exclusion_reason
+                .as_deref()
+                .unwrap_or("no reason recorded")
+        ));
     }
     Ok(())
 }
@@ -937,6 +989,7 @@ fn expected_schema_required(name: Option<&str>) -> &'static [&'static str] {
             "classification",
             "scope",
             "check",
+            "verification",
             "command",
             "exception_eligible",
             "failure_behavior",
@@ -979,7 +1032,7 @@ fn fixture_check(directory: &Path) -> Result<()> {
     let valid_lock = parse_json::<LockFile>(&directory.join("valid-lock.json"))?;
     validate_lock_shape(&valid_lock, &valid_profile)?;
     let valid_exception = parse_yaml::<Exception>(&directory.join("valid-exception.yaml"))?;
-    validate_exception(&valid_exception, None)?;
+    validate_exception(&valid_exception, None, date_days(FIXTURE_AS_OF)?, true)?;
 
     for name in [
         "invalid-profile-floating.toml",
@@ -999,14 +1052,9 @@ fn fixture_check(directory: &Path) -> Result<()> {
         }
     }
     let stale_lock = parse_json::<LockFile>(&directory.join("invalid-lock-stale-digest.json"))?;
-    let temp_root =
-        std::env::temp_dir().join(format!("standards-sync-fixture-{}", std::process::id()));
-    if temp_root.exists() {
-        fs::remove_dir_all(&temp_root)
-            .map_err(|error| format!("cannot clear fixture directory: {error}"))?;
-    }
-    fs::create_dir_all(temp_root.join("standards"))
-        .map_err(|error| format!("cannot create fixture directory: {error}"))?;
+    let temp_root = create_fixture_directory()?;
+    fs::create_dir(temp_root.join("standards"))
+        .map_err(|error| format!("cannot create fixture standards directory: {error}"))?;
     fs::write(temp_root.join("standards/fixture.txt"), b"fixture bytes")
         .map_err(|error| format!("cannot write stale digest fixture: {error}"))?;
     let stale_result = validate_lock_bytes(&temp_root, &stale_lock);
@@ -1019,8 +1067,9 @@ fn fixture_check(directory: &Path) -> Result<()> {
         "invalid-exception-pending.yaml",
         "invalid-exception-broad-path.yaml",
     ] {
-        let result = parse_yaml::<Exception>(&directory.join(name))
-            .and_then(|exception| validate_exception(&exception, None));
+        let result = parse_yaml::<Exception>(&directory.join(name)).and_then(|exception| {
+            validate_exception(&exception, None, date_days(FIXTURE_AS_OF)?, true)
+        });
         if result.is_ok() {
             return Err(format!("negative fixture {name} was accepted"));
         }
@@ -1043,6 +1092,8 @@ fn validate_profile_exception(
     root: &Path,
     profile: &Profile,
     rule_ids: &BTreeMap<String, bool>,
+    as_of: i64,
+    allow_fixture_review: bool,
 ) -> Result<()> {
     if profile.exceptions.status == "none" {
         return Ok(());
@@ -1050,12 +1101,14 @@ fn validate_profile_exception(
     let path = safe_join(root, &profile.exceptions.file)?;
     require_regular_file(&path)?;
     let exception = parse_yaml::<Exception>(&path)?;
-    validate_exception(&exception, Some(rule_ids))
+    validate_exception(&exception, Some(rule_ids), as_of, allow_fixture_review)
 }
 
 fn validate_exception(
     exception: &Exception,
     known_rule_ids: Option<&BTreeMap<String, bool>>,
+    as_of: i64,
+    allow_fixture_review: bool,
 ) -> Result<()> {
     if !valid_exception_id(&exception.id)
         || exception.rule_ids.is_empty()
@@ -1074,8 +1127,8 @@ fn validate_exception(
         || !valid_date(&exception.reviewed_on)
         || !valid_date(&exception.expires_on)
         || !valid_date_order(&exception.reviewed_on, &exception.expires_on)
-        || date_days(&exception.expires_on)? < today_days()
-        || date_days(&exception.reviewed_on)? > today_days()
+        || date_days(&exception.expires_on)? < as_of
+        || date_days(&exception.reviewed_on)? > as_of
         || exception.removal_criteria.trim().len() < 10
     {
         return Err("exception is missing required, current approval evidence".to_owned());
@@ -1086,6 +1139,12 @@ fn validate_exception(
             && !valid_review_url(&exception.approval.record))
     {
         return Err("exception approval record is not a verifiable review reference".to_owned());
+    }
+    if !allow_fixture_review {
+        return Err(
+            "exception approval record needs independently validated review evidence; fixture review records are not accepted"
+                .to_owned(),
+        );
     }
     if exception.approval.record.starts_with("local-review:")
         && !valid_relative_path(
@@ -1142,6 +1201,12 @@ fn sync_bundle(args: &Cli) -> Result<()> {
     }
     let source_standards = source_root.join("standards");
     require_directory(&source_standards)?;
+    let profile_ids = validate_profile_catalog(&source_standards.join("profiles.yaml"))?;
+    validate_repository_map(&source_standards.join("repositories.yaml"), &profile_ids)?;
+    validate_rules(&source_standards.join("rules.yaml"))?;
+    validate_schemas(&source_standards.join("schemas"))?;
+    validate_conformance_inventory(&source_standards.join("conformance"))?;
+    validate_sync_identity(&source_standards.join("repositories.yaml"), args)?;
 
     let target_root = if target_root.exists() {
         require_directory(&target_root)?;
@@ -1227,6 +1292,460 @@ fn sync_bundle(args: &Cli) -> Result<()> {
     Ok(())
 }
 
+#[derive(Clone, Copy)]
+struct CheckSpec {
+    name: &'static str,
+    command: &'static str,
+    target: &'static str,
+}
+
+struct ProfilePlan {
+    scopes: Vec<&'static str>,
+    fast: Vec<CheckSpec>,
+    required: Vec<CheckSpec>,
+    extended: Vec<CheckSpec>,
+}
+
+const STANDARDS_VALIDATE: &str = "cargo +1.97.1 run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- validate --root .";
+
+fn check(name: &'static str, command: &'static str, target: &'static str) -> CheckSpec {
+    CheckSpec {
+        name,
+        command,
+        target,
+    }
+}
+
+fn git_diff_check() -> CheckSpec {
+    check("git-diff-check", "git diff --check", ".")
+}
+
+fn standards_check() -> CheckSpec {
+    check("standards-validate", STANDARDS_VALIDATE, ".")
+}
+
+fn rust_fast(include_metadata: bool) -> Vec<CheckSpec> {
+    let mut checks = vec![git_diff_check(), standards_check()];
+    if include_metadata {
+        checks.push(check(
+            "cargo-metadata",
+            "cargo metadata --locked --no-deps --format-version 1",
+            ".",
+        ));
+    }
+    checks.push(check("cargo-fmt", "cargo fmt --all --check", "."));
+    checks
+}
+
+fn rust_required() -> Vec<CheckSpec> {
+    vec![
+        check(
+            "repo-policy-strict",
+            "cargo run --locked --package repo-policy -- --strict",
+            ".",
+        ),
+        check(
+            "cargo-clippy",
+            "cargo clippy --workspace --all-targets --locked -- -D warnings",
+            ".",
+        ),
+        check(
+            "cargo-test",
+            "cargo test --workspace --all-targets --locked",
+            ".",
+        ),
+        check(
+            "cargo-doc-tests",
+            "cargo test --workspace --doc --locked",
+            ".",
+        ),
+    ]
+}
+
+fn artifact_check(name: &'static str, target: &'static str) -> CheckSpec {
+    check(name, "sha256sum --check SHA256SUMS", target)
+}
+
+fn profile_plan(profile_id: &str, repository: &str) -> Result<ProfilePlan> {
+    let plan = match (profile_id, repository) {
+        ("org-governance", "AI-Ascension/.github") => ProfilePlan {
+            scopes: vec!["markdown", "yaml", "json", "rust"],
+            fast: vec![git_diff_check(), standards_check()],
+            required: vec![check(
+                "standards-conformance",
+                "cargo +1.97.1 run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- fixture-check --root standards/conformance",
+                ".",
+            )],
+            extended: vec![check(
+                "link-check",
+                "bash tests/link-check-template.sh",
+                ".",
+            )],
+        },
+        ("rust-pure", "AI-Ascension/sts2-game-core") => ProfilePlan {
+            scopes: vec!["rust"],
+            fast: rust_fast(false),
+            required: rust_required(),
+            extended: Vec::new(),
+        },
+        ("rust-pure", "AI-Ascension/sts2-protocol") => {
+            let mut required = rust_required();
+            required.extend([
+                artifact_check("artifact-runtime-v3", "artifacts/runtime-v3-gameplay"),
+                artifact_check("artifact-coop", "artifacts/coop-synchronization-v1"),
+                artifact_check("artifact-poc-v1", "artifacts/poc-v1"),
+                artifact_check("artifact-runtime-v1", "artifacts/runtime-v1"),
+                artifact_check("artifact-runtime-v2", "artifacts/runtime-v2"),
+            ]);
+            ProfilePlan {
+                scopes: vec!["rust", "json", "contracts"],
+                fast: rust_fast(true),
+                required,
+                extended: Vec::new(),
+            }
+        }
+        ("rust-service", "AI-Ascension/sts2-gateway") => {
+            let mut required = rust_required();
+            required.extend([
+                artifact_check("artifact-poc-v1", "protocol-artifact/poc-v1"),
+                artifact_check("artifact-runtime-v1", "protocol-artifact/runtime-v1"),
+                artifact_check("artifact-runtime-v2", "protocol-artifact/runtime-v2"),
+                artifact_check(
+                    "artifact-runtime-v3",
+                    "protocol-artifact/runtime-v3-gameplay",
+                ),
+                artifact_check("artifact-coop", "protocol-artifact/coop-synchronization-v1"),
+            ]);
+            ProfilePlan {
+                scopes: vec!["rust", "json", "contracts"],
+                fast: rust_fast(false),
+                required,
+                extended: Vec::new(),
+            }
+        }
+        ("rust-service", "AI-Ascension/sts2-mcp-server") => {
+            let mut required = rust_required();
+            required.extend([
+                artifact_check("artifact-poc-v1", "protocol-artifact/poc-v1"),
+                artifact_check("artifact-runtime-v1", "protocol-artifact/runtime-v1"),
+                artifact_check("artifact-runtime-v2", "protocol-artifact/runtime-v2"),
+                artifact_check(
+                    "artifact-runtime-v3",
+                    "protocol-artifact/runtime-v3-gameplay",
+                ),
+                check(
+                    "mcp-artifact-test",
+                    "cargo test --locked --package sts2-mcp-server --test artifact",
+                    ".",
+                ),
+            ]);
+            ProfilePlan {
+                scopes: vec!["rust", "json", "contracts"],
+                fast: rust_fast(true),
+                required,
+                extended: Vec::new(),
+            }
+        }
+        ("rust-service", "AI-Ascension/sts2-harness") => {
+            let mut required = rust_required();
+            required.extend([
+                artifact_check("artifact-poc-v1", "protocol-artifact/poc-v1"),
+                artifact_check("artifact-runtime-v1", "protocol-artifact/runtime-v1"),
+                artifact_check("artifact-runtime-v2", "protocol-artifact/runtime-v2"),
+                check(
+                    "patch-manifest",
+                    "cargo test --package sts2-patch-diff --test patch_manifest --locked",
+                    ".",
+                ),
+            ]);
+            ProfilePlan {
+                scopes: vec!["rust", "json", "contracts"],
+                fast: rust_fast(false),
+                required,
+                extended: Vec::new(),
+            }
+        }
+        ("rust-managed", "AI-Ascension/sts2-game-mod") => {
+            let mut required = rust_required();
+            required.extend([
+                artifact_check("artifact-poc-v1", "protocol-artifact/poc-v1"),
+                artifact_check("artifact-runtime-v1", "protocol-artifact/runtime-v1"),
+                artifact_check("artifact-runtime-v2", "protocol-artifact/runtime-v2"),
+                artifact_check(
+                    "artifact-runtime-v3",
+                    "protocol-artifact/runtime-v3-gameplay",
+                ),
+                check(
+                    "managed-format",
+                    "bash tools/standards/check-managed.sh format",
+                    ".",
+                ),
+                check(
+                    "managed-settings",
+                    "bash tools/standards/test-managed-settings.sh",
+                    ".",
+                ),
+                check(
+                    "managed-abi",
+                    "bash tools/standards/test-managed-abi.sh",
+                    ".",
+                ),
+                check(
+                    "managed-build",
+                    "dotnet build experiments/managed-rust-interop/managed/ManagedInteropSpike.csproj --configuration Release",
+                    ".",
+                ),
+                check(
+                    "managed-workshop",
+                    "dotnet run --project experiments/managed-rust-interop/workshop/WorkshopValidationProbe.csproj --configuration Release",
+                    ".",
+                ),
+                check(
+                    "managed-settings-probe",
+                    "dotnet run --project experiments/managed-rust-interop/settings-tests/SettingsValidationProbe.csproj --configuration Release",
+                    ".",
+                ),
+                check(
+                    "managed-queue",
+                    "dotnet run --project experiments/managed-rust-interop/queue-tests/RuntimeQueueProbe.csproj --configuration Release",
+                    ".",
+                ),
+                check(
+                    "managed-runtime-contract",
+                    "dotnet run --project experiments/managed-rust-interop/contract-tests/RuntimeContractProbe.csproj --configuration Release",
+                    ".",
+                ),
+                check(
+                    "managed-replay",
+                    "dotnet run --project experiments/managed-rust-interop/replay-tests/ReplayValidationProbe.csproj --configuration Release",
+                    ".",
+                ),
+                check(
+                    "managed-process-bridge",
+                    "pwsh -NoProfile -NonInteractive -File experiments/managed-rust-interop/dev-cycle-process-tests.ps1",
+                    ".",
+                ),
+                check(
+                    "managed-windows-bridge-build",
+                    "dotnet build experiments/managed-rust-interop/session-launcher/windows-bridge/SessionWindowsBridge.csproj --configuration Release -warnaserror",
+                    ".",
+                ),
+                check(
+                    "managed-windows-bridge-tests",
+                    "dotnet run --project experiments/managed-rust-interop/session-launcher/bridge-tests/SessionWindowsBridgeTests.csproj --configuration Release -warnaserror",
+                    ".",
+                ),
+                check(
+                    "managed-host-candidate",
+                    "dotnet run --project experiments/managed-rust-interop/host-candidate-tests/HostCandidateProbe.csproj --configuration Release",
+                    ".",
+                ),
+                check(
+                    "managed-runtime-v3",
+                    "dotnet run --project experiments/managed-rust-interop/gameplay-tests/RuntimeV3ValidationProbe.csproj --configuration Release",
+                    ".",
+                ),
+            ]);
+            let extended = vec![
+                check(
+                    "managed-session-launcher",
+                    "bash experiments/managed-rust-interop/session-launcher.test.sh",
+                    ".",
+                ),
+                check(
+                    "managed-session-restore",
+                    "bash experiments/managed-rust-interop/session-restore.test.sh",
+                    ".",
+                ),
+                check(
+                    "managed-session-bridge",
+                    "bash experiments/managed-rust-interop/session-bridge.test.sh",
+                    ".",
+                ),
+                check(
+                    "managed-provider-build",
+                    "bash experiments/managed-rust-interop/provider-build.test.sh",
+                    ".",
+                ),
+                check(
+                    "managed-session-install",
+                    "bash experiments/managed-rust-interop/session-install.test.sh",
+                    ".",
+                ),
+                check(
+                    "managed-live-authorization",
+                    "bash experiments/managed-rust-interop/live-authorization.test.sh",
+                    ".",
+                ),
+                check(
+                    "managed-runtime-addon",
+                    "bash experiments/managed-rust-interop/package-runtime-addon.test.sh",
+                    ".",
+                ),
+                check(
+                    "managed-dev-cycle",
+                    "bash experiments/managed-rust-interop/dev-cycle.test.sh",
+                    ".",
+                ),
+                check(
+                    "managed-session-self-test",
+                    "bash experiments/managed-rust-interop/session-launcher.sh --self-test",
+                    ".",
+                ),
+                check(
+                    "managed-workshop-package",
+                    "bash tools/workshop/test-package-item.sh",
+                    ".",
+                ),
+                check(
+                    "managed-runtime-lifecycle",
+                    "bash tools/release/test-runtime-lifecycle.sh",
+                    ".",
+                ),
+                check(
+                    "managed-gpu-provision",
+                    "bash experiments/train-gpu-lifecycle/test-provision.sh",
+                    ".",
+                ),
+                check(
+                    "managed-gpu-boot",
+                    "bash experiments/train-gpu-lifecycle/test-boot.sh",
+                    ".",
+                ),
+            ];
+            ProfilePlan {
+                scopes: vec!["rust", "csharp", "shell", "json", "contracts"],
+                fast: rust_fast(false),
+                required,
+                extended,
+            }
+        }
+        ("web-php", "AI-Ascension/aiascension.tech") => ProfilePlan {
+            scopes: vec!["html", "css", "javascript", "php"],
+            fast: vec![
+                git_diff_check(),
+                standards_check(),
+                check("composer-validate", "composer validate --strict", "."),
+                check("composer-lint", "composer run lint", "."),
+            ],
+            required: vec![
+                check("phpstan", "composer run analyse", "."),
+                check("phpunit", "composer run test", "."),
+            ],
+            extended: vec![check("composer-verify", "composer run verify", ".")],
+        },
+        ("web-static", "AI-Ascension/AI-Ascension.github.io") => ProfilePlan {
+            scopes: vec!["html", "css", "javascript", "rust"],
+            fast: vec![
+                git_diff_check(),
+                standards_check(),
+                check("npm-format-check", "npm run format:check", "."),
+                check("npm-lint", "npm run lint", "."),
+                check("node-tests", "node --test tests/*.test.cjs", "."),
+            ],
+            required: Vec::new(),
+            extended: vec![
+                check("browser-check", "npm run test:browser", "."),
+                check(
+                    "pinned-gateway-recipe",
+                    "cargo +1.97.1 run --locked --release",
+                    "recipes/gateway-lease-fence",
+                ),
+                check(
+                    "pinned-mcp-recipe",
+                    "cargo +1.97.1 run --locked --release",
+                    "recipes/mcp-seam",
+                ),
+            ],
+        },
+        ("operations", "AI-Ascension/ai-agent-observability") => ProfilePlan {
+            scopes: vec!["shell", "yaml", "dockerfile", "systemd"],
+            fast: vec![
+                git_diff_check(),
+                standards_check(),
+                check("shell-syntax-init", "bash -n deploy/init.sh", "."),
+                check(
+                    "shell-syntax-key-bootstrap",
+                    "bash -n deploy/laminar/bootstrap-project-key.sh",
+                    ".",
+                ),
+                check(
+                    "shellcheck",
+                    "shellcheck --severity=warning deploy/init.sh deploy/laminar/bootstrap-project-key.sh tests/*.sh tests/fixtures/*",
+                    ".",
+                ),
+            ],
+            required: vec![
+                check("bootstrap-tests", "bash tests/bootstrap.sh", "."),
+                check(
+                    "validation-regressions",
+                    "bash tests/validation-regressions.sh",
+                    ".",
+                ),
+                check(
+                    "compose-policy-regressions",
+                    "bash tests/compose-policy-regressions.sh",
+                    ".",
+                ),
+                check(
+                    "compose-invariants",
+                    "bash tests/compose-invariants.sh",
+                    ".",
+                ),
+                check(
+                    "compose-config",
+                    "docker compose --env-file deploy/.env.example -f deploy/compose.yaml config --quiet",
+                    ".",
+                ),
+                check(
+                    "compose-required-settings",
+                    "bash tests/compose-required-settings.sh",
+                    ".",
+                ),
+                check(
+                    "compose-structured",
+                    "bash tests/compose-structured.sh",
+                    ".",
+                ),
+                check(
+                    "dockerfile-mlflow",
+                    "docker buildx build --check --file deploy/Dockerfile.mlflow deploy",
+                    ".",
+                ),
+                check(
+                    "dockerfile-laminar",
+                    "docker buildx build --check --file deploy/Dockerfile.laminar deploy",
+                    ".",
+                ),
+            ],
+            extended: Vec::new(),
+        },
+        ("planning-bootstrap", "AI-Ascension/ascension-watchdog")
+        | ("planning-bootstrap", "AI-Ascension/ascension-map-visualizer") => ProfilePlan {
+            scopes: vec!["markdown", "json", "rust-planned", "browser-planned"],
+            fast: vec![git_diff_check(), standards_check()],
+            required: Vec::new(),
+            extended: Vec::new(),
+        },
+        ("brand-package", "AI-Ascension/ascension-brand-overhaul") => {
+            return Err(
+                "brand package is explicitly excluded until its source-aware checksum review is complete"
+                    .to_owned(),
+            );
+        }
+        _ => {
+            return Err(format!(
+                "no verified profile command plan for {profile_id} at {repository}"
+            ));
+        }
+    };
+    Ok(plan)
+}
+
+fn spec_names(specs: &[CheckSpec]) -> Vec<String> {
+    specs.iter().map(|spec| spec.name.to_owned()).collect()
+}
+
 fn generated_profile(
     profile_id: &str,
     repository: &str,
@@ -1234,114 +1753,21 @@ fn generated_profile(
     commit: &str,
     digest: &str,
 ) -> Result<Profile> {
-    let (scopes, fast, required, extended) = match profile_id {
-        "rust-pure" => (
-            vec!["rust", "json", "contracts"],
-            vec![
-                "git-diff-check",
-                "standards-validate",
-                "cargo-metadata",
-                "cargo-fmt",
-            ],
-            vec![
-                "repo-policy-strict",
-                "cargo-clippy",
-                "cargo-test",
-                "artifact-checksums",
-            ],
-            vec!["contract-conformance"],
-        ),
-        "rust-service" => (
-            vec!["rust", "json", "contracts"],
-            vec![
-                "git-diff-check",
-                "standards-validate",
-                "cargo-metadata",
-                "cargo-fmt",
-            ],
-            vec![
-                "repo-policy-strict",
-                "cargo-clippy",
-                "cargo-test",
-                "artifact-checksums",
-            ],
-            vec!["contract-conformance", "synthetic-boundary-tests"],
-        ),
-        "rust-managed" => (
-            vec!["rust", "csharp", "shell", "json", "contracts"],
-            vec![
-                "git-diff-check",
-                "standards-validate",
-                "cargo-metadata",
-                "cargo-fmt",
-            ],
-            vec![
-                "repo-policy-strict",
-                "cargo-clippy",
-                "cargo-test",
-                "artifact-checksums",
-                "managed-source-probes",
-            ],
-            vec!["managed-bridge-tests", "exact-host-build"],
-        ),
-        "web-php" => (
-            vec!["html", "css", "javascript", "php"],
-            vec!["git-diff-check", "standards-validate", "composer-validate"],
-            vec!["phpunit", "origin-regressions", "persistence-regressions"],
-            vec!["browser-check"],
-        ),
-        "web-static" => (
-            vec!["html", "css", "javascript", "rust"],
-            vec!["git-diff-check", "standards-validate", "node-tests"],
-            vec!["fixture-integrity", "local-link-check"],
-            vec!["browser-check", "pinned-recipe"],
-        ),
-        "operations" => (
-            vec!["shell", "yaml", "dockerfile", "systemd"],
-            vec![
-                "git-diff-check",
-                "standards-validate",
-                "bash-n",
-                "shellcheck",
-            ],
-            vec!["compose-invariants", "compose-config", "dockerfile-check"],
-            vec!["synthetic-bootstrap"],
-        ),
-        "planning-bootstrap" => (
-            vec!["markdown", "json", "rust-planned", "browser-planned"],
-            vec!["git-diff-check", "standards-validate", "package-shape"],
-            Vec::new(),
-            Vec::new(),
-        ),
-        "brand-package" => (
-            vec!["python", "html", "json", "markdown"],
-            vec!["git-diff-check", "standards-validate", "python-syntax"],
-            vec!["package-validation", "unit-tests", "schema-meta-validation"],
-            vec!["offline-art-board"],
-        ),
-        "org-governance" => (
-            vec!["markdown", "yaml", "json", "rust"],
-            vec!["git-diff-check", "standards-validate"],
-            vec!["standards-lock", "schema-shape"],
-            vec!["link-check"],
-        ),
-        _ => return Err(format!("no generated profile template for {profile_id}")),
-    };
-    let all_checks = fast
+    let plan = profile_plan(profile_id, repository)?;
+    let all_specs = plan
+        .fast
         .iter()
-        .chain(required.iter())
-        .chain(extended.iter())
+        .chain(plan.required.iter())
+        .chain(plan.extended.iter())
         .copied()
         .collect::<Vec<_>>();
     let mut commands = BTreeMap::new();
-    for name in all_checks {
-        let (command, target) = command_template(name)
-            .ok_or_else(|| format!("no command/target template for check {name}"))?;
+    for spec in all_specs {
         commands.insert(
-            name.to_owned(),
+            spec.name.to_owned(),
             CheckCommand {
-                command: command.to_owned(),
-                target: target.to_owned(),
+                command: spec.command.to_owned(),
+                target: spec.target.to_owned(),
             },
         );
     }
@@ -1354,11 +1780,11 @@ fn generated_profile(
         source_commit: commit.to_owned(),
         source_digest: digest.to_owned(),
         distribution: "local".to_owned(),
-        scopes: scopes.into_iter().map(str::to_owned).collect(),
+        scopes: plan.scopes.into_iter().map(str::to_owned).collect(),
         checks: CheckSets {
-            fast: fast.into_iter().map(str::to_owned).collect(),
-            required: required.into_iter().map(str::to_owned).collect(),
-            extended: extended.into_iter().map(str::to_owned).collect(),
+            fast: spec_names(&plan.fast),
+            required: spec_names(&plan.required),
+            extended: spec_names(&plan.extended),
             commands,
         },
         evidence: Evidence {
@@ -1370,55 +1796,6 @@ fn generated_profile(
             file: String::new(),
             status: "none".to_owned(),
         },
-    })
-}
-
-fn command_template(name: &str) -> Option<(&'static str, &'static str)> {
-    Some(match name {
-        "git-diff-check" => ("git diff --check", "."),
-        "standards-validate" | "schema-shape" | "standards-lock" => (
-            "cargo +1.97.1 run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- validate --root .",
-            ".",
-        ),
-        "cargo-metadata" => (
-            "cargo +1.97.1 metadata --locked --no-deps --format-version 1",
-            ".",
-        ),
-        "cargo-fmt" => ("cargo +1.97.1 fmt --all -- --check", "."),
-        "repo-policy-strict" => (
-            "cargo +1.97.1 run --locked --package repo-policy -- --strict",
-            ".",
-        ),
-        "cargo-clippy" => (
-            "cargo +1.97.1 clippy --locked --workspace --all-targets --all-features -- -D warnings",
-            ".",
-        ),
-        "cargo-test" => ("cargo +1.97.1 test --locked --workspace", "."),
-        "artifact-checksums" | "fixture-integrity" => ("sha256sum --check SHA256SUMS", "."),
-        "contract-conformance" => ("cargo +1.97.1 test --locked --test contract", "."),
-        "synthetic-boundary-tests" => ("cargo +1.97.1 test --locked --test boundary", "."),
-        "managed-source-probes" => ("dotnet test --no-restore", "managed"),
-        "managed-bridge-tests" => ("cargo +1.97.1 test --locked --test managed_bridge", "."),
-        "exact-host-build" => ("dotnet build --configuration Release", "managed"),
-        "composer-validate" => ("composer validate --strict", "."),
-        "phpunit" => ("vendor/bin/phpunit", "."),
-        "origin-regressions" => ("vendor/bin/phpunit --filter Origin", "."),
-        "persistence-regressions" => ("vendor/bin/phpunit --filter Persistence", "."),
-        "browser-check" | "node-tests" => ("npm test", "."),
-        "local-link-check" => ("bash tests/link-check.sh", "."),
-        "pinned-recipe" => ("cargo +1.97.1 run --locked --release", "recipes"),
-        "bash-n" => ("bash -n", "scripts"),
-        "shellcheck" => ("shellcheck", "."),
-        "compose-invariants" => ("bash tests/compose-invariants.sh", "."),
-        "compose-config" => ("docker compose config --quiet", "."),
-        "dockerfile-check" => ("hadolint", "."),
-        "synthetic-bootstrap" => ("bash tests/bootstrap-synthetic.sh", "."),
-        "package-shape" => ("python -m json.tool", "."),
-        "python-syntax" => ("python -m compileall", "."),
-        "package-validation" | "unit-tests" | "offline-art-board" => ("python -m unittest", "."),
-        "schema-meta-validation" => ("python -m json.tool", "."),
-        "link-check" => ("bash tests/link-check-template.sh", "."),
-        _ => return None,
     })
 }
 
@@ -1818,6 +2195,14 @@ fn contains_shell_operator(value: &str) -> bool {
         || value.contains('<')
 }
 
+fn has_safe_executable(value: &str) -> bool {
+    value.split_whitespace().next().is_some_and(|executable| {
+        executable
+            .bytes()
+            .all(|byte| byte.is_ascii_alphanumeric() || matches!(byte, b'.' | b'_' | b'/' | b'-'))
+    })
+}
+
 fn valid_node_id(value: &str) -> bool {
     value.starts_with("R_kg")
         && value.len() > 4
@@ -1899,11 +2284,52 @@ fn date_days(value: &str) -> Result<i64> {
     Ok(i64::from(era * 146097 + day_of_era - 719468))
 }
 
-fn today_days() -> i64 {
-    SystemTime::now()
-        .duration_since(UNIX_EPOCH)
-        .map(|duration| (duration.as_secs() / 86_400) as i64)
-        .unwrap_or(0)
+fn as_of_days(as_of: Option<&str>) -> Result<i64> {
+    match as_of {
+        Some(value) => date_days(value),
+        None => SystemTime::now()
+            .duration_since(UNIX_EPOCH)
+            .map(|duration| (duration.as_secs() / 86_400) as i64)
+            .map_err(|error| format!("cannot determine current UTC date: {error}")),
+    }
+}
+
+fn create_fixture_directory() -> Result<PathBuf> {
+    let base = std::env::temp_dir();
+    let pid = std::process::id();
+    for attempt in 0..1000u32 {
+        let root = base.join(format!("standards-sync-fixture-{pid}-{attempt}"));
+        let marker = root.with_extension("creating");
+        match OpenOptions::new()
+            .write(true)
+            .create_new(true)
+            .open(&marker)
+        {
+            Ok(file) => {
+                drop(file);
+                let result = fs::create_dir(&root);
+                let _ = fs::remove_file(&marker);
+                match result {
+                    Ok(()) => return Ok(root),
+                    Err(error) if error.kind() == io::ErrorKind::AlreadyExists => continue,
+                    Err(error) => {
+                        return Err(format!(
+                            "cannot create unique fixture directory {}: {error}",
+                            root.display()
+                        ));
+                    }
+                }
+            }
+            Err(error) if error.kind() == io::ErrorKind::AlreadyExists => continue,
+            Err(error) => {
+                return Err(format!(
+                    "cannot reserve unique fixture directory {}: {error}",
+                    marker.display()
+                ));
+            }
+        }
+    }
+    Err("cannot reserve a unique fixture directory after 1000 attempts".to_owned())
 }
 
 fn sha256_hex(input: &[u8]) -> String {

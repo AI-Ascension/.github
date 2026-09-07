@@ -19,7 +19,10 @@ files, host assemblies, or private traces.
 | invalid-schema-missing-required.json | rejected | schema required metadata is semantically checked |
 | invalid-schema-nonobject.json | rejected | schema root must be a parsed JSON object |
 
-The executable checker runs these as negative fixtures without network access:
+The executable checker runs these as negative fixtures without network access. The valid exception
+uses a fixture-only review mode and the fixed fixture date `2026-09-07`; production validation
+requires independently validated review evidence and uses the current UTC date unless `--as-of`
+is supplied.
 
     cargo +1.97.1 run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- fixture-check --root standards/conformance
 

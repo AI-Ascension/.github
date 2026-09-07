@@ -24,11 +24,20 @@ as the organization profile at <https://github.com/AI-Ascension>.
 | `workflow-templates/` | Starter workflows (link check, repository policy) offered in each repository's Actions tab. |
 | [`templates/dependabot.yml`](templates/dependabot.yml) | Dependabot configuration to copy into a repository. |
 | [`labels.yml`](labels.yml) | The shared label set as data; maintainers apply it per repository. |
+| [`standards/`](standards/BASELINE.md) | Versioned rule ledger, language profiles, exact repository inventory, schemas, fixtures, and the local sync/metadata validator. |
+| [`docs/standards/`](docs/standards/BASELINE_REPORT.md) | Sanitized baseline findings, migration steps, verification commands, and adoption evidence boundaries. |
 
 The public site is <https://ai-ascension.github.io/>. The proof it links to is a deterministic
 replay of `sts2-gateway` tests at a pinned commit, not a live game demonstration. Later bounded
 runtime, campaign/replay, and read-only coordinator-synchronization evidence are distinguished from
 that proof in [STATUS.md](STATUS.md).
+
+Standards enforcement configuration is owned by `@CompleteDotTech` through [CODEOWNERS](CODEOWNERS).
+The local profile and lock validator checks metadata, bytes, and command declarations; it does not
+execute repository checks, perform semantic owner review, or establish a protected required check.
+Changes to enforcement workflows, profiles, locks, or rules still require the owner review and the
+repository's normal branch-protection process. Protected-check activation is an external adoption
+state and is not inferred from a local validation result.
 
 ## License
 

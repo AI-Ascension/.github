@@ -7,7 +7,8 @@ rules:
     classification: blocking
     scope: [rust, managed, web_php, operations, contracts]
     check: source-review-and-owner-tests
-    command: standards-sync validate
+    verification: manual
+    command: null
     exception_eligible: false
     failure_behavior: reject
   - id: X-VER-001
@@ -17,7 +18,8 @@ rules:
     classification: blocking
     scope: [rust, managed, web_php, operations, contracts]
     check: lock-and-manifest-validation
-    command: standards-sync validate
+    verification: automated
+    command: cargo +1.97.1 run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- validate --root .
     exception_eligible: false
     failure_behavior: reject
   - id: X-AUTH-001
@@ -27,7 +29,8 @@ rules:
     classification: blocking
     scope: [rust, managed, web_php, operations]
     check: source-policy-and-boundary-tests
-    command: target-policy-check
+    verification: manual
+    command: null
     exception_eligible: false
     failure_behavior: reject
   - id: X-ERR-001
@@ -37,7 +40,8 @@ rules:
     classification: blocking
     scope: [rust, managed, web_php, operations]
     check: typed-error-and-redaction-tests
-    command: target-test
+    verification: manual
+    command: null
     exception_eligible: true
     failure_behavior: reject
   - id: X-LIFE-001
@@ -47,7 +51,8 @@ rules:
     classification: blocking
     scope: [rust, managed, operations]
     check: lifecycle-fault-tests
-    command: target-test
+    verification: manual
+    command: null
     exception_eligible: false
     failure_behavior: reject
   - id: X-TIME-001
@@ -57,7 +62,8 @@ rules:
     classification: blocking
     scope: [rust, managed, web_php, operations]
     check: bounds-and-timeout-tests
-    command: target-test
+    verification: manual
+    command: null
     exception_eligible: true
     failure_behavior: reject
   - id: X-PRIV-001
@@ -67,7 +73,8 @@ rules:
     classification: blocking
     scope: [rust, managed, web_php, operations, brand, contracts]
     check: secret-and-path-hygiene
-    command: target-policy-check
+    verification: manual
+    command: null
     exception_eligible: false
     failure_behavior: reject
   - id: X-OWN-001
@@ -77,7 +84,8 @@ rules:
     classification: blocking
     scope: [rust, managed, web_php, operations, brand]
     check: architecture-and-dependency-review
-    command: target-policy-check
+    verification: manual
+    command: null
     exception_eligible: false
     failure_behavior: reject
   - id: X-BYTE-001
@@ -87,7 +95,8 @@ rules:
     classification: blocking
     scope: [rust, managed, web_php, operations, contracts, brand]
     check: digest-inventory
-    command: sha256sum --check
+    verification: manual
+    command: null
     exception_eligible: false
     failure_behavior: reject
   - id: X-CI-001
@@ -97,7 +106,8 @@ rules:
     classification: blocking
     scope: [rust, managed, web_php, operations, brand, contracts]
     check: profile-lock-validation
-    command: standards-sync validate
+    verification: automated
+    command: cargo +1.97.1 run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- validate --root .
     exception_eligible: false
     failure_behavior: reject
   - id: X-EXC-001
@@ -107,7 +117,8 @@ rules:
     classification: blocking
     scope: [rust, managed, web_php, operations, brand, contracts]
     check: exception-schema-and-review-validation
-    command: standards-sync validate
+    verification: manual
+    command: null
     exception_eligible: false
     failure_behavior: reject
   - id: RUST-LINT-001
@@ -117,6 +128,7 @@ rules:
     classification: blocking
     scope: [rust]
     check: cargo-metadata-and-policy-tool
+    verification: automated
     command: cargo run --locked --package repo-policy -- --strict
     exception_eligible: false
     failure_behavior: reject
@@ -127,7 +139,8 @@ rules:
     classification: blocking
     scope: [rust]
     check: compiler-clippy-and-source-linked-negative-tests
-    command: cargo clippy --locked --workspace --all-targets --all-features -- -D warnings
+    verification: manual
+    command: null
     exception_eligible: true
     failure_behavior: reject
   - id: MANAGED-BOUND-001
@@ -137,7 +150,8 @@ rules:
     classification: blocking
     scope: [managed]
     check: evaluated-project-settings-and-source-probes
-    command: dotnet build --configuration Release
+    verification: manual
+    command: null
     exception_eligible: false
     failure_behavior: reject
   - id: WEB-ORIGIN-001
@@ -147,7 +161,8 @@ rules:
     classification: blocking
     scope: [web_php]
     check: origin-regression-tests
-    command: vendor/bin/phpunit
+    verification: automated
+    command: composer run test
     exception_eligible: false
     failure_behavior: reject
   - id: WEB-CONCUR-001
@@ -157,7 +172,8 @@ rules:
     classification: blocking
     scope: [web_php]
     check: concurrent-persistence-regression-tests
-    command: vendor/bin/phpunit
+    verification: automated
+    command: composer run test
     exception_eligible: false
     failure_behavior: reject
   - id: OPS-LISTENER-001
@@ -167,6 +183,7 @@ rules:
     classification: blocking
     scope: [operations]
     check: compose-invariants
+    verification: automated
     command: bash tests/compose-invariants.sh
     exception_eligible: false
     failure_behavior: reject
@@ -177,7 +194,7 @@ rules:
     classification: blocking
     scope: [brand, contracts, rust, managed, web_php, operations]
     check: documentation-review
-    command: standards-sync validate
+    verification: manual
+    command: null
     exception_eligible: true
     failure_behavior: reject
-

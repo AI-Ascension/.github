@@ -129,7 +129,6 @@ repositories:
     baseline_commit: 5a2acfd6690d2533af046a7afcf3a7782b29042b
     owner: ORG
     profile_id: brand-package
-    adoption: prepared
+    adoption: excluded
     language_scopes: [python, html, json, markdown]
-    exclusion_reason: null
-
+    exclusion_reason: Historical CHECKSUMS.sha256 currently has a known .gitignore mismatch and its recursive validator would scan the added bundle and build targets; retain the package's frozen checksum boundary until an owner-reviewed source-aware adoption plan exists.
