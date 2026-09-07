@@ -44,5 +44,37 @@ class FleetTests(unittest.TestCase):
                 self.assertEqual(metadata._current_topics(original),a.states[name].topics)
                 self.assertEqual(original['issues'],a.states[name].issues)
 
+    def test_shared_form_defaults_exist_at_changed_transition_and_after_provision(self):
+        import yaml
+        root=Path(__file__).resolve().parents[1]
+        names=set()
+        for form in (root/'.github/ISSUE_TEMPLATE').glob('*.yml'):
+            value=yaml.safe_load(form.read_text())
+            names.update(value.get('labels',[]))
+        self.assertIn('bug',names)
+        for row in snap['repositories']:
+            before={label['name'] for label in row['labels']}
+            self.assertIn('bug',before,row['full_name'])
+            operations=next(t['operations'] for t in p['targets'] if t['repository']==row['full_name'])
+            after=before|{op['after']['name'] for op in operations if op['kind']=='create_label'}
+            self.assertFalse(names-after,(row['full_name'],names-after))
+
+    def test_metadata_workflows_have_read_only_credentials_and_no_secret_inputs(self):
+        import yaml
+        root=Path(__file__).resolve().parents[1]
+        for name in ('metadata-validation.yml','metadata-drift.yml'):
+            path=root/'.github/workflows'/name
+            raw=path.read_text(); workflow=yaml.load(raw,Loader=yaml.BaseLoader)
+            self.assertTrue(set(workflow['permissions']) <= {'contents','issues','pull-requests'})
+            self.assertTrue(all(value=='read' for value in workflow['permissions'].values()))
+            self.assertNotIn('pull_request_target',workflow['on'])
+            self.assertNotIn('secrets.',raw)
+            for job in workflow['jobs'].values():
+                self.assertNotIn('permissions',job)
+                for step in job['steps']:
+                    if 'uses' in step:
+                        self.assertRegex(step['uses'],r'^[^@]+@[0-9a-f]{40}$')
+                    self.assertNotIn('--execute',step.get('run',''))
+
 if __name__=='__main__':
     unittest.main()

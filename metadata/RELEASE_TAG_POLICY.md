@@ -6,8 +6,8 @@ Repository topics, issue labels, and Git tags are separate namespaces. The metad
 tool must never create, move, or delete Git refs, or create or publish releases.
 Its authorization must not grant those operations.
 
-The 2026-09-07 discovery found no Git tags or GitHub releases in the 13 accessible
-organization repositories. This dated observation does not establish a permanent
+The 2026-09-07 [public inventory](audits/2026-09-07/public-inventory-summary.json)
+found no Git tags or GitHub releases in the 12 public in-scope repositories. This dated observation does not establish a permanent
 absence of releases. Consult each repository's `RELEASING.md`, package manifests,
 and current refs before proposing its first release.
 
