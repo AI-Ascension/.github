@@ -79,3 +79,38 @@ cargo +1.97.1 run --locked --manifest-path standards/tools/standards-sync/Cargo.
 These results establish the local validator and fixture behavior. They do not establish adopter CI,
 remote publication, merge, protected-check activation, host/runtime behavior, deployment, release,
 mail, game, or provider evidence.
+
+## Baseline observations retained for comparison
+
+All six original Rust workspaces passed locked metadata discovery with Rust/Cargo
+1.97.1 (edition 2024, declared MSRV 1.97.1). There were 18 workspace packages in
+total and no declared feature entries. Exact original revisions are retained in
+the repository map. The original compiler, edition and runtime dependency pins
+remain unchanged; TOML dependencies added to two owner policy tools are tooling.
+
+Replays of the exact original core and game-mod revisions in disposable source
+copies recorded the existing format/Clippy/all-target test commands. Core passed
+all five metadata/policy/format/Clippy/test commands with 42 tests. Game-mod passed
+metadata, format, Clippy and 77 tests; its strict policy returned exit 1 because a
+255-nonblank-line managed source file exceeded the preferred limit of 250. This
+is the reproduced preferred-size/strict-mode mismatch, not a hard-size breach.
+These are exact-source baseline replays, not a claim that every full suite in the
+organization was executed before the first implementation edit.
+
+Managed baseline evaluation covered 13 projects in Debug and Release. All 26
+project/configuration pairs had the required settings and twelve host-free Release
+projects built. Eight existing source-linked probe programs passed; the Windows
+bridge identified its unrun Windows process portion explicitly. Check-only C#
+formatting returned exit 2 with 120 diagnostics across 132 source files. The host
+probe requires separately supplied assemblies and was not built.
+
+The brand package's existing integrity check failed for its historical
+`.gitignore` digest, leaving 40 of 41 package tests passing. This result is retained
+as an exclusion reason; task work did not update that historical checksum.
+
+The source-derived PHP origin, operation-serialization and logging findings were
+reproduced with isolated synthetic fixtures before their respective behavior
+corrections. Browser/publication and structured Compose checks were then exercised
+with real local tools and negative mutations. The final evidence, precise tool
+versions, remaining limits and revisions are in [the adoption report](ADOPTION_REPORT.md)
+and [the implementation ledger](IMPLEMENTATION_LEDGER.md).

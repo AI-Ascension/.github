@@ -1,0 +1,86 @@
+# Implementation ledger
+
+This ledger records source changes and observed local evidence from 2026-09-07.
+The maintained rules and repository map are under `standards/`; this is evidence,
+not a second normative policy source. Adoption, hosted CI, owner review, protected
+checks and runtime acceptance remain separate states.
+
+## Decisions and evidence
+
+| Boundary | Before | Implemented behavior and evidence |
+| --- | --- | --- |
+| Shared distribution | No effective local pinned adoption across the inventory | A locked Rust tool verifies the complete committed bundle, repository/profile/owner identity, profile configuration digest and safe local targets. Twelve adopters validate. Second sync preserves bytes and timestamps. |
+| Validator correctness | The draft's profile and path checks missed weakening and copy hazards | Fifteen tests cover identity, mandatory command removal/replacement/demotion, missing targets, exact generated output, symlinks, CRLF/digest changes, safe sync, real Git source pins, unapproved/expired exceptions and all twelve generated profiles. Three valid and nine invalid conformance fixtures pass. |
+| Bootstrap scope | Planning repositories could be misclassified as excluded or initialized products | Both adopt documentation/configuration checks without a product workspace. The checker parses real Markdown/JSON/TOML/YAML, checks local file links and rejects nested/case-variant manifests, forbidden/unlisted source and ignored-source escapes. Independent review reproduced eight rejected escape mutations. |
+| Build output | A copied tool could leave untracked compiler output | Every adopter has the exact standards-tool target ignore. Independent default-target checks preserved Git status while creating 553 ignored compiler-output files per reviewed target. No broad standards ignore is used. |
+| Rust severity | Legacy strict mode promoted every warning, including preferred size | Version 1 retains legacy behavior. Version 2 keeps preferred `SIZE001` advisory; mandatory failures and hard limits still block. Existing compiler/edition/MSRV and native command shapes are preserved. |
+| Rust entry points | Future omitted/weak member inheritance and nested/ignored entries were insufficiently checked | Owner-local checkers validate effective inheritance/overrides and exact nested-tooling admission. Actual Cargo fixtures reproduce a source-level `allow` bypass of workspace `deny`; separate production Clippy uses `-F` for unwrap/expect/panic/todo/unimplemented. Six invalid constructs/overrides fail while valid comments and scoped tests pass. Mandatory rule IDs cannot be moved into the version-2 advisory list. Final target counts and executable documentation results are recorded in the adoption report. |
+| Harness fixture | A shell `read` fixture intermittently exceeded the 250 ms close budget, and its 60,000-byte payload was smaller than the observed pipe capacity | The fixture sends 128 KiB before draining stdin with foreground `cat`; a serialized parent writer demonstrably stalls. Cleanup runs before the negative assertion. The production process source and timeout are unchanged. Original runtime-source fixture failed 14/80 repetitions; final focused pair and all 16 process cases pass. |
+| Managed configuration | 120 whitespace diagnostics across 132 baseline C# files; settings were not all verified effectively | Thirteen actual projects are evaluated in Debug and Release. The exact project inventory and twelve settings/format/inventory negative cases pass. Check-only formatting uses an isolated copy; 133 admitted C# files pass. |
+| Native/managed boundary | Source-linked layout and error-buffer assertions had gaps | Existing real probes remain. Added buffer/layout assertions and two actual-source ABI mutations exercise fixed-width layout and C calling convention. A synthetic listener-start secret marker reproduced raw exception logging before the fixed event mapping. |
+| Operations | Compose checks could miss entrypoint, lifecycle and mount/port option changes | ShellCheck, bootstrap, dotenv non-execution, configuration invariants, one positive/43 invalid models and one positive/18 invalid rendered source cases pass. Rendering isolates ambient interpolation. Compose/jq/ShellCheck downloads are pinned and content-hash checked. |
+| PHP origin | Raw suffix origin membership | Exact parsed scheme/host/effective-port membership and deliberate missing-Origin behavior; lookalikes, malformed/opaque origins, invalid ports and valid cases are covered. This is not authentication. |
+| PHP persistence | Read/modify/write outside the final write lock | Complete operation serialization, bounded locks/reads, explicit errors and same-directory replacement. Barrier-based process tests cover duplicates, increments, corrupt data, failed writes and interruption. Atomic replacement is not cross-host durability proof. |
+| PHP input and logging | Unbounded/invalid shapes and raw exception text | Bounded bodies/fields, scalar/shape checks and fixed error mapping with synthetic markers. PHP 8.3.6 validation passes 49 tests/121 assertions, PHPStan 2.2.13 and CS Fixer 3.95.24. Production constraint remains >=8.1; test tools require >=8.2. |
+| Browser source | Native sites lacked scoped development gates and real-browser evidence | Both retain static HTML/CSS/JavaScript. PHP site passes two Node and three Chromium cases; Pages passes ten Node and three Chromium cases. Keyboard/focus, errors and reduced motion are exercised separately from synthetic DOM tests. |
+| Publication | Tooling/reports could be copied into publication output | Explicit runtime inventories reject linked/missing inputs and omit standards, dependencies, tests and reports. Repeated publication inventories/digests are stable. Existing font licenses and historical proof bytes remain intact; fonts/assets are not in the shared bundle. |
+| Recipe gate | The generated pipeline conflicted with command validation | A bounded checked-in Node wrapper checks Cargo exit/signal/error and exact output bytes. Positive/negative runner tests and both actual historical Rust recipe comparisons pass. |
+| CI wiring | Some native policy checks lacked merge-queue events; some profile checks were absent | Existing check names are retained; source wiring adds the missing events and checks. Committed-diff guards check event base SHAs with an initial-commit fallback. Five older Rust steps were also repaired after review showed clean-checkout diffs miss committed whitespace defects; all five extracted guards accepted a clean commit and rejected bad committed content with both base-SHA and fallback paths. Existing source boundary tripwires remain. |
+| Aggregate result | Separate managed settings checks needed inclusion in final result | The game-mod aggregate waits on Rust, managed-source and managed-standards and accepts only three successes. All 125 combinations of success/failure/cancelled/skipped/empty were checked; only all-success passed. |
+| Frozen data | Baseline contracts and recipes must not be reformatted or repinned | Comparison against original commits covers 441 existing schema/artifact/conformance/fixture/recipe/evidence/checksum files: none changed or disappeared. This is a defined byte inventory, not a claim about every repository byte. |
+
+## Additional existing synthetic checks
+
+All thirteen game-mod shell command groups retained in its CI were run locally
+with isolated fake data/executables. Session launch/restore/bridge, provider build,
+package installation, authorization, addon selection, development-cycle guards,
+self-test, Workshop package staging, runtime lifecycle and GPU provisioning/boot
+fixtures all exited zero. The summed observed command wall time was 22.482 seconds.
+These remain mandatory wherever the existing native CI runs them, even though the
+local profile lists these additional command groups in its extended set. They
+establish no actual provider, Workshop upload, host, VM, service or gameplay result.
+
+## Independent review
+
+Independent review found and caused repairs to missing managed inventory checks,
+Compose lifecycle/options, PHP shape/port/bounds/error handling, publication
+inventory, canonical command generation, bootstrap source escapes, output hygiene,
+and CI reachability. Canonical closure reran the pinned tool, all fifteen tests,
+Clippy, formatting, conformance, fresh sync and the reproduced negative cases.
+The Pages wrapper was independently reviewed. Final CI closure reviewed all 22 scoped workflow YAML files, 33 pinned external
+action references and the aggregate failure behavior; the bounded committed-diff
+follow-up found no removed native checks. Final Rust results and exact local
+revisions appear in the adoption report.
+
+The root retained its model. Execution metadata confirms eleven actual descendants
+across waves requested and ran `gpt-5.6-luna` with `max`; all observed descendants
+were at depth one. Child runtimes did not expose native collaboration tools, so
+the required coordinator/leaf ancestry is unverified. One earlier worker attempted
+an alternate client; it was stopped and its output is not ancestry evidence.
+The ceiling of twelve open descendants was not exceeded. Raw runtime identifiers
+and logs remain private; no hidden reasoning transcript is part of this ledger.
+
+## Remaining debt and explicit limits
+
+- No exceptions were approved or installed. Example approval strings, fixture-local
+  records and unqueried review URLs cannot suppress production rules.
+- Preferred Rust size diagnostics remain visible. They are advisory guidance, not
+  ignored privacy/correctness failures or a broad suppression baseline.
+- The brand package is explicitly excluded: its existing `.gitignore` historical
+  checksum mismatch causes its validator and one of 41 package tests to fail.
+  Its owner must reconcile the source/archive before adoption; no historical
+  checksum was rewritten.
+- The referenced companion package and `tests/ACCEPTANCE_MATRIX.md` were not supplied
+  or found. The operator was asked once; this work implements the explicit prompt
+  cases and cannot claim conformance to an unseen matrix.
+- Exact-host `sts2.dll`/Godot assemblies, actual Windows bridge execution, native
+  unload/thread behavior, cPanel PHP/extensions and mail delivery remain unverified.
+  Source-linked probes and Linux checks do not prove those boundaries.
+- Docker/buildx checks were unavailable locally. Compose parser success is not a
+  container build, healthy running service, ingestion, persistence or restart test.
+- No branch was pushed, PR/issue opened, merge performed, protected-check setting
+  changed, artifact published, service installed, site deployed, mail sent, game
+  launched, paid provider called or production data mutated by this task.
+- Workflow source is reviewable, but source alone cannot prevent an authorized
+  editor from replacing a gate. Owner review and external branch-protection
+  activation remain necessary and were not authorized or claimed.

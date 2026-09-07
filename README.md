@@ -39,6 +39,10 @@ Changes to enforcement workflows, profiles, locks, or rules still require the ow
 repository's normal branch-protection process. Protected-check activation is an external adoption
 state and is not inferred from a local validation result.
 
+The [local adoption report](docs/standards/ADOPTION_REPORT.md) records exact implementation
+commits, executed checks, exclusions and rollback boundaries. The [implemented acceptance
+matrix](tests/ACCEPTANCE_MATRIX.md) links each assertion to its evidence and remaining limits.
+
 ## License
 
 MIT; see [`LICENSE`](LICENSE). Identity assets are original work of the project and are covered
