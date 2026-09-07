@@ -25,5 +25,29 @@
     "blob": "90a46b7c8275aba3ea3cc52f437d95bf3cdb98f0",
     "content_sha256": "bc7355e360bc05a34900f2132c85b9619bc9d9c4d1c8f9eb15422be5ea5af7c2",
     "source_url": "https://github.com/AI-Ascension/sts2-protocol/blob/8874b0951289fd943c7e14dea36557fa24c401d1/conformance/cases/neutral-contract-seam.v1.json"
+  },
+  {
+    "repository": "AI-Ascension/ascension-map-visualizer",
+    "commit": "18915e5571829e582f460bf14b674cc2db39d9c5",
+    "path": "prompts/ASCENSION_MAP_VISUALIZER_ORCHESTRATION_PROMPT.md",
+    "blob": "ebc0db4b0c33b20032fa9d27d0a87f87f5b6eab7",
+    "content_sha256": "3abcf8ce01f042e09db13e0e6a230babf397b6b6f1797f24520f43daaeaa12f1",
+    "source_url": "https://github.com/AI-Ascension/ascension-map-visualizer/blob/18915e5571829e582f460bf14b674cc2db39d9c5/prompts/ASCENSION_MAP_VISUALIZER_ORCHESTRATION_PROMPT.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "experiments/managed-rust-interop/gameplay-tests/RuntimeV3ValidationProbe.csproj",
+    "blob": "849e1c0cb70e27347754289b4bc14154a32624ef",
+    "content_sha256": "523be42ca384583cfd44d06cc0a3012fa6bd59c6d8860da45a72f8f6bd29d0fc",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/experiments/managed-rust-interop/gameplay-tests/RuntimeV3ValidationProbe.csproj"
+  },
+  {
+    "repository": "AI-Ascension/sts2-protocol",
+    "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+    "path": "schemas/poc-v1.schema.json",
+    "blob": "8da8ce5ecdc1e5f57320b60fb70304e2751fabe9",
+    "content_sha256": "242b8f9233e915a55ea8d2e72ca476c1258169a67e62de72ee5aed848a6a0a19",
+    "source_url": "https://github.com/AI-Ascension/sts2-protocol/blob/8874b0951289fd943c7e14dea36557fa24c401d1/schemas/poc-v1.schema.json"
   }
 ]

@@ -850,7 +850,11 @@ class _MetadataWriter:
             row = next((x for x in op["assignments"] if x["number"] == effect["number"]), None)
             if row is None:
                 raise ExecutionError("journal issue is absent from reviewed assignments")
-            before = issue_value({"id": row["issue_id"], "labels": row["labels"]})
+            # Earlier operations may have created labels referenced by this
+            # reviewed before-state. Resolve their symbolic IDs exactly as the
+            # forward path does, then compare against the authenticated effect.
+            # A missing/recreated/renamed destination remains a conflict.
+            before = resolve_issue_value(row, self.labels(op["repository"]))
             destinations = [x for x in effect["after"]["labels"] if x["name"] == op["to"]]
             if len(destinations) != 1 or any(x["name"].casefold() == op["to"].casefold() for x in before["labels"]):
                 raise ExecutionError("journal claims a pre-existing or unknown assignment")

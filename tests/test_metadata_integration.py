@@ -50,13 +50,13 @@ class IntegrationTests(unittest.TestCase):
         self.api.labels[0]["description"] = "later edit"
         self.assertFalse(metadata.verify_plan(p, self.snapshot())["ok"])
 
-    def test_six_migrations_on_one_issue_apply_verify_resume_and_rollback(self):
+    def _exercise_six_migrations(self, *, create_destinations=False):
         from test_metadata_execution import label
         pairs = [("defect", "bug"), ("docs", "documentation")] + [
             ("wedge:" + name, "audience:" + name)
             for name in ("player", "rust", "mcp", "security")]
         sources = [label(i + 10, source) for i, (source, _) in enumerate(pairs)]
-        destinations = [label(i + 30, pairs[i][1]) for i in range(2)]
+        destinations = [] if create_destinations else [label(i + 30, pairs[i][1]) for i in range(2)]
         human = label(99, "human: label")
         self.api.labels = copy.deepcopy(sources + destinations + [human])
         self.api.issues = [{"id": 101, "number": 1, "labels": copy.deepcopy(sources + [human])}]
@@ -78,8 +78,16 @@ class IntegrationTests(unittest.TestCase):
         self.assertEqual([], [op for target in replanned["targets"] for op in target["operations"] if op["kind"] != "additive_label_migration"])
         rolled = writer.rollback(p, execute=True)
         self.assertEqual([], rolled["conflicts"], rolled)
-        self.assertEqual(before["labels"], self.snapshot()["labels"])
+        original_ids = {row["id"] for row in before["labels"]}
+        self.assertEqual(before["labels"], [row for row in self.snapshot()["labels"] if row["id"] in original_ids])
+        self.assertEqual(2 if create_destinations else 0, len(rolled["retained_labels"]))
         self.assertEqual(before["issues"], self.snapshot()["issues"])
+
+    def test_six_migrations_on_one_issue_apply_verify_resume_and_rollback(self):
+        self._exercise_six_migrations()
+
+    def test_created_destinations_in_combined_migration_roll_back_assignments(self):
+        self._exercise_six_migrations(create_destinations=True)
 
     def test_cli_invalid_authorization_never_constructs_a_client(self):
         p = metadata.make_plan(self.desired, self.snapshot(), labels=[], migrations=[])
