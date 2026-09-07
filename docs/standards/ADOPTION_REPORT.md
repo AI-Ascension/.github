@@ -6,8 +6,8 @@ inventory. The source is prepared in isolated branches named
 `codex/standards-baseline-20260907`; no branch was pushed or merged.
 
 The canonical bundle is pinned to commit
-`0f743fd4cce4428f813a6d6f50c51d4fb901561b` of `AI-Ascension/.github`, with digest
-`sha256:326b45c4ee3421788da0ec5c258b0c1fc9f562034a2fcac260c50223b5b9f13d`.
+`6066074db1840781282ec4e738bfe3921ff222b1` of `AI-Ascension/.github`, with digest
+`sha256:a283e56b1ca556d95a13cdbb615ab426c53cd523cdd5da30d60a070840b30123`.
 Every local lock preserves `published: false`, hashes all 36 bundle files and
 hashes the generated root profile configuration. This is local byte provenance,
 not a remote signature or protected owner approval.
@@ -16,18 +16,18 @@ not a remote signature or protected owner approval.
 
 | Repository | Validated implementation commit | Local result |
 | --- | --- | --- |
-| `aiascension.tech` | `fdb23feb7cdcd55b6508fecbe575e03dd8bfbab9` | 49 PHP tests/121 assertions; 2 Node tests; 3 Chromium cases |
-| `sts2-game-core` | `bb72a7e09639588714d323174df310a18768e30a` | 57 tests + 2 doctests; native gates pass |
-| `sts2-game-mod` | `b52674be3c24e4af502d29635b1f55fba765503c` | 93 tests + 5 doctests; native gates pass; 13 managed projects/26 settings pairs and source probes pass |
-| `sts2-gateway` | `8d19ffd6a61b38b47293c45cd0fa97d6bcc06f08` | 138 tests + 2 doctests; native gates pass |
-| `sts2-mcp-server` | `bc4c1fba00b3706ed6fbfbcf80f7a5dcfa7f1bd2` | 128 tests + 2 doctests; native gates pass; 1 default-ignored peer case separately passes |
-| `sts2-harness` | `a87c9e26eae96d9de334bff2ab4318c64f86aa2a` | 197 tests + 2 doctests; native gates pass |
-| `sts2-protocol` | `1114288b7fccbe1bc0076757723d6f20d0fdf644` | 69 tests + 2 doctests; native gates pass |
-| `.github` | `0f30e04e4eabcd50b035e76eba424d49979c1da0` | 15 tool tests; 3 positive/9 negative fixtures; 15 link cases; 12 adopter validations |
-| `AI-Ascension.github.io` | `0004bc545497abd7531a2b071d9f0d78928e6b35` | 10 Node tests; 3 Chromium cases; both historical recipes match |
-| `ai-agent-observability` | `1f35d7b7c5784392e27c7ba936089e8748f20dea` | Shell/bootstrap/config gates pass; 43 model and 18 rendered negative cases; buildx unverified |
-| `ascension-watchdog` | `47eda974594ff330ab82d5c51feba209cdb824c2` | 7 Markdown, 2 JSON and 1 YAML inputs checked; product absent as intended |
-| `ascension-map-visualizer` | `c34978f4ff707f17bc82d38fdcd853ad583134d9` | 3 Markdown, 1 TOML and 1 YAML inputs checked; product absent as intended |
+| `aiascension.tech` | `f4662418e55c4115ae29886be59d3526eca6d986` | 49 PHP tests/121 assertions; 2 Node tests; 3 Chromium cases |
+| `sts2-game-core` | `279ec80c52d7ee0e29a74f2665b3ba1b1f60ea03` | 57 tests + 2 doctests; native gates pass |
+| `sts2-game-mod` | `ae74dea6fae0f1f5930f513ae64111cc060f2dc5` | 93 tests + 5 doctests; native gates pass; 13 managed projects/26 settings pairs and source probes pass |
+| `sts2-gateway` | `c29c0a707bfa71316ad221c0918f6bd445fea810` | 138 tests + 2 doctests; native gates pass |
+| `sts2-mcp-server` | `bd24cfb9695c203e76ea1fa6342542f39a7dbd9c` | 128 tests + 2 doctests; native gates pass; 1 default-ignored peer case separately passes |
+| `sts2-harness` | `d90e4ce126775df9a7747cfa40a22e825415c815` | 197 tests + 2 doctests; native gates pass |
+| `sts2-protocol` | `081c54b11d3e0c7fc4d2d1abdfc0b43d29735217` | 69 tests + 2 doctests; native gates pass |
+| `.github` | `f00520f2a2f945b74019610a14d00cb919b3922c` | 15 tool tests; 3 positive/9 negative fixtures; 15 link cases; 12 adopter validations |
+| `AI-Ascension.github.io` | `ce1083955a337e235d526c7c89145f56742dde7f` | 10 Node tests; 3 Chromium cases; both historical recipes match |
+| `ai-agent-observability` | `cd32e2ae70e018727191e74c063f2cc479e1b0c3` | Shell/bootstrap/config gates pass; 43 model and 18 rendered negative cases; buildx unverified |
+| `ascension-watchdog` | `9f87629108c51930be308df2682e4908532aaae2` | 7 Markdown, 2 JSON and 1 YAML inputs checked; product absent as intended |
+| `ascension-map-visualizer` | `41bc90aeaf0307606a68a79add57a9ed11884f3c` | 3 Markdown, 1 TOML and 1 YAML inputs checked; product absent as intended |
 | `ascension-brand-overhaul` | `851ea5e0744fca10e86fea4dbc36118c4bb68a75` | Explicitly excluded; historical checksum failure leaves 40/41 baseline tests passing |
 
 The canonical row identifies the implementation/lock commit before this report.

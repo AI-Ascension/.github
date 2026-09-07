@@ -36,3 +36,18 @@ local revisions, and [the implementation ledger](IMPLEMENTATION_LEDGER.md) for
 reproductions and review repairs. Original audit reference IDs remain unresolved
 until sources.json is supplied; current implementation evidence is independently
 recorded rather than attributed to unseen source blobs.
+
+## Independent review follow-up
+
+The independent prose comparison found no new material product blocker. It
+identified an ambiguity between the common Rust metadata recipe and exact
+owner-generated CI matrices. Source commit 6066074db1840781282ec4e738bfe3921ff222b1 clarifies
+that the recipe includes local discovery, while generated profiles retain each
+owner's existing required checks. Protocol and MCP retain standalone metadata
+steps; core, game-mod, gateway and harness do not gain a new mandatory CI step.
+Their policy admission/inheritance checks are not claimed as complete Cargo
+metadata equivalence. No executable command or product code changed.
+
+All twelve refreshed copies validate against the new source and repeated sync
+preserves bytes and timestamps. Missing original package provenance remains
+unverified; the clarification does not waive it.
