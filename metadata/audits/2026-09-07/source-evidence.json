@@ -1,0 +1,1210 @@
+[
+  {
+    "repository": "AI-Ascension/AI-Ascension.github.io",
+    "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+    "path": ".github/workflows/pages.yml",
+    "blob": "0cf4ec0c01c969c58ec2359cdb7b5758497c379e",
+    "content_sha256": "9a301a579ed6b1a5b6adc893d283cf0f9f12af02a4e0d5276800f2b0cf9e668b",
+    "source_url": "https://github.com/AI-Ascension/AI-Ascension.github.io/blob/e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f/.github/workflows/pages.yml"
+  },
+  {
+    "repository": "AI-Ascension/AI-Ascension.github.io",
+    "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+    "path": ".github/workflows/validate.yml",
+    "blob": "f6f57aec2c0213c1b989fad867f19ff550564f4d",
+    "content_sha256": "7ee72eff3290bc34c9c1407bb9b56a873c4d9b114035fb655fea0f015582f1ff",
+    "source_url": "https://github.com/AI-Ascension/AI-Ascension.github.io/blob/e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f/.github/workflows/validate.yml"
+  },
+  {
+    "repository": "AI-Ascension/AI-Ascension.github.io",
+    "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+    "path": "README.md",
+    "blob": "a6b9ddda0879dae42993479afc193be72ec0afd6",
+    "content_sha256": "21737822d779096953956daa80bcd79fbe26ab7419402c11a0f5d8c5c9f5d914",
+    "source_url": "https://github.com/AI-Ascension/AI-Ascension.github.io/blob/e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f/README.md"
+  },
+  {
+    "repository": "AI-Ascension/AI-Ascension.github.io",
+    "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+    "path": "recipes/gateway-lease-fence/Cargo.toml",
+    "blob": "08143c92ef6b922ffc1ac5be7297226bc844eaf2",
+    "content_sha256": "73d3f1dcb4a5d55ddb959c579edd46755d5740c1fa359500e9df7101d444aba1",
+    "source_url": "https://github.com/AI-Ascension/AI-Ascension.github.io/blob/e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f/recipes/gateway-lease-fence/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/AI-Ascension.github.io",
+    "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+    "path": "recipes/gateway-lease-fence/README.md",
+    "blob": "4d77ddd2b1c4e34a9d094a7029f58797dd25a260",
+    "content_sha256": "4f2400ecc57e6893735112d6ba9b48ee79f20497cfee079cfe4ebc0db34624db",
+    "source_url": "https://github.com/AI-Ascension/AI-Ascension.github.io/blob/e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f/recipes/gateway-lease-fence/README.md"
+  },
+  {
+    "repository": "AI-Ascension/AI-Ascension.github.io",
+    "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+    "path": "recipes/mcp-seam/Cargo.toml",
+    "blob": "7912909cbf8a8c7ba1a688d164335d768a14c1db",
+    "content_sha256": "fb47bf1697a11058d639c42e5f74cdc4ad39b91e9eea429ea951ec25a6c68e03",
+    "source_url": "https://github.com/AI-Ascension/AI-Ascension.github.io/blob/e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f/recipes/mcp-seam/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/AI-Ascension.github.io",
+    "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+    "path": "recipes/mcp-seam/README.md",
+    "blob": "f2a4c61233ff58c6a18d9e8d0974b770d3146812",
+    "content_sha256": "e12884af244d237030c9c19c473aa0d6f94a65faaec6d016da95538dd41add53",
+    "source_url": "https://github.com/AI-Ascension/AI-Ascension.github.io/blob/e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f/recipes/mcp-seam/README.md"
+  },
+  {
+    "repository": "AI-Ascension/ascension-watchdog",
+    "commit": "dc2d20badb9e86c12067316b92d6c8289b2e6995",
+    "path": "AGENTS.md",
+    "blob": "eeda5c01e6a88d26d2c9b3b96625ddc2171385f1",
+    "content_sha256": "ca7381b8e0d789bac05e9ee81af2ac7db2cffac31277ad0e5aa0a2951bbf4fc3",
+    "source_url": "https://github.com/AI-Ascension/ascension-watchdog/blob/dc2d20badb9e86c12067316b92d6c8289b2e6995/AGENTS.md"
+  },
+  {
+    "repository": "AI-Ascension/ascension-watchdog",
+    "commit": "dc2d20badb9e86c12067316b92d6c8289b2e6995",
+    "path": "README.md",
+    "blob": "f24f13fcb6292d24ddc7b93eaba525aa25ecac6a",
+    "content_sha256": "dc5e982a7b1e49cd35ea5764a34c33a73e298979269fdaf800a80773c38672a9",
+    "source_url": "https://github.com/AI-Ascension/ascension-watchdog/blob/dc2d20badb9e86c12067316b92d6c8289b2e6995/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-core",
+    "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+    "path": ".github/dependabot.yml",
+    "blob": "213208cf185862f017d4699e11d1f704da719bfa",
+    "content_sha256": "107674557bb82cccb2048e4932b476455d796c5dcfd7ae3166036c6f67bbff68",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-core/blob/87e0f3d9355c0827e989d9fbc31804440852519b/.github/dependabot.yml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-core",
+    "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+    "path": ".github/pull_request_template.md",
+    "blob": "48d93227447b0560cdc6f22bb6a98bf1498240fa",
+    "content_sha256": "c8e4b7209d071200d0d14cb613f82d36ad15d9b95e5104cd1d95330c4d63d126",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-core/blob/87e0f3d9355c0827e989d9fbc31804440852519b/.github/pull_request_template.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-core",
+    "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+    "path": ".github/workflows/ci.yml",
+    "blob": "fcb88a9507b4de02afa549e099a4e0124e2ab6b7",
+    "content_sha256": "df5364b869d9a78429ab46500374e3d14bed49d23309e1454297da5ab76c125a",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-core/blob/87e0f3d9355c0827e989d9fbc31804440852519b/.github/workflows/ci.yml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-core",
+    "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+    "path": ".github/workflows/policy.yml",
+    "blob": "483c33e8ef64341a505f743db2a5f005767dd2a8",
+    "content_sha256": "18274c4afd42b3180e90822ee6bfd2f395a803665d5d153465780dcc7339deef",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-core/blob/87e0f3d9355c0827e989d9fbc31804440852519b/.github/workflows/policy.yml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-core",
+    "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+    "path": "AGENTS.md",
+    "blob": "44af53725f9fa81bb4343c97ba8b4f3ad32c6647",
+    "content_sha256": "718e838bcfa30e85708aa9c14823b36269071460d4724f90a2cf6980e1973eab",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-core/blob/87e0f3d9355c0827e989d9fbc31804440852519b/AGENTS.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-core",
+    "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+    "path": "CONTRIBUTING.md",
+    "blob": "12f6524f448649ffe1a1a702377f3bceeb57769a",
+    "content_sha256": "5ab00fec64edd181f69ccff5c92e2c7cf849b45a119c2629fa2ab25b520997a7",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-core/blob/87e0f3d9355c0827e989d9fbc31804440852519b/CONTRIBUTING.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-core",
+    "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+    "path": "Cargo.toml",
+    "blob": "b8808bd15422ff2c7476b0f178ea3057ffe35ddb",
+    "content_sha256": "7876d27825cc84face3817ba3ab5a77e2e6754ce5e7455c18f8230d7a2b7e539",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-core/blob/87e0f3d9355c0827e989d9fbc31804440852519b/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-core",
+    "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+    "path": "README.md",
+    "blob": "caf160c3e30cd34c5194f6a0a093038e5f5f1d68",
+    "content_sha256": "2a3fecc7add79899a12871dd02f1b4e698bbb411bfc94bda49de0c4dc460eb1e",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-core/blob/87e0f3d9355c0827e989d9fbc31804440852519b/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-core",
+    "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+    "path": "RELEASING.md",
+    "blob": "2e0f70ae1fac7ee023ba1a89fef185131a062be7",
+    "content_sha256": "a2cc3a73f416e2870cf22f746a362c065cb8a0b3899e4daaee3774ebec6bb93b",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-core/blob/87e0f3d9355c0827e989d9fbc31804440852519b/RELEASING.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-core",
+    "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+    "path": "crates/core/Cargo.toml",
+    "blob": "029eea3eccf71b6bdf9320c9b837369c2bfce5af",
+    "content_sha256": "7ce8110441987023807ee9005b6154d33580ac66591569e00d6cc8b051b2509d",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-core/blob/87e0f3d9355c0827e989d9fbc31804440852519b/crates/core/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-core",
+    "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+    "path": "policy.toml",
+    "blob": "6261e596d1b936b76afeeef20d814b3b860fc7a3",
+    "content_sha256": "a9f989356ca4cdff10ad4488f980eff14ea9738225258c0a38c53a0b9e65f7d7",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-core/blob/87e0f3d9355c0827e989d9fbc31804440852519b/policy.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-core",
+    "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+    "path": "protocol-artifact/poc-v1/README.md",
+    "blob": "0482f90279834103c87e7a8fd97c0976b4205fb4",
+    "content_sha256": "a655aa6fdb672346cd5a6ddc7522bb5db573ee01a299d3eaf32a8597bb961862",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-core/blob/87e0f3d9355c0827e989d9fbc31804440852519b/protocol-artifact/poc-v1/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-core",
+    "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+    "path": "tools/repo-policy/Cargo.toml",
+    "blob": "1cb66ac7f024c1964313019a807fe180ec875d87",
+    "content_sha256": "e7fd947f73d8712241e8137250ff5095bbc4e78333b89cc97ae7b3dc2a3d252f",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-core/blob/87e0f3d9355c0827e989d9fbc31804440852519b/tools/repo-policy/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-gateway",
+    "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+    "path": ".github/dependabot.yml",
+    "blob": "6f09caf91bc4511e08dd212efd4c08df57779547",
+    "content_sha256": "6a082e0c22e36e7ae754cb611bc1b8cbb96924355b87480dae1cbb7e57a8bcb2",
+    "source_url": "https://github.com/AI-Ascension/sts2-gateway/blob/33ea48f3b549f08e19db80d8c68c1438fa12a60a/.github/dependabot.yml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-gateway",
+    "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+    "path": ".github/pull_request_template.md",
+    "blob": "80252e38ffc3c327a196004b6c962fafccb5acf0",
+    "content_sha256": "5f1ff46afa4457fdd3122476b1af01602e56695f80c452ea9476c858d68a7695",
+    "source_url": "https://github.com/AI-Ascension/sts2-gateway/blob/33ea48f3b549f08e19db80d8c68c1438fa12a60a/.github/pull_request_template.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-gateway",
+    "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+    "path": ".github/workflows/ci.yml",
+    "blob": "e747682e12f6f6bd0eed61711b49b1086ef3ac72",
+    "content_sha256": "79ef42cbdb56fc7ae7d39c657bb158fc51e0cbcdaf14e35594cf21a2382f8f49",
+    "source_url": "https://github.com/AI-Ascension/sts2-gateway/blob/33ea48f3b549f08e19db80d8c68c1438fa12a60a/.github/workflows/ci.yml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-gateway",
+    "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+    "path": ".github/workflows/policy.yml",
+    "blob": "2d89f869719bcbf34f17d267449598e6546ef2ac",
+    "content_sha256": "d9d494682067e168442bfc33fa6ba2d0f6ff2e07871fc754840a305ef9495094",
+    "source_url": "https://github.com/AI-Ascension/sts2-gateway/blob/33ea48f3b549f08e19db80d8c68c1438fa12a60a/.github/workflows/policy.yml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-gateway",
+    "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+    "path": "AGENTS.md",
+    "blob": "afa637cf09fcc40c061f792e22cb6d0b6e35d9ba",
+    "content_sha256": "0a1010a7b19414159792fea7946f703a3f00dfbaf845a15c0d303bc38268be01",
+    "source_url": "https://github.com/AI-Ascension/sts2-gateway/blob/33ea48f3b549f08e19db80d8c68c1438fa12a60a/AGENTS.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-gateway",
+    "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+    "path": "CONTRIBUTING.md",
+    "blob": "7c6e7d4bdce63634d4087e9cc85ead51755a76a2",
+    "content_sha256": "987b2e0b5c4787fc6fba433e3449f23fc7a78ef274f7c15a702751d1ce8b71be",
+    "source_url": "https://github.com/AI-Ascension/sts2-gateway/blob/33ea48f3b549f08e19db80d8c68c1438fa12a60a/CONTRIBUTING.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-gateway",
+    "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+    "path": "Cargo.toml",
+    "blob": "a153773193ccee23fcefb3bedbc48b6287cd34e1",
+    "content_sha256": "c6ecdeb63a497203b284042f5a6ea2aabdf6c8352dee21449f1b7e77de140950",
+    "source_url": "https://github.com/AI-Ascension/sts2-gateway/blob/33ea48f3b549f08e19db80d8c68c1438fa12a60a/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-gateway",
+    "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+    "path": "README.md",
+    "blob": "2c2099a0688f92849ec96096ed87baef3cfbdaf0",
+    "content_sha256": "cc833cc149e363572476664e1daf0e8f7a6e3da67d82161540bc5da150501824",
+    "source_url": "https://github.com/AI-Ascension/sts2-gateway/blob/33ea48f3b549f08e19db80d8c68c1438fa12a60a/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-gateway",
+    "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+    "path": "RELEASING.md",
+    "blob": "37a6b3c2052d4e429609842f9928796de21b8bfb",
+    "content_sha256": "c440826add2a4a5819780d637c5d8618e8c2f6356094a5dd76f53f08c65c002b",
+    "source_url": "https://github.com/AI-Ascension/sts2-gateway/blob/33ea48f3b549f08e19db80d8c68c1438fa12a60a/RELEASING.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-gateway",
+    "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+    "path": "crates/gateway/Cargo.toml",
+    "blob": "1a0015fd7359a30f708c3c50df3205eac1d39a0f",
+    "content_sha256": "cceb4ca63bb3cca37495956b983efb3392e497f3cd4c0b3df54330ab92889563",
+    "source_url": "https://github.com/AI-Ascension/sts2-gateway/blob/33ea48f3b549f08e19db80d8c68c1438fa12a60a/crates/gateway/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-gateway",
+    "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+    "path": "policy.toml",
+    "blob": "e908e84d77c8d0dfb4b280007363594899b663a8",
+    "content_sha256": "9cdc59605479f1446ff1a66b812ac96ae324781fa45182e87b7f57960ad578f3",
+    "source_url": "https://github.com/AI-Ascension/sts2-gateway/blob/33ea48f3b549f08e19db80d8c68c1438fa12a60a/policy.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-gateway",
+    "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+    "path": "protocol-artifact/poc-v1/README.md",
+    "blob": "0482f90279834103c87e7a8fd97c0976b4205fb4",
+    "content_sha256": "a655aa6fdb672346cd5a6ddc7522bb5db573ee01a299d3eaf32a8597bb961862",
+    "source_url": "https://github.com/AI-Ascension/sts2-gateway/blob/33ea48f3b549f08e19db80d8c68c1438fa12a60a/protocol-artifact/poc-v1/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-gateway",
+    "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+    "path": "protocol-artifact/runtime-v1/README.md",
+    "blob": "9cdf59bcfbf30c35ade25e98fdcd54b87f2121ea",
+    "content_sha256": "6158f2379e4be530ca0b195bd79209c8dadf8fbbe2d42548ebe2b52ed3ee7b6c",
+    "source_url": "https://github.com/AI-Ascension/sts2-gateway/blob/33ea48f3b549f08e19db80d8c68c1438fa12a60a/protocol-artifact/runtime-v1/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-gateway",
+    "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+    "path": "protocol-artifact/runtime-v2/README.md",
+    "blob": "f64a651f78f7d2a234dd7d38064e8c71375eccae",
+    "content_sha256": "4077b54be012e06ead869e6a864a8f5c6bfafaab420d1ae3d656c5b5a9dddafa",
+    "source_url": "https://github.com/AI-Ascension/sts2-gateway/blob/33ea48f3b549f08e19db80d8c68c1438fa12a60a/protocol-artifact/runtime-v2/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-gateway",
+    "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+    "path": "protocol-artifact/runtime-v3-gameplay/README.md",
+    "blob": "c47186beee826c8756845fc46987ba2cf162ed57",
+    "content_sha256": "5abe490d97116d2bafcca8dc3b43a0080a15124b835b8fec91e9bf6b7498e3a4",
+    "source_url": "https://github.com/AI-Ascension/sts2-gateway/blob/33ea48f3b549f08e19db80d8c68c1438fa12a60a/protocol-artifact/runtime-v3-gameplay/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-gateway",
+    "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+    "path": "tools/repo-policy/Cargo.toml",
+    "blob": "cd7c26d0554e2e8d44e71acac53472e5248e4f66",
+    "content_sha256": "2fc1bbb32ccc57e622ddc8cf3e1cfd65336e718676337fff9dbefa6f9a2f5c15",
+    "source_url": "https://github.com/AI-Ascension/sts2-gateway/blob/33ea48f3b549f08e19db80d8c68c1438fa12a60a/tools/repo-policy/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/ai-agent-observability",
+    "commit": "b25880376d3a3334c77f58637267db93581c4c77",
+    "path": ".github/workflows/ci.yml",
+    "blob": "686dc906887c935b228c1957c9611cc825afe0c8",
+    "content_sha256": "4452691f4344fb090f1515e7b57937be83e7b41411a79f8d8f5fa63d828366bd",
+    "source_url": "https://github.com/AI-Ascension/ai-agent-observability/blob/b25880376d3a3334c77f58637267db93581c4c77/.github/workflows/ci.yml"
+  },
+  {
+    "repository": "AI-Ascension/ai-agent-observability",
+    "commit": "b25880376d3a3334c77f58637267db93581c4c77",
+    "path": "AGENTS.md",
+    "blob": "09e22c430b60f3097238e5e132a03efad1a79d72",
+    "content_sha256": "efb19d8ce78c81a5c1b983721849278be257b9d4df220a967d212f1080764dea",
+    "source_url": "https://github.com/AI-Ascension/ai-agent-observability/blob/b25880376d3a3334c77f58637267db93581c4c77/AGENTS.md"
+  },
+  {
+    "repository": "AI-Ascension/ai-agent-observability",
+    "commit": "b25880376d3a3334c77f58637267db93581c4c77",
+    "path": "CONTRIBUTING.md",
+    "blob": "73e17f1d47f829cfcc5694b23ed4389e0982fd32",
+    "content_sha256": "ea3d6b55ad65434249892b8bccd38989c8b1eb0bbd31b10fffa77297fd030659",
+    "source_url": "https://github.com/AI-Ascension/ai-agent-observability/blob/b25880376d3a3334c77f58637267db93581c4c77/CONTRIBUTING.md"
+  },
+  {
+    "repository": "AI-Ascension/ai-agent-observability",
+    "commit": "b25880376d3a3334c77f58637267db93581c4c77",
+    "path": "README.md",
+    "blob": "89f70d593c58946393ee57202caad30696e27221",
+    "content_sha256": "408def46fadbb801f1775679f7f7c7b5485b8f55bd7b9796c8d93f2658c911a5",
+    "source_url": "https://github.com/AI-Ascension/ai-agent-observability/blob/b25880376d3a3334c77f58637267db93581c4c77/README.md"
+  },
+  {
+    "repository": "AI-Ascension/ai-agent-observability",
+    "commit": "b25880376d3a3334c77f58637267db93581c4c77",
+    "path": "deploy/README.md",
+    "blob": "148528992d1432f72fbd4cf261286580f42bc056",
+    "content_sha256": "7fac7fb6cc8eff336a7db3a0968bcdd5b7a4d4c0b5b3caf2c7c4c31742e1db8f",
+    "source_url": "https://github.com/AI-Ascension/ai-agent-observability/blob/b25880376d3a3334c77f58637267db93581c4c77/deploy/README.md"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/config.yml",
+    "blob": "0b531548a9e48b21f8b391eb97802f8f162b4b3e",
+    "content_sha256": "ddcb767c693bb7ab5d8320548c536ba2e73f047a4399ed70f90abee899a28c54",
+    "source_url": "https://github.com/AI-Ascension/.github/blob/d8fb867dede3ec1cde424d7f6f6f56e49dc21227/.github/ISSUE_TEMPLATE/config.yml"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/contract-observation.yml",
+    "blob": "b5c90196a2a90d32780d4053cd92a6e279300402",
+    "content_sha256": "ed8d58ba5b2037898d3b5ea7d319117a9b18fab46d211887929925a5e971cdf4",
+    "source_url": "https://github.com/AI-Ascension/.github/blob/d8fb867dede3ec1cde424d7f6f6f56e49dc21227/.github/ISSUE_TEMPLATE/contract-observation.yml"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/defect.yml",
+    "blob": "5ed502d12db45e7dcb5e84c9c971359df77406cc",
+    "content_sha256": "0f4d764454660d304380fddda89495972c046f1a03f66599f47ffacc42faec36",
+    "source_url": "https://github.com/AI-Ascension/.github/blob/d8fb867dede3ec1cde424d7f6f6f56e49dc21227/.github/ISSUE_TEMPLATE/defect.yml"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/evidence.yml",
+    "blob": "ed43bd3a4660904f2566b92753ca68f48be6a05d",
+    "content_sha256": "7050a7a3e43863f859b3c933047d88c1aa04e48b61a631bcc236f73eb0b42b2d",
+    "source_url": "https://github.com/AI-Ascension/.github/blob/d8fb867dede3ec1cde424d7f6f6f56e49dc21227/.github/ISSUE_TEMPLATE/evidence.yml"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/proof-recipe.yml",
+    "blob": "b3a538bdaa1ccc359142763c2675dccb9e4ff148",
+    "content_sha256": "23f31259a184572315d819a7b4c45a47d4b3724990fded45603f1f184052e369",
+    "source_url": "https://github.com/AI-Ascension/.github/blob/d8fb867dede3ec1cde424d7f6f6f56e49dc21227/.github/ISSUE_TEMPLATE/proof-recipe.yml"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "CONTRIBUTING.md",
+    "blob": "a2ab474d382d7d0705dd0ce18f722706b8fd95b6",
+    "content_sha256": "f6263b30521bdffc04f4783ddaeb62f23e1e4ca635c22a5b1d55475cd98f34eb",
+    "source_url": "https://github.com/AI-Ascension/.github/blob/d8fb867dede3ec1cde424d7f6f6f56e49dc21227/CONTRIBUTING.md"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "GOVERNANCE.md",
+    "blob": "ead6db11b93e8eb0a876ee72102cbdc9aa5c8e07",
+    "content_sha256": "a617a6f2c343ed178aba5b2a43e819eb359c27b9fdbcc2b5e69e2bcd5713e35b",
+    "source_url": "https://github.com/AI-Ascension/.github/blob/d8fb867dede3ec1cde424d7f6f6f56e49dc21227/GOVERNANCE.md"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "README.md",
+    "blob": "dd1a017fdd1653f8b8f86a4bfbbe81019730b2dd",
+    "content_sha256": "995c1b65f9c60feca30fdf1a75ab8b7d0260f662b425509b87c865bbc19a2e80",
+    "source_url": "https://github.com/AI-Ascension/.github/blob/d8fb867dede3ec1cde424d7f6f6f56e49dc21227/README.md"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "labels.yml",
+    "blob": "a10283ae105e0a8766648ea88a672e6754115d5f",
+    "content_sha256": "abc0b70c917c45fc02d3d8bf380783dafa866c9341762ca9ceb59e324a518972",
+    "source_url": "https://github.com/AI-Ascension/.github/blob/d8fb867dede3ec1cde424d7f6f6f56e49dc21227/labels.yml"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "profile/README.md",
+    "blob": "5d8505ed6838bbaec13aecb981d2cef9c24d59e0",
+    "content_sha256": "346e1782a6e258abbeb8884a8e282a6fd22f880e1fa9450e601744ec6e1237f6",
+    "source_url": "https://github.com/AI-Ascension/.github/blob/d8fb867dede3ec1cde424d7f6f6f56e49dc21227/profile/README.md"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "profile/assets/README.md",
+    "blob": "09357dbdac71cbc680378e2144a18cd590e970b0",
+    "content_sha256": "6b48e52616c49bf63787f2f4ffa4659d43bab29956099a80599e2b9ed75f31bc",
+    "source_url": "https://github.com/AI-Ascension/.github/blob/d8fb867dede3ec1cde424d7f6f6f56e49dc21227/profile/assets/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": ".github/dependabot.yml",
+    "blob": "213208cf185862f017d4699e11d1f704da719bfa",
+    "content_sha256": "107674557bb82cccb2048e4932b476455d796c5dcfd7ae3166036c6f67bbff68",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/.github/dependabot.yml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": ".github/pull_request_template.md",
+    "blob": "cd26b4dc7c590b2cb1dc6155ce258a6f947c785f",
+    "content_sha256": "f5764819e1b9618cf0949621dddec38106560d58d2118286ed7281054dea204b",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/.github/pull_request_template.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": ".github/workflows/ci.yml",
+    "blob": "8aa0354ecc75c9a2742a01c2d99aa6ba1baa0648",
+    "content_sha256": "6029db62fe945bb258c31a6311ff3651e85b91e34b890f77de78327f028c20d4",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/.github/workflows/ci.yml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": ".github/workflows/policy.yml",
+    "blob": "483c33e8ef64341a505f743db2a5f005767dd2a8",
+    "content_sha256": "18274c4afd42b3180e90822ee6bfd2f395a803665d5d153465780dcc7339deef",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/.github/workflows/policy.yml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "AGENTS.md",
+    "blob": "bb505e4bb9a8fc8576aff129874d28dec2fdf772",
+    "content_sha256": "fac9dd2e50b5c5b4aa391524416fc5fd1de6f35a775a7ee9d0ee93a1cbd506b0",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/AGENTS.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "CONTRIBUTING.md",
+    "blob": "abe948ab744daa7a022b19a1d0a87f4d74ca3f34",
+    "content_sha256": "ddfe6ab83abf2877659b22896ebcd79adae3e68127169299bad3c3c6a2d85e10",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/CONTRIBUTING.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "Cargo.toml",
+    "blob": "613e6be264e38314f76bb67ba39cf4832f6c00ad",
+    "content_sha256": "793907ab15ae98cdb03b278195cb0e995b74c7fe8c48495cd78c84e48429d9e1",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "README.md",
+    "blob": "8d1b008da81c0f0e8a9d55e5ed918982232bb626",
+    "content_sha256": "16179555c43657e38b5fda42d944eb49f7d9c98c119b0baf62057112b18e009d",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "RELEASING.md",
+    "blob": "71527ea684c1de40c686f611d6f37ac3acb4ee46",
+    "content_sha256": "d08f7392d4eb587b47ed4b04d197a9a01cc782a3e86a98797c1fbbe5894c076f",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/RELEASING.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "crates/harness/Cargo.toml",
+    "blob": "7ef0ef88e41574e005873853cff7b6e402f38b96",
+    "content_sha256": "5d210369bc0a2a2d8e11ca809ccfe3c4ce8448398b7883b2b0a5a2c1cd3421df",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/crates/harness/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "docs/evidence/runtime-v3-preparation/README.md",
+    "blob": "6758fb6c4ac79a93baf457b5ba4fe3e22d28af27",
+    "content_sha256": "83506948f710ba918d93163fb130310710dcc684d65e1dad718e326e8b6ced7e",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/docs/evidence/runtime-v3-preparation/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "docs/research/README.md",
+    "blob": "92adee038ead5161a6ad4aabb719648c21c274f6",
+    "content_sha256": "a8658e35bce193872df1ccf78c573b3f157dad3a88c5fe1aa70751bb3a643336",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/docs/research/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "docs/research/sts2-expert-state-package/README.md",
+    "blob": "94e79ebe9b036287f5a5714317f0158975ec5a69",
+    "content_sha256": "7e62c9b68ca883df0c5b3aab4efbb16c338e7f7787e167c64ad548c3b65e17bf",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/docs/research/sts2-expert-state-package/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "docs/research/sts2-expert-state-package/diagrams/README.md",
+    "blob": "32926745e0baff5678d1b308980c4d2b93eb9ecb",
+    "content_sha256": "e2a29fa88cdc85766555aac29bf38c058cdc1a80f2b4b3eaba69b26587fa54f6",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/docs/research/sts2-expert-state-package/diagrams/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "docs/research/sts2-expert-state-package/fixtures/README.md",
+    "blob": "bd27cc1654a09313641433d704b585d449fd1761",
+    "content_sha256": "fe28ebc3174c489ddf7f3055420eb4385b3d61271b680585cfd1865412b8ec62",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/docs/research/sts2-expert-state-package/fixtures/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "docs/research/sts2-expert-state-package/fixtures/schema/README.md",
+    "blob": "b20940f49d2abde3e1d7ce75a0413f998305322f",
+    "content_sha256": "5b16a223cfef03e9a43fdb5d419a9894a9620441444f7b257f6d914a5014ca11",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/docs/research/sts2-expert-state-package/fixtures/schema/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "docs/research/sts2-expert-state-package/report/README.md",
+    "blob": "93dd7060428d0b9039c70e88b7da06398654fbb2",
+    "content_sha256": "07c485d2b98f0b8af8df566d3996a861128049a6e8eb9e055a17dc476afc7188",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/docs/research/sts2-expert-state-package/report/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "docs/research/sts2-expert-state-package/schemas/README.md",
+    "blob": "62a167b45e6dc0be109f9b07b8a34f4fc7ab6e67",
+    "content_sha256": "738848671ea90aba1e82c69641a05c6bc6ea1b0aeafa14a5d1641f27ef2f6263",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/docs/research/sts2-expert-state-package/schemas/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "experiments/ablation/README.md",
+    "blob": "1cc4667c5b866410f8f170aa3fd780f116dd6b5a",
+    "content_sha256": "43ad7cde395c91b7f9df47e1760128eb1803e7be10a242a69dc922be2db36ee7",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/experiments/ablation/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "experiments/cv-watchdog/README.md",
+    "blob": "8c99020649499cc956d5a96418dcfd9b6140640d",
+    "content_sha256": "6bcfde4cf8cad7d152641bf82013bd51e2d9334bd01237e69dc343abb08e4ed1",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/experiments/cv-watchdog/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "experiments/cv-watchdog/fixtures/README.md",
+    "blob": "b2214dda853ce850f9d99f525ea5b6803c2f6952",
+    "content_sha256": "54cc8fb139b59cefc78d75d52c9b31d4baade4cb3b6b89e5f0c91473b2270b64",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/experiments/cv-watchdog/fixtures/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "experiments/exo-agent/README.md",
+    "blob": "e9f3af39963253bd6eec2da988855b0f7178d037",
+    "content_sha256": "fc54fa58e85f3bf0dcc1fc754bc169589cb0996a60f4b1af2679cba6e2246359",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/experiments/exo-agent/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "experiments/live-combat/README.md",
+    "blob": "5c2a3879c319929ae67f9f0e53f918f0682dc7de",
+    "content_sha256": "c8c659c4f3547ab36a38b600080071b5a0f29ad52ec9f361cb6e018f0ae53726",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/experiments/live-combat/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "policy.toml",
+    "blob": "f570068b03aa541e28d019cb7fef55662db73df3",
+    "content_sha256": "dd92c1d3fa4132bd84553b9238165b3598336bc0d3b294a39915e91073fdd4f8",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/policy.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "protocol-artifact/poc-v1/README.md",
+    "blob": "0482f90279834103c87e7a8fd97c0976b4205fb4",
+    "content_sha256": "a655aa6fdb672346cd5a6ddc7522bb5db573ee01a299d3eaf32a8597bb961862",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/protocol-artifact/poc-v1/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "protocol-artifact/runtime-v1/README.md",
+    "blob": "9cdf59bcfbf30c35ade25e98fdcd54b87f2121ea",
+    "content_sha256": "6158f2379e4be530ca0b195bd79209c8dadf8fbbe2d42548ebe2b52ed3ee7b6c",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/protocol-artifact/runtime-v1/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "protocol-artifact/runtime-v2/README.md",
+    "blob": "f64a651f78f7d2a234dd7d38064e8c71375eccae",
+    "content_sha256": "4077b54be012e06ead869e6a864a8f5c6bfafaab420d1ae3d656c5b5a9dddafa",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/protocol-artifact/runtime-v2/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "protocol-artifact/runtime-v3-gameplay/README.md",
+    "blob": "c47186beee826c8756845fc46987ba2cf162ed57",
+    "content_sha256": "5abe490d97116d2bafcca8dc3b43a0080a15124b835b8fec91e9bf6b7498e3a4",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/protocol-artifact/runtime-v3-gameplay/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "tools/patch-diff/Cargo.toml",
+    "blob": "3cc89b3d5b42309c5adba146501e8d000c701a4c",
+    "content_sha256": "6628a1033f45f4c3882d7b6bcc3cd9e16c49530317f51f624e29460d50e5c4d4",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/tools/patch-diff/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "tools/patch-diff/README.md",
+    "blob": "6c561553fb50a5ebc73359c462856431e14333dd",
+    "content_sha256": "04d6a09107eeedaa6db0552a053abe0c96228cf7005eba8fc62b81f3b267ab38",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/tools/patch-diff/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "tools/repo-policy/Cargo.toml",
+    "blob": "cd7c26d0554e2e8d44e71acac53472e5248e4f66",
+    "content_sha256": "2fc1bbb32ccc57e622ddc8cf3e1cfd65336e718676337fff9dbefa6f9a2f5c15",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/tools/repo-policy/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "tools/sts2-expert-state-package/Cargo.toml",
+    "blob": "5ad8b18b89bceed73f4e6878c4b3e1a670aadf69",
+    "content_sha256": "f5eb645ca69e5124bcd05cb3ffeff6c2ddc5de965148891fec25bad2fa7de0cf",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/tools/sts2-expert-state-package/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/ascension-map-visualizer",
+    "commit": "18915e5571829e582f460bf14b674cc2db39d9c5",
+    "path": "AGENTS.md",
+    "blob": "9b54875b1f62c33e1e8cec53b7be9c3fa5d4faa3",
+    "content_sha256": "1c9b335e0a650d23682b869b805fd768c131e9b1aa4f6ef3414c9ebc8b7d01d0",
+    "source_url": "https://github.com/AI-Ascension/ascension-map-visualizer/blob/18915e5571829e582f460bf14b674cc2db39d9c5/AGENTS.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-protocol",
+    "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+    "path": ".github/dependabot.yml",
+    "blob": "213208cf185862f017d4699e11d1f704da719bfa",
+    "content_sha256": "107674557bb82cccb2048e4932b476455d796c5dcfd7ae3166036c6f67bbff68",
+    "source_url": "https://github.com/AI-Ascension/sts2-protocol/blob/8874b0951289fd943c7e14dea36557fa24c401d1/.github/dependabot.yml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-protocol",
+    "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+    "path": ".github/pull_request_template.md",
+    "blob": "b23e1582aee2cb5007729a6f0ddb6a65dde09426",
+    "content_sha256": "2f03e4ad45811a90c9509d6aa36e0c479f7d97f6cc15222aef710aca9701c14c",
+    "source_url": "https://github.com/AI-Ascension/sts2-protocol/blob/8874b0951289fd943c7e14dea36557fa24c401d1/.github/pull_request_template.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-protocol",
+    "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+    "path": ".github/workflows/ci.yml",
+    "blob": "99793352175e47a4e8e051f9952e6effbef4a72b",
+    "content_sha256": "8b35a5bd929c7562489e0b15082a31cd5536ae049d68deb0a8775a7cf6d084ce",
+    "source_url": "https://github.com/AI-Ascension/sts2-protocol/blob/8874b0951289fd943c7e14dea36557fa24c401d1/.github/workflows/ci.yml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-protocol",
+    "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+    "path": ".github/workflows/policy.yml",
+    "blob": "483c33e8ef64341a505f743db2a5f005767dd2a8",
+    "content_sha256": "18274c4afd42b3180e90822ee6bfd2f395a803665d5d153465780dcc7339deef",
+    "source_url": "https://github.com/AI-Ascension/sts2-protocol/blob/8874b0951289fd943c7e14dea36557fa24c401d1/.github/workflows/policy.yml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-protocol",
+    "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+    "path": "AGENTS.md",
+    "blob": "54f5c0b71985989096205a2ce7e5370ff329294e",
+    "content_sha256": "e97a0f8ccb1a798ac052b6bed6bd14a79400534a500474b70d338492fa477169",
+    "source_url": "https://github.com/AI-Ascension/sts2-protocol/blob/8874b0951289fd943c7e14dea36557fa24c401d1/AGENTS.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-protocol",
+    "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+    "path": "CONTRIBUTING.md",
+    "blob": "85ee05cca2faed59b35182ad54e64ce7d99788b9",
+    "content_sha256": "4d327ea52ba80d3f3443f87b1b17c43e4e35ba539d05370b5474e7151cc1f44c",
+    "source_url": "https://github.com/AI-Ascension/sts2-protocol/blob/8874b0951289fd943c7e14dea36557fa24c401d1/CONTRIBUTING.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-protocol",
+    "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+    "path": "Cargo.toml",
+    "blob": "1dad73da70ded436fb60035924767e75d0b88e57",
+    "content_sha256": "188892e987f9ec3d7805ae79b7695d011a2591ea6127a985924ff6cf6419ecde",
+    "source_url": "https://github.com/AI-Ascension/sts2-protocol/blob/8874b0951289fd943c7e14dea36557fa24c401d1/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-protocol",
+    "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+    "path": "README.md",
+    "blob": "f7657da19b4ceb3444077ab06dfc63285f16db5d",
+    "content_sha256": "c88084eb76b29c73b9d485da3158e0fdbe618e8a287d383b13fbc9f1728bd214",
+    "source_url": "https://github.com/AI-Ascension/sts2-protocol/blob/8874b0951289fd943c7e14dea36557fa24c401d1/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-protocol",
+    "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+    "path": "RELEASING.md",
+    "blob": "8a2440f062a1e0cbf26c5fc0a8e56dc0b7eca688",
+    "content_sha256": "80b6923ef0afa876d68a24c735732987841f764bf842670a6a6e4495e08bb19f",
+    "source_url": "https://github.com/AI-Ascension/sts2-protocol/blob/8874b0951289fd943c7e14dea36557fa24c401d1/RELEASING.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-protocol",
+    "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+    "path": "artifacts/poc-v1/README.md",
+    "blob": "0482f90279834103c87e7a8fd97c0976b4205fb4",
+    "content_sha256": "a655aa6fdb672346cd5a6ddc7522bb5db573ee01a299d3eaf32a8597bb961862",
+    "source_url": "https://github.com/AI-Ascension/sts2-protocol/blob/8874b0951289fd943c7e14dea36557fa24c401d1/artifacts/poc-v1/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-protocol",
+    "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+    "path": "artifacts/runtime-v1/README.md",
+    "blob": "9cdf59bcfbf30c35ade25e98fdcd54b87f2121ea",
+    "content_sha256": "6158f2379e4be530ca0b195bd79209c8dadf8fbbe2d42548ebe2b52ed3ee7b6c",
+    "source_url": "https://github.com/AI-Ascension/sts2-protocol/blob/8874b0951289fd943c7e14dea36557fa24c401d1/artifacts/runtime-v1/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-protocol",
+    "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+    "path": "artifacts/runtime-v2/README.md",
+    "blob": "f64a651f78f7d2a234dd7d38064e8c71375eccae",
+    "content_sha256": "4077b54be012e06ead869e6a864a8f5c6bfafaab420d1ae3d656c5b5a9dddafa",
+    "source_url": "https://github.com/AI-Ascension/sts2-protocol/blob/8874b0951289fd943c7e14dea36557fa24c401d1/artifacts/runtime-v2/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-protocol",
+    "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+    "path": "artifacts/runtime-v3-gameplay/README.md",
+    "blob": "c47186beee826c8756845fc46987ba2cf162ed57",
+    "content_sha256": "5abe490d97116d2bafcca8dc3b43a0080a15124b835b8fec91e9bf6b7498e3a4",
+    "source_url": "https://github.com/AI-Ascension/sts2-protocol/blob/8874b0951289fd943c7e14dea36557fa24c401d1/artifacts/runtime-v3-gameplay/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-protocol",
+    "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+    "path": "crates/protocol/Cargo.toml",
+    "blob": "431bcc4297c562f43fea7b37404c1fefe41be6f8",
+    "content_sha256": "49ec18d0000da61384364739f26595fae547960c95ec24dff7a6ef16be2deda9",
+    "source_url": "https://github.com/AI-Ascension/sts2-protocol/blob/8874b0951289fd943c7e14dea36557fa24c401d1/crates/protocol/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-protocol",
+    "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+    "path": "policy.toml",
+    "blob": "526fc16d1d06ba9ebb1cfb07cde08b83f4760da7",
+    "content_sha256": "e9d4a9c2b873122d6afa067d5d807b28ddefeb43bb1874aad499d70bf24da9d6",
+    "source_url": "https://github.com/AI-Ascension/sts2-protocol/blob/8874b0951289fd943c7e14dea36557fa24c401d1/policy.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-protocol",
+    "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+    "path": "tools/repo-policy/Cargo.toml",
+    "blob": "1cb66ac7f024c1964313019a807fe180ec875d87",
+    "content_sha256": "e7fd947f73d8712241e8137250ff5095bbc4e78333b89cc97ae7b3dc2a3d252f",
+    "source_url": "https://github.com/AI-Ascension/sts2-protocol/blob/8874b0951289fd943c7e14dea36557fa24c401d1/tools/repo-policy/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": ".github/dependabot.yml",
+    "blob": "0c0862139a5b740f8e8faed6f77b3818140c6d05",
+    "content_sha256": "25e028617e5bf81d059d90240d3f338de77ff16323aa35be26ccfdc39ae31176",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/.github/dependabot.yml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": ".github/pull_request_template.md",
+    "blob": "d7e02d9f9f97c71a85f7971ae8cd0c4fd1f939a0",
+    "content_sha256": "aec54a725094f7cece413a6f3f7189d3eef02929d237050cb6480aad97d02f4f",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/.github/pull_request_template.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": ".github/workflows/ci.yml",
+    "blob": "61f8cf0bcad19c6587d4d7359100a594d3c05371",
+    "content_sha256": "4ba9da24a50146ba5162b719c112d9a5c3a4ee5cc8550996878d94f6f2cd7d1a",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/.github/workflows/ci.yml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": ".github/workflows/policy.yml",
+    "blob": "483c33e8ef64341a505f743db2a5f005767dd2a8",
+    "content_sha256": "18274c4afd42b3180e90822ee6bfd2f395a803665d5d153465780dcc7339deef",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/.github/workflows/policy.yml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": ".github/workflows/source-release.yml",
+    "blob": "9f16b2e7c6893196cd06583e93d18f75c3200e96",
+    "content_sha256": "5d6e61e13454cd66f68f7db245d3ebee82a772fc6cf1f01a23014c4aed6f8ff1",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/.github/workflows/source-release.yml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "AGENTS.md",
+    "blob": "4fd879ccdf99b42aae49a3614afd384e372a3705",
+    "content_sha256": "7cf8f90b365e69e7d3a7aebcf83328ac86484a0230b3af110c2a4a0f048cc28a",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/AGENTS.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "CONTRIBUTING.md",
+    "blob": "ff75dafdf6636bc59a4157edb00714ec0c8aebe4",
+    "content_sha256": "85e20702e5df397e27fb32c29734a7cbb35a84427d26bf97e98f8c88b47fd9da",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/CONTRIBUTING.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "Cargo.toml",
+    "blob": "d755c7bc619fc937a5b232aa07860b5545f2a8b1",
+    "content_sha256": "e0a706fd336523356d392fd952f551028e65b2d763f92705a5297cdf4f45bd5e",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "README.md",
+    "blob": "1d2b09e010e36da7ec860b0cf4ddc11932d19dd9",
+    "content_sha256": "2797d8ad9679a1e8de9aadb2bd2b994d77f6d5a62f2d33a589e105a6d7277f2c",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "RELEASING.md",
+    "blob": "5ce4e1904f148327e9b43d8b84362e9c8529a4ac",
+    "content_sha256": "81a5a1ec1d7c926753647d3fa0a5237a8e5f2a55ec420f3dc1d36bb9501b1194",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/RELEASING.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "crates/game-mod/Cargo.toml",
+    "blob": "bde143104bf912a6812f314ea60f2e7e86c9a265",
+    "content_sha256": "a6c55f40d0941cea13d9dba5eec8e2746b71c10ed6115eeeb4e7ff5f129b071f",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/crates/game-mod/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "crates/host/Cargo.toml",
+    "blob": "fa8d03b23cedbd363e3e97cd02b503143b267459",
+    "content_sha256": "9c3808fefffd660fcde7332fb02c4c997cf9c0c8776599ac17505491b5d82077",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/crates/host/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "crates/http-adapter/Cargo.toml",
+    "blob": "eb846ef43efafb8b8ad390a5ddfd4f937dbe2ea1",
+    "content_sha256": "7a818566c48014a3225ef7fd4512c549cb96faf2e27a27b830aad330713d4fde",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/crates/http-adapter/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "docs/decisions/README.md",
+    "blob": "7b3bc19673ace82b48cbca967b17516ab3f9b571",
+    "content_sha256": "8c2a1c1287c1d706acd78d9233e829e5c792890bb45ad01f05b37d693f42b6fa",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/docs/decisions/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "experiments/managed-rust-interop/README.md",
+    "blob": "f273805414a1b73481cf5cf6d9220ca8c156369a",
+    "content_sha256": "d31630d87c3a321e73f020213c219cbf544fc017e9e3e7d94a3290bd36dc68eb",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/experiments/managed-rust-interop/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "experiments/managed-rust-interop/hand-host-probe/README.md",
+    "blob": "3b975723dbd0f8aa259c6717621eb7eabe9a231c",
+    "content_sha256": "11ef6de69c12ef3e23fde2a027b60a4b653fe7c1dc3d9c08f6971f555425646f",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/experiments/managed-rust-interop/hand-host-probe/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "experiments/managed-rust-interop/native/Cargo.toml",
+    "blob": "f096fed9564b0cbfdf0fc9f214564c7e08e92d83",
+    "content_sha256": "723f3c6194b6bd3d36ca6f4786ddf88bb56276adfae7576bd403870a53f91de4",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/experiments/managed-rust-interop/native/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "experiments/managed-rust-interop/terminal-host-probe/README.md",
+    "blob": "6a83faf8b991f7896d7cdff82a151ac90cc0bfc5",
+    "content_sha256": "2c3e84c2b3a04950851a849f06bf3768c8f4a51bd68868b912c4087e04c1aa1f",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/experiments/managed-rust-interop/terminal-host-probe/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "experiments/train-gpu-lifecycle/README.md",
+    "blob": "b9011f64dfafbaf28c77f270c42dd553f062ae4c",
+    "content_sha256": "1d1e6a55ef424d82276848f69097671d45e595ccb61d0b8d618b2d4c938781d4",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/experiments/train-gpu-lifecycle/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "policy.toml",
+    "blob": "11745900a79d0310e1249443e923bc06b72c2cc0",
+    "content_sha256": "3aaf2d7c8b76f4f1d2a17a39debcffc67bb0dc66e764de35b5e36610aabf1285",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/policy.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "protocol-artifact/poc-v1/README.md",
+    "blob": "0482f90279834103c87e7a8fd97c0976b4205fb4",
+    "content_sha256": "a655aa6fdb672346cd5a6ddc7522bb5db573ee01a299d3eaf32a8597bb961862",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/protocol-artifact/poc-v1/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "protocol-artifact/runtime-v1/README.md",
+    "blob": "9cdf59bcfbf30c35ade25e98fdcd54b87f2121ea",
+    "content_sha256": "6158f2379e4be530ca0b195bd79209c8dadf8fbbe2d42548ebe2b52ed3ee7b6c",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/protocol-artifact/runtime-v1/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "protocol-artifact/runtime-v2/README.md",
+    "blob": "f64a651f78f7d2a234dd7d38064e8c71375eccae",
+    "content_sha256": "4077b54be012e06ead869e6a864a8f5c6bfafaab420d1ae3d656c5b5a9dddafa",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/protocol-artifact/runtime-v2/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "protocol-artifact/runtime-v3-gameplay/README.md",
+    "blob": "c47186beee826c8756845fc46987ba2cf162ed57",
+    "content_sha256": "5abe490d97116d2bafcca8dc3b43a0080a15124b835b8fec91e9bf6b7498e3a4",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/protocol-artifact/runtime-v3-gameplay/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "tools/mod-loading/Cargo.toml",
+    "blob": "fb2b0a3021b626b7e1679d7ccd7c91faed73f109",
+    "content_sha256": "4cb0bee024e7a262ea19fb0410ab157fde299af821727e040186d3d1db5ef58c",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/tools/mod-loading/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "tools/mod-loading/README.md",
+    "blob": "92aec0a1b324c96cf4a606c9471b5908642a2efd",
+    "content_sha256": "306d4b1a7c4b410fe5c0f0f28e084ee1f1a1157c2bd19f329a9f00667cf09abb",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/tools/mod-loading/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "tools/release/README.md",
+    "blob": "0cf5f37038117db43a940f41e5b14dbe678725c1",
+    "content_sha256": "93c283319c08056a1acdc14391feccf35c9b6a37136d51a6101579feebbb701a",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/tools/release/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "tools/repo-policy/Cargo.toml",
+    "blob": "08632024965244ff9052d50c3fe5d4da4a6dc1d9",
+    "content_sha256": "fc7a2e8d204c0133150ce4208723b6792715443798726171e53bd9f665c69024",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/tools/repo-policy/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "tools/workshop/README.md",
+    "blob": "15cabc509efef3259cd84058e529ecddf6c02d11",
+    "content_sha256": "132d9fd47c77dc708af6ef35b6a55ca07d66e2c6ddcc59bf77486dd8529a1cf7",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/tools/workshop/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "tools/workshop/lifecycle/README.md",
+    "blob": "4ba009b48cf8b5038223ef00a2e18e23a9aed203",
+    "content_sha256": "08e597e1661af2a7f4d088cd8f82b538f62620ffd30d174a09e46ce736507ff5",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/tools/workshop/lifecycle/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "tools/workshop/lifecycle/abi-proof/README.md",
+    "blob": "9e949d494e326e6456988ee4d7d7eae00eedcd0b",
+    "content_sha256": "7016391f2dae3aa3b0107e29715099eda63c97df800eec5e9c661e035668a939",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/tools/workshop/lifecycle/abi-proof/README.md"
+  },
+  {
+    "repository": "AI-Ascension/aiascension.tech",
+    "commit": "4e2d99c95d89ce3d18981d331faad10c9f1f7376",
+    "path": "README.md",
+    "blob": "145149b20069577c85b108e5d4f1cb3cc6c24983",
+    "content_sha256": "9ac3924643ded139ccfc0a1007c182d1dd44987cd3673d631af8a3d73452ab63",
+    "source_url": "https://github.com/AI-Ascension/aiascension.tech/blob/4e2d99c95d89ce3d18981d331faad10c9f1f7376/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-mcp-server",
+    "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+    "path": ".github/dependabot.yml",
+    "blob": "ef1b8ddad95489a23b1d95e5b0bac3d984220d47",
+    "content_sha256": "9af9513cb5714341cacb0c8a9452df48a928291915f841e189427877e2379f90",
+    "source_url": "https://github.com/AI-Ascension/sts2-mcp-server/blob/eb89ab251665f263c2fe3e6b735eeae3d3e40c83/.github/dependabot.yml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-mcp-server",
+    "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+    "path": ".github/pull_request_template.md",
+    "blob": "64dd8ff1e0856c1ec4b402485b0c1775c2858c1d",
+    "content_sha256": "1df61fb42f8b6d6acadf429727e72c65317b0efc3cfa7ec56b32c7a4d8df045f",
+    "source_url": "https://github.com/AI-Ascension/sts2-mcp-server/blob/eb89ab251665f263c2fe3e6b735eeae3d3e40c83/.github/pull_request_template.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-mcp-server",
+    "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+    "path": ".github/workflows/ci.yml",
+    "blob": "6e91d859d56fbeb87b721d34ba18acc96e27b6e1",
+    "content_sha256": "46cd6730bd58cd26de5d88f8dea510e88c3c897c4f107ae6a660cb480cedf737",
+    "source_url": "https://github.com/AI-Ascension/sts2-mcp-server/blob/eb89ab251665f263c2fe3e6b735eeae3d3e40c83/.github/workflows/ci.yml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-mcp-server",
+    "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+    "path": ".github/workflows/policy.yml",
+    "blob": "483c33e8ef64341a505f743db2a5f005767dd2a8",
+    "content_sha256": "18274c4afd42b3180e90822ee6bfd2f395a803665d5d153465780dcc7339deef",
+    "source_url": "https://github.com/AI-Ascension/sts2-mcp-server/blob/eb89ab251665f263c2fe3e6b735eeae3d3e40c83/.github/workflows/policy.yml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-mcp-server",
+    "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+    "path": "AGENTS.md",
+    "blob": "6cc29fc25a07ba382ff5ce9b57315016066d1bc4",
+    "content_sha256": "af2b3fc48b25fbe5ee01124a22c6e561a80f46c97e1693cdb9dba1a6a288ce8e",
+    "source_url": "https://github.com/AI-Ascension/sts2-mcp-server/blob/eb89ab251665f263c2fe3e6b735eeae3d3e40c83/AGENTS.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-mcp-server",
+    "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+    "path": "CONTRIBUTING.md",
+    "blob": "63bbaf6b8f8cce7e8bdaab7d35c5618d252bbca2",
+    "content_sha256": "a92ed04fe9d408831308ca39f817ad146be585243e4a2932075b57b6fb32761c",
+    "source_url": "https://github.com/AI-Ascension/sts2-mcp-server/blob/eb89ab251665f263c2fe3e6b735eeae3d3e40c83/CONTRIBUTING.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-mcp-server",
+    "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+    "path": "Cargo.toml",
+    "blob": "76df27f267b447f33295c458a1ee3f171bbf3700",
+    "content_sha256": "69c46483f6c68935eb43fe2dd2dc7e2c1fb46a51242bfbc0d0fdd48403048411",
+    "source_url": "https://github.com/AI-Ascension/sts2-mcp-server/blob/eb89ab251665f263c2fe3e6b735eeae3d3e40c83/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-mcp-server",
+    "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+    "path": "README.md",
+    "blob": "11a1fe1e99202381be5ac742e04b219769c9c547",
+    "content_sha256": "392b4a106218b032ccaf463e89eb004ce147f7461cfde5afeb2ca7e58e62ecfd",
+    "source_url": "https://github.com/AI-Ascension/sts2-mcp-server/blob/eb89ab251665f263c2fe3e6b735eeae3d3e40c83/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-mcp-server",
+    "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+    "path": "RELEASING.md",
+    "blob": "ad7ec7e5739aaa67453f3a37d65dd300f406b382",
+    "content_sha256": "2ed9d0b9d16a9872fc2208ea4334ca7a86ccfc871ae0fd1aa478d4a63f590944",
+    "source_url": "https://github.com/AI-Ascension/sts2-mcp-server/blob/eb89ab251665f263c2fe3e6b735eeae3d3e40c83/RELEASING.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-mcp-server",
+    "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+    "path": "crates/mcp-server/Cargo.toml",
+    "blob": "883591431545e6e97c01ab20bef5b1cb8380bb7a",
+    "content_sha256": "348c583839beacb28759f0f1208326f619a9d1ed7ef782dc1e74d488897f822a",
+    "source_url": "https://github.com/AI-Ascension/sts2-mcp-server/blob/eb89ab251665f263c2fe3e6b735eeae3d3e40c83/crates/mcp-server/Cargo.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-mcp-server",
+    "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+    "path": "policy.toml",
+    "blob": "080cb65373c8df5913d32d28c94cc7c551020a43",
+    "content_sha256": "7586f6b42bdcbc04d7698b19ce277de89a857fc246de1fc8e4e7545c02742703",
+    "source_url": "https://github.com/AI-Ascension/sts2-mcp-server/blob/eb89ab251665f263c2fe3e6b735eeae3d3e40c83/policy.toml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-mcp-server",
+    "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+    "path": "protocol-artifact/poc-v1/README.md",
+    "blob": "0482f90279834103c87e7a8fd97c0976b4205fb4",
+    "content_sha256": "a655aa6fdb672346cd5a6ddc7522bb5db573ee01a299d3eaf32a8597bb961862",
+    "source_url": "https://github.com/AI-Ascension/sts2-mcp-server/blob/eb89ab251665f263c2fe3e6b735eeae3d3e40c83/protocol-artifact/poc-v1/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-mcp-server",
+    "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+    "path": "protocol-artifact/runtime-v1/README.md",
+    "blob": "9cdf59bcfbf30c35ade25e98fdcd54b87f2121ea",
+    "content_sha256": "6158f2379e4be530ca0b195bd79209c8dadf8fbbe2d42548ebe2b52ed3ee7b6c",
+    "source_url": "https://github.com/AI-Ascension/sts2-mcp-server/blob/eb89ab251665f263c2fe3e6b735eeae3d3e40c83/protocol-artifact/runtime-v1/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-mcp-server",
+    "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+    "path": "protocol-artifact/runtime-v2/README.md",
+    "blob": "f64a651f78f7d2a234dd7d38064e8c71375eccae",
+    "content_sha256": "4077b54be012e06ead869e6a864a8f5c6bfafaab420d1ae3d656c5b5a9dddafa",
+    "source_url": "https://github.com/AI-Ascension/sts2-mcp-server/blob/eb89ab251665f263c2fe3e6b735eeae3d3e40c83/protocol-artifact/runtime-v2/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-mcp-server",
+    "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+    "path": "protocol-artifact/runtime-v3-gameplay/README.md",
+    "blob": "c47186beee826c8756845fc46987ba2cf162ed57",
+    "content_sha256": "5abe490d97116d2bafcca8dc3b43a0080a15124b835b8fec91e9bf6b7498e3a4",
+    "source_url": "https://github.com/AI-Ascension/sts2-mcp-server/blob/eb89ab251665f263c2fe3e6b735eeae3d3e40c83/protocol-artifact/runtime-v3-gameplay/README.md"
+  },
+  {
+    "repository": "AI-Ascension/sts2-mcp-server",
+    "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+    "path": "tools/repo-policy/Cargo.toml",
+    "blob": "51d6c5bd8899201ad4b964c7a402bf5653452ae4",
+    "content_sha256": "aee9af6795ea5d4a681e9c85cbcb5a2632e9234d76c30c4f4b7c95573948b9f6",
+    "source_url": "https://github.com/AI-Ascension/sts2-mcp-server/blob/eb89ab251665f263c2fe3e6b735eeae3d3e40c83/tools/repo-policy/Cargo.toml"
+  }
+]

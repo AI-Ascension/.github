@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-ascension.github.io/.github/metadata/schema/migrations.schema.json",
+  "title": "Reviewed label migration input",
+  "type": "object",
+  "required": ["migrations"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "migrations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["repository", "from", "to", "strategy"],
+        "properties": {
+          "repository": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"},
+          "from": {"type": "string", "minLength": 1, "maxLength": 50},
+          "to": {"type": "string", "minLength": 1, "maxLength": 50},
+          "strategy": {"enum": ["rename", "additive"]},
+          "reason": {"type": "string", "minLength": 1}
+        },
+        "allOf": [
+          {
+            "not": {
+              "properties": {
+                "strategy": {"const": "rename"},
+                "from": {"enum": ["first-task", "proof-recipe", "contract-observation", "evidence", "unverified-claim", "security"]}
+              },
+              "required": ["strategy", "from"]
+            }
+          },
+          {
+            "not": {
+              "properties": {
+                "to": {"pattern": "^(good[ -]first[ -]issue|help[ -]wanted|priority|evidence([ -].*|-.*)?)$"}
+              },
+              "required": ["to"]
+            }
+          }
+        ],
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

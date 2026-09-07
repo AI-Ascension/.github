@@ -44,24 +44,49 @@ when you have not independently reproduced its runtime result.
 - Keep credentials, personal paths, and private multiplayer data out of every commit, issue, and
   attachment.
 
+## Shared issue and pull-request labels
+
+`labels.yml` is the canonical shared definition file. The shared work-kind vocabulary is `bug`,
+`enhancement`, `documentation`, `research`, `maintenance`, and `question`. The standard GitHub
+labels `good first issue` and `help wanted` are available for maintainer triage; neither is assigned
+by a template or by this migration.
+
+The defect form keeps its existing `defect.yml` URL for link compatibility and now applies `bug`.
+The live `defect` and `bug` labels, and the live `docs` and `documentation` labels, have distinct
+IDs in nine repositories. Their migration is additive: assignments receive the destination only
+when the reviewed plan is applied, both definitions remain, and unrelated labels are preserved.
+
+The four audience labels (`audience:player`, `audience:rust`, `audience:mcp`, and
+`audience:security`) replace the corresponding `wedge:*` labels through stable-ID rename rows where
+the source exists. Audience labels are inactive in forms, workflows, filters, and site links until
+the destination label is provisioned. Existing `wedge:*` assignments remain valid during the
+transition. The migration records the three public seed repositories where those source labels are
+absent; it does not invent assignments there.
+
+`priority:p0` through `priority:p3`, `status:needs-triage`, `status:blocked`, and the `area:*`
+overlays are definitions for future review. A label-sync check does not assign them or establish an
+issue's evidence level. Security details continue to use the private reporting path in
+[`SECURITY.md`](SECURITY.md).
+
 ## First safe tasks
 
 Each task is bounded, needs no game, no model, and no credentials, and is filed under the
-`first-task` label with the wedge label shown.
+`first-task` label. The audience label shown below is the post-provisioning name; existing issues
+may still carry the corresponding `wedge:*` label while the migration is in progress.
 
-1. **Add a gateway fence-case fixture** (`wedge:rust`). Extend the proof recipe with one more case
+1. **Add a gateway fence-case fixture** (`audience:rust`). Extend the proof recipe with one more case
    the gateway already tests at `sts2-gateway@e7bce21`, for example `WrongCaller`, `WrongSession`,
    `WrongLease`, `Missing`, or `Expired`, using only the crate's public API and injected fakes.
    Submit it through the [proof-recipe form](.github/ISSUE_TEMPLATE/proof-recipe.yml) with the
    command, the expected output, and its SHA-256.
-2. **Record a contract observation on the MCP seam** (`wedge:mcp`). Read `tests/seam.rs` in
+2. **Record a contract observation on the MCP seam** (`audience:mcp`). Read `tests/seam.rs` in
    `sts2-mcp-server` and the tool schema, then describe one observed behavior of the tool-call to
    gateway-request mapping, or an adapter example against the schema, through the
    [contract-observation form](.github/ISSUE_TEMPLATE/contract-observation.yml).
-3. **Write a security or failure-handling note** (`wedge:security`). Check one fail-closed case in
+3. **Write a security or failure-handling note** (`audience:security`). Check one fail-closed case in
    `crates/gateway/tests/control_plane.rs` against the claim on the evidence page and report
    agreement or disagreement. Anything exploitable goes through [SECURITY.md](SECURITY.md) instead.
-4. **Fix a clarity problem on a public page** (`wedge:player`, `docs`). If a label, term, or
+4. **Fix a clarity problem on a public page** (`audience:player`, `documentation`). If a label, term, or
    sentence on the site or a README is confusing or unsupported, file it through the
    [evidence form](.github/ISSUE_TEMPLATE/evidence.yml) or open a small pull request against the
    page.

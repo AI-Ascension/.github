@@ -1,0 +1,18 @@
+{
+  "evidence_kind": "stateful fake API; no credentials or remote writes",
+  "plan_digest": "282454280bc6d012d58ea74738ff40c8951f83789af676740bab9c1464c4e4c2",
+  "repositories": 12,
+  "operation_counts": {
+    "replace_topics": 12,
+    "create_label": 74,
+    "additive_label_migration": 18,
+    "rename_label": 36
+  },
+  "first_apply_writes": 122,
+  "verify_ok": true,
+  "second_apply_writes": 0,
+  "resume_writes": 0,
+  "rollback_writes": 48,
+  "rollback_conflicts": [],
+  "retained_created_labels": 74
+}

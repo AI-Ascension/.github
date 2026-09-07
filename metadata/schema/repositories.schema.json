@@ -1,0 +1,217 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-ascension.github.io/.github/metadata/schema/repositories.schema.json",
+  "title": "AI-Ascension canonical repository metadata",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "organization",
+    "brand_topic",
+    "review_status",
+    "blockers",
+    "repositories"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "organization": {
+      "type": "string",
+      "minLength": 1
+    },
+    "brand_topic": {
+      "$ref": "#/$defs/topic"
+    },
+    "review_status": {
+      "enum": [
+        "reviewed",
+        "incomplete-missing-companions",
+        "blocked"
+      ]
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "repositories": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/repository"
+      },
+      "uniqueItems": true
+    }
+  },
+  "$defs": {
+    "topic": {
+      "type": "string",
+      "pattern": "^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$",
+      "maxLength": 50
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "repository",
+        "commit",
+        "path"
+      ],
+      "properties": {
+        "repository": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[0-9a-fA-F]{40}$"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "line": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "meaning": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject": {
+          "enum": [
+            "implementation",
+            "planned"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "topic_entry": {
+      "type": "object",
+      "required": [
+        "name",
+        "meaning",
+        "subject",
+        "reason",
+        "evidence"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/topic"
+        },
+        "meaning": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject": {
+          "enum": [
+            "implementation",
+            "planned"
+          ]
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidence"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "repository": {
+      "type": "object",
+      "required": [
+        "id",
+        "full_name",
+        "name",
+        "kind",
+        "topics"
+      ],
+      "properties": {
+        "id": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "string",
+              "minLength": 1
+            }
+          ]
+        },
+        "repository_id": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "string",
+              "minLength": 1
+            }
+          ]
+        },
+        "full_name": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "implementation",
+            "planning",
+            "coordination",
+            "site",
+            "other"
+          ]
+        },
+        "default_branch": {
+          "type": "string",
+          "minLength": 1
+        },
+        "default_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-fA-F]{40}$"
+        },
+        "replace_topics": {
+          "type": "boolean"
+        },
+        "visibility": {
+          "type": "string",
+          "minLength": 1
+        },
+        "archived": {
+          "const": false
+        },
+        "topics": {
+          "type": "array",
+          "maxItems": 20,
+          "items": {
+            "$ref": "#/$defs/topic_entry"
+          }
+        },
+        "topic_removals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/topic_entry"
+          }
+        },
+        "managed": {
+          "type": "boolean"
+        },
+        "applicability_reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

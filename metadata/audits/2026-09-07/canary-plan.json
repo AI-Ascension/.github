@@ -1,0 +1,699 @@
+{
+  "authorization": {
+    "authorization_id": null,
+    "operations": [
+      "topics",
+      "labels"
+    ],
+    "operator": null,
+    "repositories": [
+      "1354466045"
+    ]
+  },
+  "brand_topic": "ai-ascension",
+  "digest": "c8e8e2b65e88b72c77eea0cdb41baacaf62798a5ed9f0d3ea0cb9578d12ee05f",
+  "inputs": {
+    "labels_digest": "e3b9dff65e3d5d1626f7845f40b19caac5ebdcc9219af2b6d3f780ca3af9aff7",
+    "metadata_digest": "e67635657f577d7f32c212eb267a1d2b8b9156f3bcecdc8a4380852d818bd639",
+    "migrations_digest": "ddf2a6174e14093b742d81fed5e309cab000ddfddd325cf62366a1431ac2ff4b",
+    "selection_digest": "a6a261d0ea51c23b12413bfbf425432e1a6f801bfb5b9f73033ef10ae82393f3",
+    "snapshot_digest": "4493c555c32193091934711cd62b55a3de91dbd4a50b17e9176c8827267b6b3b"
+  },
+  "manifest_revision": "sha256:e67635657f577d7f32c212eb267a1d2b8b9156f3bcecdc8a4380852d818bd639",
+  "organization": "AI-Ascension",
+  "review": {
+    "applicable": false,
+    "blockers": [
+      "Independent source review of the reconciled public topic map remains outstanding."
+    ],
+    "evidence": {
+      "checked": 89,
+      "ok": true,
+      "unavailable": []
+    },
+    "status": "blocked"
+  },
+  "schema_version": 1,
+  "selection": {
+    "explicit": true,
+    "repository_ids": [
+      "1354466045"
+    ]
+  },
+  "targets": [
+    {
+      "archived": false,
+      "default_branch": "main",
+      "default_commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+      "operations": [
+        {
+          "after": [
+            "ai-ascension",
+            "community-health",
+            "contributing",
+            "github-organization",
+            "governance"
+          ],
+          "before": [
+            "ai-ascension",
+            "community-health"
+          ],
+          "blast_radius": {
+            "public_discovery_metadata": true,
+            "repository_topics": true
+          },
+          "evidence": [
+            {
+              "change": "retain",
+              "evidence": {
+                "classification": "source-derived",
+                "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+                "line": 1,
+                "path": "README.md",
+                "repository": "AI-Ascension/.github"
+              },
+              "meaning": "Membership in the AI-Ascension organization and its shared project identity.",
+              "name": "ai-ascension",
+              "reason": "Retain valid existing topic supported by pinned default-branch source.",
+              "subject": "implementation"
+            },
+            {
+              "change": "retain",
+              "evidence": {
+                "classification": "source-derived",
+                "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+                "line": 1,
+                "path": "CONTRIBUTING.md",
+                "repository": "AI-Ascension/.github"
+              },
+              "meaning": "Shared contribution, conduct, security, and issue-form standards.",
+              "name": "community-health",
+              "reason": "Retain valid existing topic supported by pinned default-branch source.",
+              "subject": "implementation"
+            },
+            {
+              "change": "add",
+              "evidence": {
+                "classification": "source-derived",
+                "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+                "line": 1,
+                "path": "CONTRIBUTING.md",
+                "repository": "AI-Ascension/.github"
+              },
+              "meaning": "Organization-wide contribution rules and bounded first tasks.",
+              "name": "contributing",
+              "reason": "Add seed topic supported by pinned default-branch source.",
+              "subject": "implementation"
+            },
+            {
+              "change": "add",
+              "evidence": {
+                "classification": "source-derived",
+                "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+                "line": 1,
+                "path": "GOVERNANCE.md",
+                "repository": "AI-Ascension/.github"
+              },
+              "meaning": "Organization authority, roles, evidence promotion, and decision rules.",
+              "name": "governance",
+              "reason": "Add seed topic supported by pinned default-branch source.",
+              "subject": "implementation"
+            },
+            {
+              "change": "add",
+              "evidence": {
+                "classification": "source-derived",
+                "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+                "line": 5,
+                "path": "README.md",
+                "repository": "AI-Ascension/.github"
+              },
+              "meaning": "Default community-health and profile metadata for the GitHub organization.",
+              "name": "github-organization",
+              "reason": "Add seed topic supported by pinned default-branch source.",
+              "subject": "implementation"
+            }
+          ],
+          "id": "topics:1354466045",
+          "inverse": {
+            "expected": [
+              "ai-ascension",
+              "community-health",
+              "contributing",
+              "github-organization",
+              "governance"
+            ],
+            "kind": "restore_topics",
+            "requires_owned_journal": true,
+            "restore": [
+              "ai-ascension",
+              "community-health"
+            ]
+          },
+          "kind": "replace_topics",
+          "precondition": {
+            "archived": false,
+            "default_branch": "main",
+            "default_commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+            "topics_digest": "794d56ed9072af7888b21a580c8e3ebd8420f286ba0d5ca403c235303afcb9df",
+            "visibility": "public"
+          },
+          "reason": "Reconcile the complete source-backed topic set while preserving valid observed topics.",
+          "repository": "AI-Ascension/.github",
+          "repository_id": "1354466045",
+          "required_permission": "administration:write",
+          "reviewed_removals": []
+        },
+        {
+          "assignments": [],
+          "blast_radius": {
+            "assignment_scope": "reviewed open and closed issues/PRs",
+            "label_definition": false,
+            "reviewed_issue_pr_assignments": 0
+          },
+          "create": null,
+          "destination_definition": {
+            "archived": false,
+            "color": "D73A4A",
+            "description": "Something isn't working",
+            "id": 12036427925,
+            "name": "bug"
+          },
+          "destination_label_id": 12036427925,
+          "evidence": {
+            "labels_sha256": "e3b9dff65e3d5d1626f7845f40b19caac5ebdcc9219af2b6d3f780ca3af9aff7",
+            "migrations_sha256": "ddf2a6174e14093b742d81fed5e309cab000ddfddd325cf62366a1431ac2ff4b",
+            "observed_label_id": 12036436893
+          },
+          "final_assignments": [],
+          "final_destination_definition": {
+            "archived": false,
+            "color": "D73A4A",
+            "description": "Something isn't working",
+            "id": 12036427925,
+            "name": "bug"
+          },
+          "final_source_definition": {
+            "archived": false,
+            "color": "9C5B12",
+            "description": "Behavior or a test that does not match the repository's own documents.",
+            "id": 12036436893,
+            "name": "defect"
+          },
+          "from": "defect",
+          "id": "label-additive:1354466045:defect->bug",
+          "inverse": {
+            "kind": "remove_owned_destination_assignments",
+            "preserve_preexisting": true,
+            "retain_created_definitions": true,
+            "retain_source": true
+          },
+          "kind": "additive_label_migration",
+          "precondition": {
+            "archived": false,
+            "destination_label_id": 12036427925,
+            "labels_digest": "14dc7269b385818739b20f914b146d721cef63dfaaf648aede4d0b8ed3cd489e",
+            "source_label_id": 12036436893,
+            "visibility": "public"
+          },
+          "reason": "Live label definitions at the refreshed snapshot determine this strategy; the source population is preserved during the transition.",
+          "repository": "AI-Ascension/.github",
+          "repository_id": "1354466045",
+          "required_permission": "issues:write",
+          "sequence": 1,
+          "source_definition": {
+            "archived": false,
+            "color": "9C5B12",
+            "description": "Behavior or a test that does not match the repository's own documents.",
+            "id": 12036436893,
+            "name": "defect"
+          },
+          "source_label_id": 12036436893,
+          "to": "bug"
+        },
+        {
+          "assignments": [],
+          "blast_radius": {
+            "assignment_scope": "reviewed open and closed issues/PRs",
+            "label_definition": false,
+            "reviewed_issue_pr_assignments": 0
+          },
+          "create": null,
+          "destination_definition": {
+            "archived": false,
+            "color": "0075CA",
+            "description": "Improvements or additions to documentation",
+            "id": 12036427936,
+            "name": "documentation"
+          },
+          "destination_label_id": 12036427936,
+          "evidence": {
+            "labels_sha256": "e3b9dff65e3d5d1626f7845f40b19caac5ebdcc9219af2b6d3f780ca3af9aff7",
+            "migrations_sha256": "ddf2a6174e14093b742d81fed5e309cab000ddfddd325cf62366a1431ac2ff4b",
+            "observed_label_id": 12036436967
+          },
+          "final_assignments": [],
+          "final_destination_definition": {
+            "archived": false,
+            "color": "0075CA",
+            "description": "Improvements or additions to documentation",
+            "id": 12036427936,
+            "name": "documentation"
+          },
+          "final_source_definition": {
+            "archived": false,
+            "color": "5E564A",
+            "description": "Documentation or public-page clarity.",
+            "id": 12036436967,
+            "name": "docs"
+          },
+          "from": "docs",
+          "id": "label-additive:1354466045:docs->documentation",
+          "inverse": {
+            "kind": "remove_owned_destination_assignments",
+            "preserve_preexisting": true,
+            "retain_created_definitions": true,
+            "retain_source": true
+          },
+          "kind": "additive_label_migration",
+          "precondition": {
+            "archived": false,
+            "destination_label_id": 12036427936,
+            "labels_digest": "14dc7269b385818739b20f914b146d721cef63dfaaf648aede4d0b8ed3cd489e",
+            "source_label_id": 12036436967,
+            "visibility": "public"
+          },
+          "reason": "Live label definitions at the refreshed snapshot determine this strategy; the source population is preserved during the transition.",
+          "repository": "AI-Ascension/.github",
+          "repository_id": "1354466045",
+          "required_permission": "issues:write",
+          "sequence": 2,
+          "source_definition": {
+            "archived": false,
+            "color": "5E564A",
+            "description": "Documentation or public-page clarity.",
+            "id": 12036436967,
+            "name": "docs"
+          },
+          "source_label_id": 12036436967,
+          "to": "documentation"
+        },
+        {
+          "after": {
+            "archived": false,
+            "color": "6F5A94",
+            "description": "AI, MCP, or automation builder path.",
+            "id": 12036437230,
+            "name": "audience:mcp"
+          },
+          "assignments": [],
+          "before": {
+            "archived": false,
+            "color": "6F5A94",
+            "description": "AI, MCP, or automation builder path.",
+            "id": 12036437230,
+            "name": "wedge:mcp"
+          },
+          "blast_radius": {
+            "assignment_scope": "reviewed open and closed issues/PRs",
+            "label_definition": true,
+            "reviewed_issue_pr_assignments": 0
+          },
+          "evidence": {
+            "labels_sha256": "e3b9dff65e3d5d1626f7845f40b19caac5ebdcc9219af2b6d3f780ca3af9aff7",
+            "migrations_sha256": "ddf2a6174e14093b742d81fed5e309cab000ddfddd325cf62366a1431ac2ff4b",
+            "observed_label_id": 12036437230
+          },
+          "final_assignments": [],
+          "from": "wedge:mcp",
+          "id": "label-rename:1354466045:12036437230",
+          "inverse": {
+            "expected": {
+              "archived": false,
+              "color": "6F5A94",
+              "description": "AI, MCP, or automation builder path.",
+              "id": 12036437230,
+              "name": "audience:mcp"
+            },
+            "kind": "restore_label_definition",
+            "requires_owned_journal": true,
+            "restore": {
+              "archived": false,
+              "color": "6F5A94",
+              "description": "AI, MCP, or automation builder path.",
+              "id": 12036437230,
+              "name": "wedge:mcp"
+            }
+          },
+          "kind": "rename_label",
+          "label_id": 12036437230,
+          "precondition": {
+            "archived": false,
+            "label_digest": "14dc7269b385818739b20f914b146d721cef63dfaaf648aede4d0b8ed3cd489e",
+            "label_id": 12036437230,
+            "visibility": "public"
+          },
+          "reason": "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename.",
+          "repository": "AI-Ascension/.github",
+          "repository_id": "1354466045",
+          "required_permission": "issues:write",
+          "sequence": 3,
+          "to": "audience:mcp"
+        },
+        {
+          "after": {
+            "archived": false,
+            "color": "6F5A94",
+            "description": "Curious player or observer path.",
+            "id": 12036437061,
+            "name": "audience:player"
+          },
+          "assignments": [],
+          "before": {
+            "archived": false,
+            "color": "6F5A94",
+            "description": "Curious player or observer path.",
+            "id": 12036437061,
+            "name": "wedge:player"
+          },
+          "blast_radius": {
+            "assignment_scope": "reviewed open and closed issues/PRs",
+            "label_definition": true,
+            "reviewed_issue_pr_assignments": 0
+          },
+          "evidence": {
+            "labels_sha256": "e3b9dff65e3d5d1626f7845f40b19caac5ebdcc9219af2b6d3f780ca3af9aff7",
+            "migrations_sha256": "ddf2a6174e14093b742d81fed5e309cab000ddfddd325cf62366a1431ac2ff4b",
+            "observed_label_id": 12036437061
+          },
+          "final_assignments": [],
+          "from": "wedge:player",
+          "id": "label-rename:1354466045:12036437061",
+          "inverse": {
+            "expected": {
+              "archived": false,
+              "color": "6F5A94",
+              "description": "Curious player or observer path.",
+              "id": 12036437061,
+              "name": "audience:player"
+            },
+            "kind": "restore_label_definition",
+            "requires_owned_journal": true,
+            "restore": {
+              "archived": false,
+              "color": "6F5A94",
+              "description": "Curious player or observer path.",
+              "id": 12036437061,
+              "name": "wedge:player"
+            }
+          },
+          "kind": "rename_label",
+          "label_id": 12036437061,
+          "precondition": {
+            "archived": false,
+            "label_digest": "a5deb3a53d920090ca1a38e35a4a264adc895f96318beabeff02e20d28f440bf",
+            "label_id": 12036437061,
+            "visibility": "public"
+          },
+          "reason": "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename.",
+          "repository": "AI-Ascension/.github",
+          "repository_id": "1354466045",
+          "required_permission": "issues:write",
+          "sequence": 4,
+          "to": "audience:player"
+        },
+        {
+          "after": {
+            "archived": false,
+            "color": "6F5A94",
+            "description": "Rust or systems contributor path.",
+            "id": 12036437133,
+            "name": "audience:rust"
+          },
+          "assignments": [],
+          "before": {
+            "archived": false,
+            "color": "6F5A94",
+            "description": "Rust or systems contributor path.",
+            "id": 12036437133,
+            "name": "wedge:rust"
+          },
+          "blast_radius": {
+            "assignment_scope": "reviewed open and closed issues/PRs",
+            "label_definition": true,
+            "reviewed_issue_pr_assignments": 0
+          },
+          "evidence": {
+            "labels_sha256": "e3b9dff65e3d5d1626f7845f40b19caac5ebdcc9219af2b6d3f780ca3af9aff7",
+            "migrations_sha256": "ddf2a6174e14093b742d81fed5e309cab000ddfddd325cf62366a1431ac2ff4b",
+            "observed_label_id": 12036437133
+          },
+          "final_assignments": [],
+          "from": "wedge:rust",
+          "id": "label-rename:1354466045:12036437133",
+          "inverse": {
+            "expected": {
+              "archived": false,
+              "color": "6F5A94",
+              "description": "Rust or systems contributor path.",
+              "id": 12036437133,
+              "name": "audience:rust"
+            },
+            "kind": "restore_label_definition",
+            "requires_owned_journal": true,
+            "restore": {
+              "archived": false,
+              "color": "6F5A94",
+              "description": "Rust or systems contributor path.",
+              "id": 12036437133,
+              "name": "wedge:rust"
+            }
+          },
+          "kind": "rename_label",
+          "label_id": 12036437133,
+          "precondition": {
+            "archived": false,
+            "label_digest": "50e871d19153bf4939ded35e36340e5d3a0c115fe0a1f069ef21eacae55ac846",
+            "label_id": 12036437133,
+            "visibility": "public"
+          },
+          "reason": "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename.",
+          "repository": "AI-Ascension/.github",
+          "repository_id": "1354466045",
+          "required_permission": "issues:write",
+          "sequence": 5,
+          "to": "audience:rust"
+        },
+        {
+          "after": {
+            "archived": false,
+            "color": "6F5A94",
+            "description": "Maintainer or security operator path.",
+            "id": 12036437333,
+            "name": "audience:security"
+          },
+          "assignments": [],
+          "before": {
+            "archived": false,
+            "color": "6F5A94",
+            "description": "Maintainer or security operator path.",
+            "id": 12036437333,
+            "name": "wedge:security"
+          },
+          "blast_radius": {
+            "assignment_scope": "reviewed open and closed issues/PRs",
+            "label_definition": true,
+            "reviewed_issue_pr_assignments": 0
+          },
+          "evidence": {
+            "labels_sha256": "e3b9dff65e3d5d1626f7845f40b19caac5ebdcc9219af2b6d3f780ca3af9aff7",
+            "migrations_sha256": "ddf2a6174e14093b742d81fed5e309cab000ddfddd325cf62366a1431ac2ff4b",
+            "observed_label_id": 12036437333
+          },
+          "final_assignments": [],
+          "from": "wedge:security",
+          "id": "label-rename:1354466045:12036437333",
+          "inverse": {
+            "expected": {
+              "archived": false,
+              "color": "6F5A94",
+              "description": "Maintainer or security operator path.",
+              "id": 12036437333,
+              "name": "audience:security"
+            },
+            "kind": "restore_label_definition",
+            "requires_owned_journal": true,
+            "restore": {
+              "archived": false,
+              "color": "6F5A94",
+              "description": "Maintainer or security operator path.",
+              "id": 12036437333,
+              "name": "wedge:security"
+            }
+          },
+          "kind": "rename_label",
+          "label_id": 12036437333,
+          "precondition": {
+            "archived": false,
+            "label_digest": "dd6d63e406646d55fb544cab6b3b22cbd1511a3937be801cc6eb78e073c40793",
+            "label_id": 12036437333,
+            "visibility": "public"
+          },
+          "reason": "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename.",
+          "repository": "AI-Ascension/.github",
+          "repository_id": "1354466045",
+          "required_permission": "issues:write",
+          "sequence": 6,
+          "to": "audience:security"
+        },
+        {
+          "after": {
+            "archived": false,
+            "color": "6F5A94",
+            "description": "Question or investigation that needs evidence before implementation.",
+            "id": "new",
+            "name": "research"
+          },
+          "before": null,
+          "blast_radius": {
+            "assignment_scope": "reviewed open and closed issues/PRs",
+            "label_definition": true,
+            "reviewed_issue_pr_assignments": 0
+          },
+          "evidence": {
+            "labels_sha256": "e3b9dff65e3d5d1626f7845f40b19caac5ebdcc9219af2b6d3f780ca3af9aff7",
+            "migrations_sha256": "ddf2a6174e14093b742d81fed5e309cab000ddfddd325cf62366a1431ac2ff4b",
+            "observed_label_id": null
+          },
+          "id": "label-create:1354466045:research",
+          "inverse": {
+            "kind": "manual_review",
+            "reason": "Created label definitions are retained by default."
+          },
+          "kind": "create_label",
+          "precondition": {
+            "archived": false,
+            "labels_digest": "6c41bf6ab19819176416c7aeded39d88ac9b015513296f7a2c1dab523abc73be",
+            "visibility": "public"
+          },
+          "reason": "Reconcile the canonical shared label definition; preserve all unmanaged definitions and assignments.",
+          "repository": "AI-Ascension/.github",
+          "repository_id": "1354466045",
+          "required_permission": "issues:write",
+          "sequence": 7
+        },
+        {
+          "after": {
+            "archived": false,
+            "color": "5E564A",
+            "description": "Internal upkeep, tooling, or dependency work.",
+            "id": "new",
+            "name": "maintenance"
+          },
+          "before": null,
+          "blast_radius": {
+            "assignment_scope": "reviewed open and closed issues/PRs",
+            "label_definition": true,
+            "reviewed_issue_pr_assignments": 0
+          },
+          "evidence": {
+            "labels_sha256": "e3b9dff65e3d5d1626f7845f40b19caac5ebdcc9219af2b6d3f780ca3af9aff7",
+            "migrations_sha256": "ddf2a6174e14093b742d81fed5e309cab000ddfddd325cf62366a1431ac2ff4b",
+            "observed_label_id": null
+          },
+          "id": "label-create:1354466045:maintenance",
+          "inverse": {
+            "kind": "manual_review",
+            "reason": "Created label definitions are retained by default."
+          },
+          "kind": "create_label",
+          "precondition": {
+            "archived": false,
+            "labels_digest": "b8af5ba55899f3e5d59bddff252bf5a9a21b304c59bdb8fd36cf8ccf78d046f7",
+            "visibility": "public"
+          },
+          "reason": "Reconcile the canonical shared label definition; preserve all unmanaged definitions and assignments.",
+          "repository": "AI-Ascension/.github",
+          "repository_id": "1354466045",
+          "required_permission": "issues:write",
+          "sequence": 8
+        },
+        {
+          "after": {
+            "archived": false,
+            "color": "4E6A8F",
+            "description": "Cross-cutting organization metadata and policy work.",
+            "id": "new",
+            "name": "area:metadata"
+          },
+          "before": null,
+          "blast_radius": {
+            "assignment_scope": "reviewed open and closed issues/PRs",
+            "label_definition": true,
+            "reviewed_issue_pr_assignments": 0
+          },
+          "evidence": {
+            "labels_sha256": "e3b9dff65e3d5d1626f7845f40b19caac5ebdcc9219af2b6d3f780ca3af9aff7",
+            "migrations_sha256": "ddf2a6174e14093b742d81fed5e309cab000ddfddd325cf62366a1431ac2ff4b",
+            "observed_label_id": null
+          },
+          "id": "label-create:1354466045:area:metadata",
+          "inverse": {
+            "kind": "manual_review",
+            "reason": "Created label definitions are retained by default."
+          },
+          "kind": "create_label",
+          "precondition": {
+            "archived": false,
+            "labels_digest": "550c18b2b1b472b393c58ddd3d3c58cdc06f43d7da102758a24553b237f39fc2",
+            "visibility": "public"
+          },
+          "reason": "Reconcile the canonical shared label definition; preserve all unmanaged definitions and assignments.",
+          "repository": "AI-Ascension/.github",
+          "repository_id": "1354466045",
+          "required_permission": "issues:write",
+          "sequence": 9
+        },
+        {
+          "after": {
+            "archived": false,
+            "color": "5E564A",
+            "description": "Build, test, and continuous-integration work.",
+            "id": "new",
+            "name": "area:ci"
+          },
+          "before": null,
+          "blast_radius": {
+            "assignment_scope": "reviewed open and closed issues/PRs",
+            "label_definition": true,
+            "reviewed_issue_pr_assignments": 0
+          },
+          "evidence": {
+            "labels_sha256": "e3b9dff65e3d5d1626f7845f40b19caac5ebdcc9219af2b6d3f780ca3af9aff7",
+            "migrations_sha256": "ddf2a6174e14093b742d81fed5e309cab000ddfddd325cf62366a1431ac2ff4b",
+            "observed_label_id": null
+          },
+          "id": "label-create:1354466045:area:ci",
+          "inverse": {
+            "kind": "manual_review",
+            "reason": "Created label definitions are retained by default."
+          },
+          "kind": "create_label",
+          "precondition": {
+            "archived": false,
+            "labels_digest": "f9fd497e763e6d09ab92fcb4e06a80ada69ab06b9ea141e2e5549ca7f681e1c8",
+            "visibility": "public"
+          },
+          "reason": "Reconcile the canonical shared label definition; preserve all unmanaged definitions and assignments.",
+          "repository": "AI-Ascension/.github",
+          "repository_id": "1354466045",
+          "required_permission": "issues:write",
+          "sequence": 10
+        }
+      ],
+      "repository": "AI-Ascension/.github",
+      "repository_id": "1354466045",
+      "visibility": "public"
+    }
+  ]
+}

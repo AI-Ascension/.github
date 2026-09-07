@@ -1,0 +1,1613 @@
+# Proposed label migration input for the public seed inventory.
+# Generated from the completed 2026-09-07 read-only snapshot. No API write is authorized.
+schema_version: 1
+organization: AI-Ascension
+observed_at: "2026-09-07"
+review_status: proposed
+source_snapshot:
+  artifact: resume-live.json
+  observed_at: "2026-09-07"
+  mode: completed read-only GitHub API refresh
+  publication: private audit input; this file contains only public-seed metadata
+scope:
+  seed_count: 12
+  applicability: public-seed-only
+  excluded:
+    count: 1
+    visibility: private
+    status: pending-explicit-applicability
+    note: Newly discovered private inventory is held out until an owner decides whether this task applies.
+  repositories:
+    - repository: "AI-Ascension/.github"
+      repository_id: 1354466045
+      visibility: public
+      archived: false
+      default_branch: "main"
+      default_commit: "d8fb867dede3ec1cde424d7f6f6f56e49dc21227"
+      source_labels_present: ["defect", "docs", "wedge:player", "wedge:rust", "wedge:mcp", "wedge:security"]
+      source_labels_absent: []
+    - repository: "AI-Ascension/AI-Ascension.github.io"
+      repository_id: 1354473981
+      visibility: public
+      archived: false
+      default_branch: "main"
+      default_commit: "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f"
+      source_labels_present: ["defect", "docs", "wedge:player", "wedge:rust", "wedge:mcp", "wedge:security"]
+      source_labels_absent: []
+    - repository: "AI-Ascension/aiascension.tech"
+      repository_id: 1209899690
+      visibility: public
+      archived: false
+      default_branch: "codex/wire-mailing-list-email"
+      default_commit: "4e2d99c95d89ce3d18981d331faad10c9f1f7376"
+      source_labels_present: []
+      source_labels_absent: ["defect", "docs", "wedge:player", "wedge:rust", "wedge:mcp", "wedge:security"]
+    - repository: "AI-Ascension/sts2-harness"
+      repository_id: 1354378100
+      visibility: public
+      archived: false
+      default_branch: "main"
+      default_commit: "cb17b6c15262ce9356f1e85fd475af997aedc445"
+      source_labels_present: ["defect", "docs", "wedge:player", "wedge:rust", "wedge:mcp", "wedge:security"]
+      source_labels_absent: []
+    - repository: "AI-Ascension/sts2-mcp-server"
+      repository_id: 1354378057
+      visibility: public
+      archived: false
+      default_branch: "main"
+      default_commit: "eb89ab251665f263c2fe3e6b735eeae3d3e40c83"
+      source_labels_present: ["defect", "docs", "wedge:player", "wedge:rust", "wedge:mcp", "wedge:security"]
+      source_labels_absent: []
+    - repository: "AI-Ascension/sts2-gateway"
+      repository_id: 1354378018
+      visibility: public
+      archived: false
+      default_branch: "main"
+      default_commit: "33ea48f3b549f08e19db80d8c68c1438fa12a60a"
+      source_labels_present: ["defect", "docs", "wedge:player", "wedge:rust", "wedge:mcp", "wedge:security"]
+      source_labels_absent: []
+    - repository: "AI-Ascension/sts2-game-mod"
+      repository_id: 1354377975
+      visibility: public
+      archived: false
+      default_branch: "main"
+      default_commit: "8b71150895ea95c0625afc1389bb08e4034d9350"
+      source_labels_present: ["defect", "docs", "wedge:player", "wedge:rust", "wedge:mcp", "wedge:security"]
+      source_labels_absent: []
+    - repository: "AI-Ascension/sts2-game-core"
+      repository_id: 1354377929
+      visibility: public
+      archived: false
+      default_branch: "main"
+      default_commit: "87e0f3d9355c0827e989d9fbc31804440852519b"
+      source_labels_present: ["defect", "docs", "wedge:player", "wedge:rust", "wedge:mcp", "wedge:security"]
+      source_labels_absent: []
+    - repository: "AI-Ascension/sts2-protocol"
+      repository_id: 1354378136
+      visibility: public
+      archived: false
+      default_branch: "main"
+      default_commit: "8874b0951289fd943c7e14dea36557fa24c401d1"
+      source_labels_present: ["defect", "docs", "wedge:player", "wedge:rust", "wedge:mcp", "wedge:security"]
+      source_labels_absent: []
+    - repository: "AI-Ascension/ascension-watchdog"
+      repository_id: 1359537708
+      visibility: public
+      archived: false
+      default_branch: "bootstrap"
+      default_commit: "dc2d20badb9e86c12067316b92d6c8289b2e6995"
+      source_labels_present: []
+      source_labels_absent: ["defect", "docs", "wedge:player", "wedge:rust", "wedge:mcp", "wedge:security"]
+    - repository: "AI-Ascension/ascension-map-visualizer"
+      repository_id: 1359701124
+      visibility: public
+      archived: false
+      default_branch: "bootstrap"
+      default_commit: "18915e5571829e582f460bf14b674cc2db39d9c5"
+      source_labels_present: []
+      source_labels_absent: ["defect", "docs", "wedge:player", "wedge:rust", "wedge:mcp", "wedge:security"]
+    - repository: "AI-Ascension/ai-agent-observability"
+      repository_id: 1357224960
+      visibility: public
+      archived: false
+      default_branch: "main"
+      default_commit: "b25880376d3a3334c77f58637267db93581c4c77"
+      source_labels_present: ["defect", "docs", "wedge:player", "wedge:rust", "wedge:mcp", "wedge:security"]
+      source_labels_absent: []
+strategy_legend:
+  additive: Both live names exist. Copy only source assignments to the existing destination, preserve both labels, and preserve every unrelated label.
+  rename: Destination name is absent. Rename the live source in place with its stable label ID and preserve all assignments.
+  source_absent: No migration operation. Do not invent assignments or treat an unqueried label as empty.
+consumer_activation:
+  current_forms:
+    - path: .github/ISSUE_TEMPLATE/defect.yml
+      label: bug
+      status: active-after-merge
+      note: The filename remains defect.yml so existing template URLs continue to resolve.
+  proposed_audience_consumers:
+    labels: ["audience:player", "audience:rust", "audience:mcp", "audience:security"]
+    status: inactive-until-provisioned
+    note: No template, workflow, filter, or site link may require an audience label before its destination repository has that label.
+  standard_triage:
+    good_first_issue: review individually; no assignment in this migration
+    help_wanted: no automatic assignment
+    priorities: no automatic assignment
+    status_overlays: no automatic assignment
+  assignment_policy: Add destination labels only for reviewed migration rows; preserve unmanaged labels and manual edits.
+issue_first_task_review:
+  repository: AI-Ascension/AI-Ascension.github.io
+  issues: [1, 2]
+  observed_label_set: ["first-task", "proof-recipe", "wedge:rust", "wedge:mcp"]
+  decision: no-good-first-issue-assignment
+  reason: Both issues are closed. Their bodies contain bounded goals, acceptance criteria, pinned source revisions, commands, prerequisites, and no model, credential, or game requirement, but the closed state makes a new contributor-triage assignment misleading.
+  mode: read-only review; no issue or pull-request assignment performed
+migrations:
+  - repository: "AI-Ascension/.github"
+    repository_id: 1354466045
+    observed_default_branch: "main"
+    observed_default_commit: "d8fb867dede3ec1cde424d7f6f6f56e49dc21227"
+    from: "defect"
+    to: "bug"
+    strategy: additive
+    source_present: true
+    destination_present: true
+    destination_preexisting: true
+    source_label_id: 12036436893
+    destination_label_id: 12036427925
+    stable_label_id: null
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "Live label definitions at the refreshed snapshot determine this strategy; the source population is preserved during the transition."
+    blast_radius: "No source assignments were observed; if later assignments exist, additive migration copies them while retaining source and unrelated labels."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354466045
+      source_label_id: 12036436893
+      destination_label_id: 12036427925
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/.github"
+    repository_id: 1354466045
+    observed_default_branch: "main"
+    observed_default_commit: "d8fb867dede3ec1cde424d7f6f6f56e49dc21227"
+    from: "docs"
+    to: "documentation"
+    strategy: additive
+    source_present: true
+    destination_present: true
+    destination_preexisting: true
+    source_label_id: 12036436967
+    destination_label_id: 12036427936
+    stable_label_id: null
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "Live label definitions at the refreshed snapshot determine this strategy; the source population is preserved during the transition."
+    blast_radius: "No source assignments were observed; if later assignments exist, additive migration copies them while retaining source and unrelated labels."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354466045
+      source_label_id: 12036436967
+      destination_label_id: 12036427936
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/.github"
+    repository_id: 1354466045
+    observed_default_branch: "main"
+    observed_default_commit: "d8fb867dede3ec1cde424d7f6f6f56e49dc21227"
+    from: "wedge:player"
+    to: "audience:player"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036437061
+    destination_label_id: null
+    stable_label_id: 12036437061
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354466045
+      source_label_id: 12036437061
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/.github"
+    repository_id: 1354466045
+    observed_default_branch: "main"
+    observed_default_commit: "d8fb867dede3ec1cde424d7f6f6f56e49dc21227"
+    from: "wedge:rust"
+    to: "audience:rust"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036437133
+    destination_label_id: null
+    stable_label_id: 12036437133
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354466045
+      source_label_id: 12036437133
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/.github"
+    repository_id: 1354466045
+    observed_default_branch: "main"
+    observed_default_commit: "d8fb867dede3ec1cde424d7f6f6f56e49dc21227"
+    from: "wedge:mcp"
+    to: "audience:mcp"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036437230
+    destination_label_id: null
+    stable_label_id: 12036437230
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354466045
+      source_label_id: 12036437230
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/.github"
+    repository_id: 1354466045
+    observed_default_branch: "main"
+    observed_default_commit: "d8fb867dede3ec1cde424d7f6f6f56e49dc21227"
+    from: "wedge:security"
+    to: "audience:security"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036437333
+    destination_label_id: null
+    stable_label_id: 12036437333
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354466045
+      source_label_id: 12036437333
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/AI-Ascension.github.io"
+    repository_id: 1354473981
+    observed_default_branch: "main"
+    observed_default_commit: "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f"
+    from: "defect"
+    to: "bug"
+    strategy: additive
+    source_present: true
+    destination_present: true
+    destination_preexisting: true
+    source_label_id: 12036515009
+    destination_label_id: 12036512458
+    stable_label_id: null
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "Live label definitions at the refreshed snapshot determine this strategy; the source population is preserved during the transition."
+    blast_radius: "No source assignments were observed; if later assignments exist, additive migration copies them while retaining source and unrelated labels."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354473981
+      source_label_id: 12036515009
+      destination_label_id: 12036512458
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/AI-Ascension.github.io"
+    repository_id: 1354473981
+    observed_default_branch: "main"
+    observed_default_commit: "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f"
+    from: "docs"
+    to: "documentation"
+    strategy: additive
+    source_present: true
+    destination_present: true
+    destination_preexisting: true
+    source_label_id: 12036515130
+    destination_label_id: 12036512467
+    stable_label_id: null
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "Live label definitions at the refreshed snapshot determine this strategy; the source population is preserved during the transition."
+    blast_radius: "No source assignments were observed; if later assignments exist, additive migration copies them while retaining source and unrelated labels."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354473981
+      source_label_id: 12036515130
+      destination_label_id: 12036512467
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/AI-Ascension.github.io"
+    repository_id: 1354473981
+    observed_default_branch: "main"
+    observed_default_commit: "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f"
+    from: "wedge:player"
+    to: "audience:player"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036515192
+    destination_label_id: null
+    stable_label_id: 12036515192
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354473981
+      source_label_id: 12036515192
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/AI-Ascension.github.io"
+    repository_id: 1354473981
+    observed_default_branch: "main"
+    observed_default_commit: "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f"
+    from: "wedge:rust"
+    to: "audience:rust"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036515252
+    destination_label_id: null
+    stable_label_id: 12036515252
+    assignment_counts:
+      total: 1
+      open: 0
+      closed: 1
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354473981
+      source_label_id: 12036515252
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/AI-Ascension.github.io"
+    repository_id: 1354473981
+    observed_default_branch: "main"
+    observed_default_commit: "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f"
+    from: "wedge:mcp"
+    to: "audience:mcp"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036515316
+    destination_label_id: null
+    stable_label_id: 12036515316
+    assignment_counts:
+      total: 1
+      open: 0
+      closed: 1
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354473981
+      source_label_id: 12036515316
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/AI-Ascension.github.io"
+    repository_id: 1354473981
+    observed_default_branch: "main"
+    observed_default_commit: "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f"
+    from: "wedge:security"
+    to: "audience:security"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036515386
+    destination_label_id: null
+    stable_label_id: 12036515386
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354473981
+      source_label_id: 12036515386
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-harness"
+    repository_id: 1354378100
+    observed_default_branch: "main"
+    observed_default_commit: "cb17b6c15262ce9356f1e85fd475af997aedc445"
+    from: "defect"
+    to: "bug"
+    strategy: additive
+    source_present: true
+    destination_present: true
+    destination_preexisting: true
+    source_label_id: 12036442895
+    destination_label_id: 12035542453
+    stable_label_id: null
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "Live label definitions at the refreshed snapshot determine this strategy; the source population is preserved during the transition."
+    blast_radius: "No source assignments were observed; if later assignments exist, additive migration copies them while retaining source and unrelated labels."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378100
+      source_label_id: 12036442895
+      destination_label_id: 12035542453
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-harness"
+    repository_id: 1354378100
+    observed_default_branch: "main"
+    observed_default_commit: "cb17b6c15262ce9356f1e85fd475af997aedc445"
+    from: "docs"
+    to: "documentation"
+    strategy: additive
+    source_present: true
+    destination_present: true
+    destination_preexisting: true
+    source_label_id: 12036443046
+    destination_label_id: 12035542467
+    stable_label_id: null
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "Live label definitions at the refreshed snapshot determine this strategy; the source population is preserved during the transition."
+    blast_radius: "No source assignments were observed; if later assignments exist, additive migration copies them while retaining source and unrelated labels."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378100
+      source_label_id: 12036443046
+      destination_label_id: 12035542467
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-harness"
+    repository_id: 1354378100
+    observed_default_branch: "main"
+    observed_default_commit: "cb17b6c15262ce9356f1e85fd475af997aedc445"
+    from: "wedge:player"
+    to: "audience:player"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036443168
+    destination_label_id: null
+    stable_label_id: 12036443168
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378100
+      source_label_id: 12036443168
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-harness"
+    repository_id: 1354378100
+    observed_default_branch: "main"
+    observed_default_commit: "cb17b6c15262ce9356f1e85fd475af997aedc445"
+    from: "wedge:rust"
+    to: "audience:rust"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036443344
+    destination_label_id: null
+    stable_label_id: 12036443344
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378100
+      source_label_id: 12036443344
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-harness"
+    repository_id: 1354378100
+    observed_default_branch: "main"
+    observed_default_commit: "cb17b6c15262ce9356f1e85fd475af997aedc445"
+    from: "wedge:mcp"
+    to: "audience:mcp"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036443436
+    destination_label_id: null
+    stable_label_id: 12036443436
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378100
+      source_label_id: 12036443436
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-harness"
+    repository_id: 1354378100
+    observed_default_branch: "main"
+    observed_default_commit: "cb17b6c15262ce9356f1e85fd475af997aedc445"
+    from: "wedge:security"
+    to: "audience:security"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036443562
+    destination_label_id: null
+    stable_label_id: 12036443562
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378100
+      source_label_id: 12036443562
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-mcp-server"
+    repository_id: 1354378057
+    observed_default_branch: "main"
+    observed_default_commit: "eb89ab251665f263c2fe3e6b735eeae3d3e40c83"
+    from: "defect"
+    to: "bug"
+    strategy: additive
+    source_present: true
+    destination_present: true
+    destination_preexisting: true
+    source_label_id: 12036441848
+    destination_label_id: 12035542022
+    stable_label_id: null
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "Live label definitions at the refreshed snapshot determine this strategy; the source population is preserved during the transition."
+    blast_radius: "No source assignments were observed; if later assignments exist, additive migration copies them while retaining source and unrelated labels."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378057
+      source_label_id: 12036441848
+      destination_label_id: 12035542022
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-mcp-server"
+    repository_id: 1354378057
+    observed_default_branch: "main"
+    observed_default_commit: "eb89ab251665f263c2fe3e6b735eeae3d3e40c83"
+    from: "docs"
+    to: "documentation"
+    strategy: additive
+    source_present: true
+    destination_present: true
+    destination_preexisting: true
+    source_label_id: 12036441930
+    destination_label_id: 12035542034
+    stable_label_id: null
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "Live label definitions at the refreshed snapshot determine this strategy; the source population is preserved during the transition."
+    blast_radius: "No source assignments were observed; if later assignments exist, additive migration copies them while retaining source and unrelated labels."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378057
+      source_label_id: 12036441930
+      destination_label_id: 12035542034
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-mcp-server"
+    repository_id: 1354378057
+    observed_default_branch: "main"
+    observed_default_commit: "eb89ab251665f263c2fe3e6b735eeae3d3e40c83"
+    from: "wedge:player"
+    to: "audience:player"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036441981
+    destination_label_id: null
+    stable_label_id: 12036441981
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378057
+      source_label_id: 12036441981
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-mcp-server"
+    repository_id: 1354378057
+    observed_default_branch: "main"
+    observed_default_commit: "eb89ab251665f263c2fe3e6b735eeae3d3e40c83"
+    from: "wedge:rust"
+    to: "audience:rust"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036442050
+    destination_label_id: null
+    stable_label_id: 12036442050
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378057
+      source_label_id: 12036442050
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-mcp-server"
+    repository_id: 1354378057
+    observed_default_branch: "main"
+    observed_default_commit: "eb89ab251665f263c2fe3e6b735eeae3d3e40c83"
+    from: "wedge:mcp"
+    to: "audience:mcp"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036442123
+    destination_label_id: null
+    stable_label_id: 12036442123
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378057
+      source_label_id: 12036442123
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-mcp-server"
+    repository_id: 1354378057
+    observed_default_branch: "main"
+    observed_default_commit: "eb89ab251665f263c2fe3e6b735eeae3d3e40c83"
+    from: "wedge:security"
+    to: "audience:security"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036442196
+    destination_label_id: null
+    stable_label_id: 12036442196
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378057
+      source_label_id: 12036442196
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-gateway"
+    repository_id: 1354378018
+    observed_default_branch: "main"
+    observed_default_commit: "33ea48f3b549f08e19db80d8c68c1438fa12a60a"
+    from: "defect"
+    to: "bug"
+    strategy: additive
+    source_present: true
+    destination_present: true
+    destination_preexisting: true
+    source_label_id: 12036440629
+    destination_label_id: 12035541614
+    stable_label_id: null
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "Live label definitions at the refreshed snapshot determine this strategy; the source population is preserved during the transition."
+    blast_radius: "No source assignments were observed; if later assignments exist, additive migration copies them while retaining source and unrelated labels."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378018
+      source_label_id: 12036440629
+      destination_label_id: 12035541614
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-gateway"
+    repository_id: 1354378018
+    observed_default_branch: "main"
+    observed_default_commit: "33ea48f3b549f08e19db80d8c68c1438fa12a60a"
+    from: "docs"
+    to: "documentation"
+    strategy: additive
+    source_present: true
+    destination_present: true
+    destination_preexisting: true
+    source_label_id: 12036440701
+    destination_label_id: 12035541626
+    stable_label_id: null
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "Live label definitions at the refreshed snapshot determine this strategy; the source population is preserved during the transition."
+    blast_radius: "No source assignments were observed; if later assignments exist, additive migration copies them while retaining source and unrelated labels."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378018
+      source_label_id: 12036440701
+      destination_label_id: 12035541626
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-gateway"
+    repository_id: 1354378018
+    observed_default_branch: "main"
+    observed_default_commit: "33ea48f3b549f08e19db80d8c68c1438fa12a60a"
+    from: "wedge:player"
+    to: "audience:player"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036440793
+    destination_label_id: null
+    stable_label_id: 12036440793
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378018
+      source_label_id: 12036440793
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-gateway"
+    repository_id: 1354378018
+    observed_default_branch: "main"
+    observed_default_commit: "33ea48f3b549f08e19db80d8c68c1438fa12a60a"
+    from: "wedge:rust"
+    to: "audience:rust"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036440856
+    destination_label_id: null
+    stable_label_id: 12036440856
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378018
+      source_label_id: 12036440856
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-gateway"
+    repository_id: 1354378018
+    observed_default_branch: "main"
+    observed_default_commit: "33ea48f3b549f08e19db80d8c68c1438fa12a60a"
+    from: "wedge:mcp"
+    to: "audience:mcp"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036440924
+    destination_label_id: null
+    stable_label_id: 12036440924
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378018
+      source_label_id: 12036440924
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-gateway"
+    repository_id: 1354378018
+    observed_default_branch: "main"
+    observed_default_commit: "33ea48f3b549f08e19db80d8c68c1438fa12a60a"
+    from: "wedge:security"
+    to: "audience:security"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036441015
+    destination_label_id: null
+    stable_label_id: 12036441015
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378018
+      source_label_id: 12036441015
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-game-mod"
+    repository_id: 1354377975
+    observed_default_branch: "main"
+    observed_default_commit: "8b71150895ea95c0625afc1389bb08e4034d9350"
+    from: "defect"
+    to: "bug"
+    strategy: additive
+    source_present: true
+    destination_present: true
+    destination_preexisting: true
+    source_label_id: 12036439379
+    destination_label_id: 12035541187
+    stable_label_id: null
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "Live label definitions at the refreshed snapshot determine this strategy; the source population is preserved during the transition."
+    blast_radius: "No source assignments were observed; if later assignments exist, additive migration copies them while retaining source and unrelated labels."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354377975
+      source_label_id: 12036439379
+      destination_label_id: 12035541187
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-game-mod"
+    repository_id: 1354377975
+    observed_default_branch: "main"
+    observed_default_commit: "8b71150895ea95c0625afc1389bb08e4034d9350"
+    from: "docs"
+    to: "documentation"
+    strategy: additive
+    source_present: true
+    destination_present: true
+    destination_preexisting: true
+    source_label_id: 12036439454
+    destination_label_id: 12035541202
+    stable_label_id: null
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "Live label definitions at the refreshed snapshot determine this strategy; the source population is preserved during the transition."
+    blast_radius: "No source assignments were observed; if later assignments exist, additive migration copies them while retaining source and unrelated labels."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354377975
+      source_label_id: 12036439454
+      destination_label_id: 12035541202
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-game-mod"
+    repository_id: 1354377975
+    observed_default_branch: "main"
+    observed_default_commit: "8b71150895ea95c0625afc1389bb08e4034d9350"
+    from: "wedge:player"
+    to: "audience:player"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036439553
+    destination_label_id: null
+    stable_label_id: 12036439553
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354377975
+      source_label_id: 12036439553
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-game-mod"
+    repository_id: 1354377975
+    observed_default_branch: "main"
+    observed_default_commit: "8b71150895ea95c0625afc1389bb08e4034d9350"
+    from: "wedge:rust"
+    to: "audience:rust"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036439662
+    destination_label_id: null
+    stable_label_id: 12036439662
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354377975
+      source_label_id: 12036439662
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-game-mod"
+    repository_id: 1354377975
+    observed_default_branch: "main"
+    observed_default_commit: "8b71150895ea95c0625afc1389bb08e4034d9350"
+    from: "wedge:mcp"
+    to: "audience:mcp"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036439735
+    destination_label_id: null
+    stable_label_id: 12036439735
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354377975
+      source_label_id: 12036439735
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-game-mod"
+    repository_id: 1354377975
+    observed_default_branch: "main"
+    observed_default_commit: "8b71150895ea95c0625afc1389bb08e4034d9350"
+    from: "wedge:security"
+    to: "audience:security"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036439817
+    destination_label_id: null
+    stable_label_id: 12036439817
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354377975
+      source_label_id: 12036439817
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-game-core"
+    repository_id: 1354377929
+    observed_default_branch: "main"
+    observed_default_commit: "87e0f3d9355c0827e989d9fbc31804440852519b"
+    from: "defect"
+    to: "bug"
+    strategy: additive
+    source_present: true
+    destination_present: true
+    destination_preexisting: true
+    source_label_id: 12036438035
+    destination_label_id: 12035540769
+    stable_label_id: null
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "Live label definitions at the refreshed snapshot determine this strategy; the source population is preserved during the transition."
+    blast_radius: "No source assignments were observed; if later assignments exist, additive migration copies them while retaining source and unrelated labels."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354377929
+      source_label_id: 12036438035
+      destination_label_id: 12035540769
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-game-core"
+    repository_id: 1354377929
+    observed_default_branch: "main"
+    observed_default_commit: "87e0f3d9355c0827e989d9fbc31804440852519b"
+    from: "docs"
+    to: "documentation"
+    strategy: additive
+    source_present: true
+    destination_present: true
+    destination_preexisting: true
+    source_label_id: 12036438108
+    destination_label_id: 12035540774
+    stable_label_id: null
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "Live label definitions at the refreshed snapshot determine this strategy; the source population is preserved during the transition."
+    blast_radius: "No source assignments were observed; if later assignments exist, additive migration copies them while retaining source and unrelated labels."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354377929
+      source_label_id: 12036438108
+      destination_label_id: 12035540774
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-game-core"
+    repository_id: 1354377929
+    observed_default_branch: "main"
+    observed_default_commit: "87e0f3d9355c0827e989d9fbc31804440852519b"
+    from: "wedge:player"
+    to: "audience:player"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036438202
+    destination_label_id: null
+    stable_label_id: 12036438202
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354377929
+      source_label_id: 12036438202
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-game-core"
+    repository_id: 1354377929
+    observed_default_branch: "main"
+    observed_default_commit: "87e0f3d9355c0827e989d9fbc31804440852519b"
+    from: "wedge:rust"
+    to: "audience:rust"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036438289
+    destination_label_id: null
+    stable_label_id: 12036438289
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354377929
+      source_label_id: 12036438289
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-game-core"
+    repository_id: 1354377929
+    observed_default_branch: "main"
+    observed_default_commit: "87e0f3d9355c0827e989d9fbc31804440852519b"
+    from: "wedge:mcp"
+    to: "audience:mcp"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036438378
+    destination_label_id: null
+    stable_label_id: 12036438378
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354377929
+      source_label_id: 12036438378
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-game-core"
+    repository_id: 1354377929
+    observed_default_branch: "main"
+    observed_default_commit: "87e0f3d9355c0827e989d9fbc31804440852519b"
+    from: "wedge:security"
+    to: "audience:security"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036438459
+    destination_label_id: null
+    stable_label_id: 12036438459
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354377929
+      source_label_id: 12036438459
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-protocol"
+    repository_id: 1354378136
+    observed_default_branch: "main"
+    observed_default_commit: "8874b0951289fd943c7e14dea36557fa24c401d1"
+    from: "defect"
+    to: "bug"
+    strategy: additive
+    source_present: true
+    destination_present: true
+    destination_preexisting: true
+    source_label_id: 12036444544
+    destination_label_id: 12035542912
+    stable_label_id: null
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "Live label definitions at the refreshed snapshot determine this strategy; the source population is preserved during the transition."
+    blast_radius: "No source assignments were observed; if later assignments exist, additive migration copies them while retaining source and unrelated labels."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378136
+      source_label_id: 12036444544
+      destination_label_id: 12035542912
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-protocol"
+    repository_id: 1354378136
+    observed_default_branch: "main"
+    observed_default_commit: "8874b0951289fd943c7e14dea36557fa24c401d1"
+    from: "docs"
+    to: "documentation"
+    strategy: additive
+    source_present: true
+    destination_present: true
+    destination_preexisting: true
+    source_label_id: 12036444686
+    destination_label_id: 12035542926
+    stable_label_id: null
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "Live label definitions at the refreshed snapshot determine this strategy; the source population is preserved during the transition."
+    blast_radius: "No source assignments were observed; if later assignments exist, additive migration copies them while retaining source and unrelated labels."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378136
+      source_label_id: 12036444686
+      destination_label_id: 12035542926
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-protocol"
+    repository_id: 1354378136
+    observed_default_branch: "main"
+    observed_default_commit: "8874b0951289fd943c7e14dea36557fa24c401d1"
+    from: "wedge:player"
+    to: "audience:player"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036444806
+    destination_label_id: null
+    stable_label_id: 12036444806
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378136
+      source_label_id: 12036444806
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-protocol"
+    repository_id: 1354378136
+    observed_default_branch: "main"
+    observed_default_commit: "8874b0951289fd943c7e14dea36557fa24c401d1"
+    from: "wedge:rust"
+    to: "audience:rust"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036444923
+    destination_label_id: null
+    stable_label_id: 12036444923
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378136
+      source_label_id: 12036444923
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-protocol"
+    repository_id: 1354378136
+    observed_default_branch: "main"
+    observed_default_commit: "8874b0951289fd943c7e14dea36557fa24c401d1"
+    from: "wedge:mcp"
+    to: "audience:mcp"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036445049
+    destination_label_id: null
+    stable_label_id: 12036445049
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378136
+      source_label_id: 12036445049
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/sts2-protocol"
+    repository_id: 1354378136
+    observed_default_branch: "main"
+    observed_default_commit: "8874b0951289fd943c7e14dea36557fa24c401d1"
+    from: "wedge:security"
+    to: "audience:security"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12036445204
+    destination_label_id: null
+    stable_label_id: 12036445204
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1354378136
+      source_label_id: 12036445204
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/ai-agent-observability"
+    repository_id: 1357224960
+    observed_default_branch: "main"
+    observed_default_commit: "b25880376d3a3334c77f58637267db93581c4c77"
+    from: "defect"
+    to: "bug"
+    strategy: additive
+    source_present: true
+    destination_present: true
+    destination_preexisting: true
+    source_label_id: 12074363572
+    destination_label_id: 12064223046
+    stable_label_id: null
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "Live label definitions at the refreshed snapshot determine this strategy; the source population is preserved during the transition."
+    blast_radius: "No source assignments were observed; if later assignments exist, additive migration copies them while retaining source and unrelated labels."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1357224960
+      source_label_id: 12074363572
+      destination_label_id: 12064223046
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/ai-agent-observability"
+    repository_id: 1357224960
+    observed_default_branch: "main"
+    observed_default_commit: "b25880376d3a3334c77f58637267db93581c4c77"
+    from: "docs"
+    to: "documentation"
+    strategy: additive
+    source_present: true
+    destination_present: true
+    destination_preexisting: true
+    source_label_id: 12074363622
+    destination_label_id: 12064223062
+    stable_label_id: null
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "Live label definitions at the refreshed snapshot determine this strategy; the source population is preserved during the transition."
+    blast_radius: "No source assignments were observed; if later assignments exist, additive migration copies them while retaining source and unrelated labels."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1357224960
+      source_label_id: 12074363622
+      destination_label_id: 12064223062
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/ai-agent-observability"
+    repository_id: 1357224960
+    observed_default_branch: "main"
+    observed_default_commit: "b25880376d3a3334c77f58637267db93581c4c77"
+    from: "wedge:player"
+    to: "audience:player"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12074363666
+    destination_label_id: null
+    stable_label_id: 12074363666
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1357224960
+      source_label_id: 12074363666
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/ai-agent-observability"
+    repository_id: 1357224960
+    observed_default_branch: "main"
+    observed_default_commit: "b25880376d3a3334c77f58637267db93581c4c77"
+    from: "wedge:rust"
+    to: "audience:rust"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12074363702
+    destination_label_id: null
+    stable_label_id: 12074363702
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1357224960
+      source_label_id: 12074363702
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/ai-agent-observability"
+    repository_id: 1357224960
+    observed_default_branch: "main"
+    observed_default_commit: "b25880376d3a3334c77f58637267db93581c4c77"
+    from: "wedge:mcp"
+    to: "audience:mcp"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12074363763
+    destination_label_id: null
+    stable_label_id: 12074363763
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1357224960
+      source_label_id: 12074363763
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+  - repository: "AI-Ascension/ai-agent-observability"
+    repository_id: 1357224960
+    observed_default_branch: "main"
+    observed_default_commit: "b25880376d3a3334c77f58637267db93581c4c77"
+    from: "wedge:security"
+    to: "audience:security"
+    strategy: rename
+    source_present: true
+    destination_present: false
+    destination_preexisting: false
+    source_label_id: 12074363830
+    destination_label_id: null
+    stable_label_id: 12074363830
+    assignment_counts:
+      total: 0
+      open: 0
+      closed: 0
+      inventory: issues-and-pull-requests
+    reason: "The destination name is absent at the refreshed snapshot, so preserve the source label identity and assignments with an in-place rename."
+    blast_radius: "A definition rename affects every assignment of this stable label ID; observed assignments are renamed in place and no labels are deleted."
+    evidence:
+      source: completed-read-only-snapshot
+      snapshot_date: "2026-09-07"
+      repository_id: 1357224960
+      source_label_id: 12074363830
+      destination_label_id: null
+    apply_status: proposed-pending-explicit-owner-authorization
+counts:
+  migration_rows: 54
+  additive_collision_rows: 18
+  stable_id_rename_rows: 36
+  source_absent_repository_count: 3
+  source_absent_pair_count: 18
+  observed_source_assignments_to_migrate: 2
+  observed_open_source_assignments: 0
+  observed_closed_source_assignments: 2
+  remote_writes_performed: 0
+  note: Counts are from the complete refreshed issue and pull-request inventory; a zero count means none was observed, not that future assignments cannot exist.

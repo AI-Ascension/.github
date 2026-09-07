@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-ascension.github.io/.github/metadata/schema/snapshot.schema.json",
+  "title": "GitHub organization metadata snapshot",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "repositories"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "organization": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "repositories": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/repository"
+      }
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "repository": {
+      "type": "object",
+      "required": [
+        "id",
+        "full_name",
+        "name",
+        "default_branch",
+        "default_commit",
+        "visibility",
+        "archived",
+        "topics",
+        "labels",
+        "issues"
+      ],
+      "properties": {
+        "id": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "string",
+              "minLength": 1
+            }
+          ]
+        },
+        "full_name": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "default_branch": {
+          "type": "string",
+          "minLength": 1
+        },
+        "visibility": {
+          "type": "string",
+          "minLength": 1
+        },
+        "archived": {
+          "type": "boolean"
+        },
+        "default_commit": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-fA-F]{40}$"
+            },
+            {
+              "type": "object",
+              "required": [
+                "sha"
+              ],
+              "properties": {
+                "sha": {
+                  "type": "string",
+                  "pattern": "^[0-9a-fA-F]{40}$"
+                }
+              },
+              "additionalProperties": true
+            }
+          ]
+        },
+        "topics": {
+          "oneOf": [
+            {
+              "type": "array",
+              "maxItems": 20
+            },
+            {
+              "type": "object",
+              "required": [
+                "names"
+              ],
+              "properties": {
+                "names": {
+                  "type": "array",
+                  "maxItems": 20
+                }
+              }
+            }
+          ]
+        },
+        "labels": {
+          "type": "array"
+        },
+        "issues": {
+          "type": "array"
+        },
+        "label_usage": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

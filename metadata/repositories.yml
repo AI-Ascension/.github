@@ -1,0 +1,1443 @@
+{
+  "schema_version": 1,
+  "organization": "AI-Ascension",
+  "brand_topic": "ai-ascension",
+  "review_status": "blocked",
+  "blockers": [
+    "Independent source review of the reconciled public topic map remains outstanding."
+  ],
+  "authorization_state": "not-recorded",
+  "observed_at": "2026-09-07",
+  "ownership": "AI-Ascension/.github CODEOWNERS; maintainer review required",
+  "scope_note": "Reconciled public seed topic sets against pinned default-branch source. This candidate contains 12 public repositories only; it is blocked pending independent source review. Authorization is tracked separately and is not recorded.",
+  "historical_evidence": "metadata/history/2026-09-02-description-map.md",
+  "shared_labels": "labels.yml",
+  "repositories": [
+    {
+      "id": 1354466045,
+      "full_name": "AI-Ascension/.github",
+      "default_branch": "main",
+      "default_commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+      "visibility": "public",
+      "archived": false,
+      "kind": "coordination",
+      "topics": [
+        {
+          "name": "ai-ascension",
+          "meaning": "Membership in the AI-Ascension organization and its shared project identity.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/.github",
+            "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+            "path": "README.md",
+            "line": 1,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "community-health",
+          "meaning": "Shared contribution, conduct, security, and issue-form standards.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/.github",
+            "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+            "path": "CONTRIBUTING.md",
+            "line": 1,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "contributing",
+          "meaning": "Organization-wide contribution rules and bounded first tasks.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/.github",
+            "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+            "path": "CONTRIBUTING.md",
+            "line": 1,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "governance",
+          "meaning": "Organization authority, roles, evidence promotion, and decision rules.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/.github",
+            "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+            "path": "GOVERNANCE.md",
+            "line": 1,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "github-organization",
+          "meaning": "Default community-health and profile metadata for the GitHub organization.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/.github",
+            "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+            "path": "README.md",
+            "line": 5,
+            "classification": "source-derived"
+          }
+        }
+      ],
+      "topic_removals": [],
+      "name": ".github",
+      "managed": true,
+      "applicability_reason": "Public repository in supplied tagging seed; preparation only, external writes require scoped authorization."
+    },
+    {
+      "id": 1357224960,
+      "full_name": "AI-Ascension/ai-agent-observability",
+      "default_branch": "main",
+      "default_commit": "b25880376d3a3334c77f58637267db93581c4c77",
+      "visibility": "public",
+      "archived": false,
+      "kind": "implementation",
+      "topics": [
+        {
+          "name": "ai-ascension",
+          "meaning": "Membership in the AI-Ascension organization and its shared project identity.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add the required common brand topic from the supplied public seed, supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/ai-agent-observability",
+            "commit": "b25880376d3a3334c77f58637267db93581c4c77",
+            "path": "README.md",
+            "line": 3,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "ai-agents",
+          "meaning": "Deployment and integration services for AI-agent execution records.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/ai-agent-observability",
+            "commit": "b25880376d3a3334c77f58637267db93581c4c77",
+            "path": "README.md",
+            "line": 3,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "observability",
+          "meaning": "Self-hosted telemetry, trace, and execution visibility services.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/ai-agent-observability",
+            "commit": "b25880376d3a3334c77f58637267db93581c4c77",
+            "path": "README.md",
+            "line": 3,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "llm-observability",
+          "meaning": "Observability for AI-agent and language-model execution.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/ai-agent-observability",
+            "commit": "b25880376d3a3334c77f58637267db93581c4c77",
+            "path": "README.md",
+            "line": 3,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "opentelemetry",
+          "meaning": "OpenTelemetry Collector ingestion at the telemetry boundary.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/ai-agent-observability",
+            "commit": "b25880376d3a3334c77f58637267db93581c4c77",
+            "path": "README.md",
+            "line": 10,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "experiment-tracking",
+          "meaning": "Runs, episodes, trajectories, evaluations, and artifact lineage for experiments.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/ai-agent-observability",
+            "commit": "b25880376d3a3334c77f58637267db93581c4c77",
+            "path": "README.md",
+            "line": 8,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "mlflow",
+          "meaning": "MLflow experiment, run, parameter, metric, and artifact tracking service.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/ai-agent-observability",
+            "commit": "b25880376d3a3334c77f58637267db93581c4c77",
+            "path": "README.md",
+            "line": 8,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "laminar",
+          "meaning": "Laminar trace-native agent execution, evaluation, and debugging service.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/ai-agent-observability",
+            "commit": "b25880376d3a3334c77f58637267db93581c4c77",
+            "path": "README.md",
+            "line": 9,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "self-hosted",
+          "meaning": "Operator-managed deployment intended for private or local infrastructure.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/ai-agent-observability",
+            "commit": "b25880376d3a3334c77f58637267db93581c4c77",
+            "path": "README.md",
+            "line": 3,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "docker-compose",
+          "meaning": "Docker Compose deployment topology for the observability stack.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/ai-agent-observability",
+            "commit": "b25880376d3a3334c77f58637267db93581c4c77",
+            "path": "README.md",
+            "line": 5,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "podman",
+          "meaning": "Rootful Podman deployment support for the observability stack.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/ai-agent-observability",
+            "commit": "b25880376d3a3334c77f58637267db93581c4c77",
+            "path": "README.md",
+            "line": 6,
+            "classification": "source-derived"
+          }
+        }
+      ],
+      "topic_removals": [],
+      "name": "ai-agent-observability",
+      "managed": true,
+      "applicability_reason": "Public repository in supplied tagging seed; preparation only, external writes require scoped authorization."
+    },
+    {
+      "id": 1354473981,
+      "full_name": "AI-Ascension/AI-Ascension.github.io",
+      "default_branch": "main",
+      "default_commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+      "visibility": "public",
+      "archived": false,
+      "kind": "site",
+      "topics": [
+        {
+          "name": "ai-ascension",
+          "meaning": "Membership in the AI-Ascension organization and its shared project identity.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/AI-Ascension.github.io",
+            "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+            "path": "README.md",
+            "line": 1,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "slay-the-spire-2",
+          "meaning": "Source or planning material for the Slay the Spire 2 project boundary.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/AI-Ascension.github.io",
+            "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+            "path": "README.md",
+            "line": 22,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "documentation",
+          "meaning": "Hand-authored public documentation and evidence pages.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/AI-Ascension.github.io",
+            "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+            "path": "README.md",
+            "line": 3,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "github-pages",
+          "meaning": "Repository-authored GitHub Pages publishing workflow; no fresh deployment claim.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/AI-Ascension.github.io",
+            "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+            "path": ".github/workflows/pages.yml",
+            "line": 1,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "static-site",
+          "meaning": "Static public evidence-site source.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/AI-Ascension.github.io",
+            "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+            "path": "README.md",
+            "line": 15,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "javascript",
+          "meaning": "Vanilla JavaScript used by the hand-authored static site.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/AI-Ascension.github.io",
+            "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+            "path": "README.md",
+            "line": 15,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "reproducible-research",
+          "meaning": "Versioned research specifications, generated packages, and reproducible records.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/AI-Ascension.github.io",
+            "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+            "path": "README.md",
+          "line": 45,
+            "classification": "source-derived"
+          }
+        }
+      ],
+      "topic_removals": [],
+      "name": "AI-Ascension.github.io",
+      "managed": true,
+      "applicability_reason": "Public repository in supplied tagging seed; preparation only, external writes require scoped authorization."
+    },
+    {
+      "id": 1209899690,
+      "full_name": "AI-Ascension/aiascension.tech",
+      "default_branch": "codex/wire-mailing-list-email",
+      "default_commit": "4e2d99c95d89ce3d18981d331faad10c9f1f7376",
+      "visibility": "public",
+      "archived": false,
+      "kind": "site",
+      "topics": [
+        {
+          "name": "ai-ascension",
+          "meaning": "Membership in the AI-Ascension organization and its shared project identity.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add the required common brand topic from the supplied public seed, supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/aiascension.tech",
+            "commit": "4e2d99c95d89ce3d18981d331faad10c9f1f7376",
+            "path": "README.md",
+            "line": 1,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "slay-the-spire-2",
+          "meaning": "Source or planning material for the Slay the Spire 2 project boundary.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/aiascension.tech",
+            "commit": "4e2d99c95d89ce3d18981d331faad10c9f1f7376",
+            "path": "README.md",
+            "line": 3,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "website",
+          "meaning": "Public event website serving the race hub and participant information.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/aiascension.tech",
+            "commit": "4e2d99c95d89ce3d18981d331faad10c9f1f7376",
+            "path": "README.md",
+            "line": 3,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "php",
+          "meaning": "PHP backend subscription endpoint and shared-hosting integration.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/aiascension.tech",
+            "commit": "4e2d99c95d89ce3d18981d331faad10c9f1f7376",
+            "path": "README.md",
+            "line": 27,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "javascript",
+          "meaning": "Vanilla JavaScript used by the hand-authored static site.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/aiascension.tech",
+            "commit": "4e2d99c95d89ce3d18981d331faad10c9f1f7376",
+            "path": "README.md",
+            "line": 26,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "mailing-list",
+          "meaning": "Mailing-list subscription endpoint and launch-update signup flow.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/aiascension.tech",
+            "commit": "4e2d99c95d89ce3d18981d331faad10c9f1f7376",
+            "path": "README.md",
+            "line": 7,
+            "classification": "source-derived"
+          }
+        }
+      ],
+      "topic_removals": [],
+      "name": "aiascension.tech",
+      "managed": true,
+      "applicability_reason": "Public repository in supplied tagging seed; preparation only, external writes require scoped authorization."
+    },
+    {
+      "id": 1359701124,
+      "full_name": "AI-Ascension/ascension-map-visualizer",
+      "default_branch": "bootstrap",
+      "default_commit": "18915e5571829e582f460bf14b674cc2db39d9c5",
+      "visibility": "public",
+      "archived": false,
+      "kind": "planning",
+      "topics": [
+        {
+          "name": "ai-ascension",
+          "meaning": "Membership in the AI-Ascension organization and its shared project identity.",
+          "subject": "planned",
+          "change": "add",
+          "reason": "Add planned topic because the pinned bootstrap/default branch documents the capability without accepted implementation source.",
+          "evidence": {
+            "repository": "AI-Ascension/ascension-map-visualizer",
+            "commit": "18915e5571829e582f460bf14b674cc2db39d9c5",
+            "path": "prompts/ASCENSION_MAP_VISUALIZER_ORCHESTRATION_PROMPT.md",
+            "line": 5,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "slay-the-spire-2",
+          "meaning": "Source or planning material for the Slay the Spire 2 project boundary.",
+          "subject": "planned",
+          "change": "add",
+          "reason": "Add planned topic because the pinned bootstrap/default branch documents the capability without accepted implementation source.",
+          "evidence": {
+            "repository": "AI-Ascension/ascension-map-visualizer",
+            "commit": "18915e5571829e582f460bf14b674cc2db39d9c5",
+            "path": "prompts/ASCENSION_MAP_VISUALIZER_ORCHESTRATION_PROMPT.md",
+            "line": 7,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "map-visualization",
+          "meaning": "Planned whole-map graph viewer and deterministic map image output.",
+          "subject": "planned",
+          "change": "add",
+          "reason": "Add planned topic because the pinned bootstrap/default branch documents the capability without accepted implementation source.",
+          "evidence": {
+            "repository": "AI-Ascension/ascension-map-visualizer",
+            "commit": "18915e5571829e582f460bf14b674cc2db39d9c5",
+            "path": "prompts/ASCENSION_MAP_VISUALIZER_ORCHESTRATION_PROMPT.md",
+            "line": 7,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "specification",
+          "meaning": "Accepted or planned versioned contract and consumer requirements.",
+          "subject": "planned",
+          "change": "add",
+          "reason": "Add planned topic because the pinned bootstrap/default branch documents the capability without accepted implementation source.",
+          "evidence": {
+            "repository": "AI-Ascension/ascension-map-visualizer",
+            "commit": "18915e5571829e582f460bf14b674cc2db39d9c5",
+            "path": "prompts/ASCENSION_MAP_VISUALIZER_ORCHESTRATION_PROMPT.md",
+            "line": 162,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "project-planning",
+          "meaning": "The default branch contains a planning or implementation-assignment package; it does not establish shipped implementation.",
+          "subject": "planned",
+          "change": "add",
+          "reason": "Add planned topic because the pinned bootstrap/default branch documents the capability without accepted implementation source.",
+          "evidence": {
+            "repository": "AI-Ascension/ascension-map-visualizer",
+            "commit": "18915e5571829e582f460bf14b674cc2db39d9c5",
+            "path": "AGENTS.md",
+            "line": 3,
+            "classification": "source-derived"
+          }
+        }
+      ],
+      "topic_removals": [],
+      "name": "ascension-map-visualizer",
+      "managed": true,
+      "applicability_reason": "Public repository in supplied tagging seed; preparation only, external writes require scoped authorization."
+    },
+    {
+      "id": 1359537708,
+      "full_name": "AI-Ascension/ascension-watchdog",
+      "default_branch": "bootstrap",
+      "default_commit": "dc2d20badb9e86c12067316b92d6c8289b2e6995",
+      "visibility": "public",
+      "archived": false,
+      "kind": "planning",
+      "topics": [
+        {
+          "name": "ai-ascension",
+          "meaning": "Membership in the AI-Ascension organization and its shared project identity.",
+          "subject": "planned",
+          "change": "add",
+          "reason": "Add planned topic because the pinned bootstrap/default branch documents the capability without accepted implementation source.",
+          "evidence": {
+            "repository": "AI-Ascension/ascension-watchdog",
+            "commit": "dc2d20badb9e86c12067316b92d6c8289b2e6995",
+            "path": "README.md",
+            "line": 3,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "watchdog",
+          "meaning": "Planned AI-Ascension deployment watchdog for gateway and harness processes.",
+          "subject": "planned",
+          "change": "add",
+          "reason": "Add planned topic because the pinned bootstrap/default branch documents the capability without accepted implementation source.",
+          "evidence": {
+            "repository": "AI-Ascension/ascension-watchdog",
+            "commit": "dc2d20badb9e86c12067316b92d6c8289b2e6995",
+            "path": "README.md",
+            "line": 3,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "process-supervision",
+          "meaning": "Planned supervision of gateway and harness executables.",
+          "subject": "planned",
+          "change": "add",
+          "reason": "Add planned topic because the pinned bootstrap/default branch documents the capability without accepted implementation source.",
+          "evidence": {
+            "repository": "AI-Ascension/ascension-watchdog",
+            "commit": "dc2d20badb9e86c12067316b92d6c8289b2e6995",
+            "path": "README.md",
+            "line": 9,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "crash-recovery",
+          "meaning": "Planned deterministic crash-recovery capability; live recovery is not claimed.",
+          "subject": "planned",
+          "change": "add",
+          "reason": "Add planned topic because the pinned bootstrap/default branch documents the capability without accepted implementation source.",
+          "evidence": {
+            "repository": "AI-Ascension/ascension-watchdog",
+            "commit": "dc2d20badb9e86c12067316b92d6c8289b2e6995",
+            "path": "README.md",
+            "line": 3,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "project-planning",
+          "meaning": "The default branch contains a planning or implementation-assignment package; it does not establish shipped implementation.",
+          "subject": "planned",
+          "change": "add",
+          "reason": "Add planned topic because the pinned bootstrap/default branch documents the capability without accepted implementation source.",
+          "evidence": {
+            "repository": "AI-Ascension/ascension-watchdog",
+            "commit": "dc2d20badb9e86c12067316b92d6c8289b2e6995",
+            "path": "README.md",
+            "line": 5,
+            "classification": "source-derived"
+          }
+        }
+      ],
+      "topic_removals": [],
+      "name": "ascension-watchdog",
+      "managed": true,
+      "applicability_reason": "Public repository in supplied tagging seed; preparation only, external writes require scoped authorization."
+    },
+    {
+      "id": 1354377929,
+      "full_name": "AI-Ascension/sts2-game-core",
+      "default_branch": "main",
+      "default_commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+      "visibility": "public",
+      "archived": false,
+      "kind": "implementation",
+      "topics": [
+        {
+          "name": "ai-ascension",
+          "meaning": "Membership in the AI-Ascension organization and its shared project identity.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-game-core",
+            "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+            "path": "README.md",
+            "line": 8,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "slay-the-spire-2",
+          "meaning": "Source or planning material for the Slay the Spire 2 project boundary.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-game-core",
+            "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+            "path": "README.md",
+            "line": 8,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "rust",
+          "meaning": "Repository contains implemented Rust code; does not assert live execution.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-game-core",
+            "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+            "path": "Cargo.toml",
+            "line": 1,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "game-state",
+          "meaning": "Typed host-independent game-state values and snapshots.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-game-core",
+            "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+            "path": "README.md",
+            "line": 8,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "game-logic",
+          "meaning": "Pure validation and policy rules for accepted domain actions.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-game-core",
+            "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+            "path": "README.md",
+            "line": 34,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "domain-model",
+          "meaning": "Host-independent typed domain state and action representations.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-game-core",
+            "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+            "path": "crates/core/src/state.rs",
+            "line": 43,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "validation",
+          "meaning": "Pure validation of actor, generation, lifecycle, and bounded action inputs.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-game-core",
+            "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+            "path": "crates/core/src/validation.rs",
+            "line": 5,
+            "classification": "source-derived"
+          }
+        }
+      ],
+      "topic_removals": [],
+      "name": "sts2-game-core",
+      "managed": true,
+      "applicability_reason": "Public repository in supplied tagging seed; preparation only, external writes require scoped authorization."
+    },
+    {
+      "id": 1354377975,
+      "full_name": "AI-Ascension/sts2-game-mod",
+      "default_branch": "main",
+      "default_commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+      "visibility": "public",
+      "archived": false,
+      "kind": "implementation",
+      "topics": [
+        {
+          "name": "ai-ascension",
+          "meaning": "Membership in the AI-Ascension organization and its shared project identity.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-game-mod",
+            "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+            "path": "README.md",
+            "line": 8,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "slay-the-spire-2",
+          "meaning": "Source or planning material for the Slay the Spire 2 project boundary.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-game-mod",
+            "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+            "path": "README.md",
+            "line": 8,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "modding",
+          "meaning": "Managed loader and game-facing mod integration source.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-game-mod",
+            "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+            "path": "README.md",
+            "line": 17,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "game-mod",
+          "meaning": "Game-facing adapter source; compatibility is limited to separately recorded evidence.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-game-mod",
+            "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+            "path": "README.md",
+            "line": 8,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "rust",
+          "meaning": "Repository contains implemented Rust code; does not assert live execution.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-game-mod",
+            "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+            "path": "Cargo.toml",
+            "line": 1,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "csharp",
+          "meaning": "Managed C# game-loader and gameplay boundary source.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-game-mod",
+            "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+            "path": "experiments/managed-rust-interop/gameplay-tests/RuntimeV3ValidationProbe.csproj",
+            "line": 1,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "dotnet",
+          "meaning": "Managed .NET 9 project used for the game-loader boundary tests.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-game-mod",
+            "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+            "path": "experiments/managed-rust-interop/gameplay-tests/RuntimeV3ValidationProbe.csproj",
+            "line": 4,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "ffi",
+          "meaning": "Versioned C ABI between the managed loader and its Rust companion.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-game-mod",
+            "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+            "path": "experiments/managed-rust-interop/README.md",
+            "line": 23,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "host-boundary",
+          "meaning": "Owner-local host/ABI integration boundary.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-game-mod",
+            "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+            "path": "crates/host/src/abi.rs",
+            "line": 3,
+            "classification": "source-derived"
+          }
+        }
+      ],
+      "topic_removals": [],
+      "name": "sts2-game-mod",
+      "managed": true,
+      "applicability_reason": "Public repository in supplied tagging seed; preparation only, external writes require scoped authorization."
+    },
+    {
+      "id": 1354378018,
+      "full_name": "AI-Ascension/sts2-gateway",
+      "default_branch": "main",
+      "default_commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+      "visibility": "public",
+      "archived": false,
+      "kind": "implementation",
+      "topics": [
+        {
+          "name": "ai-ascension",
+          "meaning": "Membership in the AI-Ascension organization and its shared project identity.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-gateway",
+            "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+            "path": "README.md",
+            "line": 8,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "slay-the-spire-2",
+          "meaning": "Source or planning material for the Slay the Spire 2 project boundary.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-gateway",
+            "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+            "path": "README.md",
+            "line": 8,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "rust",
+          "meaning": "Repository contains implemented Rust code; does not assert live execution.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-gateway",
+            "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+            "path": "Cargo.toml",
+            "line": 1,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "api-gateway",
+          "meaning": "Authenticated API adapter exposing fixed lifecycle, state, action, and release routes.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-gateway",
+            "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+            "path": "README.md",
+            "line": 102,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "control-plane",
+          "meaning": "Instance lifecycle, lease, and routing control-plane source.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-gateway",
+            "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+            "path": "README.md",
+            "line": 8,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "authentication",
+          "meaning": "Authenticated gateway boundary with identity and lease validation.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-gateway",
+            "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+            "path": "README.md",
+            "line": 27,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "request-routing",
+          "meaning": "Fixed forwarding policy and bounded per-instance request routing.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-gateway",
+            "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+            "path": "README.md",
+            "line": 27,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "lease-fencing",
+          "meaning": "Lease identities and epochs reject stale or mismatched authority.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-gateway",
+            "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+            "path": "crates/gateway/src/identity.rs",
+          "line": 64,
+            "classification": "source-derived"
+          }
+        }
+      ],
+      "topic_removals": [],
+      "name": "sts2-gateway",
+      "managed": true,
+      "applicability_reason": "Public repository in supplied tagging seed; preparation only, external writes require scoped authorization."
+    },
+    {
+      "id": 1354378100,
+      "full_name": "AI-Ascension/sts2-harness",
+      "default_branch": "main",
+      "default_commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+      "visibility": "public",
+      "archived": false,
+      "kind": "implementation",
+      "topics": [
+        {
+          "name": "ai-ascension",
+          "meaning": "Membership in the AI-Ascension organization and its shared project identity.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-harness",
+            "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+            "path": "README.md",
+            "line": 8,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "ai-agents",
+          "meaning": "Deployment and integration services for AI-agent execution records.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-harness",
+            "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+            "path": "README.md",
+            "line": 8,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "agent-harness",
+          "meaning": "Harness-owned coordinator, provider ports, records, and experiment lifecycle.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-harness",
+            "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+            "path": "README.md",
+            "line": 39,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "evaluation-harness",
+          "meaning": "Experiment coordination and evaluation source.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-harness",
+            "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+            "path": "README.md",
+            "line": 39,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "slay-the-spire-2",
+          "meaning": "Source or planning material for the Slay the Spire 2 project boundary.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-harness",
+            "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+            "path": "README.md",
+            "line": 20,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "rust",
+          "meaning": "Repository contains implemented Rust code; does not assert live execution.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-harness",
+            "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+            "path": "Cargo.toml",
+            "line": 1,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "replay",
+          "meaning": "Replay of recorded experiment data; not a claim of arbitrary live-game replay.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-harness",
+            "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+            "path": "README.md",
+            "line": 41,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "reproducible-research",
+          "meaning": "Versioned research specifications, generated packages, and reproducible records.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-harness",
+            "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+            "path": "README.md",
+            "line": 26,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "experiment-tracking",
+          "meaning": "Runs, episodes, trajectories, evaluations, and artifact lineage for experiments.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-harness",
+            "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+            "path": "README.md",
+            "line": 39,
+            "classification": "source-derived"
+          }
+        }
+      ],
+      "topic_removals": [],
+      "name": "sts2-harness",
+      "managed": true,
+      "applicability_reason": "Public repository in supplied tagging seed; preparation only, external writes require scoped authorization."
+    },
+    {
+      "id": 1354378057,
+      "full_name": "AI-Ascension/sts2-mcp-server",
+      "default_branch": "main",
+      "default_commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+      "visibility": "public",
+      "archived": false,
+      "kind": "implementation",
+      "topics": [
+        {
+          "name": "ai-ascension",
+          "meaning": "Membership in the AI-Ascension organization and its shared project identity.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-mcp-server",
+            "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+            "path": "README.md",
+            "line": 8,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "slay-the-spire-2",
+          "meaning": "Source or planning material for the Slay the Spire 2 project boundary.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-mcp-server",
+            "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+            "path": "README.md",
+            "line": 10,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "ai-agents",
+          "meaning": "Deployment and integration services for AI-agent execution records.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-mcp-server",
+            "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+            "path": "README.md",
+            "line": 27,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "mcp",
+          "meaning": "Implemented Model Context Protocol adapter source.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-mcp-server",
+            "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+            "path": "README.md",
+            "line": 8,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "mcp-server",
+          "meaning": "MCP server process boundary with framing, capabilities, and tool schemas.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-mcp-server",
+            "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+            "path": "README.md",
+            "line": 27,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "model-context-protocol",
+          "meaning": "Protocol framing and tool-call mapping to the gateway.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-mcp-server",
+            "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+            "path": "README.md",
+            "line": 27,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "rust",
+          "meaning": "Repository contains implemented Rust code; does not assert live execution.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-mcp-server",
+            "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+            "path": "Cargo.toml",
+            "line": 1,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "tool-calling",
+          "meaning": "Bounded MCP tools map approved calls to authenticated gateway requests.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-mcp-server",
+            "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+            "path": "README.md",
+            "line": 12,
+            "classification": "source-derived"
+          }
+        }
+      ],
+      "topic_removals": [],
+      "name": "sts2-mcp-server",
+      "managed": true,
+      "applicability_reason": "Public repository in supplied tagging seed; preparation only, external writes require scoped authorization."
+    },
+    {
+      "id": 1354378136,
+      "full_name": "AI-Ascension/sts2-protocol",
+      "default_branch": "main",
+      "default_commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+      "visibility": "public",
+      "archived": false,
+      "kind": "implementation",
+      "topics": [
+        {
+          "name": "ai-ascension",
+          "meaning": "Membership in the AI-Ascension organization and its shared project identity.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-protocol",
+            "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+            "path": "README.md",
+            "line": 8,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "slay-the-spire-2",
+          "meaning": "Source or planning material for the Slay the Spire 2 project boundary.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-protocol",
+            "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+            "path": "README.md",
+            "line": 8,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "json-schema",
+          "meaning": "Language-neutral JSON schemas define versioned protocol contract shapes.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-protocol",
+            "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+            "path": "schemas/poc-v1.schema.json",
+            "line": 2,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "protocol",
+          "meaning": "Neutral identity and versioned metadata contracts.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-protocol",
+            "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+            "path": "README.md",
+            "line": 8,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "specification",
+          "meaning": "Accepted or planned versioned contract and consumer requirements.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-protocol",
+            "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+            "path": "README.md",
+            "line": 31,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "conformance-testing",
+          "meaning": "Checked-in conformance cases and golden contract data.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-protocol",
+            "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+            "path": "conformance/cases/neutral-contract-seam.v1.json",
+          "line": 17,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "schema-validation",
+          "meaning": "Schema and golden checks validate protocol artifacts and reject malformed inputs.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Add seed topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-protocol",
+            "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+            "path": "README.md",
+            "line": 56,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "rust",
+          "meaning": "Repository contains implemented Rust code; does not assert live execution.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-protocol",
+            "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+            "path": "Cargo.toml",
+            "line": 1,
+            "classification": "source-derived"
+          }
+        },
+        {
+          "name": "conformance",
+          "meaning": "Checked-in conformance cases and golden contract data.",
+          "subject": "implementation",
+          "change": "retain",
+          "reason": "Retain valid existing topic supported by pinned default-branch source.",
+          "evidence": {
+            "repository": "AI-Ascension/sts2-protocol",
+            "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+            "path": "conformance/cases/neutral-contract-seam.v1.json",
+          "line": 17,
+            "classification": "source-derived"
+          }
+        }
+      ],
+      "topic_removals": [],
+      "name": "sts2-protocol",
+      "managed": true,
+      "applicability_reason": "Public repository in supplied tagging seed; preparation only, external writes require scoped authorization."
+    }
+  ]
+}

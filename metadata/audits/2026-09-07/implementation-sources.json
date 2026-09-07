@@ -1,0 +1,162 @@
+[
+  {
+    "repository": "AI-Ascension/AI-Ascension.github.io",
+    "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+    "path": "contributing.html",
+    "blob": "1117f145e9701798b4278aeca6a7d5e61abd5e16",
+    "content_sha256": "47ef1506c4fedbc0595245f25f6562d1cdf2c3ce9b9e27670df40b87adc2a16d",
+    "source_url": "https://github.com/AI-Ascension/AI-Ascension.github.io/blob/e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f/contributing.html"
+  },
+  {
+    "repository": "AI-Ascension/AI-Ascension.github.io",
+    "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+    "path": "evidence.html",
+    "blob": "96433dce652f0ab6a66babd48aa01059ff997d1f",
+    "content_sha256": "d703b3ac749867d049a1f942798ae74dfc41d479bb743c3f5f3a6c1933ccf0b0",
+    "source_url": "https://github.com/AI-Ascension/AI-Ascension.github.io/blob/e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f/evidence.html"
+  },
+  {
+    "repository": "AI-Ascension/AI-Ascension.github.io",
+    "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+    "path": "repositories.html",
+    "blob": "389615b398efd2bfb9ef90de90347b7a8683a159",
+    "content_sha256": "288aced642f1c7c9be5df7f7ae32ff495bc346822123f46ec14a0d7cd4ca3ebc",
+    "source_url": "https://github.com/AI-Ascension/AI-Ascension.github.io/blob/e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f/repositories.html"
+  },
+  {
+    "repository": "AI-Ascension/AI-Ascension.github.io",
+    "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+    "path": "tests/site.test.cjs",
+    "blob": "036a20094e90567e161416b43b5a8fcc9e5e1a50",
+    "content_sha256": "3165b0ac7306c9364447a1ac9a9857063fe98b540b4b558b85f004a1cda2d4c6",
+    "source_url": "https://github.com/AI-Ascension/AI-Ascension.github.io/blob/e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f/tests/site.test.cjs"
+  },
+  {
+    "repository": "AI-Ascension/aiascension.tech",
+    "commit": "4e2d99c95d89ce3d18981d331faad10c9f1f7376",
+    "path": "composer.json",
+    "blob": "dfe56b759ec56a8d532de6c7929c269288daf6fe",
+    "content_sha256": "4c20f996bb169f638c6eee61ed7014707aef91a7ed10bdea022dfda2d811ae64",
+    "source_url": "https://github.com/AI-Ascension/aiascension.tech/blob/4e2d99c95d89ce3d18981d331faad10c9f1f7376/composer.json"
+  },
+  {
+    "repository": "AI-Ascension/aiascension.tech",
+    "commit": "4e2d99c95d89ce3d18981d331faad10c9f1f7376",
+    "path": "api/subscribe.php",
+    "blob": "5f319710767bd3f8af051a264033b9ea99dd09b8",
+    "content_sha256": "e96a258a4fec72142b95714c55683f725275175ec2043e2698c36767785a806e",
+    "source_url": "https://github.com/AI-Ascension/aiascension.tech/blob/4e2d99c95d89ce3d18981d331faad10c9f1f7376/api/subscribe.php"
+  },
+  {
+    "repository": "AI-Ascension/ai-agent-observability",
+    "commit": "b25880376d3a3334c77f58637267db93581c4c77",
+    "path": "deploy/compose.yaml",
+    "blob": "3e2d8091b093e1a33412ca29f60cc4159ab71173",
+    "content_sha256": "c57aa44d65f4977b873720850623e9f0494728f0ef3ede8317a7f611ddc33ece",
+    "source_url": "https://github.com/AI-Ascension/ai-agent-observability/blob/b25880376d3a3334c77f58637267db93581c4c77/deploy/compose.yaml"
+  },
+  {
+    "repository": "AI-Ascension/ai-agent-observability",
+    "commit": "b25880376d3a3334c77f58637267db93581c4c77",
+    "path": "deploy/otel-collector.yaml",
+    "blob": "f47a7c40fcaa9841c2bbe51fee19a4cc83d00f24",
+    "content_sha256": "a88e4729efe02eca8ad56e5a3e0c3b87585c4ec92fa90f763f2d21eb7f7180e7",
+    "source_url": "https://github.com/AI-Ascension/ai-agent-observability/blob/b25880376d3a3334c77f58637267db93581c4c77/deploy/otel-collector.yaml"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-core",
+    "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+    "path": "crates/core/src/validation.rs",
+    "blob": "89118a8b41fd9af3aae3d18230279354102379d5",
+    "content_sha256": "48456ad10929e2bb37dc12118f32ccef455df36094319209b31913efea0d1655",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-core/blob/87e0f3d9355c0827e989d9fbc31804440852519b/crates/core/src/validation.rs"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-core",
+    "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+    "path": "crates/core/src/state.rs",
+    "blob": "bf42665b5c4c673670fcca487606bd95ca7acb7b",
+    "content_sha256": "06dcf99ac68975b27860a21035d61cdabaa3c87b6e79cab57d9952331df3c776",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-core/blob/87e0f3d9355c0827e989d9fbc31804440852519b/crates/core/src/state.rs"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "crates/host/src/lib.rs",
+    "blob": "67bf419275a1f21e709b7ca01b24348b892c24ac",
+    "content_sha256": "cd72c42d713d4e67b5368095f6672ce11bfadfba7d6d8293de37b90950e5affa",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/crates/host/src/lib.rs"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "crates/host/src/abi.rs",
+    "blob": "08ba8d3f9edb03d8d11bc284986024be54826162",
+    "content_sha256": "2423e376428a065dd5a829eb686241e54c773fa942c1ffb0d274580594807245",
+    "source_url": "https://github.com/AI-Ascension/sts2-game-mod/blob/8b71150895ea95c0625afc1389bb08e4034d9350/crates/host/src/abi.rs"
+  },
+  {
+    "repository": "AI-Ascension/sts2-gateway",
+    "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+    "path": "crates/gateway/src/control.rs",
+    "blob": "3c986b02bd923755960ca95b29dc4f6ed9f33d6b",
+    "content_sha256": "d026ffab8d6d7b5bdebfedb10b359dfad8d9a58ac49525f19ba64bdf79417f69",
+    "source_url": "https://github.com/AI-Ascension/sts2-gateway/blob/33ea48f3b549f08e19db80d8c68c1438fa12a60a/crates/gateway/src/control.rs"
+  },
+  {
+    "repository": "AI-Ascension/sts2-gateway",
+    "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+    "path": "crates/gateway/src/identity.rs",
+    "blob": "69f6e3d1a8393cac613201723f78046a2890a199",
+    "content_sha256": "84005ec081b89c6064500a06edccab5a89c7c84c197e4edc4a5024ad8f4f08f7",
+    "source_url": "https://github.com/AI-Ascension/sts2-gateway/blob/33ea48f3b549f08e19db80d8c68c1438fa12a60a/crates/gateway/src/identity.rs"
+  },
+  {
+    "repository": "AI-Ascension/sts2-mcp-server",
+    "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+    "path": "crates/mcp-server/src/mapping.rs",
+    "blob": "41b1382d23d68d8156ac6616a55e85fe01898b7d",
+    "content_sha256": "c2723403f0e12e280621ea8ead36dc69b1301149d5e8e317d2a8361efc052f06",
+    "source_url": "https://github.com/AI-Ascension/sts2-mcp-server/blob/eb89ab251665f263c2fe3e6b735eeae3d3e40c83/crates/mcp-server/src/mapping.rs"
+  },
+  {
+    "repository": "AI-Ascension/sts2-mcp-server",
+    "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+    "path": "crates/mcp-server/src/lib.rs",
+    "blob": "f30721d26bf3a34b76b1c5864c7f034210b9e788",
+    "content_sha256": "351c39a82c4ee7109586484c96a85a8b51c0056c08eb920e5aecd32f70b0b31c",
+    "source_url": "https://github.com/AI-Ascension/sts2-mcp-server/blob/eb89ab251665f263c2fe3e6b735eeae3d3e40c83/crates/mcp-server/src/lib.rs"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "crates/harness/src/lib.rs",
+    "blob": "7e2fd961c7c1c57dccfce704d903c245405b101a",
+    "content_sha256": "bd868e1807268da646e0cf97bf7f7aa310ca33582e37db7ff4ebbca531660203",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/crates/harness/src/lib.rs"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "crates/harness/src/artifact.rs",
+    "blob": "ffa970f63abd56becf4f4b128e8df29ecd8fffcb",
+    "content_sha256": "2145e2a9293232c3b1000c5eb18d1df40880d8ceaaf3b0add5a6b4386446059c",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/crates/harness/src/artifact.rs"
+  },
+  {
+    "repository": "AI-Ascension/sts2-protocol",
+    "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+    "path": "crates/protocol/src/identity.rs",
+    "blob": "74d280b124bb8b26ea40757addef618d8bcc1b9d",
+    "content_sha256": "4496d7a2e5f6511ae153ccd2b00f05efb2e85a099d2825b3d5a6eb13037c7ac3",
+    "source_url": "https://github.com/AI-Ascension/sts2-protocol/blob/8874b0951289fd943c7e14dea36557fa24c401d1/crates/protocol/src/identity.rs"
+  },
+  {
+    "repository": "AI-Ascension/sts2-protocol",
+    "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+    "path": "crates/protocol/src/serialization.rs",
+    "blob": "6c1ba9a29ff2e530bbcc03c7099b8e6403203672",
+    "content_sha256": "9d0a52a378e372d66e6baf7ffb1356ad277e8bfe504a383c89939e11d2784dc3",
+    "source_url": "https://github.com/AI-Ascension/sts2-protocol/blob/8874b0951289fd943c7e14dea36557fa24c401d1/crates/protocol/src/serialization.rs"
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "evidence_kind": "local validation; no remote mutation",
+  "python_unittest_count": 80,
+  "python_unittest_status": "passed",
+  "link_check_cases": 15,
+  "link_check_status": "passed",
+  "schema_count": 6,
+  "schema_status": "passed",
+  "validated_artifacts": [
+    "repositories",
+    "labels",
+    "fleet-plan"
+  ],
+  "fresh_snapshot_canonical_validation": "passed; 12 public targets with local applicability exclusions",
+  "hosted_ci": "not run",
+  "native_windows": "not run",
+  "independent_final_review": "pending",
+  "publication": "not performed",
+  "remote_metadata_application": "not performed",
+  "fleet_plan_digest": "282454280bc6d012d58ea74738ff40c8951f83789af676740bab9c1464c4e4c2",
+  "canary_plan_digest": "c8e8e2b65e88b72c77eea0cdb41baacaf62798a5ed9f0d3ea0cb9578d12ee05f",
+  "file_sha256": {
+    "labels.yml": "8073d1e23bc93476fb39a3a806bfab8455e843907e6b1849e99e49c93ce47b3f",
+    "metadata/label-migrations.yml": "aefe3bdafc94db1e16c71c4a9ac8b828e3b7a3270d529c47d2b166514b224c05",
+    "metadata/repositories.yml": "fc92d7ca78e11dd0d94146886bef20a312b42342fe8f4c816d6cbdf8de66db76",
+    "tests/test_label_consumers.py": "49118ade2a94abf13bb7f4e7fe14b4f74cc1ae74b05277c8ff98e6ce0889b4d8",
+    "tests/test_metadata.py": "f0dc14ce0810634b33d3945b9e81d2037dbd28c04c6ce667c31d8c4e7f1bfe7b",
+    "tests/test_metadata_execution.py": "740554318a526f74898c4f18584886baeddfe62cbbf87b47b8852d8dc23f02a2",
+    "tests/test_metadata_fleet.py": "2a6e63612b4b8fe8f7e4991bc7e5f6d0b3f1626934257406901dead65ec3482b",
+    "tests/test_metadata_integration.py": "26344459529e65d309079d91e3c745e2eddb838c0400c2c8683b61df9ea1c988",
+    "tests/test_metadata_policy.py": "1a0cdbaee9be7debd7790e728bcfc7b619648faa099b19ae3132347977e9fb70",
+    "tests/test_metadata_transport.py": "b71dce89029cc6acc0db0a1f3f171f75019e477930a35b2c9a77aac8416f900a",
+    "tools/metadata.py": "0608de2de47b68f9446611db8356a83b2b32db21249ce0a3658e120c8020db07",
+    "tools/metadata_drift.py": "99437e458bde2986f71a7578d327fd212366d49e6a228df5e1ec137694a3f4b2",
+    "tools/metadata_execution.py": "b5698ea489949c08600c19f332810f2c23716c37d0e0aeb451e86e478d924910",
+    "tools/metadata_journal.py": "6a445f4a7d012913359a0f251efdf5e62315335dca8126ce7a8d583210191048"
+  }
+}

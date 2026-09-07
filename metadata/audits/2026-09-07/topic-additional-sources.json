@@ -1,0 +1,29 @@
+[
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "crates/harness/src/evaluation.rs",
+    "classification": "source-derived",
+    "blob": "bb222c0dba41e2128549aee2a7a23d4740eed547",
+    "content_sha256": "9dfb7da5e69775fbfbd2660711a67d0c95e551636caa70d5feeeead9af59526c",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/crates/harness/src/evaluation.rs"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "crates/harness/src/replay.rs",
+    "classification": "source-derived",
+    "blob": "ad3e428ac7714d4a60da922fea5c2d75644c9753",
+    "content_sha256": "419c48b822b86905e86e7b8e2473204a59969af7fc8b882c5eb9b4c5309e7200",
+    "source_url": "https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/crates/harness/src/replay.rs"
+  },
+  {
+    "repository": "AI-Ascension/sts2-protocol",
+    "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+    "path": "conformance/cases/neutral-contract-seam.v1.json",
+    "classification": "source-derived",
+    "blob": "90a46b7c8275aba3ea3cc52f437d95bf3cdb98f0",
+    "content_sha256": "bc7355e360bc05a34900f2132c85b9619bc9d9c4d1c8f9eb15422be5ea5af7c2",
+    "source_url": "https://github.com/AI-Ascension/sts2-protocol/blob/8874b0951289fd943c7e14dea36557fa24c401d1/conformance/cases/neutral-contract-seam.v1.json"
+  }
+]

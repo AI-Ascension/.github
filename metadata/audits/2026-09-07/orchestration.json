@@ -1,0 +1,82 @@
+{
+  "root_model_changed": false,
+  "global_descendant_ceiling": 12,
+  "requested_descendant_model": "gpt-5.6-luna",
+  "requested_reasoning_effort": "max",
+  "initial_attempt": {
+    "observed_at": "2026-09-07T18:28:25Z",
+    "root_model_changed": false,
+    "global_descendant_ceiling": 12,
+    "runtime_advertised_slots_including_root": 51,
+    "allocated_descendants": 6,
+    "observed_open_descendants": 2,
+    "reserved_unallocated_capacity": 6,
+    "requested_descendant_model": "gpt-5.6-luna",
+    "requested_reasoning_effort": "max",
+    "model_catalog_lists_requested_model": true,
+    "model_catalog_lists_max_effort": true,
+    "accepted_spawn_calls": [
+      {
+        "parent": "/root",
+        "child": "/root/discovery",
+        "depth": 1,
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "max"
+      },
+      {
+        "parent": "/root",
+        "child": "/root/tooling",
+        "depth": 1,
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "max"
+      }
+    ],
+    "verified_depths": [
+      1
+    ],
+    "provider_execution_model_independently_attested": false,
+    "three_descendant_levels_verified": false,
+    "limitation": "Both depth-1 descendants reported that collaboration spawning tools were absent from their runtime tool catalog. Depth-2/3 execution could not be created. Accepted model and effort arguments are recorded, but provider-side execution model attestation is unavailable. Three-depth requirement remains unmet; no simulated ancestry or model substitution."
+  },
+  "resumed_attempt": {
+    "accepted_spawn_calls": [
+      {
+        "parent": "/root",
+        "child": "/root/taxonomy_resume",
+        "depth": 1,
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "max",
+        "subtree_budget": 3
+      },
+      {
+        "parent": "/root",
+        "child": "/root/migration_resume",
+        "depth": 1,
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "max",
+        "subtree_budget": 3
+      },
+      {
+        "parent": "/root",
+        "child": "/root/execution_resume",
+        "depth": 1,
+        "model": "gpt-5.6-luna",
+        "reasoning_effort": "max",
+        "subtree_budget": 3
+      }
+    ],
+    "reserved_unallocated_capacity": 3,
+    "outcomes": {
+      "taxonomy": "completed public source reconciliation",
+      "migration": "completed migration and consumer preparation",
+      "execution": "partial code; terminated by provider usage limit; root completed regression fix and validation"
+    },
+    "verified_depths": [
+      1
+    ],
+    "three_descendant_levels_verified": false,
+    "provider_execution_model_independently_attested": false,
+    "limitation": "Depth-1 agents reported no callable collaboration spawning tools. No depth-2/3 execution occurred. A later execution-agent turn ended with a provider usage-limit error. No substitute model or simulated ancestry was used."
+  },
+  "final_independent_review": "pending; prior review reports cover earlier code only"
+}
