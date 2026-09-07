@@ -1,9 +1,14 @@
+use serde::de::DeserializeOwned;
+use serde::{Deserialize, Serialize};
+use serde_json::Value;
+use sha2::{Digest, Sha256};
 use std::collections::{BTreeMap, BTreeSet};
 use std::env;
 use std::fs;
 use std::io;
 use std::path::{Path, PathBuf};
-use std::process;
+use std::process::{self, Command};
+use std::time::{SystemTime, UNIX_EPOCH};
 
 type Result<T> = std::result::Result<T, String>;
 
@@ -14,6 +19,48 @@ const EVIDENCE_STATES: &[&str] = &[
     "inferred",
     "unverified",
     "unsupported",
+];
+
+const REQUIRED_SCHEMA_FILES: &[&str] = &[
+    "exception.schema.json",
+    "lock.schema.json",
+    "profile.schema.json",
+    "profiles.schema.json",
+    "repositories.schema.json",
+    "rule.schema.json",
+    "rules.schema.json",
+];
+
+const REQUIRED_FIXTURE_FILES: &[&str] = &[
+    "README.md",
+    "invalid-exception-broad-path.yaml",
+    "invalid-exception-pending.yaml",
+    "invalid-lock-published.json",
+    "invalid-lock-stale-digest.json",
+    "invalid-lock-traversal.json",
+    "invalid-profile-floating.toml",
+    "invalid-profile-missing-source.toml",
+    "invalid-schema-missing-required.json",
+    "invalid-schema-nonobject.json",
+    "valid-exception.yaml",
+    "valid-lock.json",
+    "valid-profile.toml",
+];
+
+const EXPECTED_REPOSITORIES: &[&str] = &[
+    "AI-Ascension/.github",
+    "AI-Ascension/AI-Ascension.github.io",
+    "AI-Ascension/ai-agent-observability",
+    "AI-Ascension/aiascension.tech",
+    "AI-Ascension/ascension-brand-overhaul",
+    "AI-Ascension/ascension-map-visualizer",
+    "AI-Ascension/ascension-watchdog",
+    "AI-Ascension/sts2-game-core",
+    "AI-Ascension/sts2-game-mod",
+    "AI-Ascension/sts2-gateway",
+    "AI-Ascension/sts2-harness",
+    "AI-Ascension/sts2-mcp-server",
+    "AI-Ascension/sts2-protocol",
 ];
 
 #[derive(Debug, Default)]
@@ -28,49 +75,169 @@ struct Cli {
     source_commit: String,
 }
 
-#[derive(Debug, Default)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
 struct Profile {
-    schema_version: Option<u32>,
-    profile_id: Option<String>,
-    repository: Option<String>,
-    owner: Option<String>,
-    source_bundle: Option<String>,
-    source_commit: Option<String>,
-    source_digest: Option<String>,
-    distribution: Option<String>,
-    scopes: Option<Vec<String>>,
-    checks: BTreeMap<String, Vec<String>>,
-    evidence: BTreeMap<String, String>,
-    exception_file: Option<String>,
-    exception_status: Option<String>,
-}
-
-#[derive(Debug, Default)]
-struct LockFile {
-    lock_version: Option<u32>,
-    repository: Option<String>,
-    profile_id: Option<String>,
-    source_repository: Option<String>,
-    source_commit: Option<String>,
-    bundle_digest: Option<String>,
-    distribution: Option<String>,
-    published: Option<bool>,
-    files: Vec<(String, String)>,
-    protected_paths: Vec<String>,
-    generated_by: Option<String>,
-}
-
-#[derive(Debug, Default)]
-struct RepoEntry {
+    schema_version: u32,
+    profile_id: String,
     repository: String,
-    repository_id: String,
+    owner: String,
+    source_bundle: String,
+    source_commit: String,
+    source_digest: String,
+    distribution: String,
+    scopes: Vec<String>,
+    checks: CheckSets,
+    evidence: Evidence,
+    exceptions: Exceptions,
+}
+
+#[derive(Debug, Clone, Default, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+struct CheckSets {
+    fast: Vec<String>,
+    required: Vec<String>,
+    extended: Vec<String>,
+    #[serde(default)]
+    commands: BTreeMap<String, CheckCommand>,
+}
+
+#[derive(Debug, Clone, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+struct CheckCommand {
+    command: String,
+    target: String,
+}
+
+#[derive(Debug, Clone, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+struct Evidence {
+    runtime: String,
+    deployment: String,
+    provider: String,
+}
+
+#[derive(Debug, Clone, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+struct Exceptions {
+    file: String,
+    status: String,
+}
+
+#[derive(Debug, Clone, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+struct LockFile {
+    lock_version: u32,
+    repository: String,
+    profile_id: String,
+    source: LockSource,
+    files: Vec<LockEntry>,
+    protected_paths: Vec<String>,
+    generated_by: String,
+}
+
+#[derive(Debug, Clone, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+struct LockSource {
+    repository: String,
+    commit: String,
+    bundle_digest: String,
+    distribution: String,
+    published: bool,
+}
+
+#[derive(Debug, Clone, Deserialize, Serialize)]
+#[serde(deny_unknown_fields)]
+struct LockEntry {
+    path: String,
+    sha256: String,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct RuleDocument {
+    schema_version: u32,
+    rules: Vec<Rule>,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct Rule {
+    id: String,
+    title: String,
+    purpose: String,
+    severity: String,
+    classification: String,
+    scope: Vec<String>,
+    check: String,
+    command: String,
+    exception_eligible: bool,
+    failure_behavior: String,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct ProfileCatalog {
+    schema_version: u32,
+    profiles: Vec<CatalogProfile>,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct CatalogProfile {
+    id: String,
+    purpose: String,
+    scopes: Vec<String>,
+    fast: Vec<String>,
+    required: Vec<String>,
+    extended: Vec<String>,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct RepositoryMap {
+    schema_version: u32,
+    refreshed: String,
+    source: String,
+    repositories: Vec<RepositoryEntry>,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct RepositoryEntry {
+    repository: String,
+    repository_id: u64,
     node_id: String,
     default_branch: String,
     baseline_commit: String,
     owner: String,
     profile_id: String,
     adoption: String,
+    language_scopes: Vec<String>,
     exclusion_reason: Option<String>,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct Exception {
+    id: String,
+    rule_ids: Vec<String>,
+    paths: Vec<String>,
+    owner: String,
+    rationale: String,
+    compensating_tests: Vec<String>,
+    approval: Approval,
+    reviewed_on: String,
+    expires_on: String,
+    removal_criteria: String,
+}
+
+#[derive(Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct Approval {
+    reviewer: String,
+    record: String,
+    status: String,
 }
 
 fn main() {
@@ -87,7 +254,7 @@ fn main() {
             print_help();
             Ok(())
         }
-        command => Err(format!("unknown command `{command}`; use `help`")),
+        command => Err(format!("unknown command '{command}'; use 'help'")),
     };
 
     if let Err(error) = result {
@@ -102,7 +269,7 @@ fn fail(error: &str) -> ! {
 
 fn print_help() {
     println!(
-        "standards-sync/1\n\nCommands:\n  validate [--root PATH]\n  fixture-check --root standards/conformance\n  sync --source-root PATH --target-root PATH --repository OWNER/NAME --profile-id ID --owner OWNER --source-commit COMMIT\n\nAll operations are local and dependency-free."
+        "standards-sync/1\n\nCommands:\n  validate [--root PATH]\n  fixture-check --root standards/conformance\n  sync --source-root PATH --target-root PATH --repository OWNER/NAME --profile-id ID --owner OWNER --source-commit COMMIT\n\nAll operations are local and read-only except sync's deterministic copy into its target."
     );
 }
 
@@ -129,7 +296,7 @@ fn parse_cli() -> Result<Cli> {
             "--profile-id" => cli.profile_id = value()?,
             "--owner" => cli.owner = value()?,
             "--source-commit" => cli.source_commit = value()?,
-            flag => return Err(format!("unknown option `{flag}`")),
+            flag => return Err(format!("unknown option '{flag}'")),
         }
     }
 
@@ -148,301 +315,227 @@ fn validate_root(root: &Path) -> Result<()> {
     require_regular_file(&lock_path)?;
     require_directory(&standards)?;
 
-    let profile = parse_profile(&profile_path)?;
+    let profile = parse_toml::<Profile>(&profile_path)?;
     validate_profile(&profile)?;
-    let lock = parse_lock(&lock_path)?;
+    let lock = parse_json::<LockFile>(&lock_path)?;
     validate_lock_shape(&lock, &profile)?;
     validate_lock_bytes(&root, &lock)?;
-    validate_rules(&standards.join("rules.yaml"))?;
+    let rule_ids = validate_rules(&standards.join("rules.yaml"))?;
     let profile_ids = validate_profile_catalog(&standards.join("profiles.yaml"))?;
     validate_repository_map(&standards.join("repositories.yaml"), &profile_ids)?;
     validate_schemas(&standards.join("schemas"))?;
-    validate_conformance(&standards.join("conformance"))?;
+    validate_conformance_inventory(&standards.join("conformance"))?;
+    validate_profile_exception(&root, &profile, &rule_ids)?;
 
     println!(
         "validated profile={} repository={} source_commit={} files={} bundle_digest={}",
-        profile.profile_id.as_deref().unwrap_or(""),
-        profile.repository.as_deref().unwrap_or(""),
-        profile.source_commit.as_deref().unwrap_or(""),
+        profile.profile_id,
+        profile.repository,
+        profile.source_commit,
         lock.files.len(),
-        lock.bundle_digest.as_deref().unwrap_or("")
+        lock.source.bundle_digest
     );
     Ok(())
 }
 
-fn parse_profile(path: &Path) -> Result<Profile> {
-    let text = read_text(path)?;
-    let mut profile = Profile::default();
-    let mut section = String::new();
-    let mut seen = BTreeSet::new();
-
-    for (line_number, raw) in text.lines().enumerate() {
-        let line = strip_comment(raw).trim().to_owned();
-        if line.is_empty() {
-            continue;
-        }
-        if line.starts_with('[') && line.ends_with(']') {
-            section = line[1..line.len() - 1].to_owned();
-            if !matches!(section.as_str(), "checks" | "evidence" | "exceptions") {
-                return Err(format!(
-                    "{}:{}: unknown TOML section",
-                    path.display(),
-                    line_number + 1
-                ));
-            }
-            continue;
-        }
-        let (key, value) = line.split_once('=').ok_or_else(|| {
-            format!(
-                "{}:{}: expected key = value",
-                path.display(),
-                line_number + 1
-            )
-        })?;
-        let key = key.trim();
-        let value = value.trim();
-        if !seen.insert(format!("{section}.{key}")) {
-            return Err(format!(
-                "{}:{}: duplicate key `{section}.{key}`",
-                path.display(),
-                line_number + 1
-            ));
-        }
-
-        match (section.as_str(), key) {
-            ("", "schema_version") => {
-                profile.schema_version = Some(parse_u32(value, path, line_number)?)
-            }
-            ("", "profile_id") => {
-                profile.profile_id = Some(parse_string(value, path, line_number)?)
-            }
-            ("", "repository") => {
-                profile.repository = Some(parse_string(value, path, line_number)?)
-            }
-            ("", "owner") => profile.owner = Some(parse_string(value, path, line_number)?),
-            ("", "source_bundle") => {
-                profile.source_bundle = Some(parse_string(value, path, line_number)?)
-            }
-            ("", "source_commit") => {
-                profile.source_commit = Some(parse_string(value, path, line_number)?)
-            }
-            ("", "source_digest") => {
-                profile.source_digest = Some(parse_string(value, path, line_number)?)
-            }
-            ("", "distribution") => {
-                profile.distribution = Some(parse_string(value, path, line_number)?)
-            }
-            ("", "scopes") => profile.scopes = Some(parse_array(value, path, line_number)?),
-            ("checks", "fast" | "required" | "extended") => {
-                profile
-                    .checks
-                    .insert(key.to_owned(), parse_array(value, path, line_number)?);
-            }
-            ("evidence", "runtime" | "deployment" | "provider") => {
-                profile
-                    .evidence
-                    .insert(key.to_owned(), parse_string(value, path, line_number)?);
-            }
-            ("exceptions", "file") => {
-                profile.exception_file = Some(parse_string(value, path, line_number)?);
-            }
-            ("exceptions", "status") => {
-                profile.exception_status = Some(parse_string(value, path, line_number)?);
-            }
-            _ => {
-                return Err(format!(
-                    "{}:{}: unknown profile key `{section}.{key}`",
-                    path.display(),
-                    line_number + 1
-                ));
-            }
-        }
-    }
-    Ok(profile)
-}
-
 fn validate_profile(profile: &Profile) -> Result<()> {
-    if profile.schema_version != Some(1) {
+    if profile.schema_version != 1 {
         return Err("profile schema_version must be 1".to_owned());
     }
-    let profile_id = required(&profile.profile_id, "profile_id")?;
-    if !valid_profile_id(profile_id) {
-        return Err(format!("invalid profile_id `{profile_id}`"));
+    if !valid_profile_id(&profile.profile_id) {
+        return Err(format!("invalid profile_id '{}'", profile.profile_id));
     }
-    let repository = required(&profile.repository, "repository")?;
-    if !valid_repository(repository) {
-        return Err(format!("invalid repository `{repository}`"));
+    if !valid_repository(&profile.repository) {
+        return Err(format!("invalid repository '{}'", profile.repository));
     }
-    let owner = required(&profile.owner, "owner")?;
-    if !is_upper_identifier(owner) {
-        return Err(format!("invalid owner `{owner}`"));
+    if !is_upper_identifier(&profile.owner) {
+        return Err(format!("invalid owner '{}'", profile.owner));
     }
-    if required(&profile.source_bundle, "source_bundle")? != "AI-Ascension/.github" {
+    if profile.source_bundle != "AI-Ascension/.github" {
         return Err("source_bundle must be AI-Ascension/.github".to_owned());
     }
-    let commit = required(&profile.source_commit, "source_commit")?;
-    if !valid_commit(commit) {
+    if !valid_commit(&profile.source_commit) {
         return Err("source_commit must be a 40-character lowercase commit".to_owned());
     }
-    let digest = required(&profile.source_digest, "source_digest")?;
-    if !valid_prefixed_digest(digest) {
+    if !valid_prefixed_digest(&profile.source_digest) {
         return Err("source_digest must be sha256:<64 lowercase hex>".to_owned());
     }
-    if required(&profile.distribution, "distribution")? != "local" {
+    if profile.distribution != "local" {
         return Err("distribution must be local".to_owned());
     }
-    let scopes = required(&profile.scopes, "scopes")?;
-    if scopes.is_empty() || !unique(scopes) || scopes.iter().any(|scope| !valid_scope(scope)) {
+    if profile.scopes.is_empty()
+        || !unique(&profile.scopes)
+        || profile
+            .scopes
+            .iter()
+            .any(|scope| !valid_profile_scope(scope))
+    {
         return Err("scopes must be non-empty, unique lowercase identifiers".to_owned());
     }
-    for name in ["fast", "required", "extended"] {
-        let checks = profile
-            .checks
-            .get(name)
-            .ok_or_else(|| format!("checks.{name} is required"))?;
-        if !unique(checks) || checks.iter().any(|check| !valid_check_name(check)) {
-            return Err(format!(
-                "checks.{name} contains a duplicate or invalid check"
-            ));
-        }
-    }
-    for name in ["runtime", "deployment", "provider"] {
-        let state = profile
-            .evidence
-            .get(name)
-            .ok_or_else(|| format!("evidence.{name} is required"))?;
+    validate_check_sets(&profile.checks)?;
+    for (name, state) in [
+        ("runtime", &profile.evidence.runtime),
+        ("deployment", &profile.evidence.deployment),
+        ("provider", &profile.evidence.provider),
+    ] {
         if !EVIDENCE_STATES.contains(&state.as_str()) {
-            return Err(format!("evidence.{name} has unknown state `{state}`"));
+            return Err(format!("evidence.{name} has unknown state '{state}'"));
         }
     }
-    let exception_file = required(&profile.exception_file, "exceptions.file")?;
-    let exception_status = required(&profile.exception_status, "exceptions.status")?;
-    if !matches!(exception_status.as_str(), "none" | "pending" | "approved") {
-        return Err(format!("unknown exception status `{exception_status}`"));
-    }
-    if exception_status == "none" && !exception_file.is_empty() {
-        return Err("exceptions.file must be empty when status is none".to_owned());
-    }
-    if exception_status != "none" && !valid_relative_path(exception_file) {
-        return Err("an exception file must be a safe repository-relative path".to_owned());
+    match profile.exceptions.status.as_str() {
+        "none" if profile.exceptions.file.is_empty() => {}
+        "none" => return Err("exceptions.file must be empty when status is none".to_owned()),
+        "pending" | "approved" if valid_relative_path(&profile.exceptions.file) => {}
+        "pending" | "approved" => {
+            return Err("an exception file must be a safe repository-relative path".to_owned());
+        }
+        status => return Err(format!("unknown exception status '{status}'")),
     }
     Ok(())
 }
 
-fn parse_lock(path: &Path) -> Result<LockFile> {
-    let text = read_text(path)?;
-    if !looks_like_json(&text) {
-        return Err(format!("{} is not a JSON object", path.display()));
-    }
-    let mut lock = LockFile::default();
-    lock.lock_version = Some(json_u32(&text, "lock_version", 2)?);
-    lock.repository = Some(json_string_at_indent(&text, "repository", 2)?);
-    lock.profile_id = Some(json_string_at_indent(&text, "profile_id", 2)?);
-    lock.source_repository = Some(json_string_at_indent(&text, "repository", 4)?);
-    lock.source_commit = Some(json_string_at_indent(&text, "commit", 4)?);
-    lock.bundle_digest = Some(json_string_at_indent(&text, "bundle_digest", 4)?);
-    lock.distribution = Some(json_string_at_indent(&text, "distribution", 4)?);
-    lock.published = Some(json_bool_at_indent(&text, "published", 4)?);
-    lock.generated_by = Some(json_string_at_indent(&text, "generated_by", 2)?);
-    lock.protected_paths = json_array_at_indent(&text, "protected_paths", 2)?;
-
-    let mut pending_path: Option<String> = None;
-    for line in text.lines() {
-        if line.contains("\"path\"") {
-            pending_path = Some(json_string_after_key(line, "path")?);
+fn validate_check_sets(checks: &CheckSets) -> Result<()> {
+    let mut names = BTreeSet::new();
+    for (tier, values) in [
+        ("fast", &checks.fast),
+        ("required", &checks.required),
+        ("extended", &checks.extended),
+    ] {
+        if !unique(values) {
+            return Err(format!("checks.{tier} contains duplicate check names"));
         }
-        if line.contains("\"sha256\"") {
-            let digest = json_string_after_key(line, "sha256")?;
-            let path_value = pending_path
-                .take()
-                .ok_or_else(|| "lock file digest has no preceding path".to_owned())?;
-            lock.files.push((path_value, digest));
+        for value in values {
+            if !valid_check_name(value) {
+                return Err(format!("checks.{tier} contains invalid check '{value}'"));
+            }
+            if !names.insert(value.clone()) {
+                return Err(format!("check '{value}' appears in more than one tier"));
+            }
         }
     }
-    if lock.files.is_empty() {
-        return Err("lock files must contain at least one entry".to_owned());
+    let command_names: BTreeSet<String> = checks.commands.keys().cloned().collect();
+    if command_names != names {
+        let missing = names
+            .difference(&command_names)
+            .cloned()
+            .collect::<Vec<_>>();
+        let extra = command_names
+            .difference(&names)
+            .cloned()
+            .collect::<Vec<_>>();
+        return Err(format!(
+            "checks.commands must have exactly one command/target for each listed check (missing={missing:?}, extra={extra:?})"
+        ));
     }
-    Ok(lock)
+    for (name, specification) in &checks.commands {
+        if specification.command.trim().is_empty()
+            || specification
+                .command
+                .chars()
+                .any(|character| character.is_control())
+            || contains_shell_operator(&specification.command)
+        {
+            return Err(format!("check '{name}' has an unsafe or empty command"));
+        }
+        let executable = specification
+            .command
+            .split_whitespace()
+            .next()
+            .ok_or_else(|| format!("check '{name}' has no executable"))?;
+        if !executable
+            .bytes()
+            .all(|byte| byte.is_ascii_alphanumeric() || matches!(byte, b'.' | b'_' | b'/' | b'-'))
+        {
+            return Err(format!("check '{name}' has no executable command token"));
+        }
+        if !valid_target(&specification.target) {
+            return Err(format!("check '{name}' has an unsafe target"));
+        }
+    }
+    Ok(())
 }
 
 fn validate_lock_shape(lock: &LockFile, profile: &Profile) -> Result<()> {
-    if lock.lock_version != Some(1) {
+    if lock.lock_version != 1 {
         return Err("lock_version must be 1".to_owned());
     }
-    if lock.repository.as_deref() != profile.repository.as_deref() {
+    if !valid_repository(&lock.repository) || lock.repository != profile.repository {
         return Err("lock repository does not match profile".to_owned());
     }
-    if lock.profile_id.as_deref() != profile.profile_id.as_deref() {
+    if !valid_profile_id(&lock.profile_id) || lock.profile_id != profile.profile_id {
         return Err("lock profile_id does not match profile".to_owned());
     }
-    if lock.source_repository.as_deref() != Some("AI-Ascension/.github") {
+    if lock.source.repository != "AI-Ascension/.github" {
         return Err("lock source.repository must be AI-Ascension/.github".to_owned());
     }
-    if lock.source_commit.as_deref() != profile.source_commit.as_deref() {
+    if !valid_commit(&lock.source.commit) || lock.source.commit != profile.source_commit {
         return Err("lock source.commit does not match profile source_commit".to_owned());
     }
-    if lock.bundle_digest.as_deref() != profile.source_digest.as_deref() {
+    if !valid_prefixed_digest(&lock.source.bundle_digest)
+        || lock.source.bundle_digest != profile.source_digest
+    {
         return Err("lock bundle_digest does not match profile source_digest".to_owned());
     }
-    if lock.distribution.as_deref() != Some("local") {
+    if lock.source.distribution != "local" {
         return Err("lock source.distribution must be local".to_owned());
     }
-    if lock.published != Some(false) {
+    if lock.source.published {
         return Err(
             "local source must keep published=false until remote publication is verified"
                 .to_owned(),
         );
     }
-    if lock.generated_by.as_deref() != Some("standards-sync/1") {
+    if lock.generated_by != "standards-sync/1" {
         return Err("lock generated_by must be standards-sync/1".to_owned());
+    }
+    if lock.files.is_empty() {
+        return Err("lock files must contain at least one entry".to_owned());
     }
     if lock.protected_paths.is_empty() || !unique(&lock.protected_paths) {
         return Err("protected_paths must be non-empty and unique".to_owned());
     }
     for path in &lock.protected_paths {
         if !path.starts_with("standards/") || !valid_relative_path(path) {
-            return Err(format!("unsafe protected path `{path}`"));
+            return Err(format!("unsafe protected path '{path}'"));
         }
     }
     let mut previous: Option<&str> = None;
-    for (path, digest) in &lock.files {
-        if !path.starts_with("standards/") || !valid_relative_path(path) {
-            return Err(format!("unsafe lock path `{path}`"));
+    for entry in &lock.files {
+        if !entry.path.starts_with("standards/")
+            || !valid_relative_path(&entry.path)
+            || !valid_hex_digest(&entry.sha256)
+        {
+            return Err(format!("invalid lock entry '{}'", entry.path));
         }
-        if !valid_hex_digest(digest) {
-            return Err(format!("invalid digest for `{path}`"));
-        }
-        if previous.is_some_and(|old| old >= path.as_str()) {
+        if previous.is_some_and(|old| old >= entry.path.as_str()) {
             return Err("lock files must be sorted and unique".to_owned());
         }
-        previous = Some(path);
+        previous = Some(&entry.path);
     }
     Ok(())
 }
 
 fn validate_lock_bytes(root: &Path, lock: &LockFile) -> Result<()> {
     let mut bundle_input = Vec::new();
-    for (path, expected) in &lock.files {
-        let full = safe_join(root, path)?;
+    for entry in &lock.files {
+        let full = safe_join(root, &entry.path)?;
         require_regular_file(&full)?;
         let bytes =
             fs::read(&full).map_err(|error| format!("cannot read {}: {error}", full.display()))?;
         let actual = sha256_hex(&bytes);
-        if &actual != expected {
+        if actual != entry.sha256 {
             return Err(format!(
-                "digest mismatch for {path}: expected {expected}, got {actual}"
+                "digest mismatch for {}: expected {}, got {actual}",
+                entry.path, entry.sha256
             ));
         }
-        bundle_input.extend_from_slice(path.as_bytes());
-        bundle_input.push(0);
-        bundle_input.extend_from_slice(&bytes);
-        bundle_input.push(0);
+        append_bundle_record(&mut bundle_input, &entry.path, &bytes);
     }
     let actual_bundle = format!("sha256:{}", sha256_hex(&bundle_input));
-    if Some(actual_bundle.as_str()) != lock.bundle_digest.as_deref() {
+    if actual_bundle != lock.source.bundle_digest {
         return Err(format!(
             "bundle digest mismatch: expected {}, got {actual_bundle}",
-            lock.bundle_digest.as_deref().unwrap_or("")
+            lock.source.bundle_digest
         ));
     }
 
@@ -450,10 +543,10 @@ fn validate_lock_bytes(root: &Path, lock: &LockFile) -> Result<()> {
     let mut actual_files = Vec::new();
     collect_files(&standards, &standards, &mut actual_files)?;
     actual_files.sort();
-    let locked: Vec<String> = lock.files.iter().map(|(path, _)| path.clone()).collect();
+    let locked: Vec<String> = lock.files.iter().map(|entry| entry.path.clone()).collect();
     if actual_files != locked {
         return Err(format!(
-            "lock inventory differs from local standards files: expected {} entries, found {}",
+            "lock inventory differs from local standards files: lock has {} entries, local tree has {}",
             locked.len(),
             actual_files.len()
         ));
@@ -461,45 +554,52 @@ fn validate_lock_bytes(root: &Path, lock: &LockFile) -> Result<()> {
     Ok(())
 }
 
-fn validate_rules(path: &Path) -> Result<()> {
-    let text = read_text(path)?;
-    if !text.lines().any(|line| line.trim() == "schema_version: 1")
-        || !text.lines().any(|line| line.trim() == "rules:")
-    {
-        return Err(format!(
-            "{} must declare schema_version 1 and rules",
-            path.display()
-        ));
+fn validate_rules(path: &Path) -> Result<BTreeMap<String, bool>> {
+    let document = parse_yaml::<RuleDocument>(path)?;
+    if document.schema_version != 1 {
+        return Err(format!("{} schema_version must be 1", path.display()));
     }
-    let mut records: Vec<BTreeMap<String, String>> = Vec::new();
-    for raw in text.lines() {
-        let line = raw.trim();
-        if let Some(value) = line.strip_prefix("- id:") {
-            records.push(BTreeMap::from([("id".to_owned(), value.trim().to_owned())]));
-        } else if let Some((key, value)) = line.split_once(':') {
-            if let Some(record) = records.last_mut() {
-                let key = key.trim();
-                if matches!(
-                    key,
-                    "title"
-                        | "purpose"
-                        | "severity"
-                        | "classification"
-                        | "check"
-                        | "command"
-                        | "exception_eligible"
-                        | "failure_behavior"
-                ) {
-                    record.insert(key.to_owned(), value.trim().to_owned());
-                }
-            }
+    if document.rules.is_empty() {
+        return Err(format!("{} must contain at least one rule", path.display()));
+    }
+    let mut ids = BTreeMap::new();
+    for rule in &document.rules {
+        if !valid_rule_id(&rule.id)
+            || ids
+                .insert(rule.id.clone(), rule.exception_eligible)
+                .is_some()
+        {
+            return Err(format!("invalid or duplicate rule id '{}'", rule.id));
+        }
+        if rule.title.is_empty() || rule.title.len() > 120 {
+            return Err(format!("rule {} has an invalid title", rule.id));
+        }
+        if rule.purpose.is_empty() || rule.purpose.len() > 500 {
+            return Err(format!("rule {} has an invalid purpose", rule.id));
+        }
+        if rule.scope.is_empty()
+            || !unique(&rule.scope)
+            || rule.scope.iter().any(|scope| !valid_rule_scope(scope))
+        {
+            return Err(format!("rule {} has an invalid scope", rule.id));
+        }
+        if !valid_check_name(&rule.check)
+            || rule.command.is_empty()
+            || rule.command.len() > 240
+            || contains_shell_operator(&rule.command)
+        {
+            return Err(format!("rule {} has an invalid check command", rule.id));
+        }
+        match (
+            rule.severity.as_str(),
+            rule.classification.as_str(),
+            rule.failure_behavior.as_str(),
+        ) {
+            ("mandatory", "blocking", "reject") | ("advisory", "advisory", "report") => {}
+            _ => return Err(format!("rule {} has an invalid severity contract", rule.id)),
         }
     }
-    if records.len() < 8 {
-        return Err(format!("{} has too few rules", path.display()));
-    }
-    let mut ids = BTreeSet::new();
-    let required = [
+    for required in [
         "X-ID-001",
         "X-VER-001",
         "X-AUTH-001",
@@ -508,186 +608,127 @@ fn validate_rules(path: &Path) -> Result<()> {
         "X-TIME-001",
         "X-PRIV-001",
         "X-OWN-001",
-    ];
-    for record in &records {
-        let id = record
-            .get("id")
-            .ok_or_else(|| "rule is missing id".to_owned())?;
-        if !valid_rule_id(id) || !ids.insert(id.clone()) {
-            return Err(format!("invalid or duplicate rule id `{id}`"));
-        }
-        for key in [
-            "title",
-            "purpose",
-            "severity",
-            "classification",
-            "check",
-            "command",
-            "exception_eligible",
-            "failure_behavior",
-        ] {
-            if !record.contains_key(key) {
-                return Err(format!("rule {id} is missing {key}"));
-            }
-        }
-        let severity = record.get("severity").map(String::as_str).unwrap_or("");
-        let classification = record
-            .get("classification")
-            .map(String::as_str)
-            .unwrap_or("");
-        let failure = record
-            .get("failure_behavior")
-            .map(String::as_str)
-            .unwrap_or("");
-        if severity == "mandatory" && (classification != "blocking" || failure != "reject") {
-            return Err(format!("mandatory rule {id} is not blocking/rejecting"));
-        }
-        if severity != "mandatory" && severity != "advisory" {
-            return Err(format!("rule {id} has unknown severity"));
+    ] {
+        if !ids.contains_key(required) {
+            return Err(format!("canonical rule {required} is missing"));
         }
     }
-    for id in required {
-        if !ids.contains(id) {
-            return Err(format!("canonical rule {id} is missing"));
-        }
-    }
-    Ok(())
+    Ok(ids)
 }
 
 fn validate_profile_catalog(path: &Path) -> Result<BTreeSet<String>> {
-    let text = read_text(path)?;
-    if !text.lines().any(|line| line.trim() == "schema_version: 1") {
-        return Err(format!("{} must declare schema_version 1", path.display()));
+    let document = parse_yaml::<ProfileCatalog>(path)?;
+    if document.schema_version != 1 {
+        return Err(format!("{} schema_version must be 1", path.display()));
     }
-    let mut ids = BTreeSet::new();
-    let mut records: Vec<BTreeMap<String, String>> = Vec::new();
-    for raw in text.lines() {
-        let line = raw.trim();
-        if let Some(value) = line.strip_prefix("- id:") {
-            records.push(BTreeMap::from([("id".to_owned(), value.trim().to_owned())]));
-        } else if let Some((key, value)) = line.split_once(':') {
-            if let Some(record) = records.last_mut() {
-                record.insert(key.trim().to_owned(), value.trim().to_owned());
-            }
-        }
-    }
-    if records.is_empty() {
+    if document.profiles.is_empty() {
         return Err(format!("{} contains no profiles", path.display()));
     }
-    for record in records {
-        let id = record
-            .get("id")
-            .ok_or_else(|| "profile is missing id".to_owned())?;
-        if !valid_profile_id(id) || !ids.insert(id.clone()) {
-            return Err(format!("invalid or duplicate catalog profile `{id}`"));
+    let mut ids = BTreeSet::new();
+    for profile in &document.profiles {
+        if !valid_profile_id(&profile.id) || !ids.insert(profile.id.clone()) {
+            return Err(format!(
+                "invalid or duplicate catalog profile '{}'",
+                profile.id
+            ));
+        }
+        if profile.purpose.trim().is_empty() {
+            return Err(format!("catalog profile {} has no purpose", profile.id));
+        }
+        if profile.scopes.is_empty()
+            || !unique(&profile.scopes)
+            || profile
+                .scopes
+                .iter()
+                .any(|scope| !valid_profile_scope(scope))
+        {
+            return Err(format!("catalog profile {} has invalid scopes", profile.id));
+        }
+        for (tier, checks) in [
+            ("fast", &profile.fast),
+            ("required", &profile.required),
+            ("extended", &profile.extended),
+        ] {
+            if !unique(checks) || checks.iter().any(|check| !valid_check_name(check)) {
+                return Err(format!(
+                    "catalog profile {} has invalid {tier} checks",
+                    profile.id
+                ));
+            }
         }
     }
     Ok(ids)
 }
 
 fn validate_repository_map(path: &Path, profile_ids: &BTreeSet<String>) -> Result<()> {
-    let text = read_text(path)?;
-    if !text.lines().any(|line| line.trim() == "schema_version: 1") {
-        return Err(format!("{} must declare schema_version 1", path.display()));
+    let document = parse_yaml::<RepositoryMap>(path)?;
+    if document.schema_version != 1 {
+        return Err(format!("{} schema_version must be 1", path.display()));
     }
-    let mut records: Vec<RepoEntry> = Vec::new();
-    for raw in text.lines() {
-        let line = raw.trim();
-        if let Some(value) = line.strip_prefix("- repository:") {
-            records.push(RepoEntry {
-                repository: value.trim().to_owned(),
-                ..RepoEntry::default()
-            });
-            continue;
-        }
-        let Some((key, value)) = line.split_once(':') else {
-            continue;
-        };
-        let Some(record) = records.last_mut() else {
-            continue;
-        };
-        let value = value.trim();
-        match key.trim() {
-            "repository_id" | "node_id" | "default_branch" | "baseline_commit" | "owner"
-            | "profile_id" | "adoption" => match key.trim() {
-                "repository_id" => record.repository_id = value.to_owned(),
-                "node_id" => record.node_id = value.to_owned(),
-                "default_branch" => record.default_branch = value.to_owned(),
-                "baseline_commit" => record.baseline_commit = value.to_owned(),
-                "owner" => record.owner = value.to_owned(),
-                "profile_id" => record.profile_id = value.to_owned(),
-                "adoption" => record.adoption = value.to_owned(),
-                _ => unreachable!(),
-            },
-            "exclusion_reason" => {
-                record.exclusion_reason = if value == "null" {
-                    None
-                } else {
-                    Some(value.to_owned())
-                }
-            }
-            _ => {}
-        }
+    if !valid_date(&document.refreshed) || document.source.trim().is_empty() {
+        return Err(format!("{} has invalid refresh metadata", path.display()));
     }
-    if records.len() != 13 {
+    if document.repositories.len() != EXPECTED_REPOSITORIES.len() {
         return Err(format!(
-            "repository map must contain exactly 13 records, found {}",
-            records.len()
+            "repository map must contain exactly {} records, found {}",
+            EXPECTED_REPOSITORIES.len(),
+            document.repositories.len()
         ));
     }
-    let expected: BTreeSet<&str> = [
-        "AI-Ascension/aiascension.tech",
-        "AI-Ascension/sts2-game-core",
-        "AI-Ascension/sts2-game-mod",
-        "AI-Ascension/sts2-gateway",
-        "AI-Ascension/sts2-mcp-server",
-        "AI-Ascension/sts2-harness",
-        "AI-Ascension/sts2-protocol",
-        "AI-Ascension/.github",
-        "AI-Ascension/AI-Ascension.github.io",
-        "AI-Ascension/ai-agent-observability",
-        "AI-Ascension/ascension-watchdog",
-        "AI-Ascension/ascension-map-visualizer",
-        "AI-Ascension/ascension-brand-overhaul",
-    ]
-    .into_iter()
-    .collect();
-    let actual: BTreeSet<&str> = records
+    let expected: BTreeSet<&str> = EXPECTED_REPOSITORIES.iter().copied().collect();
+    let actual: BTreeSet<&str> = document
+        .repositories
         .iter()
-        .map(|record| record.repository.as_str())
+        .map(|entry| entry.repository.as_str())
         .collect();
     if actual != expected {
-        return Err("repository map does not match the 13 reviewed repositories".to_owned());
+        return Err("repository map does not match the reviewed repositories".to_owned());
     }
-    for record in records {
-        if record.repository_id.parse::<u64>().is_err()
-            || record.node_id.is_empty()
-            || record.default_branch.is_empty()
-            || !valid_commit(&record.baseline_commit)
-            || !is_upper_identifier(&record.owner)
-            || !profile_ids.contains(&record.profile_id)
+    let mut ids = BTreeSet::new();
+    for entry in &document.repositories {
+        if !valid_repository(&entry.repository)
+            || entry.repository_id == 0
+            || !ids.insert(entry.repository_id)
+            || !valid_node_id(&entry.node_id)
+            || entry.default_branch.trim().is_empty()
+            || entry.default_branch.chars().any(char::is_whitespace)
+            || !valid_commit(&entry.baseline_commit)
+            || !is_upper_identifier(&entry.owner)
+            || !profile_ids.contains(&entry.profile_id)
+            || !matches!(entry.adoption.as_str(), "ready" | "prepared" | "excluded")
         {
             return Err(format!(
                 "incomplete repository record for {}",
-                record.repository
+                entry.repository
             ));
         }
-        if !matches!(record.adoption.as_str(), "ready" | "prepared" | "excluded") {
-            return Err(format!("unknown adoption state for {}", record.repository));
-        }
-        if record.adoption == "excluded"
-            && record.exclusion_reason.as_deref().is_none_or(str::is_empty)
+        if entry.language_scopes.is_empty()
+            || !unique(&entry.language_scopes)
+            || entry
+                .language_scopes
+                .iter()
+                .any(|scope| !valid_language_scope(scope))
         {
             return Err(format!(
-                "excluded repository {} needs a reason",
-                record.repository
+                "repository {} has invalid language scopes",
+                entry.repository
             ));
         }
-        if record.adoption != "excluded" && record.exclusion_reason.is_some() {
-            return Err(format!(
-                "non-excluded repository {} has an exclusion reason",
-                record.repository
-            ));
+        match (entry.adoption.as_str(), entry.exclusion_reason.as_deref()) {
+            ("excluded", Some(reason)) if !reason.trim().is_empty() => {}
+            ("excluded", _) => {
+                return Err(format!(
+                    "excluded repository {} needs a reason",
+                    entry.repository
+                ));
+            }
+            (_, None) => {}
+            (_, Some(_)) => {
+                return Err(format!(
+                    "non-excluded repository {} has an exclusion reason",
+                    entry.repository
+                ));
+            }
         }
     }
     Ok(())
@@ -695,189 +736,385 @@ fn validate_repository_map(path: &Path, profile_ids: &BTreeSet<String>) -> Resul
 
 fn validate_schemas(directory: &Path) -> Result<()> {
     require_directory(directory)?;
-    let required = [
-        "rule.schema.json",
-        "rules.schema.json",
-        "profile.schema.json",
-        "lock.schema.json",
-        "repositories.schema.json",
-        "profiles.schema.json",
-        "exception.schema.json",
-    ];
+    let mut actual = Vec::new();
+    for entry in fs::read_dir(directory)
+        .map_err(|error| format!("cannot list {}: {error}", directory.display()))?
+    {
+        let entry =
+            entry.map_err(|error| format!("cannot read schema directory entry: {error}"))?;
+        actual.push(entry.file_name().to_string_lossy().into_owned());
+    }
+    actual.sort();
+    let mut expected = REQUIRED_SCHEMA_FILES.to_vec();
+    expected.sort();
+    if actual != expected {
+        return Err(format!(
+            "{} must contain exactly the canonical schema files",
+            directory.display()
+        ));
+    }
+
     let mut ids = BTreeSet::new();
-    for name in required {
+    for name in REQUIRED_SCHEMA_FILES {
         let path = directory.join(name);
         require_regular_file(&path)?;
-        let text = read_text(&path)?;
-        if !looks_like_json(&text) || !text.contains("\"$schema\"") || !text.contains("\"$id\"") {
-            return Err(format!(
-                "{} is not a self-identifying JSON schema",
-                path.display()
-            ));
-        }
-        let id = json_string_any(&text, "$id")?;
-        if !ids.insert(id) {
+        let value = parse_json_value(&path)?;
+        validate_schema_document(&path, &value)?;
+        let id = value
+            .get("$id")
+            .and_then(Value::as_str)
+            .ok_or_else(|| format!("{} has no string $id", path.display()))?;
+        if !ids.insert(id.to_owned()) {
             return Err(format!("duplicate schema $id in {}", path.display()));
+        }
+        let expected_suffix = format!("/schemas/{name}");
+        if !id.ends_with(&expected_suffix) {
+            return Err(format!("{} has an unexpected schema $id", path.display()));
         }
     }
     Ok(())
 }
 
-fn validate_conformance(directory: &Path) -> Result<()> {
+fn validate_schema_document(path: &Path, value: &Value) -> Result<()> {
+    let object = value
+        .as_object()
+        .ok_or_else(|| format!("{} schema root must be a JSON object", path.display()))?;
+    let schema = object
+        .get("$schema")
+        .and_then(Value::as_str)
+        .ok_or_else(|| format!("{} must have a string $schema", path.display()))?;
+    if schema != "https://json-schema.org/draft/2020-12/schema" {
+        return Err(format!("{} has unsupported $schema", path.display()));
+    }
+    if object.get("$id").and_then(Value::as_str).is_none()
+        || object.get("title").and_then(Value::as_str).is_none()
+        || object.get("type").and_then(Value::as_str) != Some("object")
+        || object.get("additionalProperties") != Some(&Value::Bool(false))
+    {
+        return Err(format!(
+            "{} is missing semantic schema metadata",
+            path.display()
+        ));
+    }
+    let required = object
+        .get("required")
+        .and_then(Value::as_array)
+        .ok_or_else(|| format!("{} required must be an array", path.display()))?;
+    let mut required_names = BTreeSet::new();
+    for value in required {
+        let name = value
+            .as_str()
+            .ok_or_else(|| format!("{} has a non-string required field", path.display()))?;
+        if !required_names.insert(name) {
+            return Err(format!(
+                "{} has duplicate required field {name}",
+                path.display()
+            ));
+        }
+    }
+    let properties = object
+        .get("properties")
+        .and_then(Value::as_object)
+        .ok_or_else(|| format!("{} properties must be an object", path.display()))?;
+    for name in &required_names {
+        if !properties.contains_key(*name) {
+            return Err(format!(
+                "{} requires property {name} that is not declared",
+                path.display()
+            ));
+        }
+    }
+    for (name, schema_value) in properties {
+        validate_schema_fragment(path, name, schema_value)?;
+    }
+    if let Some(defs) = object.get("$defs") {
+        let defs = defs
+            .as_object()
+            .ok_or_else(|| format!("{} $defs must be an object", path.display()))?;
+        for (name, schema_value) in defs {
+            validate_schema_fragment(path, &format!("$defs.{name}"), schema_value)?;
+        }
+    }
+    let expected_required =
+        expected_schema_required(path.file_name().and_then(|name| name.to_str()));
+    for name in expected_required {
+        if !required_names.contains(name) {
+            return Err(format!(
+                "{} is missing required semantic field {name}",
+                path.display()
+            ));
+        }
+    }
+    Ok(())
+}
+
+fn validate_schema_fragment(path: &Path, name: &str, value: &Value) -> Result<()> {
+    let object = value
+        .as_object()
+        .ok_or_else(|| format!("{} schema property {name} is not an object", path.display()))?;
+    let has_schema_keyword = ["type", "$ref", "const", "enum", "allOf", "oneOf", "anyOf"]
+        .iter()
+        .any(|key| object.contains_key(*key));
+    if !has_schema_keyword {
+        return Err(format!(
+            "{} schema property {name} has no schema keyword",
+            path.display()
+        ));
+    }
+    if let Some(pattern) = object.get("pattern")
+        && pattern.as_str().is_none()
+    {
+        return Err(format!(
+            "{} schema property {name} has a non-string pattern",
+            path.display()
+        ));
+    }
+    if let Some(reference) = object.get("$ref")
+        && reference.as_str().is_none()
+    {
+        return Err(format!(
+            "{} schema property {name} has a non-string $ref",
+            path.display()
+        ));
+    }
+    if let Some(enum_values) = object.get("enum")
+        && enum_values.as_array().is_none_or(Vec::is_empty)
+    {
+        return Err(format!(
+            "{} schema property {name} has an empty enum",
+            path.display()
+        ));
+    }
+    Ok(())
+}
+
+fn expected_schema_required(name: Option<&str>) -> &'static [&'static str] {
+    match name {
+        Some("exception.schema.json") => &[
+            "id",
+            "rule_ids",
+            "paths",
+            "owner",
+            "rationale",
+            "compensating_tests",
+            "approval",
+            "reviewed_on",
+            "expires_on",
+            "removal_criteria",
+        ],
+        Some("lock.schema.json") => &[
+            "lock_version",
+            "repository",
+            "profile_id",
+            "source",
+            "files",
+            "protected_paths",
+            "generated_by",
+        ],
+        Some("profile.schema.json") => &[
+            "schema_version",
+            "profile_id",
+            "repository",
+            "owner",
+            "source_bundle",
+            "source_commit",
+            "source_digest",
+            "distribution",
+            "scopes",
+            "checks",
+            "evidence",
+            "exceptions",
+        ],
+        Some("profiles.schema.json") => &["schema_version", "profiles"],
+        Some("repositories.schema.json") => {
+            &["schema_version", "refreshed", "source", "repositories"]
+        }
+        Some("rule.schema.json") => &[
+            "id",
+            "title",
+            "purpose",
+            "severity",
+            "classification",
+            "scope",
+            "check",
+            "command",
+            "exception_eligible",
+            "failure_behavior",
+        ],
+        Some("rules.schema.json") => &["schema_version", "rules"],
+        _ => &[],
+    }
+}
+
+fn validate_conformance_inventory(directory: &Path) -> Result<()> {
     require_directory(directory)?;
-    let required = [
-        "valid-profile.toml",
-        "valid-lock.json",
-        "valid-exception.yaml",
-        "invalid-profile-floating.toml",
-        "invalid-profile-missing-source.toml",
-        "invalid-lock-traversal.json",
-        "invalid-lock-published.json",
-        "invalid-exception-pending.yaml",
-        "invalid-exception-broad-path.yaml",
-    ];
-    for name in required {
+    let mut actual = Vec::new();
+    for entry in fs::read_dir(directory)
+        .map_err(|error| format!("cannot list {}: {error}", directory.display()))?
+    {
+        let entry =
+            entry.map_err(|error| format!("cannot read conformance directory entry: {error}"))?;
+        actual.push(entry.file_name().to_string_lossy().into_owned());
+    }
+    actual.sort();
+    let mut expected = REQUIRED_FIXTURE_FILES.to_vec();
+    expected.sort();
+    if actual != expected {
+        return Err(format!(
+            "{} must contain exactly the conformance fixtures",
+            directory.display()
+        ));
+    }
+    for name in REQUIRED_FIXTURE_FILES {
         require_regular_file(&directory.join(name))?;
     }
     Ok(())
 }
 
 fn fixture_check(directory: &Path) -> Result<()> {
-    require_directory(directory)?;
-    let valid_profile = parse_profile(&directory.join("valid-profile.toml"))?;
-    validate_profile(&valid_profile)?;
-    let valid_lock = parse_lock(&directory.join("valid-lock.json"))?;
-    validate_lock_shape(&valid_lock, &valid_profile)?;
-    let valid_exception = parse_exception(&directory.join("valid-exception.yaml"))?;
-    validate_exception(&valid_exception)?;
+    validate_conformance_inventory(directory)?;
 
-    let negative_profiles = [
+    let valid_profile = parse_toml::<Profile>(&directory.join("valid-profile.toml"))?;
+    validate_profile(&valid_profile)?;
+    let valid_lock = parse_json::<LockFile>(&directory.join("valid-lock.json"))?;
+    validate_lock_shape(&valid_lock, &valid_profile)?;
+    let valid_exception = parse_yaml::<Exception>(&directory.join("valid-exception.yaml"))?;
+    validate_exception(&valid_exception, None)?;
+
+    for name in [
         "invalid-profile-floating.toml",
         "invalid-profile-missing-source.toml",
-    ];
-    for name in negative_profiles {
-        let result =
-            parse_profile(&directory.join(name)).and_then(|profile| validate_profile(&profile));
+    ] {
+        let result = parse_toml::<Profile>(&directory.join(name))
+            .and_then(|profile| validate_profile(&profile));
         if result.is_ok() {
             return Err(format!("negative fixture {name} was accepted"));
         }
     }
-    let negative_locks = ["invalid-lock-traversal.json", "invalid-lock-published.json"];
-    for name in negative_locks {
-        let result = parse_lock(&directory.join(name))
+    for name in ["invalid-lock-traversal.json", "invalid-lock-published.json"] {
+        let result = parse_json::<LockFile>(&directory.join(name))
             .and_then(|lock| validate_lock_shape(&lock, &valid_profile));
         if result.is_ok() {
             return Err(format!("negative fixture {name} was accepted"));
         }
     }
-    let negative_exceptions = [
+    let stale_lock = parse_json::<LockFile>(&directory.join("invalid-lock-stale-digest.json"))?;
+    let temp_root =
+        std::env::temp_dir().join(format!("standards-sync-fixture-{}", std::process::id()));
+    if temp_root.exists() {
+        fs::remove_dir_all(&temp_root)
+            .map_err(|error| format!("cannot clear fixture directory: {error}"))?;
+    }
+    fs::create_dir_all(temp_root.join("standards"))
+        .map_err(|error| format!("cannot create fixture directory: {error}"))?;
+    fs::write(temp_root.join("standards/fixture.txt"), b"fixture bytes")
+        .map_err(|error| format!("cannot write stale digest fixture: {error}"))?;
+    let stale_result = validate_lock_bytes(&temp_root, &stale_lock);
+    fs::remove_dir_all(&temp_root)
+        .map_err(|error| format!("cannot remove fixture directory: {error}"))?;
+    if stale_result.is_ok() {
+        return Err("negative fixture invalid-lock-stale-digest.json was accepted".to_owned());
+    }
+    for name in [
         "invalid-exception-pending.yaml",
         "invalid-exception-broad-path.yaml",
-    ];
-    for name in negative_exceptions {
-        let result = parse_exception(&directory.join(name))
-            .and_then(|exception| validate_exception(&exception));
+    ] {
+        let result = parse_yaml::<Exception>(&directory.join(name))
+            .and_then(|exception| validate_exception(&exception, None));
         if result.is_ok() {
             return Err(format!("negative fixture {name} was accepted"));
         }
     }
-    println!("fixture-check passed: 3 valid fixtures accepted, 6 negative fixtures rejected");
+    for name in [
+        "invalid-schema-missing-required.json",
+        "invalid-schema-nonobject.json",
+    ] {
+        let result = parse_json_value(&directory.join(name))
+            .and_then(|value| validate_schema_document(&directory.join(name), &value));
+        if result.is_ok() {
+            return Err(format!("negative fixture {name} was accepted"));
+        }
+    }
+    println!("fixture-check passed: 3 valid fixtures accepted, 9 negative fixtures rejected");
     Ok(())
 }
 
-#[derive(Debug, Default)]
-struct Exception {
-    id: String,
-    rule_ids: Vec<String>,
-    paths: Vec<String>,
-    owner: String,
-    rationale: String,
-    tests: Vec<String>,
-    reviewer: String,
-    record: String,
-    status: String,
-    reviewed_on: String,
-    expires_on: String,
-    removal_criteria: String,
-}
-
-fn parse_exception(path: &Path) -> Result<Exception> {
-    let text = read_text(path)?;
-    let mut result = Exception::default();
-    let mut section = String::new();
-    for raw in text.lines() {
-        let indentation = raw.len() - raw.trim_start().len();
-        let line = strip_comment(raw).trim().to_owned();
-        if line.is_empty() {
-            continue;
-        }
-        if indentation == 0 && line.ends_with(':') && !line.contains(' ') {
-            section = line.trim_end_matches(':').to_owned();
-            continue;
-        }
-        if indentation == 0 {
-            section.clear();
-        }
-        let Some((key, value)) = line.split_once(':') else {
-            return Err(format!("{} has malformed YAML", path.display()));
-        };
-        let key = key.trim();
-        let value = value.trim();
-        match (section.as_str(), key) {
-            ("", "id") => result.id = value.to_owned(),
-            ("", "rule_ids") => result.rule_ids = parse_yaml_array(value)?,
-            ("", "paths") => result.paths = parse_yaml_array(value)?,
-            ("", "owner") => result.owner = value.to_owned(),
-            ("", "rationale") => result.rationale = value.to_owned(),
-            ("", "compensating_tests") => result.tests = parse_yaml_array(value)?,
-            ("", "reviewed_on") => result.reviewed_on = value.to_owned(),
-            ("", "expires_on") => result.expires_on = value.to_owned(),
-            ("", "removal_criteria") => result.removal_criteria = value.to_owned(),
-            ("approval", "reviewer") => result.reviewer = value.to_owned(),
-            ("approval", "record") => result.record = value.to_owned(),
-            ("approval", "status") => result.status = value.to_owned(),
-            _ => {
-                return Err(format!(
-                    "{} has unknown exception field {section}.{key}",
-                    path.display()
-                ));
-            }
-        }
+fn validate_profile_exception(
+    root: &Path,
+    profile: &Profile,
+    rule_ids: &BTreeMap<String, bool>,
+) -> Result<()> {
+    if profile.exceptions.status == "none" {
+        return Ok(());
     }
-    Ok(result)
+    let path = safe_join(root, &profile.exceptions.file)?;
+    require_regular_file(&path)?;
+    let exception = parse_yaml::<Exception>(&path)?;
+    validate_exception(&exception, Some(rule_ids))
 }
 
-fn validate_exception(exception: &Exception) -> Result<()> {
-    if !exception.id.starts_with("EXC-")
+fn validate_exception(
+    exception: &Exception,
+    known_rule_ids: Option<&BTreeMap<String, bool>>,
+) -> Result<()> {
+    if !valid_exception_id(&exception.id)
         || exception.rule_ids.is_empty()
+        || !unique(&exception.rule_ids)
         || exception.paths.is_empty()
-        || exception.owner.is_empty()
-        || exception.rationale.len() < 20
-        || exception.tests.is_empty()
-        || exception.reviewer.is_empty()
-        || exception.status != "approved"
-        || exception.reviewed_on.is_empty()
-        || exception.expires_on.is_empty()
-        || exception.removal_criteria.len() < 10
+        || !unique(&exception.paths)
+        || exception.owner.trim().is_empty()
+        || exception.rationale.trim().len() < 20
+        || exception.compensating_tests.is_empty()
+        || exception
+            .compensating_tests
+            .iter()
+            .any(|test| test.trim().is_empty())
+        || exception.approval.reviewer.trim().is_empty()
+        || exception.approval.status != "approved"
+        || !valid_date(&exception.reviewed_on)
+        || !valid_date(&exception.expires_on)
+        || !valid_date_order(&exception.reviewed_on, &exception.expires_on)
+        || date_days(&exception.expires_on)? < today_days()
+        || date_days(&exception.reviewed_on)? > today_days()
+        || exception.removal_criteria.trim().len() < 10
     {
-        return Err("exception is missing required approval evidence".to_owned());
+        return Err("exception is missing required, current approval evidence".to_owned());
     }
-    if exception.record == "pending"
-        || exception.record == "self"
-        || (!exception.record.starts_with("local-review:")
-            && !exception
-                .record
-                .starts_with("https://github.com/AI-Ascension/"))
+    if exception.approval.record == "pending"
+        || exception.approval.record == "self"
+        || (!exception.approval.record.starts_with("local-review:")
+            && !valid_review_url(&exception.approval.record))
     {
         return Err("exception approval record is not a verifiable review reference".to_owned());
+    }
+    if exception.approval.record.starts_with("local-review:")
+        && !valid_relative_path(
+            exception
+                .approval
+                .record
+                .strip_prefix("local-review:")
+                .unwrap_or_default(),
+        )
+    {
+        return Err("local exception review record must name a safe review artifact".to_owned());
     }
     for rule in &exception.rule_ids {
         if !valid_rule_id(rule) {
             return Err(format!("invalid exception rule {rule}"));
         }
+        if let Some(known) = known_rule_ids
+            && !known.contains_key(rule)
+        {
+            return Err(format!("exception references unknown rule {rule}"));
+        }
+        if let Some(known) = known_rule_ids
+            && !known[rule]
+        {
+            return Err(format!("rule {rule} is not exception eligible"));
+        }
     }
     for path in &exception.paths {
-        if !valid_relative_path(path) || path == "." {
+        if !valid_relative_path(path) || path == "." || path.contains('*') {
             return Err(format!("exception path is not exact and relative: {path}"));
         }
     }
@@ -905,7 +1142,9 @@ fn sync_bundle(args: &Cli) -> Result<()> {
     }
     let source_standards = source_root.join("standards");
     require_directory(&source_standards)?;
+
     let target_root = if target_root.exists() {
+        require_directory(&target_root)?;
         target_root
             .canonicalize()
             .map_err(|error| format!("cannot read target root: {error}"))?
@@ -924,20 +1163,20 @@ fn sync_bundle(args: &Cli) -> Result<()> {
     collect_files(&source_standards, &source_standards, &mut files)?;
     files.sort();
     let mut entries = Vec::new();
+    let mut source_bytes = Vec::new();
     let mut bundle_input = Vec::new();
     for path in files {
         let source_path = source_root.join(&path);
-        let target_path = target_root.join(&path);
         let bytes = fs::read(&source_path)
             .map_err(|error| format!("cannot read {}: {error}", source_path.display()))?;
-        copy_if_absent_or_equal(&target_path, &bytes)?;
-        let digest = sha256_hex(&bytes);
-        entries.push((path.clone(), digest));
-        bundle_input.extend_from_slice(path.as_bytes());
-        bundle_input.push(0);
-        bundle_input.extend_from_slice(&bytes);
-        bundle_input.push(0);
+        append_bundle_record(&mut bundle_input, &path, &bytes);
+        entries.push(LockEntry {
+            path: path.clone(),
+            sha256: sha256_hex(&bytes),
+        });
+        source_bytes.push((path, bytes));
     }
+    verify_source_commit_content(&source_root, &args.source_commit, &source_bytes)?;
     let bundle_digest = format!("sha256:{}", sha256_hex(&bundle_input));
     let profile = generated_profile(
         &args.profile_id,
@@ -946,21 +1185,43 @@ fn sync_bundle(args: &Cli) -> Result<()> {
         &args.source_commit,
         &bundle_digest,
     )?;
-    let lock = generated_lock(
-        &args.repository,
-        &args.profile_id,
-        &args.source_commit,
-        &bundle_digest,
-        &entries,
-    );
-    copy_if_absent_or_equal(
-        &target_root.join("standards-profile.toml"),
-        profile.as_bytes(),
-    )?;
-    copy_if_absent_or_equal(&target_root.join("standards.lock.json"), lock.as_bytes())?;
+    let lock = LockFile {
+        lock_version: 1,
+        repository: args.repository.clone(),
+        profile_id: args.profile_id.clone(),
+        source: LockSource {
+            repository: "AI-Ascension/.github".to_owned(),
+            commit: args.source_commit.clone(),
+            bundle_digest: bundle_digest.clone(),
+            distribution: "local".to_owned(),
+            published: false,
+        },
+        files: entries,
+        protected_paths: vec![
+            "standards/schemas".to_owned(),
+            "standards/conformance".to_owned(),
+        ],
+        generated_by: "standards-sync/1".to_owned(),
+    };
+    validate_profile(&profile)?;
+    validate_lock_shape(&lock, &profile)?;
+    let profile_text = toml::to_string_pretty(&profile)
+        .map_err(|error| format!("cannot encode profile: {error}"))?;
+    let lock_text = serde_json::to_string_pretty(&lock)
+        .map_err(|error| format!("cannot encode lock: {error}"))?
+        + "\n";
+
+    for (path, bytes) in source_bytes {
+        let target_path = prepare_managed_path(&target_root, &path)?;
+        copy_if_absent_or_equal(&target_path, &bytes)?;
+    }
+    let profile_path = prepare_managed_path(&target_root, "standards-profile.toml")?;
+    copy_if_absent_or_equal(&profile_path, profile_text.as_bytes())?;
+    let lock_path = prepare_managed_path(&target_root, "standards.lock.json")?;
+    copy_if_absent_or_equal(&lock_path, lock_text.as_bytes())?;
     println!(
         "synced {} files to {} bundle_digest={bundle_digest} published=false",
-        entries.len(),
+        lock.files.len(),
         target_root.display()
     );
     Ok(())
@@ -972,106 +1233,330 @@ fn generated_profile(
     owner: &str,
     commit: &str,
     digest: &str,
-) -> Result<String> {
+) -> Result<Profile> {
     let (scopes, fast, required, extended) = match profile_id {
         "rust-pure" => (
-            "rust, json, contracts",
-            "git-diff-check, standards-validate, cargo-metadata, cargo-fmt",
-            "repo-policy-strict, cargo-clippy, cargo-test, artifact-checksums",
-            "contract-conformance",
+            vec!["rust", "json", "contracts"],
+            vec![
+                "git-diff-check",
+                "standards-validate",
+                "cargo-metadata",
+                "cargo-fmt",
+            ],
+            vec![
+                "repo-policy-strict",
+                "cargo-clippy",
+                "cargo-test",
+                "artifact-checksums",
+            ],
+            vec!["contract-conformance"],
         ),
         "rust-service" => (
-            "rust, json, contracts",
-            "git-diff-check, standards-validate, cargo-metadata, cargo-fmt",
-            "repo-policy-strict, cargo-clippy, cargo-test, artifact-checksums",
-            "contract-conformance, synthetic-boundary-tests",
+            vec!["rust", "json", "contracts"],
+            vec![
+                "git-diff-check",
+                "standards-validate",
+                "cargo-metadata",
+                "cargo-fmt",
+            ],
+            vec![
+                "repo-policy-strict",
+                "cargo-clippy",
+                "cargo-test",
+                "artifact-checksums",
+            ],
+            vec!["contract-conformance", "synthetic-boundary-tests"],
         ),
         "rust-managed" => (
-            "rust, csharp, shell, json, contracts",
-            "git-diff-check, standards-validate, cargo-metadata, cargo-fmt",
-            "repo-policy-strict, cargo-clippy, cargo-test, artifact-checksums, managed-source-probes",
-            "managed-bridge-tests, exact-host-build",
+            vec!["rust", "csharp", "shell", "json", "contracts"],
+            vec![
+                "git-diff-check",
+                "standards-validate",
+                "cargo-metadata",
+                "cargo-fmt",
+            ],
+            vec![
+                "repo-policy-strict",
+                "cargo-clippy",
+                "cargo-test",
+                "artifact-checksums",
+                "managed-source-probes",
+            ],
+            vec!["managed-bridge-tests", "exact-host-build"],
         ),
         "web-php" => (
-            "html, css, javascript, php",
-            "git-diff-check, standards-validate, composer-validate",
-            "phpunit, origin-regressions, persistence-regressions",
-            "browser-check",
+            vec!["html", "css", "javascript", "php"],
+            vec!["git-diff-check", "standards-validate", "composer-validate"],
+            vec!["phpunit", "origin-regressions", "persistence-regressions"],
+            vec!["browser-check"],
         ),
         "web-static" => (
-            "html, css, javascript, rust",
-            "git-diff-check, standards-validate, node-tests",
-            "fixture-integrity, local-link-check",
-            "browser-check, pinned-recipe",
+            vec!["html", "css", "javascript", "rust"],
+            vec!["git-diff-check", "standards-validate", "node-tests"],
+            vec!["fixture-integrity", "local-link-check"],
+            vec!["browser-check", "pinned-recipe"],
         ),
         "operations" => (
-            "shell, yaml, dockerfile, systemd",
-            "git-diff-check, standards-validate, bash-n, shellcheck",
-            "compose-invariants, compose-config, dockerfile-check",
-            "synthetic-bootstrap",
+            vec!["shell", "yaml", "dockerfile", "systemd"],
+            vec![
+                "git-diff-check",
+                "standards-validate",
+                "bash-n",
+                "shellcheck",
+            ],
+            vec!["compose-invariants", "compose-config", "dockerfile-check"],
+            vec!["synthetic-bootstrap"],
         ),
         "planning-bootstrap" => (
-            "markdown, json, rust-planned, browser-planned",
-            "git-diff-check, standards-validate, package-shape",
-            "",
-            "",
+            vec!["markdown", "json", "rust-planned", "browser-planned"],
+            vec!["git-diff-check", "standards-validate", "package-shape"],
+            Vec::new(),
+            Vec::new(),
         ),
         "brand-package" => (
-            "python, html, json, markdown",
-            "git-diff-check, standards-validate, python-syntax",
-            "package-validation, unit-tests, schema-meta-validation",
-            "offline-art-board",
+            vec!["python", "html", "json", "markdown"],
+            vec!["git-diff-check", "standards-validate", "python-syntax"],
+            vec!["package-validation", "unit-tests", "schema-meta-validation"],
+            vec!["offline-art-board"],
         ),
         "org-governance" => (
-            "markdown, yaml, json, rust",
-            "git-diff-check, standards-validate",
-            "standards-lock, schema-shape",
-            "link-check",
+            vec!["markdown", "yaml", "json", "rust"],
+            vec!["git-diff-check", "standards-validate"],
+            vec!["standards-lock", "schema-shape"],
+            vec!["link-check"],
         ),
         _ => return Err(format!("no generated profile template for {profile_id}")),
     };
-    let list = |value: &str| {
-        if value.is_empty() {
-            "[]".to_owned()
-        } else {
-            format!(
-                "[{}]",
-                value
-                    .split(", ")
-                    .map(|item| format!("\"{item}\""))
-                    .collect::<Vec<_>>()
-                    .join(", ")
-            )
-        }
-    };
-    Ok(format!(
-        "schema_version = 1\nprofile_id = \"{profile_id}\"\nrepository = \"{repository}\"\nowner = \"{owner}\"\nsource_bundle = \"AI-Ascension/.github\"\nsource_commit = \"{commit}\"\nsource_digest = \"{digest}\"\ndistribution = \"local\"\nscopes = [{}]\n\n[checks]\nfast = {}\nrequired = {}\nextended = {}\n\n[evidence]\nruntime = \"unverified\"\ndeployment = \"unverified\"\nprovider = \"unverified\"\n\n[exceptions]\nfile = \"\"\nstatus = \"none\"\n",
-        scopes
-            .split(", ")
-            .map(|item| format!("\"{item}\""))
-            .collect::<Vec<_>>()
-            .join(", "),
-        list(fast),
-        list(required),
-        list(extended)
-    ))
+    let all_checks = fast
+        .iter()
+        .chain(required.iter())
+        .chain(extended.iter())
+        .copied()
+        .collect::<Vec<_>>();
+    let mut commands = BTreeMap::new();
+    for name in all_checks {
+        let (command, target) = command_template(name)
+            .ok_or_else(|| format!("no command/target template for check {name}"))?;
+        commands.insert(
+            name.to_owned(),
+            CheckCommand {
+                command: command.to_owned(),
+                target: target.to_owned(),
+            },
+        );
+    }
+    Ok(Profile {
+        schema_version: 1,
+        profile_id: profile_id.to_owned(),
+        repository: repository.to_owned(),
+        owner: owner.to_owned(),
+        source_bundle: "AI-Ascension/.github".to_owned(),
+        source_commit: commit.to_owned(),
+        source_digest: digest.to_owned(),
+        distribution: "local".to_owned(),
+        scopes: scopes.into_iter().map(str::to_owned).collect(),
+        checks: CheckSets {
+            fast: fast.into_iter().map(str::to_owned).collect(),
+            required: required.into_iter().map(str::to_owned).collect(),
+            extended: extended.into_iter().map(str::to_owned).collect(),
+            commands,
+        },
+        evidence: Evidence {
+            runtime: "unverified".to_owned(),
+            deployment: "unverified".to_owned(),
+            provider: "unverified".to_owned(),
+        },
+        exceptions: Exceptions {
+            file: String::new(),
+            status: "none".to_owned(),
+        },
+    })
 }
 
-fn generated_lock(
-    repository: &str,
-    profile_id: &str,
+fn command_template(name: &str) -> Option<(&'static str, &'static str)> {
+    Some(match name {
+        "git-diff-check" => ("git diff --check", "."),
+        "standards-validate" | "schema-shape" | "standards-lock" => (
+            "cargo run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- validate --root .",
+            ".",
+        ),
+        "cargo-metadata" => ("cargo metadata --locked --no-deps --format-version 1", "."),
+        "cargo-fmt" => ("cargo fmt --all -- --check", "."),
+        "repo-policy-strict" => ("cargo run --locked --package repo-policy -- --strict", "."),
+        "cargo-clippy" => (
+            "cargo clippy --locked --workspace --all-targets --all-features -- -D warnings",
+            ".",
+        ),
+        "cargo-test" => ("cargo test --locked --workspace", "."),
+        "artifact-checksums" | "fixture-integrity" => ("sha256sum --check SHA256SUMS", "."),
+        "contract-conformance" => ("cargo test --locked --test contract", "."),
+        "synthetic-boundary-tests" => ("cargo test --locked --test boundary", "."),
+        "managed-source-probes" => ("dotnet test --no-restore", "managed"),
+        "managed-bridge-tests" => ("cargo test --locked --test managed_bridge", "."),
+        "exact-host-build" => ("dotnet build --configuration Release", "managed"),
+        "composer-validate" => ("composer validate --strict", "."),
+        "phpunit" => ("vendor/bin/phpunit", "."),
+        "origin-regressions" => ("vendor/bin/phpunit --filter Origin", "."),
+        "persistence-regressions" => ("vendor/bin/phpunit --filter Persistence", "."),
+        "browser-check" | "node-tests" => ("npm test", "."),
+        "local-link-check" => ("bash tests/link-check.sh", "."),
+        "pinned-recipe" => ("cargo run --locked --release", "recipes"),
+        "bash-n" => ("bash -n", "scripts"),
+        "shellcheck" => ("shellcheck", "."),
+        "compose-invariants" => ("bash tests/compose-invariants.sh", "."),
+        "compose-config" => ("docker compose config --quiet", "."),
+        "dockerfile-check" => ("hadolint", "."),
+        "synthetic-bootstrap" => ("bash tests/bootstrap-synthetic.sh", "."),
+        "package-shape" => ("python -m json.tool", "."),
+        "python-syntax" => ("python -m compileall", "."),
+        "package-validation" | "unit-tests" | "offline-art-board" => ("python -m unittest", "."),
+        "schema-meta-validation" => ("python -m json.tool", "."),
+        "link-check" => ("bash tests/link-check-template.sh", "."),
+        _ => return None,
+    })
+}
+
+fn verify_source_commit_content(
+    source_root: &Path,
     commit: &str,
-    digest: &str,
-    files: &[(String, String)],
-) -> String {
-    let files_text = files
+    source_bytes: &[(String, Vec<u8>)],
+) -> Result<()> {
+    let top_level = git_output(
+        source_root,
+        &["rev-parse".to_owned(), "--show-toplevel".to_owned()],
+    )?;
+    let top_level = String::from_utf8(top_level)
+        .map_err(|error| format!("git returned a non-UTF-8 repository path: {error}"))?;
+    let top_level = PathBuf::from(top_level.trim());
+    if top_level != source_root {
+        return Err(format!(
+            "source root {} is not the Git worktree root {}",
+            source_root.display(),
+            top_level.display()
+        ));
+    }
+    git_output(
+        source_root,
+        &[
+            "cat-file".to_owned(),
+            "-e".to_owned(),
+            format!("{commit}^{{commit}}"),
+        ],
+    )?;
+    let tree = git_output(
+        source_root,
+        &[
+            "ls-tree".to_owned(),
+            "-r".to_owned(),
+            "--name-only".to_owned(),
+            commit.to_owned(),
+            "--".to_owned(),
+            "standards".to_owned(),
+        ],
+    )?;
+    let mut committed = String::from_utf8(tree)
+        .map_err(|error| format!("source commit tree is not UTF-8: {error}"))?
+        .lines()
+        .filter(|line| !line.is_empty())
+        .map(str::to_owned)
+        .collect::<Vec<_>>();
+    committed.sort();
+    let mut expected = source_bytes
         .iter()
-        .map(|(path, hash)| format!("    {{\"path\": \"{path}\", \"sha256\": \"{hash}\"}}"))
-        .collect::<Vec<_>>()
-        .join(",\n");
-    format!(
-        "{{\n  \"lock_version\": 1,\n  \"repository\": \"{repository}\",\n  \"profile_id\": \"{profile_id}\",\n  \"source\": {{\n    \"repository\": \"AI-Ascension/.github\",\n    \"commit\": \"{commit}\",\n    \"bundle_digest\": \"{digest}\",\n    \"distribution\": \"local\",\n    \"published\": false\n  }},\n  \"files\": [\n{files_text}\n  ],\n  \"protected_paths\": [\"standards/schemas\", \"standards/conformance\"],\n  \"generated_by\": \"standards-sync/1\"\n}}\n"
-    )
+        .map(|(path, _)| path.clone())
+        .collect::<Vec<_>>();
+    expected.sort();
+    if committed != expected {
+        return Err(
+            "source commit standards tree differs from the source checkout inventory; commit the exact source bundle first"
+                .to_owned(),
+        );
+    }
+    for (path, expected_bytes) in source_bytes {
+        let object = format!("{commit}:{path}");
+        let actual = git_output(source_root, &["show".to_owned(), object])?;
+        if &actual != expected_bytes {
+            return Err(format!(
+                "source commit content differs from checkout for {path}; refusing sync"
+            ));
+        }
+    }
+    Ok(())
+}
+
+fn git_output(root: &Path, args: &[String]) -> Result<Vec<u8>> {
+    let output = Command::new("git")
+        .arg("-C")
+        .arg(root)
+        .args(args)
+        .output()
+        .map_err(|error| format!("cannot execute git for {}: {error}", root.display()))?;
+    if !output.status.success() {
+        let detail = String::from_utf8_lossy(&output.stderr).trim().to_owned();
+        return Err(format!(
+            "git {} failed{}",
+            args.join(" "),
+            if detail.is_empty() {
+                String::new()
+            } else {
+                format!(": {detail}")
+            }
+        ));
+    }
+    Ok(output.stdout)
+}
+
+fn append_bundle_record(input: &mut Vec<u8>, path: &str, bytes: &[u8]) {
+    input.extend_from_slice(path.as_bytes());
+    input.push(0);
+    input.extend_from_slice(bytes);
+    input.push(0);
+}
+
+fn prepare_managed_path(root: &Path, relative: &str) -> Result<PathBuf> {
+    if !valid_relative_path(relative) {
+        return Err(format!("unsafe managed path '{relative}'"));
+    }
+    let components = relative.split('/').collect::<Vec<_>>();
+    let mut current = root.to_path_buf();
+    for component in &components[..components.len() - 1] {
+        current.push(component);
+        match fs::symlink_metadata(&current) {
+            Ok(metadata) if metadata.file_type().is_symlink() => {
+                return Err(format!(
+                    "managed path traverses symlink {}",
+                    current.display()
+                ));
+            }
+            Ok(metadata) if !metadata.is_dir() => {
+                return Err(format!(
+                    "managed path component is not a directory {}",
+                    current.display()
+                ));
+            }
+            Ok(_) => {}
+            Err(error) if error.kind() == io::ErrorKind::NotFound => fs::create_dir(&current)
+                .map_err(|create_error| {
+                    format!(
+                        "cannot create managed directory {}: {create_error}",
+                        current.display()
+                    )
+                })?,
+            Err(error) => {
+                return Err(format!(
+                    "cannot inspect managed path {}: {error}",
+                    current.display()
+                ));
+            }
+        }
+    }
+    let path = root.join(relative);
+    if let Ok(metadata) = fs::symlink_metadata(&path)
+        && metadata.file_type().is_symlink()
+    {
+        return Err(format!("managed path is a symlink {}", path.display()));
+    }
+    Ok(path)
 }
 
 fn copy_if_absent_or_equal(path: &Path, bytes: &[u8]) -> Result<()> {
@@ -1087,11 +1572,6 @@ fn copy_if_absent_or_equal(path: &Path, bytes: &[u8]) -> Result<()> {
         }
         return Ok(());
     }
-    let parent = path
-        .parent()
-        .ok_or_else(|| format!("managed path has no parent: {}", path.display()))?;
-    fs::create_dir_all(parent)
-        .map_err(|error| format!("cannot create {}: {error}", parent.display()))?;
     fs::write(path, bytes).map_err(|error| format!("cannot write {}: {error}", path.display()))
 }
 
@@ -1112,6 +1592,9 @@ fn collect_files(root: &Path, directory: &Path, output: &mut Vec<String>) -> Res
             ));
         }
         if metadata.is_dir() {
+            if path.file_name().and_then(|name| name.to_str()) == Some("target") {
+                continue;
+            }
             collect_files(root, &path, output)?;
         } else if metadata.is_file() {
             let relative = path
@@ -1130,7 +1613,7 @@ fn collect_files(root: &Path, directory: &Path, output: &mut Vec<String>) -> Res
 
 fn safe_join(root: &Path, relative: &str) -> Result<PathBuf> {
     if !valid_relative_path(relative) {
-        return Err(format!("unsafe path `{relative}`"));
+        return Err(format!("unsafe path '{relative}'"));
     }
     let path = root.join(relative);
     let parent = path
@@ -1156,6 +1639,7 @@ fn require_directory(path: &Path) -> Result<()> {
     }
     Ok(())
 }
+
 fn require_regular_file(path: &Path) -> Result<()> {
     let metadata = fs::symlink_metadata(path)
         .map_err(|error| format!("missing file {}: {error}", path.display()))?;
@@ -1164,33 +1648,57 @@ fn require_regular_file(path: &Path) -> Result<()> {
     }
     Ok(())
 }
+
+fn parse_toml<T: DeserializeOwned>(path: &Path) -> Result<T> {
+    let text = read_text(path)?;
+    toml::from_str(&text).map_err(|error| format!("{}: invalid TOML: {error}", path.display()))
+}
+
+fn parse_json<T: DeserializeOwned>(path: &Path) -> Result<T> {
+    let text = read_text(path)?;
+    serde_json::from_str(&text)
+        .map_err(|error| format!("{}: invalid JSON: {error}", path.display()))
+}
+
+fn parse_json_value(path: &Path) -> Result<Value> {
+    parse_json(path)
+}
+
+fn parse_yaml<T: DeserializeOwned>(path: &Path) -> Result<T> {
+    let text = read_text(path)?;
+    serde_yaml::from_str(&text)
+        .map_err(|error| format!("{}: invalid YAML: {error}", path.display()))
+}
+
 fn read_text(path: &Path) -> Result<String> {
     let bytes =
         fs::read(path).map_err(|error| format!("cannot read {}: {error}", path.display()))?;
     String::from_utf8(bytes).map_err(|error| format!("{} is not UTF-8: {error}", path.display()))
 }
-fn required<'a, T>(value: &'a Option<T>, name: &str) -> Result<&'a T> {
-    value.as_ref().ok_or_else(|| format!("{name} is required"))
-}
+
 fn unique(values: &[String]) -> bool {
     let mut set = BTreeSet::new();
     values.iter().all(|value| set.insert(value))
 }
+
 fn valid_commit(value: &str) -> bool {
     value.len() == 40
         && value
             .bytes()
-            .all(|byte| byte.is_ascii_hexdigit() && !byte.is_ascii_uppercase())
+            .all(|byte| byte.is_ascii_digit() || (b'a'..=b'f').contains(&byte))
 }
+
 fn valid_hex_digest(value: &str) -> bool {
     value.len() == 64
         && value
             .bytes()
-            .all(|byte| byte.is_ascii_hexdigit() && !byte.is_ascii_uppercase())
+            .all(|byte| byte.is_ascii_digit() || (b'a'..=b'f').contains(&byte))
 }
+
 fn valid_prefixed_digest(value: &str) -> bool {
     value.strip_prefix("sha256:").is_some_and(valid_hex_digest)
 }
+
 fn valid_repository(value: &str) -> bool {
     let Some(name) = value.strip_prefix("AI-Ascension/") else {
         return false;
@@ -1200,6 +1708,7 @@ fn valid_repository(value: &str) -> bool {
             .bytes()
             .all(|byte| byte.is_ascii_alphanumeric() || matches!(byte, b'.' | b'_' | b'-'))
 }
+
 fn valid_profile_id(value: &str) -> bool {
     (3..=49).contains(&value.len())
         && value.as_bytes().first().is_some_and(u8::is_ascii_lowercase)
@@ -1207,26 +1716,49 @@ fn valid_profile_id(value: &str) -> bool {
             .bytes()
             .all(|byte| byte.is_ascii_lowercase() || byte.is_ascii_digit() || byte == b'-')
 }
-fn valid_scope(value: &str) -> bool {
+
+fn valid_profile_scope(value: &str) -> bool {
     !value.is_empty()
+        && value.as_bytes().first().is_some_and(u8::is_ascii_lowercase)
         && value.bytes().all(|byte| {
             byte.is_ascii_lowercase() || byte.is_ascii_digit() || byte == b'_' || byte == b'-'
         })
 }
+
+fn valid_rule_scope(value: &str) -> bool {
+    !value.is_empty()
+        && value.as_bytes().first().is_some_and(u8::is_ascii_lowercase)
+        && value
+            .bytes()
+            .all(|byte| byte.is_ascii_lowercase() || byte.is_ascii_digit() || byte == b'_')
+}
+
+fn valid_language_scope(value: &str) -> bool {
+    !value.is_empty()
+        && value.as_bytes().first().is_some_and(u8::is_ascii_lowercase)
+        && value
+            .bytes()
+            .all(|byte| byte.is_ascii_lowercase() || byte.is_ascii_digit() || byte == b'-')
+}
+
 fn valid_check_name(value: &str) -> bool {
     !value.is_empty()
+        && value.as_bytes().first().is_some_and(u8::is_ascii_lowercase)
         && value.bytes().all(|byte| {
             byte.is_ascii_lowercase()
                 || byte.is_ascii_digit()
                 || matches!(byte, b'.' | b'_' | b':' | b'-')
         })
 }
+
 fn is_upper_identifier(value: &str) -> bool {
     (2..=16).contains(&value.len())
+        && value.as_bytes().first().is_some_and(u8::is_ascii_uppercase)
         && value
             .bytes()
             .all(|byte| byte.is_ascii_uppercase() || byte.is_ascii_digit() || byte == b'_')
 }
+
 fn valid_rule_id(value: &str) -> bool {
     let parts = value.split('-').collect::<Vec<_>>();
     parts.len() == 3
@@ -1238,11 +1770,26 @@ fn valid_rule_id(value: &str) -> bool {
         && parts[2].len() == 3
         && parts[2].bytes().all(|byte| byte.is_ascii_digit())
 }
+
+fn valid_exception_id(value: &str) -> bool {
+    let parts = value.split('-').collect::<Vec<_>>();
+    parts.len() == 3
+        && parts[0] == "EXC"
+        && !parts[1].is_empty()
+        && parts[1]
+            .bytes()
+            .all(|byte| byte.is_ascii_uppercase() || byte.is_ascii_digit())
+        && parts[2].len() == 3
+        && parts[2].bytes().all(|byte| byte.is_ascii_digit())
+}
+
 fn valid_relative_path(value: &str) -> bool {
     !value.is_empty()
         && value != "."
         && !value.starts_with('/')
+        && !value.ends_with('/')
         && !value.contains('\\')
+        && !value.contains('*')
         && !value
             .split('/')
             .any(|part| part.is_empty() || part == "." || part == "..")
@@ -1250,261 +1797,166 @@ fn valid_relative_path(value: &str) -> bool {
             .bytes()
             .all(|byte| byte.is_ascii_alphanumeric() || matches!(byte, b'.' | b'_' | b'/' | b'-'))
 }
-fn strip_comment(value: &str) -> &str {
-    let mut quoted = false;
-    for (index, byte) in value.bytes().enumerate() {
-        if byte == b'"' {
-            quoted = !quoted;
-        } else if byte == b'#' && !quoted {
-            return &value[..index];
-        }
-    }
-    value
+
+fn valid_target(value: &str) -> bool {
+    valid_relative_path(value) || value == "."
 }
-fn parse_string(value: &str, path: &Path, line: usize) -> Result<String> {
-    if value.len() >= 2 && value.starts_with('"') && value.ends_with('"') {
-        Ok(value[1..value.len() - 1]
-            .replace("\\\"", "\"")
-            .replace("\\\\", "\\"))
+
+fn contains_shell_operator(value: &str) -> bool {
+    value.contains(';')
+        || value.contains('|')
+        || value.contains('&')
+        || value.contains(char::from(96))
+        || value.contains("$(")
+        || value.contains('>')
+        || value.contains('<')
+}
+
+fn valid_node_id(value: &str) -> bool {
+    value.starts_with("R_kg")
+        && value.len() > 4
+        && value
+            .bytes()
+            .skip(4)
+            .all(|byte| byte.is_ascii_alphanumeric() || byte == b'_' || byte == b'-')
+}
+
+fn valid_review_url(value: &str) -> bool {
+    let Some(rest) = value.strip_prefix("https://github.com/AI-Ascension/") else {
+        return false;
+    };
+    let mut parts = rest.split('/');
+    let Some(repository) = parts.next() else {
+        return false;
+    };
+    let Some(kind) = parts.next() else {
+        return false;
+    };
+    let Some(number) = parts.next() else {
+        return false;
+    };
+    parts.next().is_none()
+        && valid_repository(&format!("AI-Ascension/{repository}"))
+        && matches!(kind, "issues" | "pull")
+        && !number.is_empty()
+        && number.bytes().all(|byte| byte.is_ascii_digit())
+}
+
+fn valid_date(value: &str) -> bool {
+    date_parts(value).is_some()
+}
+
+fn valid_date_order(start: &str, end: &str) -> bool {
+    match (date_days(start), date_days(end)) {
+        (Ok(start), Ok(end)) => start <= end,
+        _ => false,
+    }
+}
+
+fn date_parts(value: &str) -> Option<(i32, u32, u32)> {
+    let mut parts = value.split('-');
+    let year = parts.next()?.parse::<i32>().ok()?;
+    let month = parts.next()?.parse::<u32>().ok()?;
+    let day = parts.next()?.parse::<u32>().ok()?;
+    if parts.next().is_some()
+        || value.len() != 10
+        || !(1..=12).contains(&month)
+        || day == 0
+        || day > days_in_month(year, month)
+    {
+        return None;
+    }
+    Some((year, month, day))
+}
+
+fn days_in_month(year: i32, month: u32) -> u32 {
+    match month {
+        2 if year % 4 == 0 && (year % 100 != 0 || year % 400 == 0) => 29,
+        2 => 28,
+        4 | 6 | 9 | 11 => 30,
+        _ => 31,
+    }
+}
+
+fn date_days(value: &str) -> Result<i64> {
+    let (year, month, day) = date_parts(value).ok_or_else(|| format!("invalid date '{value}'"))?;
+    let adjusted_year = year - i32::from(month <= 2);
+    let era = if adjusted_year >= 0 {
+        adjusted_year / 400
     } else {
-        Err(format!(
-            "{}:{}: expected quoted string",
-            path.display(),
-            line + 1
-        ))
-    }
+        (adjusted_year - 399) / 400
+    };
+    let year_of_era = adjusted_year - era * 400;
+    let month_prime = month as i32 + if month > 2 { -3 } else { 9 };
+    let day_of_year = (153 * month_prime + 2) / 5 + day as i32 - 1;
+    let day_of_era = year_of_era * 365 + year_of_era / 4 - year_of_era / 100 + day_of_year;
+    Ok(i64::from(era * 146097 + day_of_era - 719468))
 }
-fn parse_u32(value: &str, path: &Path, line: usize) -> Result<u32> {
-    value
-        .parse()
-        .map_err(|error| format!("{}:{}: invalid integer: {error}", path.display(), line + 1))
+
+fn today_days() -> i64 {
+    SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .map(|duration| (duration.as_secs() / 86_400) as i64)
+        .unwrap_or(0)
 }
-fn parse_array(value: &str, path: &Path, line: usize) -> Result<Vec<String>> {
-    if !value.starts_with('[') || !value.ends_with(']') {
-        return Err(format!("{}:{}: expected array", path.display(), line + 1));
-    }
-    let inner = value[1..value.len() - 1].trim();
-    if inner.is_empty() {
-        return Ok(Vec::new());
-    }
-    inner
-        .split(',')
-        .map(|item| parse_string(item.trim(), path, line))
+
+fn sha256_hex(input: &[u8]) -> String {
+    Sha256::digest(input)
+        .iter()
+        .map(|byte| format!("{byte:02x}"))
         .collect()
 }
-fn parse_yaml_array(value: &str) -> Result<Vec<String>> {
-    if !value.starts_with('[') || !value.ends_with(']') {
-        return Err("expected YAML inline array".to_owned());
-    }
-    let inner = value[1..value.len() - 1].trim();
-    if inner.is_empty() {
-        return Ok(Vec::new());
-    }
-    Ok(inner
-        .split(',')
-        .map(|item| item.trim().trim_matches('"').to_owned())
-        .collect())
-}
 
-fn looks_like_json(text: &str) -> bool {
-    let trimmed = text.trim();
-    trimmed.starts_with('{') && trimmed.ends_with('}') && !text.contains('\0')
-}
-fn json_string_any(text: &str, key: &str) -> Result<String> {
-    for line in text.lines() {
-        if line.contains(&format!("\"{key}\"")) {
-            return json_string_after_key(line, key);
-        }
-    }
-    Err(format!("JSON key `{key}` is missing"))
-}
-fn json_string_at_indent(text: &str, key: &str, indent: usize) -> Result<String> {
-    let prefix = " ".repeat(indent);
-    for line in text.lines() {
-        if line.starts_with(&prefix)
-            && !line.starts_with(&(prefix.clone() + " "))
-            && line.trim_start().starts_with(&format!("\"{key}\""))
-        {
-            return json_string_after_key(line, key);
-        }
-    }
-    Err(format!("JSON key `{key}` at indent {indent} is missing"))
-}
-fn json_bool_at_indent(text: &str, key: &str, indent: usize) -> Result<bool> {
-    let prefix = " ".repeat(indent);
-    for line in text.lines() {
-        if line.starts_with(&prefix)
-            && !line.starts_with(&(prefix.clone() + " "))
-            && line.trim_start().starts_with(&format!("\"{key}\""))
-        {
-            let value = line
-                .split_once(':')
-                .map(|(_, value)| value.trim().trim_end_matches(','))
-                .ok_or_else(|| format!("JSON key `{key}` malformed"))?;
-            return match value {
-                "true" => Ok(true),
-                "false" => Ok(false),
-                _ => Err(format!("JSON key `{key}` is not boolean")),
-            };
-        }
-    }
-    Err(format!("JSON key `{key}` at indent {indent} is missing"))
-}
-fn json_u32(text: &str, key: &str, indent: usize) -> Result<u32> {
-    let prefix = " ".repeat(indent);
-    for line in text.lines() {
-        if line.starts_with(&prefix)
-            && !line.starts_with(&(prefix.clone() + " "))
-            && line.trim_start().starts_with(&format!("\"{key}\""))
-        {
-            let value = line
-                .split_once(':')
-                .map(|(_, value)| value.trim().trim_end_matches(','))
-                .ok_or_else(|| format!("JSON key `{key}` malformed"))?;
-            return value
-                .parse()
-                .map_err(|error| format!("JSON key `{key}` is not an integer: {error}"));
-        }
-    }
-    Err(format!("JSON key `{key}` at indent {indent} is missing"))
-}
-fn json_array_at_indent(text: &str, key: &str, indent: usize) -> Result<Vec<String>> {
-    let prefix = " ".repeat(indent);
-    for line in text.lines() {
-        if line.starts_with(&prefix)
-            && !line.starts_with(&(prefix.clone() + " "))
-            && line.trim_start().starts_with(&format!("\"{key}\""))
-        {
-            let value = line
-                .split_once(':')
-                .map(|(_, value)| value.trim())
-                .ok_or_else(|| format!("JSON key `{key}` malformed"))?;
-            let value = value.trim_end_matches(',');
-            if !value.starts_with('[') || !value.ends_with(']') {
-                return Err(format!("JSON key `{key}` is not an inline array"));
-            }
-            let inner = value[1..value.len() - 1].trim();
-            if inner.is_empty() {
-                return Ok(Vec::new());
-            }
-            return inner
-                .split(',')
-                .map(|item| {
-                    let item = item.trim();
-                    if item.len() < 2 || !item.starts_with('"') || !item.ends_with('"') {
-                        return Err(format!("JSON array `{key}` has an invalid string"));
-                    }
-                    Ok(item[1..item.len() - 1].to_owned())
-                })
-                .collect();
-        }
-    }
-    Err(format!("JSON key `{key}` at indent {indent} is missing"))
-}
-fn json_string_after_key(line: &str, key: &str) -> Result<String> {
-    let needle = format!("\"{key}\"");
-    let start = line
-        .find(&needle)
-        .ok_or_else(|| format!("JSON key `{key}` missing"))?
-        + needle.len();
-    let rest = line[start..].trim_start();
-    let rest = rest
-        .strip_prefix(':')
-        .ok_or_else(|| format!("JSON key `{key}` has no colon"))?
-        .trim_start();
-    if !rest.starts_with('"') {
-        return Err(format!("JSON key `{key}` is not a string"));
-    }
-    let mut escaped = false;
-    for (offset, byte) in rest.as_bytes().iter().enumerate().skip(1) {
-        if *byte == b'"' && !escaped {
-            return Ok(rest[1..offset].replace("\\\"", "\"").replace("\\\\", "\\"));
-        }
-        escaped = *byte == b'\\' && !escaped;
-        if *byte != b'\\' {
-            escaped = false;
-        }
-    }
-    Err(format!("JSON key `{key}` has an unterminated string"))
-}
+#[cfg(test)]
+mod tests {
+    use super::{
+        date_days, sha256_hex, valid_commit, valid_relative_path, valid_target, validate_schemas,
+    };
 
-// SHA-256 is included so validation and sync stay dependency-free and offline.
-fn sha256_hex(input: &[u8]) -> String {
-    let mut h: [u32; 8] = [
-        0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab,
-        0x5be0cd19,
-    ];
-    let mut data = input.to_vec();
-    let bit_len = (data.len() as u64) * 8;
-    data.push(0x80);
-    while data.len() % 64 != 56 {
-        data.push(0);
+    #[test]
+    fn sha256_matches_published_vectors() {
+        assert_eq!(
+            sha256_hex(b""),
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        );
+        assert_eq!(
+            sha256_hex(b"abc"),
+            "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+        );
     }
-    data.extend_from_slice(&bit_len.to_be_bytes());
-    const K: [u32; 64] = [
-        0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4,
-        0xab1c5ed5, 0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe,
-        0x9bdc06a7, 0xc19bf174, 0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f,
-        0x4a7484aa, 0x5cb0a9dc, 0x76f988da, 0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7,
-        0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967, 0x27b70a85, 0x2e1b2138, 0x4d2c6dfc,
-        0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85, 0xa2bfe8a1, 0xa81a664b,
-        0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070, 0x19a4c116,
-        0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
-        0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7,
-        0xc67178f2,
-    ];
-    for chunk in data.chunks_exact(64) {
-        let mut w = [0u32; 64];
-        for index in 0..16 {
-            w[index] = u32::from_be_bytes([
-                chunk[index * 4],
-                chunk[index * 4 + 1],
-                chunk[index * 4 + 2],
-                chunk[index * 4 + 3],
-            ]);
-        }
-        for index in 16..64 {
-            let s0 = w[index - 15].rotate_right(7)
-                ^ w[index - 15].rotate_right(18)
-                ^ (w[index - 15] >> 3);
-            let s1 = w[index - 2].rotate_right(17)
-                ^ w[index - 2].rotate_right(19)
-                ^ (w[index - 2] >> 10);
-            w[index] = w[index - 16]
-                .wrapping_add(s0)
-                .wrapping_add(w[index - 7])
-                .wrapping_add(s1);
-        }
-        let (mut a, mut b, mut c, mut d, mut e, mut f, mut g, mut hh) =
-            (h[0], h[1], h[2], h[3], h[4], h[5], h[6], h[7]);
-        for index in 0..64 {
-            let s1 = e.rotate_right(6) ^ e.rotate_right(11) ^ e.rotate_right(25);
-            let ch = (e & f) ^ ((!e) & g);
-            let temp1 = hh
-                .wrapping_add(s1)
-                .wrapping_add(ch)
-                .wrapping_add(K[index])
-                .wrapping_add(w[index]);
-            let s0 = a.rotate_right(2) ^ a.rotate_right(13) ^ a.rotate_right(22);
-            let maj = (a & b) ^ (a & c) ^ (b & c);
-            let temp2 = s0.wrapping_add(maj);
-            hh = g;
-            g = f;
-            f = e;
-            e = d.wrapping_add(temp1);
-            d = c;
-            c = b;
-            b = a;
-            a = temp1.wrapping_add(temp2);
-        }
-        h[0] = h[0].wrapping_add(a);
-        h[1] = h[1].wrapping_add(b);
-        h[2] = h[2].wrapping_add(c);
-        h[3] = h[3].wrapping_add(d);
-        h[4] = h[4].wrapping_add(e);
-        h[5] = h[5].wrapping_add(f);
-        h[6] = h[6].wrapping_add(g);
-        h[7] = h[7].wrapping_add(hh);
+
+    #[test]
+    fn path_and_commit_guards_reject_ambiguous_inputs() {
+        assert!(valid_commit("0123456789abcdef0123456789abcdef01234567"));
+        assert!(!valid_commit("main"));
+        assert!(valid_relative_path("standards/schemas/profile.schema.json"));
+        assert!(!valid_relative_path("standards/../secret"));
+        assert!(!valid_relative_path("/absolute"));
+        assert!(valid_target("."));
+        assert!(!valid_target("a/../secret"));
     }
-    h.iter().map(|word| format!("{word:08x}")).collect()
+
+    #[test]
+    fn date_order_uses_calendar_days() {
+        assert!(
+            date_days("2026-02-28")
+                .ok()
+                .zip(date_days("2026-03-01").ok())
+                .is_some_and(|(start, end)| start < end)
+        );
+        assert!(
+            date_days("2024-02-29")
+                .ok()
+                .zip(date_days("2024-03-01").ok())
+                .is_some_and(|(start, end)| start < end)
+        );
+    }
+
+    #[test]
+    fn canonical_schema_documents_have_semantic_metadata() {
+        let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+            .join("../../..")
+            .join("standards/schemas");
+        assert!(validate_schemas(&root).is_ok());
+    }
 }
