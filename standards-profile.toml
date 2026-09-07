@@ -3,8 +3,8 @@ profile_id = "org-governance"
 repository = "AI-Ascension/.github"
 owner = "ORG"
 source_bundle = "AI-Ascension/.github"
-source_commit = "542f460e4432974cbc7fe78c83d60cfafeecf86a"
-source_digest = "sha256:ec619f3750706961274208b1dafe732dcd76649774f16114a2dd0a0f6308bd4d"
+source_commit = "c2ce3cc2950c19777fd582a96a49a10a33380bd2"
+source_digest = "sha256:1acee4ce76769e8c5e78253bc20d42d0da580160cb9c5481ac982ad496b3a515"
 distribution = "local"
 scopes = [
     "markdown",
@@ -19,8 +19,10 @@ fast = [
     "standards-validate",
 ]
 required = [
-    "standards-lock",
-    "schema-shape",
+    "standards-fmt",
+    "standards-unit-tests",
+    "standards-clippy",
+    "standards-conformance",
 ]
 extended = ["link-check"]
 
@@ -32,12 +34,20 @@ target = "."
 command = "bash tests/link-check-template.sh"
 target = "."
 
-[checks.commands.schema-shape]
-command = "cargo +1.97.1 run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- validate --root ."
+[checks.commands.standards-clippy]
+command = "cargo +1.97.1 clippy --locked --manifest-path standards/tools/standards-sync/Cargo.toml --all-targets -- -D warnings"
 target = "."
 
-[checks.commands.standards-lock]
-command = "cargo +1.97.1 run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- validate --root ."
+[checks.commands.standards-conformance]
+command = "cargo +1.97.1 run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- fixture-check --root standards/conformance"
+target = "."
+
+[checks.commands.standards-fmt]
+command = "cargo +1.97.1 fmt --manifest-path standards/tools/standards-sync/Cargo.toml --check"
+target = "."
+
+[checks.commands.standards-unit-tests]
+command = "cargo +1.97.1 test --locked --manifest-path standards/tools/standards-sync/Cargo.toml"
 target = "."
 
 [checks.commands.standards-validate]

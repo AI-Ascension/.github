@@ -4,15 +4,16 @@
   "profile_id": "org-governance",
   "source": {
     "repository": "AI-Ascension/.github",
-    "commit": "542f460e4432974cbc7fe78c83d60cfafeecf86a",
-    "bundle_digest": "sha256:ec619f3750706961274208b1dafe732dcd76649774f16114a2dd0a0f6308bd4d",
+    "commit": "c2ce3cc2950c19777fd582a96a49a10a33380bd2",
+    "bundle_digest": "sha256:1acee4ce76769e8c5e78253bc20d42d0da580160cb9c5481ac982ad496b3a515",
     "distribution": "local",
     "published": false
   },
+  "profile_sha256": "76fd3b779535cd2893a24647badfacd16151a611f92951526e7fc835bbcf0af0",
   "files": [
     {
       "path": "standards/BASELINE.md",
-      "sha256": "976521ea01278c29577b4c3dfcc3d15cccce81c1b4e7421bd1aee7c6aa5415ef"
+      "sha256": "3ae7ddd12dc6a999ef3b52a5179b74d5b846c730ad0d6998cc3ad0cdbcd67a60"
     },
     {
       "path": "standards/MANAGED_DOTNET.md",
@@ -24,7 +25,7 @@
     },
     {
       "path": "standards/RUST.md",
-      "sha256": "2a0dfd720e1ba9b5dbaa6eda06fe91153a93b8de01819776dac220ecde734dfa"
+      "sha256": "8280f2c00385197ad43bb3b9ae6badb5c93f6fa19c51157e963a22f658c36475"
     },
     {
       "path": "standards/TESTING_AND_CI.md",
@@ -36,7 +37,7 @@
     },
     {
       "path": "standards/conformance/README.md",
-      "sha256": "3dc24e2fc43133f24b50703105c3b8e5422e45222579724d25a3612bf5c4451f"
+      "sha256": "989eefc9e18b413ae387a4086fa387188988587c2323bd462c470a808e4f8801"
     },
     {
       "path": "standards/conformance/invalid-exception-broad-path.yaml",
@@ -48,15 +49,15 @@
     },
     {
       "path": "standards/conformance/invalid-lock-published.json",
-      "sha256": "28e6598c94bd1ad02059dae390c4b7490703682f6fab0970e8347467cca4e886"
+      "sha256": "e6abd7cdcda630549e28cb907434c2707a521d89797d02e666f7423325a91fd3"
     },
     {
       "path": "standards/conformance/invalid-lock-stale-digest.json",
-      "sha256": "7fcceac7c6ba70f437c27b0e6c583a36225aed243fbf99b8a1f9d55d36f83dc0"
+      "sha256": "784501064fc747dd2bad2a74cb40c9ceaba6694f3f0023b51ca48346e0622837"
     },
     {
       "path": "standards/conformance/invalid-lock-traversal.json",
-      "sha256": "78046118011260b7e26b38ef804e8febe122d63a329faf77028033dee69b80c5"
+      "sha256": "6525e009bbe549a996f15b10755d6201676118d0e5b233070ed5698393103bd7"
     },
     {
       "path": "standards/conformance/invalid-profile-floating.toml",
@@ -80,7 +81,7 @@
     },
     {
       "path": "standards/conformance/valid-lock.json",
-      "sha256": "315e4764f5d82fd5f9a81889f3be5570783ab445e1b0d356df46ab0163138dd1"
+      "sha256": "5cd4e6c397f95a373bc872ccb9277d52984e53ef5101da2ad99d77958b44310f"
     },
     {
       "path": "standards/conformance/valid-profile.toml",
@@ -88,15 +89,15 @@
     },
     {
       "path": "standards/profiles.yaml",
-      "sha256": "37f49e5e5a6ad3dc0961b2163d45337cd7e157bfa31d5feaa3ff464c90d7b6c8"
+      "sha256": "c2462af55ed24ca48f18fc97cc070a3511fe07459ec842f893e1cbbdb74331c9"
     },
     {
       "path": "standards/repositories.yaml",
-      "sha256": "08ebf22aeaba1093a87cf65d7c30eab3de33ec4e7a092e2a602a80fdd16a1304"
+      "sha256": "648daf928aaa89402cd34acc846a5beaabf1ab845b33e39990141ab8b71c65cb"
     },
     {
       "path": "standards/rules.yaml",
-      "sha256": "170dd6b03b00747c1b9df3292a56d925366c608a60039499c505da1c2c503684"
+      "sha256": "75f0faee09613e9078a13ba34ac9c5c47a6ce664efdf21008b886205be7b71e2"
     },
     {
       "path": "standards/schemas/exception.schema.json",
@@ -104,7 +105,7 @@
     },
     {
       "path": "standards/schemas/lock.schema.json",
-      "sha256": "f95f5d1b5ef3c2cd1983b12fecb47e95f0fbb10f67c703ee1e24914948ed5558"
+      "sha256": "410fa77fc9b0ccc7f61649f7f6044c3ad4e405074123344634aed9ededac71c6"
     },
     {
       "path": "standards/schemas/profile.schema.json",
@@ -120,7 +121,7 @@
     },
     {
       "path": "standards/schemas/rule.schema.json",
-      "sha256": "694436dd5e6b166b7bb8a613dd99f75254159e8edc070bb41c00ea8925c4ec38"
+      "sha256": "eda8d3e939c165642d592caf1a2b2c4d8bfd7fc39aa1752275b683beecbeea77"
     },
     {
       "path": "standards/schemas/rules.schema.json",
@@ -128,23 +129,31 @@
     },
     {
       "path": "standards/tools/standards-sync/Cargo.lock",
-      "sha256": "be16f222d4412e7bdb0e27a87813dd75ed538573c680abb949225d2347502838"
+      "sha256": "3316fdf0e208f6520f866394580dac5e2024704e690f9fbb850bc97d118b7d16"
     },
     {
       "path": "standards/tools/standards-sync/Cargo.toml",
-      "sha256": "0d2fbbe4791ca10817d1cb5837512ed69decd391b46af116ce43c5ce5d28025a"
+      "sha256": "b0616132e337929d8809c5609d0be1939b1c8e982f52270a517e079494ee114a"
     },
     {
       "path": "standards/tools/standards-sync/README.md",
-      "sha256": "9935ff4618823f88a20369a298a21ddfcd7241ea794f5dfedde6cec3c1d6017d"
+      "sha256": "4c518bf3dbde8d5d8851b29bc9fc9d9ecf4ecad8d0cc3c8074b7fa12d3baa3db"
     },
     {
       "path": "standards/tools/standards-sync/rust-toolchain.toml",
       "sha256": "559f488c181e0e9e77cf17c29de663977f036ec7ff2e2060585714bf53c52d62"
     },
     {
+      "path": "standards/tools/standards-sync/src/bootstrap.rs",
+      "sha256": "575a4cdfdf2a8b7af68be26a07dc8ee3390ad830211267b7497ce51ece80b80a"
+    },
+    {
+      "path": "standards/tools/standards-sync/src/conformance_tests.rs",
+      "sha256": "e62532f9822ba2add75a914675a31979911fae67400096ab89d16f2647b77607"
+    },
+    {
       "path": "standards/tools/standards-sync/src/main.rs",
-      "sha256": "f25f8d10076c6d986864ccd0fb57a0a819922621884f4c62a17034f2ec776414"
+      "sha256": "e9b246640da102a2de216a8309a23208d026a987cd882c3521ed5c2741bd32cd"
     }
   ],
   "protected_paths": [
