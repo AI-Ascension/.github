@@ -36,13 +36,6 @@ fn check_repository(root: &Path, repository: &str) -> Result<()> {
     for input in expected_inputs(repository)? {
         require_regular_file(&root.join(input))?;
     }
-    for product in ["Cargo.toml", "package.json", "composer.json"] {
-        if root.join(product).exists() {
-            return Err(format!(
-                "{product} requires an owner-reviewed active product profile"
-            ));
-        }
-    }
     let inventory = git_output(
         &root,
         &[
@@ -50,11 +43,10 @@ fn check_repository(root: &Path, repository: &str) -> Result<()> {
             "-z".to_owned(),
             "--cached".to_owned(),
             "--others".to_owned(),
-            "--exclude-standard".to_owned(),
         ],
     )?;
     let inventory = String::from_utf8(inventory).map_err(|_| "non-UTF-8 source path")?;
-    let mut counts = [0usize; 3];
+    let mut counts = [0usize; 4];
     let mut links = 0usize;
     for relative in inventory.split('\0').filter(|value| !value.is_empty()) {
         if relative.starts_with("standards/")
@@ -65,22 +57,34 @@ fn check_repository(root: &Path, repository: &str) -> Result<()> {
         if !valid_relative_path(relative) {
             return Err("ambiguous bootstrap source path".to_owned());
         }
+        let filename = Path::new(relative)
+            .file_name()
+            .and_then(|value| value.to_str())
+            .unwrap_or("")
+            .to_ascii_lowercase();
+        if ["cargo.toml", "package.json", "composer.json"].contains(&filename.as_str()) {
+            return Err(format!(
+                "product manifest {relative} requires an owner-reviewed active profile"
+            ));
+        }
         let extension = Path::new(relative)
             .extension()
             .and_then(|value| value.to_str())
-            .unwrap_or("");
-        if ["rs", "cs", "csproj", "js", "mjs", "cjs", "php", "sh", "ps1"].contains(&extension) {
+            .unwrap_or("")
+            .to_ascii_lowercase();
+        if !["md", "txt", "json", "toml", "yaml", "yml"].contains(&extension.as_str()) {
+            if ["license", ".gitignore", ".editorconfig"].contains(&filename.as_str()) {
+                admitted_file(&root, relative)?;
+                continue;
+            }
             return Err(format!(
-                "unexpected implementation source {relative}; update the planning profile through owner review"
+                "unexpected bootstrap file {relative}; update the planning profile through owner review"
             ));
-        }
-        if !["md", "json", "toml"].contains(&extension) {
-            continue;
         }
         let path = admitted_file(&root, relative)?;
         let source = read_text(&path)?;
-        match extension {
-            "md" => {
+        match extension.as_str() {
+            "md" | "txt" => {
                 if source.trim().is_empty() {
                     return Err(format!("empty documentation input {relative}"));
                 }
@@ -97,15 +101,20 @@ fn check_repository(root: &Path, repository: &str) -> Result<()> {
                     .map_err(|_| format!("invalid TOML source {relative}"))?;
                 counts[2] += 1;
             }
+            "yaml" | "yml" => {
+                let _: serde_yaml::Value = serde_yaml::from_str(&source)
+                    .map_err(|_| format!("invalid YAML source {relative}"))?;
+                counts[3] += 1;
+            }
             _ => {}
         }
     }
-    if counts[0] == 0 || counts[1] + counts[2] == 0 {
+    if counts[0] == 0 || counts[1] + counts[2] + counts[3] == 0 {
         return Err("bootstrap source inventory is empty or incomplete".to_owned());
     }
     println!(
-        "bootstrap sources: {} Markdown, {} JSON, {} TOML, {links} local file links checked; product/runtime and client option support unverified",
-        counts[0], counts[1], counts[2]
+        "bootstrap sources: {} Markdown, {} JSON, {} TOML, {} YAML, {links} local file links checked; product/runtime and client option support unverified",
+        counts[0], counts[1], counts[2], counts[3]
     );
     Ok(())
 }
@@ -244,6 +253,32 @@ mod tests {
         fs::write(fixture.0.join("Cargo.toml"), "[package]\n")?;
         assert!(check_repository(&fixture.0, repository).is_err());
         fs::remove_file(fixture.0.join("Cargo.toml"))?;
+        for relative in [
+            "sub/Cargo.toml",
+            "sub/package.json",
+            "sub/composer.json",
+            "tool.py",
+            "tool.RS",
+            "ignored/tool.rs",
+            "config.yml",
+        ] {
+            let path = prepare_managed_path(&fixture.0, relative)?;
+            fs::write(fixture.0.join(".gitignore"), "ignored/\n")?;
+            fs::write(
+                &path,
+                if relative == "config.yml" {
+                    "broken: ["
+                } else {
+                    "{}"
+                },
+            )?;
+            assert!(
+                check_repository(&fixture.0, repository).is_err(),
+                "accepted {relative}"
+            );
+            fs::remove_file(path)?;
+        }
+        check_repository(&fixture.0, repository)?;
         fs::remove_file(fixture.0.join("AGENTS.md"))?;
         assert!(check_repository(&fixture.0, repository).is_err());
         Ok(())

@@ -1736,12 +1736,12 @@ fn profile_plan(profile_id: &str, repository: &str) -> Result<ProfilePlan> {
                 check("browser-check", "npm run test:browser", "."),
                 check(
                     "pinned-gateway-recipe",
-                    "bash -o pipefail -c 'cargo +1.97.1 run --locked --release | cmp - fixture.json'",
+                    "node ../../scripts/check-recipe.mjs",
                     "recipes/gateway-lease-fence",
                 ),
                 check(
                     "pinned-mcp-recipe",
-                    "bash -o pipefail -c 'cargo +1.97.1 run --locked --release | cmp - fixture.json'",
+                    "node ../../scripts/check-recipe.mjs",
                     "recipes/mcp-seam",
                 ),
             ],

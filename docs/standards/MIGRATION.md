@@ -21,6 +21,8 @@ The command verifies that the supplied commit's complete `standards/` tree match
 checkout, copies only absent or byte-identical files, and emits `published: false`. It rejects
 traversal, symlinks, differing managed files, unknown repository/profile/owner combinations, and
 explicitly excluded repositories. Stage only the generated paths after inspecting them.
+Add the exact `standards/tools/standards-sync/target/` line to the adopter root `.gitignore`
+so default Cargo checks do not leave untracked compiler output; never ignore the entire bundle.
 
 ## Review and enablement sequence
 

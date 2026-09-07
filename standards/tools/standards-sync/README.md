@@ -42,14 +42,14 @@ check.
 
 ## Bootstrap documentation/configuration
 
-`check-bootstrap --root .` first validates the pinned adoption, then parses the actual tracked
-and nonignored Markdown/JSON/TOML inputs in the two reviewed bootstrap repositories. It requires
+`check-bootstrap --root .` first validates the pinned adoption, then parses the actual tracked, untracked
+and ignored Markdown/JSON/TOML/YAML inputs in the two reviewed bootstrap repositories. It requires
 the known source files, checks local Markdown file/directory links without fetching external URLs,
 rejects symlink escapes and unexpected product manifests/source, and reports nonempty counts.
 Anchor existence and client-specific TOML option support remain unverified. Code examples are
 not interpreted as executable source. This does not initialize a product workspace.
 
-The 14 unit tests include actual disposable Git source commits, sync idempotence and conflict
+The 15 unit tests include actual disposable Git source commits, sync idempotence and conflict
 refusal, metadata weakening, missing targets, narrow generated-output handling, symlinks,
 CRLF/digest changes, and unapproved/expired exceptions. The profile digest binds generated
 configuration bytes; it does not authenticate a PR author or pin every owner-native configuration.

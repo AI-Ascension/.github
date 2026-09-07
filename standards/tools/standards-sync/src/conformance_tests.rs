@@ -301,3 +301,26 @@ fn digest_and_physical_inventory_changes_are_rejected() -> TestResult {
     assert!(validate_lock_shape(&lock, &profile).is_err());
     Ok(())
 }
+
+#[test]
+fn every_adopting_repository_has_a_valid_generated_profile() -> TestResult {
+    let catalog: RepositoryMap = parse_yaml(&canonical_root().join("standards/repositories.yaml"))?;
+    let mut checked = 0;
+    for entry in catalog.repositories {
+        if entry.adoption == "excluded" {
+            continue;
+        }
+        let profile = generated_profile(
+            &entry.profile_id,
+            &entry.repository,
+            &entry.owner,
+            &"1".repeat(40),
+            &format!("sha256:{}", "2".repeat(64)),
+        )?;
+        validate_profile(&profile)?;
+        validate_required_checks(&profile)?;
+        checked += 1;
+    }
+    assert_eq!(checked, 12);
+    Ok(())
+}

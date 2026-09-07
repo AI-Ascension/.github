@@ -69,7 +69,7 @@ local results are:
 
 ```text
 cargo +1.97.1 test --locked --manifest-path standards/tools/standards-sync/Cargo.toml
-14 passed
+15 passed
 cargo +1.97.1 clippy --locked --manifest-path standards/tools/standards-sync/Cargo.toml --all-targets -- -D warnings
 passed
 cargo +1.97.1 run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- fixture-check --root standards/conformance
