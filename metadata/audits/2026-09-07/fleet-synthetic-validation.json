@@ -1,6 +1,6 @@
 {
   "evidence_kind": "stateful fake API; no credentials or remote writes",
-  "plan_digest": "282454280bc6d012d58ea74738ff40c8951f83789af676740bab9c1464c4e4c2",
+  "plan_digest": "fc67d219b510e9d6af153b93a221bb8d20e44ab22874d996ddd113f4881fdf69",
   "repositories": 12,
   "operation_counts": {
     "replace_topics": 12,

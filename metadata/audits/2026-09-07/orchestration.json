@@ -78,5 +78,30 @@
     "provider_execution_model_independently_attested": false,
     "limitation": "Depth-1 agents reported no callable collaboration spawning tools. No depth-2/3 execution occurred. A later execution-agent turn ended with a provider usage-limit error. No substitute model or simulated ancestry was used."
   },
-  "final_independent_review": "pending; prior review reports cover earlier code only"
+  "final_independent_review": "passed; see final-independent-review.md",
+  "final_review_attempts": [
+    {
+      "parent": "/root",
+      "child": "/root/final_review",
+      "depth": 1,
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "max",
+      "subtree_budget": 3,
+      "outcome": "stopped before a verdict; confirmed no longer active before retry"
+    },
+    {
+      "parent": "/root",
+      "child": "/root/final_review_retry",
+      "depth": 1,
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "max",
+      "subtree_budget": 3,
+      "outcome": "independent correction and source review passed at 75890ac6fe1e847c46a5bf8e947b0ba914c85677",
+      "verified_depths": [
+        1
+      ],
+      "child_spawn_tools_available": false,
+      "provider_execution_model_independently_attested": false
+    }
+  ]
 }

@@ -9,20 +9,21 @@
   "validated_artifacts": [
     "repositories",
     "labels",
-    "fleet-plan"
+    "fleet-plan",
+    "canary-plan"
   ],
   "fresh_snapshot_canonical_validation": "passed; 12 public targets with local applicability exclusions",
   "hosted_ci": "not run",
   "native_windows": "not run",
-  "independent_final_review": "pending",
+  "independent_final_review": "passed at 75890ac6fe1e847c46a5bf8e947b0ba914c85677; see final-independent-review.md",
   "publication": "not performed",
   "remote_metadata_application": "not performed",
-  "fleet_plan_digest": "282454280bc6d012d58ea74738ff40c8951f83789af676740bab9c1464c4e4c2",
-  "canary_plan_digest": "c8e8e2b65e88b72c77eea0cdb41baacaf62798a5ed9f0d3ea0cb9578d12ee05f",
+  "fleet_plan_digest": "fc67d219b510e9d6af153b93a221bb8d20e44ab22874d996ddd113f4881fdf69",
+  "canary_plan_digest": "0d9a59c62aceb37eeb01166ecffeeccf2bceb98e35867057616ce59e8e2240d0",
   "file_sha256": {
     "labels.yml": "8073d1e23bc93476fb39a3a806bfab8455e843907e6b1849e99e49c93ce47b3f",
     "metadata/label-migrations.yml": "aefe3bdafc94db1e16c71c4a9ac8b828e3b7a3270d529c47d2b166514b224c05",
-    "metadata/repositories.yml": "fc92d7ca78e11dd0d94146886bef20a312b42342fe8f4c816d6cbdf8de66db76",
+    "metadata/repositories.yml": "cc49d2da49fc572f5dc70b518c8107f27965721a0fc0956abc610bed75d16521",
     "tests/test_label_consumers.py": "49118ade2a94abf13bb7f4e7fe14b4f74cc1ae74b05277c8ff98e6ce0889b4d8",
     "tests/test_metadata.py": "68fadaf049501cc315a8fecb8cdcfb573db2adea985023e94eb91d34cc1fffa4",
     "tests/test_metadata_execution.py": "740554318a526f74898c4f18584886baeddfe62cbbf87b47b8852d8dc23f02a2",
@@ -35,7 +36,7 @@
     "tools/metadata_execution.py": "f38fb3abdaeca1c75f96c6b5cb0ba44527a74d2409083295d3f5b180b70f5a64",
     "tools/metadata_journal.py": "6a445f4a7d012913359a0f251efdf5e62315335dca8126ce7a8d583210191048"
   },
-  "reviewed_base_commit": "8937b4ecfef76ecbf7d943dff0e7d6d05e3b481b",
+  "reviewed_base_commit": "75890ac6fe1e847c46a5bf8e947b0ba914c85677",
   "commands": [
     {
       "command": "python3 -m unittest discover -s tests -p 'test_*.py'",
@@ -52,5 +53,6 @@
       "exit_code": 0,
       "observed": "all six commands listed; Git executable mode corrected to 100755"
     }
-  ]
+  ],
+  "review_state_update": "Only source-review state and plan input digests changed; complete operation targets equal reviewed prior plans."
 }

@@ -1,6 +1,6 @@
 # Public topic reconciliation audit — 2026-09-07
 
-Status: **blocked pending independent source review**. This is a
+Status: **independently source-reviewed; external authorization not recorded**. This is a
 source-controlled preparation record. It records a candidate topic map and does not report
 remote settings writes. The canonical map records authorization_state as not-recorded; that
 approval state is separate from source review.
@@ -112,8 +112,8 @@ Representative source locations reviewed (all pinned to the corresponding commit
 
 No remote topic, label, issue/PR, repository setting, tag, release, protection rule, deployment,
 or runtime behavior was changed by this reconciliation. Label migrations and consumer updates
-remain separate review stages. The map is blocked until an independent reviewer assesses the
-taxonomy, source evidence, and complete before/after sets. Topic writes require an
+were independently checked in the final technical review. See `final-independent-review.md`
+for the verdict and resolved findings. Topic writes require an
 owner-authorized, digest-bound plan and scoped administration permission; that authorization is
 not recorded in this candidate.
 

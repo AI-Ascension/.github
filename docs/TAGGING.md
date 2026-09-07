@@ -69,6 +69,18 @@ approved subset. The selection changes the digest; a fleet approval does not
 implicitly select a canary, and a canary approval does not authorize the fleet.
 The candidate canary must not trigger releases, deployment, or unrelated jobs.
 
+To regenerate the supplied `.github` candidate for review, use:
+
+```sh
+./tools/metadata plan --metadata metadata/repositories.yml --labels labels.yml \
+  --migrations metadata/label-migrations.yml --snapshot metadata/snapshots/before.json \
+  --repository-id 1354466045 --output metadata/plans/canary.json \
+  --diff-output metadata/plans/canary.md
+```
+
+This read-only command proposes a scope. The maintainer must select that scope
+and approve the resulting digest before execution.
+
 ## Approval and application
 
 Publication permission, topic Administration write capability, and Issues write

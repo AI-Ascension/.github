@@ -22,27 +22,25 @@
     ]
   },
   "brand_topic": "ai-ascension",
-  "digest": "282454280bc6d012d58ea74738ff40c8951f83789af676740bab9c1464c4e4c2",
+  "digest": "fc67d219b510e9d6af153b93a221bb8d20e44ab22874d996ddd113f4881fdf69",
   "inputs": {
     "labels_digest": "e3b9dff65e3d5d1626f7845f40b19caac5ebdcc9219af2b6d3f780ca3af9aff7",
-    "metadata_digest": "e67635657f577d7f32c212eb267a1d2b8b9156f3bcecdc8a4380852d818bd639",
+    "metadata_digest": "780a4489e26957a2dbf2c5be7de2c463cf851793f2f116a5fb2d2864411627c7",
     "migrations_digest": "ddf2a6174e14093b742d81fed5e309cab000ddfddd325cf62366a1431ac2ff4b",
     "selection_digest": "eab4fc315fa75405914e819d19b2169799cc785b73dac9ce522f3c961d8fc0fa",
     "snapshot_digest": "4493c555c32193091934711cd62b55a3de91dbd4a50b17e9176c8827267b6b3b"
   },
-  "manifest_revision": "sha256:e67635657f577d7f32c212eb267a1d2b8b9156f3bcecdc8a4380852d818bd639",
+  "manifest_revision": "sha256:780a4489e26957a2dbf2c5be7de2c463cf851793f2f116a5fb2d2864411627c7",
   "organization": "AI-Ascension",
   "review": {
-    "applicable": false,
-    "blockers": [
-      "Independent source review of the reconciled public topic map remains outstanding."
-    ],
+    "applicable": true,
+    "blockers": [],
     "evidence": {
       "checked": 89,
       "ok": true,
       "unavailable": []
     },
-    "status": "blocked"
+    "status": "reviewed"
   },
   "schema_version": 1,
   "selection": {

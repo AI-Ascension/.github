@@ -2,14 +2,12 @@
   "schema_version": 1,
   "organization": "AI-Ascension",
   "brand_topic": "ai-ascension",
-  "review_status": "blocked",
-  "blockers": [
-    "Independent source review of the reconciled public topic map remains outstanding."
-  ],
+  "review_status": "reviewed",
+  "blockers": [],
   "authorization_state": "not-recorded",
   "observed_at": "2026-09-07",
   "ownership": "AI-Ascension/.github CODEOWNERS; maintainer review required",
-  "scope_note": "Reconciled public seed topic sets against pinned default-branch source. This candidate contains 12 public repositories only; it is blocked pending independent source review. Authorization is tracked separately and is not recorded.",
+  "scope_note": "Reconciled 12 public seed repositories against pinned default-branch source. Independent technical source and migration review passed; see metadata/audits/2026-09-07/final-independent-review.md. External authorization is separate and not recorded.",
   "historical_evidence": "metadata/history/2026-09-02-description-map.md",
   "shared_labels": "labels.yml",
   "repositories": [
@@ -370,7 +368,7 @@
             "repository": "AI-Ascension/AI-Ascension.github.io",
             "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
             "path": "README.md",
-          "line": 45,
+            "line": 45,
             "classification": "source-derived"
           }
         }
@@ -1020,7 +1018,7 @@
             "repository": "AI-Ascension/sts2-gateway",
             "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
             "path": "crates/gateway/src/identity.rs",
-          "line": 64,
+            "line": 64,
             "classification": "source-derived"
           }
         }
@@ -1387,7 +1385,7 @@
             "repository": "AI-Ascension/sts2-protocol",
             "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
             "path": "conformance/cases/neutral-contract-seam.v1.json",
-          "line": 17,
+            "line": 17,
             "classification": "source-derived"
           }
         },
@@ -1429,7 +1427,7 @@
             "repository": "AI-Ascension/sts2-protocol",
             "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
             "path": "conformance/cases/neutral-contract-seam.v1.json",
-          "line": 17,
+            "line": 17,
             "classification": "source-derived"
           }
         }

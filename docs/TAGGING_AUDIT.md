@@ -1,6 +1,6 @@
 # Tagging preparation audit
 
-The supplied tagging specification is reconciled into a candidate for 12 public repositories. Nothing has been published or applied. Independent review of the final source map and execution changes remains outstanding; external authorization is separately absent. The planner therefore marks both prepared plans inapplicable.
+The supplied tagging specification is reconciled into a candidate for 12 public repositories. Nothing has been published or applied. Independent technical review passed for the source map and corrected execution logic; external authorization is absent. Both regenerated plans pass the technical review gate, and the CLI still requires actual owner/operator authorization before any write.
 
 The [topic reconciliation](../metadata/audits/2026-09-07/topic-reconciliation.md) records all complete before/after topic sets. The canonical map contains 89 evidence-backed topic entries pinned to default-branch commits. Every existing topic is retained. Planning repositories remain identified as planning. No repository description or role statement is rewritten.
 
@@ -20,13 +20,13 @@ The Python suite passes 84 tests, including the actual prepared fleet plan exerc
 
 All six JSON schemas pass schema validation. The canonical map, label palette, and prepared fleet plan validate against their schemas. Canonical validation against the refreshed read-only inventory passes. The existing link-check regression passes all 15 cases. Hosted CI and native Windows execution have not run. The scripts use Python's standard library with PyYAML for non-JSON YAML; command handling has local transport tests and a successful read-only GitHub response-header parsing check.
 
-The requested three descendant levels could not be executed: depth-1 agents lacked callable child-spawn tools. Three resumed lead spawns accepted the requested Luna/max parameters, but provider-side model attestation was unavailable. The execution lead later hit a provider usage limit; the root completed remaining code and local tests. See the [orchestration record](../metadata/audits/2026-09-07/orchestration.json). Earlier independent-review reports are historical and do not certify these final changes. A subsequent independent review attempt stopped before returning a verdict; the final review gate remains open.
+The requested three descendant levels could not be executed: depth-1 agents lacked callable child-spawn tools. Three resumed lead spawns accepted the requested Luna/max parameters, but provider-side model attestation was unavailable. The execution lead later hit a provider usage limit; the root completed remaining code and local tests. See the [orchestration record](../metadata/audits/2026-09-07/orchestration.json). Earlier independent-review reports are historical. A subsequent attempt stopped before a verdict; the successful retry is recorded in the [final independent review](../metadata/audits/2026-09-07/final-independent-review.md).
 
 ## Remaining gates
 
-1. Obtain independent source and execution review, including the final projection logic; resolve findings and update review state.
-2. Regenerate plans from fresh read-only inventory and review exact scope and digests. Publish the prepared repository changes only with maintainer authorization.
-3. Obtain explicit operator authorization for the selected repository IDs, operations, and plan digest; run and verify the authorized canary before any wider authorized rollout.
+1. Obtain owner authorization to publish the prepared coordinator and Pages branches as draft PRs; no publication is implied by technical review.
+2. Have the maintainer select the canary and approve its exact repository ID, operations, assignment scope and plan digest. Refresh/replan if preconditions have changed.
+3. Run and independently verify the authorized canary before any separately authorized wider rollout.
 4. Capture actual journals and readback evidence locally. Private inventory, credentials, and authorization records must remain outside tracked publication artifacts.
 
 Operator instructions are in [TAGGING.md](TAGGING.md); release policy is prospective and creates no Git tags or releases.
