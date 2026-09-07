@@ -1,6 +1,7 @@
 # AI-Ascension coding baseline
 
-Status: normative baseline, revision 1, prepared 2026-09-07.
+Status: proposed baseline revision 1, implemented locally on 2026-09-07;
+owner review and remote adoption remain pending.
 
 This directory is the maintained source bundle for the organization coding standards. It gives
 each repository a small, pinned profile while leaving ownership of architecture, public
@@ -11,8 +12,9 @@ policy.
 ## Authority and evidence
 
 Apply sources in this order: an owner decision recorded in an issue, pull request, or decision
-record; this repository's governance, contribution, security, and baseline rules; the target
-repository's policy and architecture documents; then design or planning guidance. The aggregate
+record; shared project rules and the target's owner-local policy; target architecture
+and accepted decisions; then design or planning guidance. Shared guidance does not
+silently supersede owner policy. The aggregate
 naming authority at `planning/naming_conventions/NAMING_CONVENTIONS.md` and its
 `naming-registry.yaml` supplies the organization-wide spelling and identity map. It remains an
 aggregate authority and is not copied into this repository.
@@ -80,7 +82,8 @@ the sorted local bundle. The source is distributed to an adopter under its root 
 directory by the local sync command. The lock records `published: false` until that source commit
 is present on the canonical remote branch.
 
-The sync/check tool is intentionally small and dependency-free. It copies bytes only when the
+The sync/check tool uses pinned parsing and digest dependencies and has no model dependency.
+It copies bytes only when the
 destination is absent or identical, rejects symlinks and traversal, writes sorted manifests, and
 refuses an unexpected overwrite. Run it from this repository's checkout:
 

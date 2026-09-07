@@ -11,7 +11,7 @@ The naming authority remains the aggregate `planning/naming_conventions/NAMING_C
 `naming-registry.yaml`; this bundle records the stable rule IDs without copying that registry.
 
 The canonical source bundle is `AI-Ascension/.github`. A local lock names the source commit and the
-SHA-256 bundle digest. `published: false` remains required until a separate remote publication is
+SHA-256 bundle digest and the exact generated profile configuration SHA-256. `published: false` remains required until a separate remote publication is
 verified. The local sync command verifies the commit's complete `standards/` tree before copying it.
 
 ## Rule severity and verification
@@ -39,8 +39,8 @@ explicit fixed date and review mode so its test cannot become an accidental appr
 
 The profile generator has an explicit plan for each non-excluded repository. It uses observed
 workflow commands and real targets; it does not invent `scripts/`, `managed/`, `tests/link-check.sh`,
-or generic Docker commands. Rust profile commands use the default feature set. An owner may add an
-extended feature matrix only after inventorying feature side effects.
+or generic Docker commands. Rust profile commands retain the existing all-features test/Clippy gates after the six-repository
+feature inventory found no declared features. Documentation tests execute separately.
 
 | Repository | Profile | Adoption | Check source |
 | --- | --- | --- | --- |
@@ -53,8 +53,8 @@ extended feature matrix only after inventorying feature side effects.
 | `AI-Ascension.github.io` | `web-static` | prepared | `.github/workflows/validate.yml` Node, browser, and pinned recipes |
 | `aiascension.tech` | `web-php` | prepared | `composer.json` scripts `lint`, `analyse`, `test`, and `verify` |
 | `ai-agent-observability` | `operations` | prepared | `.github/workflows/ci.yml` shell, bootstrap, Compose, and Dockerfile checks |
-| `ascension-watchdog` | `planning-bootstrap` | excluded | bootstrap docs/config only; no accepted product manifest |
-| `ascension-map-visualizer` | `planning-bootstrap` | excluded | bootstrap prompt only; no accepted implementation |
+| `ascension-watchdog` | `planning-bootstrap` | prepared | validated bootstrap docs/config only; no accepted product manifest |
+| `ascension-map-visualizer` | `planning-bootstrap` | prepared | validated bootstrap prompt/config only; no accepted implementation |
 | `ascension-brand-overhaul` | `brand-package` | excluded | historical `CHECKSUMS.sha256` needs source-aware review before bundle adoption |
 | `AI-Ascension/.github` | `org-governance` | ready | canonical validator, fixtures, and link-check fixture |
 
@@ -69,7 +69,7 @@ local results are:
 
 ```text
 cargo +1.97.1 test --locked --manifest-path standards/tools/standards-sync/Cargo.toml
-4 passed
+14 passed
 cargo +1.97.1 clippy --locked --manifest-path standards/tools/standards-sync/Cargo.toml --all-targets -- -D warnings
 passed
 cargo +1.97.1 run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- fixture-check --root standards/conformance

@@ -35,8 +35,9 @@ explicitly excluded repositories. Stage only the generated paths after inspectin
 6. Treat merge, branch protection, remote publication, deployment, and runtime evidence as separate
    states. A local validator result cannot enable a protected check or promote a runtime claim.
 
-Planning profiles stay excluded until an accepted product manifest and deterministic implementation
-checks exist. The brand package stays excluded while its historical checksum boundary and the
+Planning repositories adopt documentation/configuration checks and the isolated standards tool.
+They do not gain a root product workspace or runtime acceptance lanes. The brand package stays
+excluded while its historical checksum boundary and the
 recursive validator are reviewed; do not copy the Rust checker into it as a generic solution.
 
 ## Rollback

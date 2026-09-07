@@ -4,7 +4,7 @@ standards-sync is the small, pinned-dependency validator and local distributor f
 AI-Ascension standards bundle. It is a Rust binary so Rust-only repositories can use the same
 checker without Python, a sibling checkout, a network fetch, or a provider call. Its manifest is
 an isolated Cargo workspace with Rust 1.97.1, serde 1.0.229, serde_json 1.0.151, serde_yaml
-0.9.34, sha2 0.10.9, and toml 1.1.4 pinned in Cargo.lock.
+0.9.34, sha2 0.10.9, toml 1.1.4, and pulldown-cmark 0.10.3 pinned in Cargo.lock.
 
 ## Validate a local adoption
 
@@ -13,7 +13,7 @@ From a repository containing standards/, standards-profile.toml, and standards.l
     cargo +1.97.1 run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- validate --root .
 
 Validation checks exact source/profile metadata, safe and sorted lock paths, every local file's
-SHA-256, the bundle digest, required rules and profile IDs, all 13 reviewed repository records,
+SHA-256, the bundle digest, the exact root profile configuration digest, required rules and profile IDs, all 13 reviewed repository records,
 self-identifying schemas, and valid/negative fixture inventory. A mismatch exits nonzero. The
 checker reports metadata validation only; it does not execute the profile commands or approve
 manual semantic rules. Use `--as-of YYYY-MM-DD` when a reproducible exception date is needed. The
@@ -39,3 +39,19 @@ obtain owner review before a local adopter claims ready.
 The command has no GitHub, registry, deployment, game, host, mail, or provider access. Remote
 publication is a separate operation and is never inferred from published:false or a passing local
 check.
+
+## Bootstrap documentation/configuration
+
+`check-bootstrap --root .` first validates the pinned adoption, then parses the actual tracked
+and nonignored Markdown/JSON/TOML inputs in the two reviewed bootstrap repositories. It requires
+the known source files, checks local Markdown file/directory links without fetching external URLs,
+rejects symlink escapes and unexpected product manifests/source, and reports nonempty counts.
+Anchor existence and client-specific TOML option support remain unverified. Code examples are
+not interpreted as executable source. This does not initialize a product workspace.
+
+The 14 unit tests include actual disposable Git source commits, sync idempotence and conflict
+refusal, metadata weakening, missing targets, narrow generated-output handling, symlinks,
+CRLF/digest changes, and unapproved/expired exceptions. The profile digest binds generated
+configuration bytes; it does not authenticate a PR author or pin every owner-native configuration.
+Native gates and protected owner review remain necessary. Review branch protection activation
+separately; this tool cannot stop an authorized repository editor from replacing a workflow.

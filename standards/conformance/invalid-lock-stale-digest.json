@@ -10,8 +10,14 @@
     "published": false
   },
   "files": [
-    {"path": "standards/fixture.txt", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"}
+    {
+      "path": "standards/fixture.txt",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
   ],
-  "protected_paths": ["standards/fixture.txt"],
-  "generated_by": "standards-sync/1"
+  "protected_paths": [
+    "standards/fixture.txt"
+  ],
+  "generated_by": "standards-sync/1",
+  "profile_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
 }

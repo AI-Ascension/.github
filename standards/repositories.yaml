@@ -109,9 +109,9 @@ repositories:
     baseline_commit: dc2d20badb9e86c12067316b92d6c8289b2e6995
     owner: ARCH
     profile_id: planning-bootstrap
-    adoption: excluded
-    language_scopes: [markdown, json, rust-planned]
-    exclusion_reason: No accepted product manifest or active implementation exists on the bootstrap branch; retain planning evidence until an owner activates the product.
+    adoption: prepared
+    language_scopes: [markdown, json, rust-planned, rust-tooling]
+    exclusion_reason: null
   - repository: AI-Ascension/ascension-map-visualizer
     repository_id: 1359701124
     node_id: R_kgDOUQtkhA
@@ -119,9 +119,9 @@ repositories:
     baseline_commit: 18915e5571829e582f460bf14b674cc2db39d9c5
     owner: ARCH
     profile_id: planning-bootstrap
-    adoption: excluded
-    language_scopes: [markdown, rust-planned, browser-planned]
-    exclusion_reason: Bootstrap prompt only; no accepted product manifest or implementation is present to validate.
+    adoption: prepared
+    language_scopes: [markdown, rust-planned, browser-planned, rust-tooling]
+    exclusion_reason: null
   - repository: AI-Ascension/ascension-brand-overhaul
     repository_id: 1359787764
     node_id: R_kgDOUQy29A

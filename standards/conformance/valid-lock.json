@@ -10,9 +10,15 @@
     "published": false
   },
   "files": [
-    {"path": "standards/BASELINE.md", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"}
+    {
+      "path": "standards/BASELINE.md",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
   ],
-  "protected_paths": ["standards/schemas", "standards/conformance"],
-  "generated_by": "standards-sync/1"
+  "protected_paths": [
+    "standards/schemas",
+    "standards/conformance"
+  ],
+  "generated_by": "standards-sync/1",
+  "profile_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
 }
-

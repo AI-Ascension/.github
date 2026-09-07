@@ -7,11 +7,14 @@ use std::env;
 use std::fs;
 use std::fs::OpenOptions;
 use std::io;
+use std::io::Write;
 use std::path::{Path, PathBuf};
 use std::process::{self, Command};
 use std::time::{SystemTime, UNIX_EPOCH};
 
 type Result<T> = std::result::Result<T, String>;
+
+mod bootstrap;
 
 const EVIDENCE_STATES: &[&str] = &[
     "confirmed",
@@ -135,6 +138,7 @@ struct LockFile {
     repository: String,
     profile_id: String,
     source: LockSource,
+    profile_sha256: String,
     files: Vec<LockEntry>,
     protected_paths: Vec<String>,
     generated_by: String,
@@ -254,6 +258,7 @@ fn main() {
     let result = match args.command.as_str() {
         "validate" => validate_root(&args.root, args.as_of.as_deref()),
         "fixture-check" => fixture_check(&args.root),
+        "check-bootstrap" => bootstrap::check(&args.root),
         "sync" => sync_bundle(&args),
         "help" | "--help" | "-h" => {
             print_help();
@@ -274,7 +279,7 @@ fn fail(error: &str) -> ! {
 
 fn print_help() {
     println!(
-        "standards-sync/1\n\nCommands:\n  validate [--root PATH] [--as-of YYYY-MM-DD]\n  fixture-check --root standards/conformance\n  sync --source-root PATH --target-root PATH --repository OWNER/NAME --profile-id ID --owner OWNER --source-commit COMMIT\n\nAll operations are local and read-only except sync's deterministic copy into its target."
+        "standards-sync/1\n\nCommands:\n  validate [--root PATH] [--as-of YYYY-MM-DD]\n  fixture-check --root standards/conformance\n  check-bootstrap [--root PATH]\n  sync --source-root PATH --target-root PATH --repository OWNER/NAME --profile-id ID --owner OWNER --source-commit COMMIT\n\nAll operations are local and read-only except sync's deterministic copy into its target."
     );
 }
 
@@ -325,10 +330,23 @@ fn validate_root(root: &Path, as_of: Option<&str>) -> Result<()> {
     validate_profile(&profile)?;
     let lock = parse_json::<LockFile>(&lock_path)?;
     validate_lock_shape(&lock, &profile)?;
+    if sha256_hex(&fs::read(&profile_path).map_err(|error| error.to_string())?)
+        != lock.profile_sha256
+    {
+        return Err("profile configuration digest mismatch".to_owned());
+    }
     validate_lock_bytes(&root, &lock)?;
     let rule_ids = validate_rules(&standards.join("rules.yaml"))?;
     let profile_ids = validate_profile_catalog(&standards.join("profiles.yaml"))?;
     validate_repository_map(&standards.join("repositories.yaml"), &profile_ids)?;
+    validate_adoption_identity(
+        &standards.join("repositories.yaml"),
+        &profile.repository,
+        &profile.owner,
+        &profile.profile_id,
+    )?;
+    validate_check_targets(&root, &profile.checks)?;
+    validate_required_checks(&profile)?;
     validate_schemas(&standards.join("schemas"))?;
     validate_conformance_inventory(&standards.join("conformance"))?;
     let as_of = as_of_days(as_of)?;
@@ -402,6 +420,9 @@ fn validate_profile(profile: &Profile) -> Result<()> {
 }
 
 fn validate_check_sets(checks: &CheckSets) -> Result<()> {
+    if checks.fast.is_empty() && checks.required.is_empty() {
+        return Err("profile must declare executable fast or required checks".to_owned());
+    }
     let mut names = BTreeSet::new();
     for (tier, values) in [
         ("fast", &checks.fast),
@@ -454,7 +475,29 @@ fn validate_check_sets(checks: &CheckSets) -> Result<()> {
     Ok(())
 }
 
+fn validate_check_targets(root: &Path, checks: &CheckSets) -> Result<()> {
+    for (name, specification) in &checks.commands {
+        if !valid_target(&specification.target) {
+            return Err(format!("check '{name}' has an unsafe target"));
+        }
+        let mut target = root.to_path_buf();
+        require_directory(&target)?;
+        if specification.target != "." {
+            for component in specification.target.split('/') {
+                target.push(component);
+                require_directory(&target).map_err(|error| {
+                    format!("check '{name}' has an unavailable target: {error}")
+                })?;
+            }
+        }
+    }
+    Ok(())
+}
+
 fn validate_lock_shape(lock: &LockFile, profile: &Profile) -> Result<()> {
+    if !valid_hex_digest(&lock.profile_sha256) {
+        return Err("invalid profile configuration digest".to_owned());
+    }
     if lock.lock_version != 1 {
         return Err("lock_version must be 1".to_owned());
     }
@@ -760,23 +803,28 @@ fn validate_repository_map(path: &Path, profile_ids: &BTreeSet<String>) -> Resul
     Ok(())
 }
 
-fn validate_sync_identity(path: &Path, args: &Cli) -> Result<()> {
+fn validate_adoption_identity(
+    path: &Path,
+    repository: &str,
+    owner: &str,
+    profile_id: &str,
+) -> Result<()> {
     let document = parse_yaml::<RepositoryMap>(path)?;
     let entry = document
         .repositories
         .iter()
-        .find(|entry| entry.repository == args.repository)
-        .ok_or_else(|| format!("repository {} is not in the reviewed map", args.repository))?;
-    if entry.owner != args.owner || entry.profile_id != args.profile_id {
+        .find(|entry| entry.repository == repository)
+        .ok_or_else(|| format!("repository {repository} is not in the reviewed map"))?;
+    if entry.owner != owner || entry.profile_id != profile_id {
         return Err(format!(
             "sync identity for {} must use owner={} and profile_id={}",
-            args.repository, entry.owner, entry.profile_id
+            repository, entry.owner, entry.profile_id
         ));
     }
     if entry.adoption == "excluded" {
         return Err(format!(
             "repository {} is explicitly excluded: {}",
-            args.repository,
+            repository,
             entry
                 .exclusion_reason
                 .as_deref()
@@ -956,6 +1004,7 @@ fn expected_schema_required(name: Option<&str>) -> &'static [&'static str] {
         ],
         Some("lock.schema.json") => &[
             "lock_version",
+            "profile_sha256",
             "repository",
             "profile_id",
             "source",
@@ -1206,7 +1255,12 @@ fn sync_bundle(args: &Cli) -> Result<()> {
     validate_rules(&source_standards.join("rules.yaml"))?;
     validate_schemas(&source_standards.join("schemas"))?;
     validate_conformance_inventory(&source_standards.join("conformance"))?;
-    validate_sync_identity(&source_standards.join("repositories.yaml"), args)?;
+    validate_adoption_identity(
+        &source_standards.join("repositories.yaml"),
+        &args.repository,
+        &args.owner,
+        &args.profile_id,
+    )?;
 
     let target_root = if target_root.exists() {
         require_directory(&target_root)?;
@@ -1250,7 +1304,10 @@ fn sync_bundle(args: &Cli) -> Result<()> {
         &args.source_commit,
         &bundle_digest,
     )?;
+    let profile_text = toml::to_string_pretty(&profile)
+        .map_err(|error| format!("cannot encode profile: {error}"))?;
     let lock = LockFile {
+        profile_sha256: sha256_hex(profile_text.as_bytes()),
         lock_version: 1,
         repository: args.repository.clone(),
         profile_id: args.profile_id.clone(),
@@ -1270,11 +1327,22 @@ fn sync_bundle(args: &Cli) -> Result<()> {
     };
     validate_profile(&profile)?;
     validate_lock_shape(&lock, &profile)?;
-    let profile_text = toml::to_string_pretty(&profile)
-        .map_err(|error| format!("cannot encode profile: {error}"))?;
     let lock_text = serde_json::to_string_pretty(&lock)
         .map_err(|error| format!("cannot encode lock: {error}"))?
         + "\n";
+
+    // Detect a conflict anywhere in the managed set before writing its first file.
+    // This protects a developer's existing copy even when the conflicting entry
+    // sorts after many new bundle files.
+    for (path, bytes) in &source_bytes {
+        inspect_managed_destination(&target_root, path, bytes)?;
+    }
+    inspect_managed_destination(
+        &target_root,
+        "standards-profile.toml",
+        profile_text.as_bytes(),
+    )?;
+    inspect_managed_destination(&target_root, "standards.lock.json", lock_text.as_bytes())?;
 
     for (path, bytes) in source_bytes {
         let target_path = prepare_managed_path(&target_root, &path)?;
@@ -1346,12 +1414,12 @@ fn rust_required() -> Vec<CheckSpec> {
         ),
         check(
             "cargo-clippy",
-            "cargo clippy --workspace --all-targets --locked -- -D warnings",
+            "cargo clippy --workspace --all-targets --all-features --locked -- -D warnings",
             ".",
         ),
         check(
             "cargo-test",
-            "cargo test --workspace --all-targets --locked",
+            "cargo test --workspace --all-targets --all-features --locked",
             ".",
         ),
         check(
@@ -1371,11 +1439,28 @@ fn profile_plan(profile_id: &str, repository: &str) -> Result<ProfilePlan> {
         ("org-governance", "AI-Ascension/.github") => ProfilePlan {
             scopes: vec!["markdown", "yaml", "json", "rust"],
             fast: vec![git_diff_check(), standards_check()],
-            required: vec![check(
-                "standards-conformance",
-                "cargo +1.97.1 run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- fixture-check --root standards/conformance",
-                ".",
-            )],
+            required: vec![
+                check(
+                    "standards-fmt",
+                    "cargo +1.97.1 fmt --manifest-path standards/tools/standards-sync/Cargo.toml --check",
+                    ".",
+                ),
+                check(
+                    "standards-unit-tests",
+                    "cargo +1.97.1 test --locked --manifest-path standards/tools/standards-sync/Cargo.toml",
+                    ".",
+                ),
+                check(
+                    "standards-clippy",
+                    "cargo +1.97.1 clippy --locked --manifest-path standards/tools/standards-sync/Cargo.toml --all-targets -- -D warnings",
+                    ".",
+                ),
+                check(
+                    "standards-conformance",
+                    "cargo +1.97.1 run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- fixture-check --root standards/conformance",
+                    ".",
+                ),
+            ],
             extended: vec![check(
                 "link-check",
                 "bash tests/link-check-template.sh",
@@ -1627,10 +1712,14 @@ fn profile_plan(profile_id: &str, repository: &str) -> Result<ProfilePlan> {
                 standards_check(),
                 check("composer-validate", "composer validate --strict", "."),
                 check("composer-lint", "composer run lint", "."),
+                check("npm-format-check", "npm run format:check", "."),
+                check("npm-lint", "npm run lint", "."),
+                check("node-tests", "npm test", "."),
             ],
             required: vec![
                 check("phpstan", "composer run analyse", "."),
                 check("phpunit", "composer run test", "."),
+                check("browser-check", "npm run test:browser", "."),
             ],
             extended: vec![check("composer-verify", "composer run verify", ".")],
         },
@@ -1643,20 +1732,20 @@ fn profile_plan(profile_id: &str, repository: &str) -> Result<ProfilePlan> {
                 check("npm-lint", "npm run lint", "."),
                 check("node-tests", "node --test tests/*.test.cjs", "."),
             ],
-            required: Vec::new(),
-            extended: vec![
+            required: vec![
                 check("browser-check", "npm run test:browser", "."),
                 check(
                     "pinned-gateway-recipe",
-                    "cargo +1.97.1 run --locked --release",
+                    "bash -o pipefail -c 'cargo +1.97.1 run --locked --release | cmp - fixture.json'",
                     "recipes/gateway-lease-fence",
                 ),
                 check(
                     "pinned-mcp-recipe",
-                    "cargo +1.97.1 run --locked --release",
+                    "bash -o pipefail -c 'cargo +1.97.1 run --locked --release | cmp - fixture.json'",
                     "recipes/mcp-seam",
                 ),
             ],
+            extended: Vec::new(),
         },
         ("operations", "AI-Ascension/ai-agent-observability") => ProfilePlan {
             scopes: vec!["shell", "yaml", "dockerfile", "systemd"],
@@ -1685,6 +1774,11 @@ fn profile_plan(profile_id: &str, repository: &str) -> Result<ProfilePlan> {
                 check(
                     "compose-policy-regressions",
                     "bash tests/compose-policy-regressions.sh",
+                    ".",
+                ),
+                check(
+                    "compose-source-regressions",
+                    "bash tests/compose-source-regressions.sh",
                     ".",
                 ),
                 check(
@@ -1722,9 +1816,13 @@ fn profile_plan(profile_id: &str, repository: &str) -> Result<ProfilePlan> {
         },
         ("planning-bootstrap", "AI-Ascension/ascension-watchdog")
         | ("planning-bootstrap", "AI-Ascension/ascension-map-visualizer") => ProfilePlan {
-            scopes: vec!["markdown", "json", "rust-planned", "browser-planned"],
+            scopes: vec!["markdown", "configuration", "rust-tooling"],
             fast: vec![git_diff_check(), standards_check()],
-            required: Vec::new(),
+            required: vec![check(
+                "bootstrap-sources",
+                "cargo +1.97.1 run --locked --manifest-path standards/tools/standards-sync/Cargo.toml -- check-bootstrap --root .",
+                ".",
+            )],
             extended: Vec::new(),
         },
         ("brand-package", "AI-Ascension/ascension-brand-overhaul") => {
@@ -1744,6 +1842,50 @@ fn profile_plan(profile_id: &str, repository: &str) -> Result<ProfilePlan> {
 
 fn spec_names(specs: &[CheckSpec]) -> Vec<String> {
     specs.iter().map(|spec| spec.name.to_owned()).collect()
+}
+
+fn validate_required_checks(profile: &Profile) -> Result<()> {
+    let plan = profile_plan(&profile.profile_id, &profile.repository)?;
+    if plan
+        .scopes
+        .iter()
+        .any(|scope| !profile.scopes.iter().any(|actual| actual == scope))
+    {
+        return Err("profile omits a reviewed source scope".to_owned());
+    }
+    for spec in plan
+        .fast
+        .iter()
+        .chain(plan.required.iter())
+        .chain(plan.extended.iter())
+    {
+        let command = profile
+            .checks
+            .commands
+            .get(spec.name)
+            .ok_or_else(|| format!("profile omits reviewed check '{}'", spec.name))?;
+        if command.command != spec.command || command.target != spec.target {
+            return Err(format!(
+                "profile changes reviewed invocation '{}'",
+                spec.name
+            ));
+        }
+    }
+    for spec in plan.fast.iter().chain(plan.required.iter()) {
+        if !profile
+            .checks
+            .fast
+            .iter()
+            .chain(profile.checks.required.iter())
+            .any(|name| name == spec.name)
+        {
+            return Err(format!(
+                "mandatory check '{}' was moved to an extended lane",
+                spec.name
+            ));
+        }
+    }
+    Ok(())
 }
 
 fn generated_profile(
@@ -1955,7 +2097,49 @@ fn copy_if_absent_or_equal(path: &Path, bytes: &[u8]) -> Result<()> {
         }
         return Ok(());
     }
-    fs::write(path, bytes).map_err(|error| format!("cannot write {}: {error}", path.display()))
+    let mut file = OpenOptions::new()
+        .write(true)
+        .create_new(true)
+        .open(path)
+        .map_err(|error| format!("cannot create {}: {error}", path.display()))?;
+    file.write_all(bytes)
+        .map_err(|error| format!("cannot write {}: {error}", path.display()))
+}
+
+fn inspect_managed_destination(root: &Path, relative: &str, bytes: &[u8]) -> Result<()> {
+    if !valid_relative_path(relative) {
+        return Err(format!("unsafe managed path '{relative}'"));
+    }
+    let mut path = root.to_path_buf();
+    let components: Vec<_> = relative.split('/').collect();
+    for (index, component) in components.iter().enumerate() {
+        path.push(component);
+        match fs::symlink_metadata(&path) {
+            Err(error) if error.kind() == io::ErrorKind::NotFound => return Ok(()),
+            Err(error) => return Err(format!("cannot inspect {}: {error}", path.display())),
+            Ok(metadata) if metadata.file_type().is_symlink() => {
+                return Err(format!("managed path traverses symlink {}", path.display()));
+            }
+            Ok(metadata) if index + 1 == components.len() => {
+                if !metadata.is_file()
+                    || fs::read(&path).map_err(|error| error.to_string())? != bytes
+                {
+                    return Err(format!(
+                        "refusing to overwrite differing managed file {}",
+                        path.display()
+                    ));
+                }
+            }
+            Ok(metadata) if !metadata.is_dir() => {
+                return Err(format!(
+                    "managed path component is not a directory {}",
+                    path.display()
+                ));
+            }
+            Ok(_) => {}
+        }
+    }
+    Ok(())
 }
 
 fn collect_files(root: &Path, directory: &Path, output: &mut Vec<String>) -> Result<()> {
@@ -1975,7 +2159,7 @@ fn collect_files(root: &Path, directory: &Path, output: &mut Vec<String>) -> Res
             ));
         }
         if metadata.is_dir() {
-            if path.file_name().and_then(|name| name.to_str()) == Some("target") {
+            if path.strip_prefix(root).ok() == Some(Path::new("tools/standards-sync/target")) {
                 continue;
             }
             collect_files(root, &path, output)?;
@@ -2338,6 +2522,9 @@ fn sha256_hex(input: &[u8]) -> String {
         .map(|byte| format!("{byte:02x}"))
         .collect()
 }
+
+#[cfg(test)]
+mod conformance_tests;
 
 #[cfg(test)]
 mod tests {
