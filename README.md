@@ -2,6 +2,11 @@
 
 Contributor guide, issue forms, security policy, and shared standards for the AI-Ascension organization.
 
+AI Ascension is the public organization identity. [Ascension](https://github.com/AI-Ascension/sts2-harness)
+is the flagship developer toolkit, and [The Climb](https://aiascension.tech/) is the recurring
+run and research series. These presentation names do not change repository, package, schema, or
+runtime identities.
+
 This repository holds the organization's default community health files. GitHub applies them to
 every `AI-Ascension` repository that does not carry its own copy, and renders `profile/README.md`
 as the organization profile at <https://github.com/AI-Ascension>.
