@@ -34,6 +34,11 @@ class FleetTests(unittest.TestCase):
             self.assertEqual(122,w.apply(p,execute=True)['writes'])
             checked=metadata.verify_plan(p,a.snapshot())
             self.assertTrue(checked['ok'],checked)
+            from metadata_drift import report
+            root=Path(__file__).resolve().parents[1]
+            drift=report(metadata.read_document(root/'metadata/repositories.yml'),
+                         metadata.read_document(root/'labels.yml'),a.snapshot())
+            self.assertTrue(drift['ok'],drift)
             self.assertEqual(0,w.apply(p,execute=True)['writes'])
             self.assertEqual(0,w.apply(p,execute=True,resume=True)['writes'])
             rolled=w.rollback(p,execute=True)

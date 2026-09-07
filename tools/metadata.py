@@ -1425,9 +1425,18 @@ class GitHubClient:
             return flattened
         return [value]
 
+    @classmethod
+    def _object_pages(cls, value: Any, where: str) -> list[dict[str, Any]]:
+        if not isinstance(value, list):
+            raise MetadataError(f"{where}: paginated collection must be an array")
+        rows = cls._flatten_paginated(value)
+        if any(not isinstance(row, Mapping) for row in rows):
+            raise MetadataError(f"{where}: malformed collection row; inventory may be incomplete")
+        return [dict(row) for row in rows]
+
     def list_org_repositories(self, organization: str) -> list[dict[str, Any]]:
         pages = self._run(f"orgs/{urllib.parse.quote(organization, safe='')}/repos?per_page=100&type=all", paginate=True)
-        rows = [x for x in self._flatten_paginated(pages) if isinstance(x, Mapping)]
+        rows = self._object_pages(pages, "organization repositories")
         return sorted((dict(x) for x in rows), key=lambda x: (str(x.get("id")), str(x.get("full_name"))))
 
     def snapshot(self, organization: str) -> dict[str, Any]:
@@ -1449,18 +1458,18 @@ class GitHubClient:
             tags = self._run(f"repos/{quoted}/tags?per_page=100", paginate=True)
             releases = self._run(f"repos/{quoted}/releases?per_page=100", paginate=True)
             tree = self._run(f"repos/{quoted}/git/trees/{commit.get('sha')}?recursive=1")
-            issues = self._flatten_paginated(issue_pages)
-            label_rows = self._flatten_paginated(labels)
+            issues = self._object_pages(issue_pages, "issues")
+            label_rows = self._object_pages(labels, "labels")
             row = {
                 "repository": dict(repository),
                 "default_commit": dict(commit),
                 "topics": dict(topics),
-                "labels": [dict(x) for x in label_rows if isinstance(x, Mapping)],
+                "labels": label_rows,
                 "label_usage": {},
-                "issues": [dict(x) for x in issues if isinstance(x, Mapping)],
-                "branches": self._flatten_paginated(branches),
-                "tags": self._flatten_paginated(tags),
-                "releases": self._flatten_paginated(releases),
+                "issues": issues,
+                "branches": self._object_pages(branches, "branches"),
+                "tags": self._object_pages(tags, "tags"),
+                "releases": self._object_pages(releases, "releases"),
                 "tree": tree,
             }
             usage = _label_usage(row)

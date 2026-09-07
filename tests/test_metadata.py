@@ -273,6 +273,25 @@ class SnapshotAndAuthorizationTests(unittest.TestCase):
         self.assertIn("--paginate", runner.calls[0][0])
         self.assertIn("--slurp", runner.calls[0][0])
 
+    def test_malformed_api_collections_cannot_be_silently_dropped(self):
+        for value in ({"id": 1}, None, [[{"id": 1}, None]], [[{"id": 1}], ["bad row"]]):
+            with self.subTest(value=value):
+                runner = FakeRunner([json.dumps(value)])
+                client = metadata.GitHubClient(runner=runner, retries=0)
+                with self.assertRaisesRegex(metadata.MetadataError, "collection"):
+                    client.list_org_repositories("AI-Ascension")
+                for index, collection in enumerate(("labels", "issues", "branches", "tags", "releases"), start=4):
+                    repository = repo_snapshot()
+                    responses = [[repository], repository, {"sha": SHA}, {"names": ["ai-ascension"]},
+                                 [], [], [], [], [], {"truncated": False, "tree": []}]
+                    responses[index] = value
+                    transport = FakeRunner([json.dumps(row) for row in responses])
+                    with self.assertRaisesRegex(metadata.MetadataError, "collection"):
+                        metadata.GitHubClient(runner=transport, retries=0).snapshot("AI-Ascension")
+                    self.assertTrue(all("--method" not in args for args, _, _ in transport.calls))
+                    self.assertTrue(any("issues?state=all&per_page=100" in args[-1] for args, _, _ in transport.calls))
+        self.assertEqual([], metadata.GitHubClient._object_pages([[], []], "issues"))
+
     def test_write_failures_are_not_retried_by_client(self):
         runner = FakeRunner([metadata.APIError("rate limited", "rate_limit")])
         client = metadata.GitHubClient(runner=runner, retries=3)

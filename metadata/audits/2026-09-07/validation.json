@@ -1,6 +1,6 @@
 {
   "evidence_kind": "local validation; no remote mutation",
-  "python_unittest_count": 82,
+  "python_unittest_count": 83,
   "python_unittest_status": "passed",
   "link_check_cases": 15,
   "link_check_status": "passed",
@@ -24,13 +24,13 @@
     "metadata/label-migrations.yml": "aefe3bdafc94db1e16c71c4a9ac8b828e3b7a3270d529c47d2b166514b224c05",
     "metadata/repositories.yml": "fc92d7ca78e11dd0d94146886bef20a312b42342fe8f4c816d6cbdf8de66db76",
     "tests/test_label_consumers.py": "49118ade2a94abf13bb7f4e7fe14b4f74cc1ae74b05277c8ff98e6ce0889b4d8",
-    "tests/test_metadata.py": "f0dc14ce0810634b33d3945b9e81d2037dbd28c04c6ce667c31d8c4e7f1bfe7b",
+    "tests/test_metadata.py": "68fadaf049501cc315a8fecb8cdcfb573db2adea985023e94eb91d34cc1fffa4",
     "tests/test_metadata_execution.py": "740554318a526f74898c4f18584886baeddfe62cbbf87b47b8852d8dc23f02a2",
-    "tests/test_metadata_fleet.py": "bc5adce9fe24c2d3c0d61212009f2157f375084dcfd7348726e0dcb2c09c68c8",
+    "tests/test_metadata_fleet.py": "423d11dbd0ce273ebaccc909e4631fc463fff53e1867dd56fbbab12b45390519",
     "tests/test_metadata_integration.py": "26344459529e65d309079d91e3c745e2eddb838c0400c2c8683b61df9ea1c988",
     "tests/test_metadata_policy.py": "1a0cdbaee9be7debd7790e728bcfc7b619648faa099b19ae3132347977e9fb70",
     "tests/test_metadata_transport.py": "b71dce89029cc6acc0db0a1f3f171f75019e477930a35b2c9a77aac8416f900a",
-    "tools/metadata.py": "0608de2de47b68f9446611db8356a83b2b32db21249ce0a3658e120c8020db07",
+    "tools/metadata.py": "3e261b6d517eec51d888582f150e219b36c1309a40f71d1acd727f86b24286fc",
     "tools/metadata_drift.py": "99437e458bde2986f71a7578d327fd212366d49e6a228df5e1ec137694a3f4b2",
     "tools/metadata_execution.py": "b5698ea489949c08600c19f332810f2c23716c37d0e0aeb451e86e478d924910",
     "tools/metadata_journal.py": "6a445f4a7d012913359a0f251efdf5e62315335dca8126ce7a8d583210191048"
@@ -40,7 +40,7 @@
     {
       "command": "python3 -m unittest discover -s tests -p 'test_*.py'",
       "exit_code": 0,
-      "observed": "82 tests passed; includes post-base workflow and consumer regressions"
+      "observed": "83 tests passed; includes malformed API collection rejection and full-fleet read-only drift check"
     },
     {
       "command": "bash tests/link-check-template.sh",

@@ -14,5 +14,6 @@
   "resume_writes": 0,
   "rollback_writes": 48,
   "rollback_conflicts": [],
-  "retained_created_labels": 74
+  "retained_created_labels": 74,
+  "read_only_drift_ok": true
 }
