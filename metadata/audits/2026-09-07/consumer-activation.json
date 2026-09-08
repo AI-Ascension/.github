@@ -1,0 +1,127 @@
+{
+  "note": "Changed bug default exists in every public target. Existing inherited specialist-form gaps must be provisioned and verified before claiming complete form readiness. This is not live application.",
+  "form_default_names": [
+    "bug",
+    "contract-observation",
+    "evidence",
+    "first-task",
+    "proof-recipe",
+    "unverified-claim"
+  ],
+  "repositories": [
+    {
+      "repository": "AI-Ascension/aiascension.tech",
+      "repository_id": "1209899690",
+      "changed_bug_default_already_present": true,
+      "preexisting_shared_form_defaults_missing": [
+        "contract-observation",
+        "evidence",
+        "first-task",
+        "proof-recipe",
+        "unverified-claim"
+      ],
+      "stage": "observed-before-application",
+      "projected_missing_after_plan": []
+    },
+    {
+      "repository": "AI-Ascension/sts2-game-core",
+      "repository_id": "1354377929",
+      "changed_bug_default_already_present": true,
+      "preexisting_shared_form_defaults_missing": [],
+      "stage": "observed-before-application",
+      "projected_missing_after_plan": []
+    },
+    {
+      "repository": "AI-Ascension/sts2-game-mod",
+      "repository_id": "1354377975",
+      "changed_bug_default_already_present": true,
+      "preexisting_shared_form_defaults_missing": [],
+      "stage": "observed-before-application",
+      "projected_missing_after_plan": []
+    },
+    {
+      "repository": "AI-Ascension/sts2-gateway",
+      "repository_id": "1354378018",
+      "changed_bug_default_already_present": true,
+      "preexisting_shared_form_defaults_missing": [],
+      "stage": "observed-before-application",
+      "projected_missing_after_plan": []
+    },
+    {
+      "repository": "AI-Ascension/sts2-mcp-server",
+      "repository_id": "1354378057",
+      "changed_bug_default_already_present": true,
+      "preexisting_shared_form_defaults_missing": [],
+      "stage": "observed-before-application",
+      "projected_missing_after_plan": []
+    },
+    {
+      "repository": "AI-Ascension/sts2-harness",
+      "repository_id": "1354378100",
+      "changed_bug_default_already_present": true,
+      "preexisting_shared_form_defaults_missing": [],
+      "stage": "observed-before-application",
+      "projected_missing_after_plan": []
+    },
+    {
+      "repository": "AI-Ascension/sts2-protocol",
+      "repository_id": "1354378136",
+      "changed_bug_default_already_present": true,
+      "preexisting_shared_form_defaults_missing": [],
+      "stage": "observed-before-application",
+      "projected_missing_after_plan": []
+    },
+    {
+      "repository": "AI-Ascension/.github",
+      "repository_id": "1354466045",
+      "changed_bug_default_already_present": true,
+      "preexisting_shared_form_defaults_missing": [],
+      "stage": "observed-before-application",
+      "projected_missing_after_plan": []
+    },
+    {
+      "repository": "AI-Ascension/AI-Ascension.github.io",
+      "repository_id": "1354473981",
+      "changed_bug_default_already_present": true,
+      "preexisting_shared_form_defaults_missing": [],
+      "stage": "observed-before-application",
+      "projected_missing_after_plan": []
+    },
+    {
+      "repository": "AI-Ascension/ai-agent-observability",
+      "repository_id": "1357224960",
+      "changed_bug_default_already_present": true,
+      "preexisting_shared_form_defaults_missing": [],
+      "stage": "observed-before-application",
+      "projected_missing_after_plan": []
+    },
+    {
+      "repository": "AI-Ascension/ascension-watchdog",
+      "repository_id": "1359537708",
+      "changed_bug_default_already_present": true,
+      "preexisting_shared_form_defaults_missing": [
+        "contract-observation",
+        "evidence",
+        "first-task",
+        "proof-recipe",
+        "unverified-claim"
+      ],
+      "stage": "observed-before-application",
+      "projected_missing_after_plan": []
+    },
+    {
+      "repository": "AI-Ascension/ascension-map-visualizer",
+      "repository_id": "1359701124",
+      "changed_bug_default_already_present": true,
+      "preexisting_shared_form_defaults_missing": [
+        "contract-observation",
+        "evidence",
+        "first-task",
+        "proof-recipe",
+        "unverified-claim"
+      ],
+      "stage": "observed-before-application",
+      "projected_missing_after_plan": []
+    }
+  ]
+}

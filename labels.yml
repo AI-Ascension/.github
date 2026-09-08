@@ -24,18 +24,143 @@
 - name: defect
   color: 9C5B12
   description: Behavior or a test that does not match the repository's own documents.
+  repository_ids: ["1354466045", "1354473981", "1354378100", "1354378057", "1354378018", "1354377975", "1354377929", "1354378136", "1357224960"]
 - name: docs
   color: 5E564A
   description: Documentation or public-page clarity.
+  repository_ids: ["1354466045", "1354473981", "1354378100", "1354378057", "1354378018", "1354377975", "1354377929", "1354378136", "1357224960"]
 - name: wedge:player
   color: 6F5A94
   description: Curious player or observer path.
+  repository_ids: []
 - name: wedge:rust
   color: 6F5A94
   description: Rust or systems contributor path.
+  repository_ids: []
 - name: wedge:mcp
   color: 6F5A94
   description: AI, MCP, or automation builder path.
+  repository_ids: []
 - name: wedge:security
   color: 6F5A94
   description: Maintainer or security operator path.
+  repository_ids: []
+
+# Shared work-kind labels. The GitHub defaults are repeated here so that the
+# canonical definition file also covers repositories that do not yet have the
+# organization's specialist labels provisioned.
+- name: bug
+  color: d73a4a
+  description: Something isn't working
+- name: documentation
+  color: 0075ca
+  description: Improvements or additions to documentation
+- name: enhancement
+  color: a2eeef
+  description: New feature or request
+- name: question
+  color: d876e3
+  description: Further information is requested
+- name: research
+  color: 6F5A94
+  description: Question or investigation that needs evidence before implementation.
+  repository_ids: ["1354466045", "1354473981", "1209899690", "1354378100", "1354378057", "1354378018", "1354377975", "1354377929", "1354378136", "1359537708", "1359701124", "1357224960"]
+- name: maintenance
+  color: 5E564A
+  description: Internal upkeep, tooling, or dependency work.
+  repository_ids: ["1354466045", "1354473981", "1209899690", "1354378100", "1354378057", "1354378018", "1354377975", "1354377929", "1354378136", "1359537708", "1359701124", "1357224960"]
+
+# GitHub contributor-triage labels are definitions only. A maintainer must
+# review an issue before assigning either label.
+- name: good first issue
+  color: 7057ff
+  description: Good for newcomers
+- name: help wanted
+  color: 008672
+  description: Extra attention is needed
+
+# Audience labels replace the wedge names in a stable-ID rename wave. The old
+# specialist definitions above remain available while additive and rename
+# waves are reviewed; no audience label is an active form default until it is
+# present in the destination repository.
+- name: audience:player
+  color: 6F5A94
+  description: Curious player or observer path.
+  repository_ids: ["1354466045", "1354473981", "1354378100", "1354378057", "1354378018", "1354377975", "1354377929", "1354378136", "1357224960"]
+- name: audience:rust
+  color: 6F5A94
+  description: Rust or systems contributor path.
+  repository_ids: ["1354466045", "1354473981", "1354378100", "1354378057", "1354378018", "1354377975", "1354377929", "1354378136", "1357224960"]
+- name: audience:mcp
+  color: 6F5A94
+  description: AI, MCP, or automation builder path.
+  repository_ids: ["1354466045", "1354473981", "1354378100", "1354378057", "1354378018", "1354377975", "1354377929", "1354378136", "1357224960"]
+- name: audience:security
+  color: 6F5A94
+  description: Maintainer or security operator path.
+  repository_ids: ["1354466045", "1354473981", "1354378100", "1354378057", "1354378018", "1354377975", "1354377929", "1354378136", "1357224960"]
+
+# Optional triage overlays. Definitions do not imply an assignment.
+- name: priority:p0
+  color: A8402F
+  description: Immediate critical intervention; maintainer triage required.
+  repository_ids: []
+  applicability_reason: No priority assignment has been reviewed for this migration.
+- name: priority:p1
+  color: 9C5B12
+  description: High priority or near-term blocker.
+  repository_ids: []
+  applicability_reason: No priority assignment has been reviewed for this migration.
+- name: priority:p2
+  color: 4E6A8F
+  description: Normal planned work.
+  repository_ids: []
+  applicability_reason: No priority assignment has been reviewed for this migration.
+- name: priority:p3
+  color: 5E564A
+  description: Low-priority backlog.
+  repository_ids: []
+  applicability_reason: No priority assignment has been reviewed for this migration.
+- name: status:needs-triage
+  color: 9A7B1C
+  description: Needs maintainer classification.
+  repository_ids: []
+  applicability_reason: Existing project fields or workflow states were not reconciled for this migration.
+- name: status:blocked
+  color: A8402F
+  description: Cannot proceed until a named dependency or decision is resolved.
+  repository_ids: []
+  applicability_reason: Existing project fields or workflow states were not reconciled for this migration.
+
+- name: area:metadata
+  color: 4E6A8F
+  description: Cross-cutting organization metadata and policy work.
+  repository_ids: ["1354466045"]
+- name: area:protocol
+  color: 4E6A8F
+  description: Cross-cutting protocol and conformance work.
+  repository_ids: ["1354378136", "1354377929", "1354377975", "1354378018", "1354378057", "1354378100"]
+- name: area:runtime
+  color: 9C5B12
+  description: Cross-cutting runtime and host integration work.
+  repository_ids: ["1354377975", "1354378018", "1354378057", "1354378100"]
+- name: area:replay
+  color: 6F5A94
+  description: Replay, determinism, and artifact work.
+  repository_ids: ["1354378100", "1354473981"]
+- name: area:observability
+  color: 6F5A94
+  description: Telemetry and observability work.
+  repository_ids: ["1357224960", "1354378100"]
+- name: area:map
+  color: 6F5A94
+  description: Map and route visualization work.
+  repository_ids: ["1359701124", "1354377975", "1354378018", "1354378057", "1354378100"]
+- name: area:recovery
+  color: A8402F
+  description: Recovery, restart, and uncertainty handling work.
+  repository_ids: ["1359537708", "1354377975", "1354378018", "1354378057", "1354378100"]
+- name: area:ci
+  color: 5E564A
+  description: Build, test, and continuous-integration work.
+  repository_ids: ["1354466045", "1354377929", "1354377975", "1354378018", "1354378057", "1354378100", "1354378136"]

@@ -1,0 +1,513 @@
+[
+  {
+    "repository": "AI-Ascension/AI-Ascension.github.io",
+    "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+    "path": "recipes/gateway-lease-fence/README.md",
+    "line": 6,
+    "text": "## What it proves (label: `confirmed`)"
+  },
+  {
+    "repository": "AI-Ascension/AI-Ascension.github.io",
+    "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+    "path": "recipes/gateway-lease-fence/README.md",
+    "line": 26,
+    "text": "## What it does not prove (label: `unverified`)"
+  },
+  {
+    "repository": "AI-Ascension/AI-Ascension.github.io",
+    "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+    "path": "recipes/mcp-seam/README.md",
+    "line": 6,
+    "text": "## What it proves (label: `confirmed`)"
+  },
+  {
+    "repository": "AI-Ascension/AI-Ascension.github.io",
+    "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+    "path": "recipes/mcp-seam/README.md",
+    "line": 26,
+    "text": "## What it does not prove (label: `unverified`)"
+  },
+  {
+    "repository": "AI-Ascension/sts2-gateway",
+    "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+    "path": "RELEASING.md",
+    "line": 42,
+    "text": "Do not rewrite tags or silently replace bytes. Mark a defective release, preserve sanitized evidence,"
+  },
+  {
+    "repository": "AI-Ascension/ai-agent-observability",
+    "commit": "b25880376d3a3334c77f58637267db93581c4c77",
+    "path": "deploy/README.md",
+    "line": 9,
+    "text": "with `10` or `11`. For a deployment affected by that defect, preserve the `.env`"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/contract-observation.yml",
+    "line": 4,
+    "text": "labels:"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/contract-observation.yml",
+    "line": 10,
+    "text": "        A contract observation is not a defect report: it records a behavior you saw, at a commit,"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/contract-observation.yml",
+    "line": 19,
+    "text": "      label: Seam"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/contract-observation.yml",
+    "line": 27,
+    "text": "      label: Commit observed at"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/contract-observation.yml",
+    "line": 34,
+    "text": "      label: Observation"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/contract-observation.yml",
+    "line": 41,
+    "text": "      label: What the contract should say, or the example you propose"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/contract-observation.yml",
+    "line": 48,
+    "text": "      label: Evidence label you propose for the observation"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/contract-observation.yml",
+    "line": 60,
+    "text": "      label: Links"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/contract-observation.yml",
+    "line": 67,
+    "text": "      label: Hygiene"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/contract-observation.yml",
+    "line": 69,
+    "text": "        - label: This observation contains no game files, credentials, private data, or copied third-party source."
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/defect.yml",
+    "line": 3,
+    "text": "title: \"[defect] \""
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/defect.yml",
+    "line": 4,
+    "text": "labels:"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/defect.yml",
+    "line": 5,
+    "text": "  - defect"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/defect.yml",
+    "line": 10,
+    "text": "        Thank you. Keep to one defect per issue. Do not attach game files, save data, credentials,"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/defect.yml",
+    "line": 16,
+    "text": "      label: Repository and commit"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/defect.yml",
+    "line": 24,
+    "text": "      label: What you did"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/defect.yml",
+    "line": 32,
+    "text": "      label: What you expected"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/defect.yml",
+    "line": 39,
+    "text": "      label: What you observed"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/defect.yml",
+    "line": 46,
+    "text": "      label: Platform and Rust version"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/defect.yml",
+    "line": 53,
+    "text": "      label: Evidence label for your observation"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/defect.yml",
+    "line": 65,
+    "text": "      label: Hygiene"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/defect.yml",
+    "line": 67,
+    "text": "        - label: This report contains no game files, save data, credentials, personal paths, multiplayer identifiers, or copied third-party source."
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/defect.yml",
+    "line": 69,
+    "text": "        - label: This is not a security issue, or I have already reported it privately per SECURITY.md."
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/evidence.yml",
+    "line": 4,
+    "text": "labels:"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/evidence.yml",
+    "line": 11,
+    "text": "        Every public statement about this project carries one of five labels: `confirmed`,"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/evidence.yml",
+    "line": 18,
+    "text": "      label: Where the claim appears"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/evidence.yml",
+    "line": 26,
+    "text": "      label: The claim, quoted exactly"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/evidence.yml",
+    "line": 32,
+    "text": "      label: Label it currently carries"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/evidence.yml",
+    "line": 45,
+    "text": "      label: Label you think it should carry"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/evidence.yml",
+    "line": 59,
+    "text": "      label: Why"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/evidence.yml",
+    "line": 66,
+    "text": "      label: Hygiene"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/evidence.yml",
+    "line": 68,
+    "text": "        - label: This report contains no game files, credentials, private data, or personal paths."
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/proof-recipe.yml",
+    "line": 4,
+    "text": "labels:"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/proof-recipe.yml",
+    "line": 6,
+    "text": "  - first-task"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/proof-recipe.yml",
+    "line": 19,
+    "text": "      label: Kind"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/proof-recipe.yml",
+    "line": 30,
+    "text": "      label: What it shows"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/proof-recipe.yml",
+    "line": 37,
+    "text": "      label: Command"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/proof-recipe.yml",
+    "line": 45,
+    "text": "      label: Expected hash or output"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/proof-recipe.yml",
+    "line": 52,
+    "text": "      label: Evidence label you propose"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/proof-recipe.yml",
+    "line": 64,
+    "text": "      label: Links"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/proof-recipe.yml",
+    "line": 71,
+    "text": "      label: How did you find this? (optional; used only to understand referrals)"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/proof-recipe.yml",
+    "line": 78,
+    "text": "      label: Hygiene"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/proof-recipe.yml",
+    "line": 80,
+    "text": "        - label: This submission contains no game files, credentials, private data, personal paths, or copied third-party source, and the recipe reads none of them."
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": ".github/ISSUE_TEMPLATE/proof-recipe.yml",
+    "line": 82,
+    "text": "        - label: The command above needs no model, provider, or API key, or the submission says exactly which one and why."
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "CONTRIBUTING.md",
+    "line": 10,
+    "text": "Every claim in an issue, pull request, README, or site page carries exactly one label:"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "CONTRIBUTING.md",
+    "line": 50,
+    "text": "`first-task` label with the wedge label shown."
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "CONTRIBUTING.md",
+    "line": 52,
+    "text": "1. **Add a gateway fence-case fixture** (`wedge:rust`). Extend the proof recipe with one more case"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "CONTRIBUTING.md",
+    "line": 57,
+    "text": "2. **Record a contract observation on the MCP seam** (`wedge:mcp`). Read `tests/seam.rs` in"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "CONTRIBUTING.md",
+    "line": 61,
+    "text": "3. **Write a security or failure-handling note** (`wedge:security`). Check one fail-closed case in"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "CONTRIBUTING.md",
+    "line": 64,
+    "text": "4. **Fix a clarity problem on a public page** (`wedge:player`, `docs`). If a label, term, or"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "GOVERNANCE.md",
+    "line": 55,
+    "text": "is a defect. A user decision overrides any row in the map."
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "README.md",
+    "line": 21,
+    "text": "| `.github/ISSUE_TEMPLATE/` | Issue forms: defect, contract observation, evidence, proof recipe; plus `config.yml`. |"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "labels.yml",
+    "line": 6,
+    "text": "- name: first-task"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "labels.yml",
+    "line": 24,
+    "text": "- name: defect"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "labels.yml",
+    "line": 30,
+    "text": "- name: wedge:player"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "labels.yml",
+    "line": 33,
+    "text": "- name: wedge:rust"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "labels.yml",
+    "line": 36,
+    "text": "- name: wedge:mcp"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "labels.yml",
+    "line": 39,
+    "text": "- name: wedge:security"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "profile/README.md",
+    "line": 17,
+    "text": "**Rust or systems contributor.** You do not need all nine repositories. Start with one boundary, the gateway lease fence, and one bounded task. [Run the cargo recipe](https://ai-ascension.github.io/recipes.html): it prints the same trace as the browser replay, with the exact test names and source lines. Then take a `first-task` issue and [submit a fence-case fixture](https://github.com/AI-Ascension/.github/issues/new?template=proof-recipe.yml)."
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "profile/README.md",
+    "line": 47,
+    "text": "Every public claim carries one of five labels:"
+  },
+  {
+    "repository": "AI-Ascension/.github",
+    "commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "path": "profile/README.md",
+    "line": 59,
+    "text": "Start with [CONTRIBUTING.md](https://github.com/AI-Ascension/.github/blob/main/CONTRIBUTING.md) (boundary rules, first safe tasks, how to run the recipe) and the site's [contributing page](https://ai-ascension.github.io/contributing.html). Report defects, contract observations, doubtful labels, and proof recipes through the [issue forms](https://github.com/AI-Ascension/.github/issues/new/choose). Security concerns go through [SECURITY.md](https://github.com/AI-Ascension/.github/blob/main/SECURITY.md), never a public issue. Decisions and roles are in [GOVERNANCE.md](https://github.com/AI-Ascension/.github/blob/main/GOVERNANCE.md). Stars and shares are never required."
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "README.md",
+    "line": 128,
+    "text": "Responsibility directories are `crates/harness`, `experiments`, `schemas`, `conformance`, `docs`,"
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "path": "RELEASING.md",
+    "line": 73,
+    "text": "Do not rewrite a tag or silently replace an artifact. Mark a defective release, preserve diagnostic"
+  },
+  {
+    "repository": "AI-Ascension/sts2-protocol",
+    "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+    "path": "RELEASING.md",
+    "line": 48,
+    "text": "defective release is corrected with a new version while consumers pin the last known-good profile"
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "path": "RELEASING.md",
+    "line": 118,
+    "text": "Never rewrite an immutable tag or silently replace an artifact. Withdraw or mark a defective"
+  },
+  {
+    "repository": "AI-Ascension/sts2-mcp-server",
+    "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+    "path": ".github/dependabot.yml",
+    "line": 8,
+    "text": "    labels:"
+  },
+  {
+    "repository": "AI-Ascension/sts2-mcp-server",
+    "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+    "path": ".github/dependabot.yml",
+    "line": 16,
+    "text": "    labels:"
+  }
+]

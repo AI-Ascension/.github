@@ -47,12 +47,33 @@ public surface that carried it is corrected in the same change.
 
 ## Descriptions and public text
 
-One approved description map drives the organization description, every repository description,
-homepage, and topic set, the README entry blocks, and the site's metadata. The site's
-[evidence page](https://ai-ascension.github.io/evidence.html) shows the current approved text next
-to the artifact that supports it. To change a description, change the map first, then apply it
-everywhere in one pass and record before and after values; a description that drifts from the map
-is a defect. A user decision overrides any row in the map.
+Approved description and homepage changes require an owner-reviewed map, supporting
+evidence, and recorded before/after values. The site's
+[evidence page](https://ai-ascension.github.io/evidence.html) retains historical
+description evidence. Historical rows are not a current capability ceiling.
+A user decision overrides any row in a map.
+
+Repository-topic desired state is maintained in
+[`metadata/repositories.yml`](metadata/repositories.yml), with shared label
+definitions in [`labels.yml`](labels.yml). The initial structured topic map is a
+proposal; source review is separate from maintainer approval of its public positioning.
+See [`metadata/README.md`](metadata/README.md) for ownership and rollout gates.
+The earlier description/topic map is retained unchanged under `metadata/history/`
+as dated evidence. Do not independently edit its historical topic table as current
+desired state. Descriptions and homepages are outside this tagging update.
+
+The registry records stable IDs, observed names/default branches/commits,
+management applicability, and per-topic source evidence. Unlisted discoveries need
+an explicit applicability decision; a newly visible private repository is not
+automatically added to public metadata. Volatile snapshots and private audit data
+remain outside Git. Public reports contain only the approved disclosure scope.
+
+Plan and approval records bind the exact manifest/operation digests and repository
+IDs. Maintainer-controlled approval is required for each publication/application
+scope. Detected drift requires a new plan; partial results require readback and
+per-operation receipts. Rollback must preserve later human edits and pre-existing
+assignments. See [tagging operations](docs/TAGGING.md). These proposals do not
+expand agent authority in the roles above.
 
 ## Changing this file
 

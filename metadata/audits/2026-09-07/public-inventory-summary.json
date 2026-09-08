@@ -1,0 +1,675 @@
+{
+  "observation_date": "2026-09-07",
+  "scope": "12 public seed repositories; other applicability decisions stay in local records",
+  "evidence": "refreshed authenticated read-only API inventory and cached pinned source",
+  "permission_note": "Observed access does not authorize publication or metadata writes",
+  "repositories": [
+    {
+      "id": 1209899690,
+      "full_name": "AI-Ascension/aiascension.tech",
+      "visibility": "public",
+      "archived": false,
+      "default_branch": "codex/wire-mailing-list-email",
+      "description": "AI Ascension \u2013 aiascension.tech | Unofficial Slay the Spire 2 AI race streaming site",
+      "homepage": "https://aiascension.tech",
+      "default_commit": "4e2d99c95d89ce3d18981d331faad10c9f1f7376",
+      "primary_language": "HTML",
+      "language_breakdown": "not queried",
+      "topic_count": 0,
+      "label_count": 9,
+      "issue_counts": {
+        "open_issues": 0,
+        "closed_issues": 0,
+        "open_prs": 1,
+        "closed_prs": 0
+      },
+      "tag_refs": [],
+      "releases": [],
+      "observed_permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      },
+      "protection_rules": "not queried; no protection writes performed",
+      "package_versions": [],
+      "manifest_paths": [],
+      "workflow_and_form_paths": []
+    },
+    {
+      "id": 1354377929,
+      "full_name": "AI-Ascension/sts2-game-core",
+      "visibility": "public",
+      "archived": false,
+      "default_branch": "main",
+      "description": "Host-independent Rust domain core: typed game-state values, pure validation, and policy rules with no I/O.",
+      "homepage": "https://ai-ascension.github.io/repositories.html#sts2-game-core",
+      "default_commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+      "primary_language": "Rust",
+      "language_breakdown": "not queried",
+      "topic_count": 4,
+      "label_count": 22,
+      "issue_counts": {
+        "open_issues": 0,
+        "closed_issues": 0,
+        "open_prs": 2,
+        "closed_prs": 7
+      },
+      "tag_refs": [],
+      "releases": [],
+      "observed_permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      },
+      "protection_rules": "not queried; no protection writes performed",
+      "package_versions": [
+        {
+          "path": "Cargo.toml",
+          "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+          "declared_version": null,
+          "interpretation": "source declaration; not a release assertion"
+        },
+        {
+          "path": "crates/core/Cargo.toml",
+          "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+          "declared_version": "0.0.0",
+          "interpretation": "source declaration; not a release assertion"
+        },
+        {
+          "path": "tools/repo-policy/Cargo.toml",
+          "commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+          "declared_version": "0.0.0",
+          "interpretation": "source declaration; not a release assertion"
+        }
+      ],
+      "manifest_paths": [
+        "Cargo.toml",
+        "crates/core/Cargo.toml",
+        "tools/repo-policy/Cargo.toml"
+      ],
+      "workflow_and_form_paths": [
+        ".github/dependabot.yml",
+        ".github/workflows/ci.yml",
+        ".github/workflows/policy.yml"
+      ]
+    },
+    {
+      "id": 1354377975,
+      "full_name": "AI-Ascension/sts2-game-mod",
+      "visibility": "public",
+      "archived": false,
+      "default_branch": "main",
+      "description": "Game-process adapter: a bounded main-thread work queue, versioned ABI check, and HTTP request admission limits.",
+      "homepage": "https://ai-ascension.github.io/repositories.html#sts2-game-mod",
+      "default_commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+      "primary_language": "C#",
+      "language_breakdown": "not queried",
+      "topic_count": 4,
+      "label_count": 22,
+      "issue_counts": {
+        "open_issues": 3,
+        "closed_issues": 0,
+        "open_prs": 4,
+        "closed_prs": 49
+      },
+      "tag_refs": [],
+      "releases": [],
+      "observed_permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      },
+      "protection_rules": "not queried; no protection writes performed",
+      "package_versions": [
+        {
+          "path": "Cargo.toml",
+          "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+          "declared_version": "0.0.0",
+          "interpretation": "source declaration; not a release assertion"
+        },
+        {
+          "path": "crates/game-mod/Cargo.toml",
+          "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+          "declared_version": {
+            "workspace": true
+          },
+          "interpretation": "source declaration; not a release assertion"
+        },
+        {
+          "path": "crates/host/Cargo.toml",
+          "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+          "declared_version": {
+            "workspace": true
+          },
+          "interpretation": "source declaration; not a release assertion"
+        },
+        {
+          "path": "crates/http-adapter/Cargo.toml",
+          "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+          "declared_version": {
+            "workspace": true
+          },
+          "interpretation": "source declaration; not a release assertion"
+        },
+        {
+          "path": "experiments/managed-rust-interop/native/Cargo.toml",
+          "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+          "declared_version": "0.0.0",
+          "interpretation": "source declaration; not a release assertion"
+        },
+        {
+          "path": "tools/mod-loading/Cargo.toml",
+          "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+          "declared_version": {
+            "workspace": true
+          },
+          "interpretation": "source declaration; not a release assertion"
+        },
+        {
+          "path": "tools/repo-policy/Cargo.toml",
+          "commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+          "declared_version": {
+            "workspace": true
+          },
+          "interpretation": "source declaration; not a release assertion"
+        }
+      ],
+      "manifest_paths": [
+        "Cargo.toml",
+        "crates/game-mod/Cargo.toml",
+        "crates/host/Cargo.toml",
+        "crates/http-adapter/Cargo.toml",
+        "experiments/managed-rust-interop/contract-tests/RuntimeContractProbe.csproj",
+        "experiments/managed-rust-interop/game-loader/GameLoaderProbe.csproj",
+        "experiments/managed-rust-interop/gameplay-tests/RuntimeV3ValidationProbe.csproj",
+        "experiments/managed-rust-interop/host-candidate-tests/HostCandidateProbe.csproj",
+        "experiments/managed-rust-interop/managed/ManagedInteropSpike.csproj",
+        "experiments/managed-rust-interop/native/Cargo.toml",
+        "experiments/managed-rust-interop/queue-tests/RuntimeQueueProbe.csproj",
+        "experiments/managed-rust-interop/replay-tests/ReplayValidationProbe.csproj",
+        "experiments/managed-rust-interop/session-launcher/bridge-tests/SessionWindowsBridgeTests.csproj",
+        "experiments/managed-rust-interop/session-launcher/windows-bridge/SessionWindowsBridge.csproj",
+        "experiments/managed-rust-interop/settings-tests/SettingsValidationProbe.csproj",
+        "experiments/managed-rust-interop/workshop/WorkshopValidationProbe.csproj",
+        "tools/mod-loading/Cargo.toml",
+        "tools/repo-policy/Cargo.toml",
+        "tools/workshop/lifecycle/operator/WorkshopOperator.csproj",
+        "tools/workshop/lifecycle/ugc-create-item/UgcCreateItemHelper.csproj"
+      ],
+      "workflow_and_form_paths": [
+        ".github/dependabot.yml",
+        ".github/workflows/ci.yml",
+        ".github/workflows/policy.yml",
+        ".github/workflows/source-release.yml"
+      ]
+    },
+    {
+      "id": 1354378018,
+      "full_name": "AI-Ascension/sts2-gateway",
+      "visibility": "public",
+      "archived": false,
+      "default_branch": "main",
+      "description": "In-memory control plane for game-host instances: lifecycle, one lease per instance with epoch fencing, and fixed routes.",
+      "homepage": "https://ai-ascension.github.io/repositories.html#sts2-gateway",
+      "default_commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+      "primary_language": "Rust",
+      "language_breakdown": "not queried",
+      "topic_count": 4,
+      "label_count": 22,
+      "issue_counts": {
+        "open_issues": 2,
+        "closed_issues": 0,
+        "open_prs": 3,
+        "closed_prs": 16
+      },
+      "tag_refs": [],
+      "releases": [],
+      "observed_permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      },
+      "protection_rules": "not queried; no protection writes performed",
+      "package_versions": [
+        {
+          "path": "Cargo.toml",
+          "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+          "declared_version": "0.0.0",
+          "interpretation": "source declaration; not a release assertion"
+        },
+        {
+          "path": "crates/gateway/Cargo.toml",
+          "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+          "declared_version": {
+            "workspace": true
+          },
+          "interpretation": "source declaration; not a release assertion"
+        },
+        {
+          "path": "tools/repo-policy/Cargo.toml",
+          "commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+          "declared_version": {
+            "workspace": true
+          },
+          "interpretation": "source declaration; not a release assertion"
+        }
+      ],
+      "manifest_paths": [
+        "Cargo.toml",
+        "crates/gateway/Cargo.toml",
+        "tools/repo-policy/Cargo.toml"
+      ],
+      "workflow_and_form_paths": [
+        ".github/dependabot.yml",
+        ".github/workflows/ci.yml",
+        ".github/workflows/policy.yml"
+      ]
+    },
+    {
+      "id": 1354378057,
+      "full_name": "AI-Ascension/sts2-mcp-server",
+      "visibility": "public",
+      "archived": false,
+      "default_branch": "main",
+      "description": "Thin MCP tool adapter that maps approved calls to the authenticated gateway API without bypassing it.",
+      "homepage": "https://ai-ascension.github.io/repositories.html#sts2-mcp-server",
+      "default_commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+      "primary_language": "Rust",
+      "language_breakdown": "not queried",
+      "topic_count": 4,
+      "label_count": 22,
+      "issue_counts": {
+        "open_issues": 2,
+        "closed_issues": 0,
+        "open_prs": 3,
+        "closed_prs": 21
+      },
+      "tag_refs": [],
+      "releases": [],
+      "observed_permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      },
+      "protection_rules": "not queried; no protection writes performed",
+      "package_versions": [
+        {
+          "path": "Cargo.toml",
+          "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+          "declared_version": "0.0.0",
+          "interpretation": "source declaration; not a release assertion"
+        },
+        {
+          "path": "crates/mcp-server/Cargo.toml",
+          "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+          "declared_version": {
+            "workspace": true
+          },
+          "interpretation": "source declaration; not a release assertion"
+        },
+        {
+          "path": "tools/repo-policy/Cargo.toml",
+          "commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+          "declared_version": {
+            "workspace": true
+          },
+          "interpretation": "source declaration; not a release assertion"
+        }
+      ],
+      "manifest_paths": [
+        "Cargo.toml",
+        "crates/mcp-server/Cargo.toml",
+        "tools/repo-policy/Cargo.toml"
+      ],
+      "workflow_and_form_paths": [
+        ".github/dependabot.yml",
+        ".github/workflows/ci.yml",
+        ".github/workflows/policy.yml"
+      ]
+    },
+    {
+      "id": 1354378100,
+      "full_name": "AI-Ascension/sts2-harness",
+      "visibility": "public",
+      "archived": false,
+      "default_branch": "main",
+      "description": "Experiment coordinator for AI runs: episodes, a pluggable model-provider interface, replay of recorded records, and artifact lineage.",
+      "homepage": "https://ai-ascension.github.io/repositories.html#sts2-harness",
+      "default_commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+      "primary_language": "Rust",
+      "language_breakdown": "not queried",
+      "topic_count": 4,
+      "label_count": 22,
+      "issue_counts": {
+        "open_issues": 2,
+        "closed_issues": 0,
+        "open_prs": 3,
+        "closed_prs": 30
+      },
+      "tag_refs": [],
+      "releases": [],
+      "observed_permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      },
+      "protection_rules": "not queried; no protection writes performed",
+      "package_versions": [
+        {
+          "path": "Cargo.toml",
+          "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+          "declared_version": "0.0.0",
+          "interpretation": "source declaration; not a release assertion"
+        },
+        {
+          "path": "crates/harness/Cargo.toml",
+          "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+          "declared_version": {
+            "workspace": true
+          },
+          "interpretation": "source declaration; not a release assertion"
+        },
+        {
+          "path": "tools/patch-diff/Cargo.toml",
+          "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+          "declared_version": "0.1.0",
+          "interpretation": "source declaration; not a release assertion"
+        },
+        {
+          "path": "tools/repo-policy/Cargo.toml",
+          "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+          "declared_version": {
+            "workspace": true
+          },
+          "interpretation": "source declaration; not a release assertion"
+        },
+        {
+          "path": "tools/sts2-expert-state-package/Cargo.toml",
+          "commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+          "declared_version": {
+            "workspace": true
+          },
+          "interpretation": "source declaration; not a release assertion"
+        }
+      ],
+      "manifest_paths": [
+        "Cargo.toml",
+        "crates/harness/Cargo.toml",
+        "tools/patch-diff/Cargo.toml",
+        "tools/repo-policy/Cargo.toml",
+        "tools/sts2-expert-state-package/Cargo.toml"
+      ],
+      "workflow_and_form_paths": [
+        ".github/dependabot.yml",
+        ".github/workflows/ci.yml",
+        ".github/workflows/policy.yml"
+      ]
+    },
+    {
+      "id": 1354378136,
+      "full_name": "AI-Ascension/sts2-protocol",
+      "visibility": "public",
+      "archived": false,
+      "default_branch": "main",
+      "description": "Shared metadata contracts (identity, versions, error envelopes) in language-neutral schemas with golden test vectors.",
+      "homepage": "https://ai-ascension.github.io/repositories.html#sts2-protocol",
+      "default_commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+      "primary_language": "Rust",
+      "language_breakdown": "not queried",
+      "topic_count": 4,
+      "label_count": 24,
+      "issue_counts": {
+        "open_issues": 2,
+        "closed_issues": 0,
+        "open_prs": 3,
+        "closed_prs": 15
+      },
+      "tag_refs": [],
+      "releases": [],
+      "observed_permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      },
+      "protection_rules": "not queried; no protection writes performed",
+      "package_versions": [
+        {
+          "path": "Cargo.toml",
+          "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+          "declared_version": "0.0.0",
+          "interpretation": "source declaration; not a release assertion"
+        },
+        {
+          "path": "crates/protocol/Cargo.toml",
+          "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+          "declared_version": {
+            "workspace": true
+          },
+          "interpretation": "source declaration; not a release assertion"
+        },
+        {
+          "path": "tools/repo-policy/Cargo.toml",
+          "commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+          "declared_version": "0.0.0",
+          "interpretation": "source declaration; not a release assertion"
+        }
+      ],
+      "manifest_paths": [
+        "Cargo.toml",
+        "crates/protocol/Cargo.toml",
+        "tools/repo-policy/Cargo.toml"
+      ],
+      "workflow_and_form_paths": [
+        ".github/dependabot.yml",
+        ".github/workflows/ci.yml",
+        ".github/workflows/policy.yml"
+      ]
+    },
+    {
+      "id": 1354466045,
+      "full_name": "AI-Ascension/.github",
+      "visibility": "public",
+      "archived": false,
+      "default_branch": "main",
+      "description": "Contributor guide, issue forms, security policy, and shared standards for the AI-Ascension organization.",
+      "homepage": "https://ai-ascension.github.io",
+      "default_commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+      "primary_language": "Shell",
+      "language_breakdown": "not queried",
+      "topic_count": 2,
+      "label_count": 22,
+      "issue_counts": {
+        "open_issues": 0,
+        "closed_issues": 0,
+        "open_prs": 1,
+        "closed_prs": 9
+      },
+      "tag_refs": [],
+      "releases": [],
+      "observed_permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      },
+      "protection_rules": "not queried; no protection writes performed",
+      "package_versions": [],
+      "manifest_paths": [],
+      "workflow_and_form_paths": [
+        ".github/ISSUE_TEMPLATE/config.yml",
+        ".github/ISSUE_TEMPLATE/contract-observation.yml",
+        ".github/ISSUE_TEMPLATE/defect.yml",
+        ".github/ISSUE_TEMPLATE/evidence.yml",
+        ".github/ISSUE_TEMPLATE/proof-recipe.yml"
+      ]
+    },
+    {
+      "id": 1354473981,
+      "full_name": "AI-Ascension/AI-Ascension.github.io",
+      "visibility": "public",
+      "archived": false,
+      "default_branch": "main",
+      "description": "Public site for AI-Ascension: what is tested today, what is only proposed, and a browser replay of one gateway contract test.",
+      "homepage": "https://ai-ascension.github.io",
+      "default_commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+      "primary_language": "HTML",
+      "language_breakdown": "not queried",
+      "topic_count": 3,
+      "label_count": 22,
+      "issue_counts": {
+        "open_issues": 0,
+        "closed_issues": 2,
+        "open_prs": 1,
+        "closed_prs": 9
+      },
+      "tag_refs": [],
+      "releases": [],
+      "observed_permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      },
+      "protection_rules": "not queried; no protection writes performed",
+      "package_versions": [
+        {
+          "path": "recipes/gateway-lease-fence/Cargo.toml",
+          "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+          "declared_version": "0.1.0",
+          "interpretation": "source declaration; not a release assertion"
+        },
+        {
+          "path": "recipes/mcp-seam/Cargo.toml",
+          "commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+          "declared_version": "0.1.0",
+          "interpretation": "source declaration; not a release assertion"
+        }
+      ],
+      "manifest_paths": [
+        "recipes/gateway-lease-fence/Cargo.toml",
+        "recipes/mcp-seam/Cargo.toml"
+      ],
+      "workflow_and_form_paths": [
+        ".github/workflows/pages.yml",
+        ".github/workflows/validate.yml"
+      ]
+    },
+    {
+      "id": 1357224960,
+      "full_name": "AI-Ascension/ai-agent-observability",
+      "visibility": "public",
+      "archived": false,
+      "default_branch": "main",
+      "description": "Self-hosted AI-agent observability and experiment tracking with OpenTelemetry, MLflow, and Laminar.",
+      "homepage": null,
+      "default_commit": "b25880376d3a3334c77f58637267db93581c4c77",
+      "primary_language": "Shell",
+      "language_breakdown": "not queried",
+      "topic_count": 0,
+      "label_count": 22,
+      "issue_counts": {
+        "open_issues": 3,
+        "closed_issues": 2,
+        "open_prs": 3,
+        "closed_prs": 5
+      },
+      "tag_refs": [],
+      "releases": [],
+      "observed_permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      },
+      "protection_rules": "not queried; no protection writes performed",
+      "package_versions": [],
+      "manifest_paths": [],
+      "workflow_and_form_paths": [
+        ".github/workflows/ci.yml"
+      ]
+    },
+    {
+      "id": 1359537708,
+      "full_name": "AI-Ascension/ascension-watchdog",
+      "visibility": "public",
+      "archived": false,
+      "default_branch": "bootstrap",
+      "description": "Deterministic deployment supervision and crash recovery for AI-Ascension",
+      "homepage": null,
+      "default_commit": "dc2d20badb9e86c12067316b92d6c8289b2e6995",
+      "primary_language": null,
+      "language_breakdown": "not queried",
+      "topic_count": 0,
+      "label_count": 10,
+      "issue_counts": {
+        "open_issues": 1,
+        "closed_issues": 0,
+        "open_prs": 2,
+        "closed_prs": 0
+      },
+      "tag_refs": [],
+      "releases": [],
+      "observed_permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      },
+      "protection_rules": "not queried; no protection writes performed",
+      "package_versions": [],
+      "manifest_paths": [],
+      "workflow_and_form_paths": []
+    },
+    {
+      "id": 1359701124,
+      "full_name": "AI-Ascension/ascension-map-visualizer",
+      "visibility": "public",
+      "archived": false,
+      "default_branch": "bootstrap",
+      "description": null,
+      "homepage": null,
+      "default_commit": "18915e5571829e582f460bf14b674cc2db39d9c5",
+      "primary_language": null,
+      "language_breakdown": "not queried",
+      "topic_count": 0,
+      "label_count": 10,
+      "issue_counts": {
+        "open_issues": 1,
+        "closed_issues": 0,
+        "open_prs": 1,
+        "closed_prs": 0
+      },
+      "tag_refs": [],
+      "releases": [],
+      "observed_permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      },
+      "protection_rules": "not queried; no protection writes performed",
+      "package_versions": [],
+      "manifest_paths": [],
+      "workflow_and_form_paths": []
+    }
+  ]
+}

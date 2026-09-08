@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-ascension.github.io/.github/metadata/schema/plan.schema.json",
+  "title": "Reviewed metadata application plan",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "organization",
+    "inputs",
+    "selection",
+    "authorization",
+    "targets",
+    "digest",
+    "manifest_revision"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "organization": {
+      "type": "string",
+      "minLength": 1
+    },
+    "brand_topic": {
+      "type": "string"
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "inputs": {
+      "type": "object",
+      "required": [
+        "metadata_digest",
+        "snapshot_digest",
+        "labels_digest",
+        "migrations_digest",
+        "selection_digest"
+      ]
+    },
+    "authorization": {
+      "type": "object",
+      "required": [
+        "repositories",
+        "operations"
+      ]
+    },
+    "selection": {
+      "type": "object",
+      "required": [
+        "repository_ids",
+        "explicit"
+      ],
+      "properties": {
+        "repository_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "explicit": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "targets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/target"
+      }
+    },
+    "manifest_revision": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "target": {
+      "type": "object",
+      "required": [
+        "repository_id",
+        "repository",
+        "default_branch",
+        "default_commit",
+        "visibility",
+        "archived",
+        "operations"
+      ],
+      "properties": {
+        "repository_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "repository": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"
+        },
+        "default_branch": {
+          "type": "string",
+          "minLength": 1
+        },
+        "default_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "visibility": {
+          "type": "string",
+          "minLength": 1
+        },
+        "archived": {
+          "const": false
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/operation"
+          }
+        }
+      }
+    },
+    "operation": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "repository_id",
+        "repository",
+        "precondition",
+        "reason",
+        "evidence",
+        "required_permission",
+        "blast_radius",
+        "inverse"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "replace_topics",
+            "rename_label",
+            "additive_label_migration",
+            "create_label",
+            "update_label"
+          ]
+        },
+        "repository_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "repository": {
+          "type": "string",
+          "minLength": 1
+        },
+        "precondition": {
+          "type": "object"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "required_permission": {
+          "enum": [
+            "administration:write",
+            "issues:write"
+          ]
+        },
+        "blast_radius": {
+          "type": "object"
+        },
+        "inverse": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

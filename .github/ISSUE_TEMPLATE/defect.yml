@@ -1,8 +1,8 @@
-name: Defect
+name: Bug
 description: Something a repository does, or a test asserts, that does not match what its documents say.
-title: "[defect] "
+title: "[bug] "
 labels:
-  - defect
+  - bug
 body:
   - type: markdown
     attributes:

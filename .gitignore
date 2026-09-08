@@ -1,0 +1,5 @@
+__pycache__/
+*.py[cod]
+metadata/snapshots/
+metadata/journals/
+metadata/authorizations/
