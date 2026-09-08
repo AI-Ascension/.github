@@ -1,0 +1,45 @@
+{
+  "python_tests": {
+    "passed": 84,
+    "failed": 0
+  },
+  "link_regression": {
+    "passed": 15,
+    "failed": 0
+  },
+  "pages_tests": {
+    "passed": 5,
+    "failed": 0,
+    "source_commit": "1065799de6eea8427ac5ae96e3b9238932ea761f"
+  },
+  "schema_validation": {
+    "schema_definitions": 6,
+    "artifacts": [
+      "repositories",
+      "labels",
+      "migrations",
+      "complete-private-snapshot",
+      "fleet-plan",
+      "canary-plan"
+    ],
+    "passed": true
+  },
+  "deterministic_regeneration": true,
+  "synthetic_fleet": {
+    "first_apply_writes": 109,
+    "verified": true,
+    "drift_mismatches": 0,
+    "second_apply_writes": 0,
+    "resume_writes": 0,
+    "rollback_writes": 55,
+    "retained_definitions": 54,
+    "rollback_conflicts": 0
+  },
+  "live_metadata": {
+    "writes_performed": 0,
+    "canary_apply": "not-authorized",
+    "independent_post_apply_readback": "not-run",
+    "second_apply_writes": null
+  },
+  "limitation": "Synthetic test results are not live GitHub evidence."
+}

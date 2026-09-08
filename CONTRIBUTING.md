@@ -53,15 +53,16 @@ by a template or by this migration.
 
 The defect form keeps its existing `defect.yml` URL for link compatibility and now applies `bug`.
 The live `defect` and `bug` labels, and the live `docs` and `documentation` labels, have distinct
-IDs in nine repositories. Their migration is additive: assignments receive the destination only
+IDs in the 11 currently public rollout repositories. Their migration is additive: assignments receive the destination only
 when the reviewed plan is applied, both definitions remain, and unrelated labels are preserved.
 
 The four audience labels (`audience:player`, `audience:rust`, `audience:mcp`, and
 `audience:security`) replace the corresponding `wedge:*` labels through stable-ID rename rows where
 the source exists. Audience labels are inactive in forms, workflows, filters, and site links until
 the destination label is provisioned. Existing `wedge:*` assignments remain valid during the
-transition. The migration records the three public seed repositories where those source labels are
-absent; it does not invent assignments there.
+transition. The refreshed migration covers the 11 currently public targets; one historical target is held out
+after visibility drift. Newly observed source definitions are reviewed by stable ID; the migration
+does not invent assignments.
 
 `priority:p0` through `priority:p3`, `status:needs-triage`, `status:blocked`, and the `area:*`
 overlays are definitions for future review. A label-sync check does not assign them or establish an

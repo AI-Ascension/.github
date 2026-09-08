@@ -1,8 +1,6 @@
 # Organization tagging operations
 
-Status: implementation candidate for review. Local preparation, source review,
-owner authorization, remote publication, API application, and independent live
-verification are separate states. No remote write is authorized by this document.
+Status: the implementation tooling is merged. The [2026-09-08 rollout review](../metadata/audits/2026-09-08/README.md) records refreshed inputs and exact proposed plans. Local preparation, source review, owner authorization, publication, API application, and independent live verification remain separate states. No live metadata write is authorized by this document.
 
 ## Maintained inputs
 

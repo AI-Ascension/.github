@@ -1,0 +1,252 @@
+{
+  "observed_at": "2026-09-08",
+  "published_url": "https://ai-ascension.github.io/contributing.html",
+  "published_source_commit": "1065799de6eea8427ac5ae96e3b9238932ea761f",
+  "published_sha256": "e97eb57759c130856a8126c9508029e5397395ed39a457d22b33fa7f82fcf141",
+  "byte_identical_to_source": true,
+  "repositories": [
+    {
+      "repository": "AI-Ascension/.github",
+      "repository_id": 1354466045,
+      "forms": {
+        "proof-recipe.yml": [
+          "proof-recipe",
+          "first-task"
+        ],
+        "defect.yml": [
+          "bug"
+        ],
+        "config.yml": [],
+        "contract-observation.yml": [
+          "contract-observation"
+        ],
+        "evidence.yml": [
+          "evidence",
+          "unverified-claim"
+        ]
+      },
+      "missing_defaults": []
+    },
+    {
+      "repository": "AI-Ascension/ai-agent-observability",
+      "repository_id": 1357224960,
+      "forms": {
+        "proof-recipe.yml": [
+          "proof-recipe",
+          "first-task"
+        ],
+        "defect.yml": [
+          "bug"
+        ],
+        "config.yml": [],
+        "contract-observation.yml": [
+          "contract-observation"
+        ],
+        "evidence.yml": [
+          "evidence",
+          "unverified-claim"
+        ]
+      },
+      "missing_defaults": []
+    },
+    {
+      "repository": "AI-Ascension/AI-Ascension.github.io",
+      "repository_id": 1354473981,
+      "forms": {
+        "proof-recipe.yml": [
+          "proof-recipe",
+          "first-task"
+        ],
+        "defect.yml": [
+          "bug"
+        ],
+        "config.yml": [],
+        "contract-observation.yml": [
+          "contract-observation"
+        ],
+        "evidence.yml": [
+          "evidence",
+          "unverified-claim"
+        ]
+      },
+      "missing_defaults": []
+    },
+    {
+      "repository": "AI-Ascension/ascension-map-visualizer",
+      "repository_id": 1359701124,
+      "forms": {
+        "proof-recipe.yml": [
+          "proof-recipe",
+          "first-task"
+        ],
+        "defect.yml": [
+          "bug"
+        ],
+        "config.yml": [],
+        "contract-observation.yml": [
+          "contract-observation"
+        ],
+        "evidence.yml": [
+          "evidence",
+          "unverified-claim"
+        ]
+      },
+      "missing_defaults": []
+    },
+    {
+      "repository": "AI-Ascension/ascension-watchdog",
+      "repository_id": 1359537708,
+      "forms": {
+        "proof-recipe.yml": [
+          "proof-recipe",
+          "first-task"
+        ],
+        "defect.yml": [
+          "bug"
+        ],
+        "config.yml": [],
+        "contract-observation.yml": [
+          "contract-observation"
+        ],
+        "evidence.yml": [
+          "evidence",
+          "unverified-claim"
+        ]
+      },
+      "missing_defaults": []
+    },
+    {
+      "repository": "AI-Ascension/sts2-game-core",
+      "repository_id": 1354377929,
+      "forms": {
+        "proof-recipe.yml": [
+          "proof-recipe",
+          "first-task"
+        ],
+        "defect.yml": [
+          "bug"
+        ],
+        "config.yml": [],
+        "contract-observation.yml": [
+          "contract-observation"
+        ],
+        "evidence.yml": [
+          "evidence",
+          "unverified-claim"
+        ]
+      },
+      "missing_defaults": []
+    },
+    {
+      "repository": "AI-Ascension/sts2-game-mod",
+      "repository_id": 1354377975,
+      "forms": {
+        "proof-recipe.yml": [
+          "proof-recipe",
+          "first-task"
+        ],
+        "defect.yml": [
+          "bug"
+        ],
+        "config.yml": [],
+        "contract-observation.yml": [
+          "contract-observation"
+        ],
+        "evidence.yml": [
+          "evidence",
+          "unverified-claim"
+        ]
+      },
+      "missing_defaults": []
+    },
+    {
+      "repository": "AI-Ascension/sts2-gateway",
+      "repository_id": 1354378018,
+      "forms": {
+        "proof-recipe.yml": [
+          "proof-recipe",
+          "first-task"
+        ],
+        "defect.yml": [
+          "bug"
+        ],
+        "config.yml": [],
+        "contract-observation.yml": [
+          "contract-observation"
+        ],
+        "evidence.yml": [
+          "evidence",
+          "unverified-claim"
+        ]
+      },
+      "missing_defaults": []
+    },
+    {
+      "repository": "AI-Ascension/sts2-harness",
+      "repository_id": 1354378100,
+      "forms": {
+        "proof-recipe.yml": [
+          "proof-recipe",
+          "first-task"
+        ],
+        "defect.yml": [
+          "bug"
+        ],
+        "config.yml": [],
+        "contract-observation.yml": [
+          "contract-observation"
+        ],
+        "evidence.yml": [
+          "evidence",
+          "unverified-claim"
+        ]
+      },
+      "missing_defaults": []
+    },
+    {
+      "repository": "AI-Ascension/sts2-mcp-server",
+      "repository_id": 1354378057,
+      "forms": {
+        "proof-recipe.yml": [
+          "proof-recipe",
+          "first-task"
+        ],
+        "defect.yml": [
+          "bug"
+        ],
+        "config.yml": [],
+        "contract-observation.yml": [
+          "contract-observation"
+        ],
+        "evidence.yml": [
+          "evidence",
+          "unverified-claim"
+        ]
+      },
+      "missing_defaults": []
+    },
+    {
+      "repository": "AI-Ascension/sts2-protocol",
+      "repository_id": 1354378136,
+      "forms": {
+        "proof-recipe.yml": [
+          "proof-recipe",
+          "first-task"
+        ],
+        "defect.yml": [
+          "bug"
+        ],
+        "config.yml": [],
+        "contract-observation.yml": [
+          "contract-observation"
+        ],
+        "evidence.yml": [
+          "evidence",
+          "unverified-claim"
+        ]
+      },
+      "missing_defaults": []
+    }
+  ],
+  "audience_consumers": "inactive-until-provisioned"
+}

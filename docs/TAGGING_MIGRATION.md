@@ -1,5 +1,11 @@
 # Tagging migration plan
 
+## Current preparation — 2026-09-08
+
+The implementation PRs are merged. The [refreshed rollout review](../metadata/audits/2026-09-08/README.md) supersedes the dated preparation status below. Fresh source/metadata inspection selects 11 public targets, holds one historical target out after visibility drift, and records one additional private exclusion outside Git. No live metadata application is authorized or performed. The owner must select the canary and approve its exact fresh digest; publication and merge are separate from application.
+
+## Historical preparation — 2026-09-07
+
 This document records the prepared label transition for the public seed inventory. It is a
 reviewable proposal. The 2026-09-07 refresh performed read-only API calls; no label, issue, pull
 request, topic, repository, or settings write was performed.
