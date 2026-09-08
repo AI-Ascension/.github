@@ -52,7 +52,7 @@ action references and the aggregate failure behavior; the bounded committed-diff
 follow-up found no removed native checks. Final Rust results and exact local
 revisions appear in the adoption report.
 
-The root retained its model. Execution metadata confirms eleven actual descendants
+The root retained its model. Execution metadata confirms fourteen actual descendants
 across waves requested and ran `gpt-5.6-luna` with `max`; all observed descendants
 were at depth one. Child runtimes did not expose native collaboration tools, so
 the required coordinator/leaf ancestry is unverified. One earlier worker attempted
@@ -84,3 +84,47 @@ and logs remain private; no hidden reasoning transcript is part of this ledger.
 - Workflow source is reviewable, but source alone cannot prevent an authorized
   editor from replacing a gate. Owner review and external branch-protection
   activation remain necessary and were not authorized or claimed.
+
+## Complete-package and refreshed-head closure
+
+The received package passed all 20 checksum entries and its three schemas and
+instances validated. All 37 proposed rule IDs and 50 acceptance scenarios are
+retained in the maintained mapping/checklist. Its 23 blob references matched the
+initial source baseline; four entries labelled as trees were actual commits and
+are recorded with their resolved trees. These package provenance references are
+not claims about every subsequently refreshed source file.
+
+The package exposed an ordinary-exception eligibility mismatch: legacy safety
+rules were eligible even though the supplied interpretation permits only four
+style/design IDs. A negative fixture reproduced acceptance before the repair.
+Catalog and validator now reject forged eligibility for mandatory safety rules;
+pending, expired and self-authored approvals still cannot authorize suppression.
+The canonical suite now passes 17 tests plus three positive/nine negative fixtures,
+including real Git tree/blob IDs rejected as commit pins.
+
+Additional executable cases cover member lint weakening, unsafe outside the native
+boundary, a broken documentation example, malformed/unreadable policy, PHP lock
+open failure, and empty PHPUnit selections. PHP 8.1 production-only checks are
+separate from PHP 8.3 development tests; addon coverage is explicitly syntax-only.
+Chromium malicious-content fixtures and rendered-secret publication negatives
+were added to both sites. Independent review found no blocking issues in these
+fixes or the narrow protocol fixture-only `expect_used` allowances.
+
+A fresh paginated inventory returned 13 unique repository IDs. Seven accepted
+default heads had advanced. Local standards commits were carried chronologically
+onto new branches rooted at those heads, preserving the earlier branches. The
+harness CI conflict was resolved by retaining both upstream split-sandbox guards
+and the standards whitespace, production and documentation checks. No task
+commits were pushed and no remote merge was performed.
+
+All six refreshed Rust workspaces passed full local checks: 770 tests and 15
+documentation cases. Two default-ignored executable cases separately passed:
+MCP/gateway peer composition and the new Runtime-v4 harness composition with
+synthetic downstream/provider fixtures. Neither establishes live game behavior.
+The current protected-byte comparison found no drift in 414 scoped files; 32
+artifact checksum commands verified 343 files. The final read-only comparison
+of all 13 remote default heads matched the refreshed inventory.
+
+Raw command logs and baseline/carry/rollback records remain in the private local
+delivery directory. Exact final branch tips and tested reverse-commit sequences
+are in its handoff; the published-source states remain explicitly unperformed.
