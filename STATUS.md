@@ -206,7 +206,8 @@ scoped to its named guest, host version, fixture, process, and operation set.
 ## Current acceptance boundary — 2026-09-07
 
 This supplement records the prepared source candidates and the evidence scope at this date. The
-release surface is part of `sts2-game-mod`; the organization contains nine repositories. A source,
+release surface is part of `sts2-game-mod`; the organization contained nine repositories when this
+boundary was first recorded and thirteen by 2026-09-08 (see the supplement below). A source,
 build, or component check does not establish a host run, provider settlement, deployment, or release.
 
 | Repository | Prepared candidate | Scope established at this boundary |
@@ -240,3 +241,20 @@ and a separate item-state check are required before Workshop lifecycle verificat
 
 These candidates and checks are prepared evidence, not merge approval. Remote heads, pull-request
 state, and required checks must be re-queried before any PR, merge, deployment, or publication.
+
+## Repository inventory supplement — 2026-09-08
+
+The organization holds thirteen repositories, not nine. Four are outside the STS2 review pass and
+its evidence tables above; this supplement records only what a read-only inventory observed on
+2026-09-08 (`source-derived`, nothing executed):
+
+| Repository | Default branch observed | Foundation and CI | Relation to the STS2 repositories |
+| --- | --- | --- | --- |
+| `ascension-map-visualizer` | `bootstrap` (no `main`) | `AGENTS.md` and `LICENSE` only; no workflow. Draft PR #2 carries the foundation set. | Draft depends on a `sts2-protocol` PR-head revision and unmerged harness schemas; must re-pin to merged commits before merge. |
+| `ascension-watchdog` | `bootstrap` (no `main`) | `AGENTS.md`, `LICENSE`, `README.md`, `SECURITY.md`; no workflow. | Draft PR #2 pins protocol `8874b095` (an ancestor of protocol `main`); its CI is red at the current head. |
+| `aiascension.tech` | `codex/wire-mailing-list-email` (no `main`) | `README.md` only; no `LICENSE`, no workflow has ever run. | No STS2 relation. Its README describes a live four-model race without an evidence label; treat that page as `proposed` until a dated run record exists. |
+| `ascension-brand-overhaul` (private) | `main` | `AGENTS.md`, `README.md`, policy scripts; no `LICENSE`, no CI at `main`. | Brand sources for the presentation drafts open across the other repositories. |
+
+None of the four has a protected default branch. The twelve shared labels from `labels.yml` were
+applied to all four on 2026-09-08. Nothing in this supplement changes a claim above; the STS2
+evidence tables remain scoped to the nine repositories they name.
