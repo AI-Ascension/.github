@@ -1,0 +1,27 @@
+{
+  "received_on": "2026-09-07",
+  "checksums_verified": 20,
+  "files": {
+    "AUDIT_FINDINGS.md": "24340677cee088b6b0d77f3f814e812e9858cd4a3d4774f4a317d8ebce5751bf",
+    "PACKAGE_VALIDATION.md": "9c0e8c9354f61a756733298c71de2c05e1cf67ad03a6da52d9c956ff9638c3e0",
+    "QUICK_HANDOFF.md": "ce5dfca6eeb5d883456a925f61ae49337c10b1f998b5855cf97856f74709f5fe",
+    "README.md": "e0a578e4010525a879b87d7d446d596b404677c8f6e1ecb961fc7b08f82e689f",
+    "SHA256SUMS": "95e0ed55de3205012c5cfdc30ee2c4ad384a3370ed53db269110a64560fb6f1e",
+    "implementation-prompt.md": "1ceb3f39c031877821c3b744638888a14db272e7f7d23e2a0287a3432b4eb4f4",
+    "manifests/repositories.yaml": "8b2f3cfe0ecb2b2abeb7f4cc3847bcfc2e34b834bad6271f14d0fd30e1f1f772",
+    "manifests/rules.yaml": "7003a0d565303847892e6b465572069cfa4852af0eb25418845a079b6c849ed5",
+    "schemas/exception.schema.json": "beaad288c27900011bf4db7228edbfae5faff0a7447520a84e23b4bcd1a03ffb",
+    "schemas/repositories.schema.json": "94857be50bfceca7879c15e3b88b0addd6d2a9913dd79e999947072aa5b4f911",
+    "schemas/rules.schema.json": "58b2c9ae4f5b1613e37c7be3af83da97b63199350ddb342e6105072c0168ce9b",
+    "sources.json": "ea4b4b4968c7a7a8d34e3833709803f8b26183a0a705339f733049092cac2339",
+    "standards/BASELINE.md": "577521ba6295a6a859df4b0574a70ac260a281cc92384bb8585f35f76af122d4",
+    "standards/MANAGED_DOTNET.md": "10d216e83e822971bbb64ff00410e5472ea3d4ceed89056514c6e668d33d8445",
+    "standards/OPERATIONS.md": "63bd212fb82e2b976267339ffdbe9dc402bf120980adab2ad9c099310501f1f1",
+    "standards/RUST.md": "d128b71383c475d010231ca5ecceecdd5dc90c9b31abe0c0c13487f2fb0bc6b5",
+    "standards/TESTING_AND_CI.md": "008229fb42f19539b9cdbc127bab3818df8057b3e06d939f0acb550d6d75b5f1",
+    "standards/WEB_PHP.md": "a0c632eaade5bc57101e2a32ddf4abd5d3f97df0f19f13f03c09fc9eb449802a",
+    "templates/ADOPTION_RECORD.md": "a7fed7fbd23fd76b0a63898eee38ec8a7ef582f1638c86e9020e08eb7db4492e",
+    "templates/exception.example.yaml": "06f8702b804dfcaaf64009ae2381bb368d713d7fdf3c2ee26fea3f8c87ee5dab",
+    "tests/ACCEPTANCE_MATRIX.md": "baddaca69a5845667499b9cd440dd82f17963b22c1354b78e417dbd544ac0fe3"
+  }
+}

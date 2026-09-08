@@ -1,10 +1,9 @@
 # Implemented acceptance matrix
 
-This matrix derives from the explicit implementation prompt and was cross-checked
-against the subsequently supplied BASELINE.md and AUDIT_FINDINGS.md. Original
-package acceptance cases and manifests remain unavailable; this file does not
-claim to reproduce those unseen inputs. Executable assertions and observed
-results are distinguished from unavailable external acceptance.
+This matrix derives from the explicit implementation prompt and the complete
+subsequently supplied package, including its original 50 acceptance cases.
+Package checksums and source types were independently verified. Executable
+assertions remain distinct from source review and unavailable external acceptance.
 
 | Case | Executable evidence | Result and boundary |
 | --- | --- | --- |
@@ -32,3 +31,6 @@ results are distinguished from unavailable external acceptance.
 Use [the implementation ledger](../docs/standards/IMPLEMENTATION_LEDGER.md) for
 before/after details and [the adoption report](../docs/standards/ADOPTION_REPORT.md)
 for exact local revisions, commands, counts, remaining debt and rollback.
+
+The [received 50-case checklist](PACKAGE_ACCEPTANCE_CASES.md) preserves the exact
+case IDs, scenarios and observations used for the package follow-up.

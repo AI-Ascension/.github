@@ -1,5 +1,7 @@
 # Coding standards adoption report
 
+Status: prior local validation snapshot; package and upstream follow-up is in progress.
+
 This is the local implementation handoff for the 2026-09-07 AI-Ascension coding
 standards task. It covers all 13 accessible repositories from the paginated
 inventory. The source is prepared in isolated branches named
@@ -116,11 +118,10 @@ issue, not a green adoption or an authorized suppression.
 | Protected-check activation | Not inspected/changed as an activation action; external owner configuration remains separate |
 | Runtime/deployment/release | No host/game/provider/mail/service/deployment/release result claimed |
 
-The operator subsequently supplied the proposed BASELINE.md and AUDIT_FINDINGS.md;
-[the companion comparison](COMPANION_COMPARISON.md) records their reconciliation.
-The original manifests, exception schema, sources.json and acceptance matrix remain
-unavailable. [The implemented matrix](../../tests/ACCEPTANCE_MATRIX.md) therefore
-derives from the explicit prompt and received prose, not those unseen package files. The requested
+The operator supplied the complete original package. [The package comparison](COMPANION_COMPARISON.md)
+records checksum/schema validation, all 37 rule IDs, the exception repair and corrected
+source object types. [The acceptance matrix](../../tests/ACCEPTANCE_MATRIX.md) maps the
+supplied cases to local evidence and explicit external limits. The requested
 three descendant layers were unavailable in the child tool environment; actual
 execution metadata showed eleven native Luna/max descendants across waves, all at
 depth one. A stopped alternate-client attempt was not counted as valid ancestry.

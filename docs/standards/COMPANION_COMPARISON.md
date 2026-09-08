@@ -1,53 +1,57 @@
-# Received companion comparison
+# Received package comparison
 
-The operator supplied BASELINE.md and AUDIT_FINDINGS.md from Downloads. The supplied implementation-prompt (3).md is byte-identical to the original objective. Input SHA-256 hashes are recorded below. These files are proposed inputs, not adoption approval.
+The complete coding-standards package was received on 2026-09-07. All 20 member
+checksums pass; its implementation prompt is byte-identical to the controlling
+objective. The repository and rule manifests and pending exception example
+validate against the three supplied JSON Schemas with date/URI format checking.
+[Input hashes](PACKAGE_INPUTS.json) retain exact received identities.
 
-The ten audit sections match the implemented work: owner-local standards retained; versioned preferred-size severity; member lint inheritance and explicit MSRV policy; historical-stage wording reconciliation; existing managed probes and effective settings; PHP origin/concurrency/log/input regressions; distinct PHP production/test minima; existing operations checks extended; static browser architecture retained; and documentation/configuration-only bootstrap profiles. The adoption report records executable results and remaining environment limits for these items.
+All twelve proposed repository IDs and default branches match the refreshed
+baseline inventory. The implementation also inventories the thirteenth accessible
+repository, ascension-brand-overhaul, with its explicit existing checksum failure
+and exclusion. Proposed profile names map to actual owner check matrices; neither
+planning repository gains product code and the historical Pages recipe retains
+its separate pins.
 
-The supplied baseline's ten sections additionally emphasize explicit wire semantics, bounded resource ownership, provenance, finite exceptions and evidence boundaries. Existing owner contracts and the maintained shared baseline cover these obligations; manual review obligations are not automatically proved by metadata validation.
+## Rules and exceptions
 
-A concrete contradiction was found in the maintained standards/RUST.md: it says generated profiles use default features, whereas generated profiles deliberately retain existing --all-features commands following the empty-feature inventory. Its example sequence also omits the newly required production -F Clippy gate and separate doctests. The guidance was corrected and distributed in source commit 0f743fd4cce4428f813a6d6f50c51d4fb901561b. All twelve refreshed copies passed validation and repeated sync preserved bytes and timestamps. Product source and executable commands were unchanged by this follow-up.
+The supplied 37 ASC rule IDs are now retained in the executable catalog with their
+mandatory/advisory classifications and a [rule mapping](PACKAGE_RULE_MAPPING.md).
+The 18 earlier local IDs remain compatible references. Existing owner rules and
+commands remain authoritative for their component behavior.
 
-Still not supplied: manifests/rules.yaml, original repository/profile seeds, exception schema, sources.json and the original tests/ACCEPTANCE_MATRIX.md. The supplied audit's source reference IDs cannot be resolved without sources.json. Therefore this is comparison against the two received prose documents, not complete package conformance.
+Package comparison exposed an actual catalog defect: several error/resource/panic
+and evidence rules were marked eligible for ordinary exceptions. A negative test
+first failed because the validator accepted that eligibility. The correction limits
+ordinary exceptions to the four supplied style/design IDs, enforces this limit in
+the schema and validator even against a forged catalog, and updates the positive
+fixture to a formatting rule. No active exception or real suppression existed.
+Production approval verification remains fail-closed.
 
-## Received input hashes
+The earlier Rust guidance correction remains: generated profiles preserve each
+owner's exact safe feature/check matrix, while the common local recipe includes
+metadata discovery and separate production Clippy and documentation-test commands.
 
-- `BASELINE.md`: `577521ba6295a6a859df4b0574a70ac260a281cc92384bb8585f35f76af122d4`
-- `AUDIT_FINDINGS.md`: `24340677cee088b6b0d77f3f814e812e9858cd4a3d4774f4a317d8ebce5751bf`
-- `implementation-prompt (3).md`: `1ceb3f39c031877821c3b744638888a14db272e7f7d23e2a0287a3432b4eb4f4`
+## Source provenance
 
-## Audit finding disposition
+All 23 supplied repository-file blob IDs match the recorded baseline objects.
+R24 through R27 are mislabeled as trees in the supplied package: `git cat-file -t`
+identifies all four as commits. Their trees are resolved separately in the
+[corrected source records](PACKAGE_SOURCES.json), which retain the supplied labels
+and object identities. No tree or blob is substituted for a head commit.
+The eleven official-documentation references are retained as provenance links;
+this comparison does not claim their pages were freshly fetched.
 
-| Supplied finding | Implemented evidence | Remaining boundary |
-| --- | --- | --- |
-| 1. Preserve STS2 foundation | Existing owner standards and local repo-policy remain in all six repositories; shared locks bind policy data only | Owner adoption remains separate |
-| 2. Preferred/strict mismatch | Version-1 legacy and version-2 advisory tests; mandatory demotion rejected; hard limits unchanged | Preferred size still produces visible guidance |
-| 3. Effective lint coverage/MSRV | Member/nested workspace fixtures and production Clippy override negatives; harness equality documented | Future features require side-effect review |
-| 4. Initialization-era wording | Accepted owner decisions retained; aggregate naming authority located | No global wire or ABI renames authorized |
-| 5. Managed checks | 13 projects, 26 configuration evaluations, preserved probes, format and ABI negatives | Exact-host/Windows/live unload unverified |
-| 6. PHP regressions | Exact origin tuples, whole-operation locking, bounded input and safe log mapping; 49 tests/121 assertions | Synthetic storage/mail tests do not prove deployment |
-| 7. PHP minima | Production >=8.1 retained; development >=8.2 documented; actual tests on 8.3.6 | cPanel extensions not verified |
-| 8. Operations | Existing shell/bootstrap/Compose checks extended; 43 model and 18 rendered negatives | Docker/buildx unavailable locally |
-| 9. Static site | Static architecture retained; scoped tooling, Chromium behavior and publication inventory tests | No deployment performed |
-| 10. Bootstrap profiles | Actual Markdown/JSON/TOML/YAML checked; product manifests rejected | No fake product workspace or service installed |
+## Acceptance and remaining boundaries
 
-See [the adoption report](ADOPTION_REPORT.md) for commands, case counts and exact
-local revisions, and [the implementation ledger](IMPLEMENTATION_LEDGER.md) for
-reproductions and review repairs. Original audit reference IDs remain unresolved
-until sources.json is supplied; current implementation evidence is independently
-recorded rather than attributed to unseen source blobs.
+The supplied matrix contains 50 cases. Its exact IDs are reconciled in the
+[acceptance matrix](../../tests/ACCEPTANCE_MATRIX.md), with executable evidence
+separated from source review and external prerequisites. Package input availability
+is no longer a blocker. Independent review and any additional case-specific
+repairs are recorded with their actual validation outcomes.
 
-## Independent review follow-up
-
-The independent prose comparison found no new material product blocker. It
-identified an ambiguity between the common Rust metadata recipe and exact
-owner-generated CI matrices. Source commit 6066074db1840781282ec4e738bfe3921ff222b1 clarifies
-that the recipe includes local discovery, while generated profiles retain each
-owner's existing required checks. Protocol and MCP retain standalone metadata
-steps; core, game-mod, gateway and harness do not gain a new mandatory CI step.
-Their policy admission/inheritance checks are not claimed as complete Cargo
-metadata equivalence. No executable command or product code changed.
-
-All twelve refreshed copies validate against the new source and repeated sync
-preserves bytes and timestamps. Missing original package provenance remains
-unverified; the clarification does not waive it.
+Owner approval/adoption, hosted CI and protected-check activation remain separate
+from local implementation. Exact-host, actual Windows process behavior, live native
+lifecycle, cPanel, Docker/buildx and external mail/provider/game behavior retain
+their recorded limits. The requested three descendant layers were not available
+during implementation; supplying the package does not retroactively prove ancestry.

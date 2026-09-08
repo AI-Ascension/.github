@@ -10,7 +10,7 @@ checks and runtime acceptance remain separate states.
 | Boundary | Before | Implemented behavior and evidence |
 | --- | --- | --- |
 | Shared distribution | No effective local pinned adoption across the inventory | A locked Rust tool verifies the complete committed bundle, repository/profile/owner identity, profile configuration digest and safe local targets. Twelve adopters validate. Second sync preserves bytes and timestamps. |
-| Validator correctness | The draft's profile and path checks missed weakening and copy hazards | Fifteen tests cover identity, mandatory command removal/replacement/demotion, missing targets, exact generated output, symlinks, CRLF/digest changes, safe sync, real Git source pins, unapproved/expired exceptions and all twelve generated profiles. Three valid and nine invalid conformance fixtures pass. |
+| Validator correctness | The draft's profile and path checks missed weakening and copy hazards | Seventeen tests cover identity, mandatory command removal/replacement/demotion, missing targets, exact generated output, symlinks, CRLF/digest changes, safe sync, real Git source pins, unapproved/expired exceptions and all twelve generated profiles. Three valid and nine invalid conformance fixtures pass. |
 | Bootstrap scope | Planning repositories could be misclassified as excluded or initialized products | Both adopt documentation/configuration checks without a product workspace. The checker parses real Markdown/JSON/TOML/YAML, checks local file links and rejects nested/case-variant manifests, forbidden/unlisted source and ignored-source escapes. Independent review reproduced eight rejected escape mutations. |
 | Build output | A copied tool could leave untracked compiler output | Every adopter has the exact standards-tool target ignore. Independent default-target checks preserved Git status while creating 553 ignored compiler-output files per reviewed target. No broad standards ignore is used. |
 | Rust severity | Legacy strict mode promoted every warning, including preferred size | Version 1 retains legacy behavior. Version 2 keeps preferred `SIZE001` advisory; mandatory failures and hard limits still block. Existing compiler/edition/MSRV and native command shapes are preserved. |
@@ -70,9 +70,9 @@ and logs remain private; no hidden reasoning transcript is part of this ledger.
   checksum mismatch causes its validator and one of 41 package tests to fail.
   Its owner must reconcile the source/archive before adoption; no historical
   checksum was rewritten.
-- The proposed BASELINE.md and AUDIT_FINDINGS.md were subsequently received and
-  compared. Original manifests, exception schema, sources.json and acceptance cases
-  remain unavailable; the implemented matrix cannot claim fidelity to those files.
+- The full package was received and checksum-verified. All 37 rule IDs are retained,
+  the ordinary-exception mismatch was reproduced and fixed, and supplied source
+  object types were checked. See the package comparison and rule mapping.
 - Exact-host `sts2.dll`/Godot assemblies, actual Windows bridge execution, native
   unload/thread behavior, cPanel PHP/extensions and mail delivery remain unverified.
   Source-linked probes and Linux checks do not prove those boundaries.
