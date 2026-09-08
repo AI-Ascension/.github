@@ -5,11 +5,11 @@ Status: local implementation and validation; external activation remains separat
 This is the local implementation handoff for the 2026-09-07 AI-Ascension coding
 standards task. It covers all 13 accessible repositories from the paginated
 inventory. The source is prepared in isolated branches named
-`codex/standards-baseline-20260907` and `codex/standards-current-20260907`; no branch was pushed or merged. Seven accepted upstream heads advanced during the task and the local implementation was carried onto those refreshed commits. The original baseline branches remain available; the operations delivery uses the isolated `ai-agent-observability-current` checkout.
+`codex/standards-baseline-20260907`, `codex/standards-current-20260907` and `codex/standards-refreshed-20260908`; no branch was pushed or merged. Seven accepted upstream heads advanced during the task and the local implementation was carried onto those refreshed commits. Gateway, MCP and harness advanced again at the final read-only snapshot; those three received another chronological carry. The original baseline branches remain available. Operations, gateway, MCP and harness now use their isolated `-current` checkouts.
 
 The canonical bundle is pinned to commit
-`4d774b58c4e18f7090df5a3799703f52940c998d` of `AI-Ascension/.github`, with digest
-`sha256:0a444bf2404d384aabcef34fee47b7ab73b2735c3210b6852ea4a23f1f60f4f0`.
+`eed9921b5c5d5c41380655bded84f9e2d0aab599` of `AI-Ascension/.github`, with digest
+`sha256:cef00213abf2113a99137411e3eee67dc4ee0dd57c3044b2cd4514854161091d`.
 Every local lock preserves `published: false`, hashes all 36 bundle files and
 hashes the generated root profile configuration. This is local byte provenance,
 not a remote signature or protected owner approval.
@@ -18,18 +18,18 @@ not a remote signature or protected owner approval.
 
 | Repository | Validated implementation commit | Local result |
 | --- | --- | --- |
-| `aiascension.tech` | `4b309e8319a6061aa00b32266cd2c297409d6e04` | 51 PHP tests/128 assertions; 2 Node tests; 5 Chromium cases; PHP 8.1 production lane 11 checks |
-| `sts2-game-core` | `902cdbbf64940d41028ee6cdc2a52945f022afb9` | 61 tests + 2 doctests; native gates pass |
-| `sts2-game-mod` | `4af930158e3d211dc480a10a3e248f56138c0ff2` | 98 tests + 5 doctests; native gates pass; 13 managed projects/26 settings pairs and source probes pass |
-| `sts2-gateway` | `d0611ae235b45e06c24dadc96ed6a2d78fbba236` | 147 tests + 2 doctests; native gates pass |
-| `sts2-mcp-server` | `e8a34bd9e3d35662046099e2f3d2208ae359e35a` | 143 tests + 2 doctests; native gates pass; 1 default-ignored peer case separately passes |
-| `sts2-harness` | `8bca6e37abaa31043e4a7255bf8e6803780703d2` | 241 tests + 2 doctests; native gates pass; 1 default-ignored synthetic Runtime-v4 composition case separately passes |
-| `sts2-protocol` | `86a48daaf42c2fa86a7ed73103cf640fef3cb64e` | 80 tests + 2 doctests; native gates pass |
-| `.github` | `c62d898756c9be713ee2424d29b1218f24c139eb` | 17 tool tests; 3 positive/9 negative fixtures; 15 link cases; 12 adopter validations |
-| `AI-Ascension.github.io` | `c56bb421455fd5f1bceed42572d775e77dd170d0` | 10 Node tests; 4 Chromium cases; both historical recipes match |
-| `ai-agent-observability` | `b444bf6d146943dfb8f87f68aa66e3eec28edff2` | Shell/bootstrap/config/query fake gates pass; 43 model, 18 rendered negatives and 24 required-setting cases; buildx unverified |
-| `ascension-watchdog` | `d73f2b2c4a75806e9a089f3a2f0a5b17f3bb12b3` | 7 Markdown, 2 JSON and 1 YAML inputs checked; product absent as intended |
-| `ascension-map-visualizer` | `21f04cef819514bed20d986e21f43b3d669b3665` | 3 Markdown, 1 TOML and 1 YAML inputs checked; product absent as intended |
+| `aiascension.tech` | `d0d22253903d74105085a067727b4d32b7395cc6` | 51 PHP tests/128 assertions; 2 Node tests; 5 Chromium cases; PHP 8.1 production lane 11 checks |
+| `sts2-game-core` | `4bd349f097ef2c89607c76a516ce6d679fd8c32c` | 61 tests + 2 doctests; native gates pass |
+| `sts2-game-mod` | `d658a77d593449af439c1c76d8dc35126c356c07` | 98 tests + 5 doctests; native gates pass; 13 managed projects/26 settings pairs and source probes pass |
+| `sts2-gateway` | `dd21c66317f4073326e0ae33172425c90d1de982` | 147 tests + 2 doctests; native gates pass |
+| `sts2-mcp-server` | `b749e90bd1c32bdf893ff01af602bbaf3f891900` | 143 tests + 2 doctests; native gates pass; 1 default-ignored peer case separately passes |
+| `sts2-harness` | `a7e972cdd8fbe09c59af4585bef90fea5946967f` | 241 tests + 2 doctests; native gates pass; 1 default-ignored synthetic Runtime-v4 composition case separately passes |
+| `sts2-protocol` | `0fa237dade39387755ac667d78c861781eee6bde` | 80 tests + 2 doctests; native gates pass |
+| `.github` | `e09d3b6fdcab45f84ad8742ef3c984a67cacb312` | 17 tool tests; 3 positive/9 negative fixtures; 15 link cases; 12 adopter validations |
+| `AI-Ascension.github.io` | `a81ab37a083bdc474354027159ff6c362f97488f` | 10 Node tests; 4 Chromium cases; both historical recipes match |
+| `ai-agent-observability` | `86bfb12c4ca6a5007bd9c0e6f03e94a5f0101189` | Shell/bootstrap/config/query fake gates pass; 43 model, 18 rendered negatives and 24 required-setting cases; buildx unverified |
+| `ascension-watchdog` | `fd608569959e171b379312581c03849e54e46da2` | 7 Markdown, 2 JSON and 1 YAML inputs checked; product absent as intended |
+| `ascension-map-visualizer` | `0671809b30abe81768d5128c48c100e2fde176ef` | 3 Markdown, 1 TOML and 1 YAML inputs checked; product absent as intended |
 | `ascension-brand-overhaul` | `851ea5e0744fca10e86fea4dbc36118c4bb68a75` | Explicitly excluded; historical checksum failure leaves 40/41 baseline tests passing |
 
 The canonical row identifies the implementation/lock commit before this report.
@@ -61,8 +61,7 @@ dependencies first; local Rust verification used `--offline` after provisioning.
   all-target checks retain scoped test allowances. Exact final case counts appear above.
 - Managed: `check-managed.sh settings`/`format`, `test-managed-settings.sh`,
   `test-managed-abi.sh`, PowerShell parser/self-test/process fakes and the existing
-  real source-linked probe projects. Thirteen existing synthetic shell command
-  groups retained in native CI also passed.
+  real source-linked probe projects. All 29 managed/shell/PowerShell command groups passed after the relative-deadline correction. Twenty paired bridge/install repetitions passed 40/40 commands with the original time bounds; deterministic clock-step and unavailable-clock negatives are included.
 - PHP: Composer validate/verify, CS Fixer, PHPStan and PHPUnit with isolated
   process/storage/mail fakes; PHP 8.3.6, 51 tests and 128 assertions. A separate PHP 8.1.2 production-only installation (Composer 2.8.12, no development packages) passed 11 main-API checks and 78 PHP syntax checks, plus syntax checks on the two addon entrypoints; addon runtime dependencies remain unverified.
 - Sites: locked npm tooling, `npm run verify`, Chromium and publication negatives.

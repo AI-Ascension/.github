@@ -128,3 +128,40 @@ of all 13 remote default heads matched the refreshed inventory.
 Raw command logs and baseline/carry/rollback records remain in the private local
 delivery directory. Exact final branch tips and tested reverse-commit sequences
 are in its handoff; the published-source states remain explicitly unperformed.
+
+## Reverification and relative-deadline correction
+
+A repeat of the local checks exposed two shell timing failures. The environment's
+Bash `SECONDS` moved forward and backward with wall time; a deterministic
+forward-step fixture reproduced premature guardian timeout in the original bridge.
+Game-mod commit `23006423ad24992277361b77b9cb5c64f844625b` uses validated Linux/WSL
+`/proc/uptime` for the relative handoff deadline. Epoch authorization expiry and
+lease limits retain their existing semantics. Clock failure rejects before child
+creation. The original bounded reads, receipt checks and owned cleanup remain.
+
+All 29 managed/shell/PowerShell command groups subsequently passed. Twenty paired
+bridge/install repetitions passed all 40 commands, including deterministic forward
+and backward clock-step cases, malformed/stalled receipts and unavailable-clock
+rejection. Game-mod also passed the seven Rust check groups, 98 tests, five separate
+documentation cases and an explicit all-target build. ShellCheck had the same 16
+companion-source diagnostics as baseline, with no new diagnostics. Independent
+review found no blocking issue. This closes the observed local timing regression;
+it does not establish Windows, suspend/resume or exact-host runtime behavior.
+
+The final read-only snapshot showed another gateway/MCP/harness head advance.
+Each incoming tree delta only changed `RELEASING.md`; nine local standards
+commits per repository carried without conflict. Independent review found no
+policy, CI, Rust or test interaction. The canonical inventory was updated and
+all twelve active copies validate at source `eed9921b5c5d5c41380655bded84f9e2d0aab599`.
+Repeated sync preserved bytes and mtimes; prior delivery branches were preserved.
+The final protected-path audit compared 481 files against the recorded baselines
+with no drift, and all 32 artifact commands verified 343 checksums. Its explicit
+selection covers artifact, schema, conformance, fixture, evidence and checksum
+paths; this is a scoped comparison, not every repository byte.
+
+The three final carries each passed all seven Rust command groups: gateway 147
+tests/two documentation cases, MCP 143/two, and harness 241/two. Combined with
+current core/mod/protocol results, the final total remains 770 regular tests and
+15 documentation cases. The closing read-only remote check matched all thirteen
+recorded default-head baselines. Exact final task commits and rollback sequences
+remain in the local handoff, separate from hosted execution and activation.
