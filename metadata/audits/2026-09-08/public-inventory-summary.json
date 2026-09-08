@@ -1,0 +1,196 @@
+{
+  "accessible_count": 13,
+  "managed_public_count": 11,
+  "excluded_private_count": 1,
+  "held_out_after_visibility_drift_count": 1,
+  "exclusion_decision": "excluded-pending-owner",
+  "repositories": [
+    {
+      "repository": "AI-Ascension/.github",
+      "repository_id": 1354466045,
+      "default_branch": "main",
+      "default_commit": "049f5018ba09328bf2c7deb12ca3130d881e4022",
+      "visibility": "public",
+      "archived": false,
+      "label_count": 22,
+      "issue_and_pr_count": 13,
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      }
+    },
+    {
+      "repository": "AI-Ascension/ai-agent-observability",
+      "repository_id": 1357224960,
+      "default_branch": "main",
+      "default_commit": "28a48590afb75b07590e1b78ea47dae08f5c3ade",
+      "visibility": "public",
+      "archived": false,
+      "label_count": 22,
+      "issue_and_pr_count": 14,
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      }
+    },
+    {
+      "repository": "AI-Ascension/AI-Ascension.github.io",
+      "repository_id": 1354473981,
+      "default_branch": "main",
+      "default_commit": "1065799de6eea8427ac5ae96e3b9238932ea761f",
+      "visibility": "public",
+      "archived": false,
+      "label_count": 22,
+      "issue_and_pr_count": 14,
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      }
+    },
+    {
+      "repository": "AI-Ascension/ascension-map-visualizer",
+      "repository_id": 1359701124,
+      "default_branch": "bootstrap",
+      "default_commit": "9aded88629436497d22b9e6bb7590d0ec8ae5815",
+      "visibility": "public",
+      "archived": false,
+      "label_count": 22,
+      "issue_and_pr_count": 3,
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      }
+    },
+    {
+      "repository": "AI-Ascension/ascension-watchdog",
+      "repository_id": 1359537708,
+      "default_branch": "bootstrap",
+      "default_commit": "bc8ebf2054d2e3d2d74c1c7e5f775ae01952215d",
+      "visibility": "public",
+      "archived": false,
+      "label_count": 22,
+      "issue_and_pr_count": 4,
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      }
+    },
+    {
+      "repository": "AI-Ascension/sts2-game-core",
+      "repository_id": 1354377929,
+      "default_branch": "main",
+      "default_commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+      "visibility": "public",
+      "archived": false,
+      "label_count": 22,
+      "issue_and_pr_count": 9,
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      }
+    },
+    {
+      "repository": "AI-Ascension/sts2-game-mod",
+      "repository_id": 1354377975,
+      "default_branch": "main",
+      "default_commit": "e162e2490c189672bf168967f06fbf89b88d4010",
+      "visibility": "public",
+      "archived": false,
+      "label_count": 22,
+      "issue_and_pr_count": 60,
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      }
+    },
+    {
+      "repository": "AI-Ascension/sts2-gateway",
+      "repository_id": 1354378018,
+      "default_branch": "main",
+      "default_commit": "53745dd2a335cdca0d0f8ce9772faef0c2e725c2",
+      "visibility": "public",
+      "archived": false,
+      "label_count": 22,
+      "issue_and_pr_count": 26,
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      }
+    },
+    {
+      "repository": "AI-Ascension/sts2-harness",
+      "repository_id": 1354378100,
+      "default_branch": "main",
+      "default_commit": "e5bb677b05b36dd88cc76a5d5b5633be36085838",
+      "visibility": "public",
+      "archived": false,
+      "label_count": 22,
+      "issue_and_pr_count": 39,
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      }
+    },
+    {
+      "repository": "AI-Ascension/sts2-mcp-server",
+      "repository_id": 1354378057,
+      "default_branch": "main",
+      "default_commit": "655e0c728206c5b6e271d8bf7ed2e4681fa16dd3",
+      "visibility": "public",
+      "archived": false,
+      "label_count": 22,
+      "issue_and_pr_count": 29,
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      }
+    },
+    {
+      "repository": "AI-Ascension/sts2-protocol",
+      "repository_id": 1354378136,
+      "default_branch": "main",
+      "default_commit": "6d7fb8591d3d4a4be5a7e4cfb055e81c86a2fc6d",
+      "visibility": "public",
+      "archived": false,
+      "label_count": 24,
+      "issue_and_pr_count": 22,
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "pull": true,
+        "push": true,
+        "triage": true
+      }
+    }
+  ]
+}

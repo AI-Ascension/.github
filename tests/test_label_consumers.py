@@ -32,15 +32,8 @@ SOURCE_DESTINATIONS = {
     "wedge:mcp": "audience:mcp",
     "wedge:security": "audience:security",
 }
-SOURCE_PRESENT_REPOSITORIES = {
-    name
-    for name in PUBLIC_SEED
-    if name not in {
-        "AI-Ascension/aiascension.tech",
-        "AI-Ascension/ascension-watchdog",
-        "AI-Ascension/ascension-map-visualizer",
-    }
-}
+# Historical seed remains recorded; visibility-drift target is held out of fresh migration.
+SOURCE_PRESENT_REPOSITORIES = set(PUBLIC_SEED) - {"AI-Ascension/aiascension.tech"}
 OPTIONAL_TRIAGE_PREFIXES = ("priority:", "status:", "area:")
 
 
@@ -129,18 +122,21 @@ class LabelConsumerTests(unittest.TestCase):
         scope = self.manifest["scope"]
         self.assertEqual(self.manifest["review_status"], "proposed")
         repositories = {row["repository"]: row for row in scope["repositories"]}
-        self.assertEqual(set(repositories), set(PUBLIC_SEED))
+        self.assertEqual(set(repositories), SOURCE_PRESENT_REPOSITORIES)
+        self.assertEqual(scope["selected_public_count"], 11)
+        self.assertEqual(scope["held_out_historical_count"], 1)
         self.assertEqual(scope["seed_count"], 12)
         self.assertEqual(scope["excluded"]["visibility"], "private")
         self.assertEqual(scope["excluded"]["status"], "pending-explicit-applicability")
-        for repository, repository_id in PUBLIC_SEED.items():
+        for repository in SOURCE_PRESENT_REPOSITORIES:
+            repository_id = PUBLIC_SEED[repository]
             self.assertEqual(repositories[repository]["repository_id"], repository_id)
             self.assertEqual(repositories[repository]["visibility"], "public")
             self.assertFalse(repositories[repository]["archived"])
 
     def test_migration_rows_match_live_presence_and_strategy(self):
         rows = self.manifest["migrations"]
-        self.assertEqual(len(rows), 54)
+        self.assertEqual(len(rows), 66)
         keys = {(row["repository"], row["from"], row["to"]) for row in rows}
         expected = {(repository, source, destination)
                    for repository in SOURCE_PRESENT_REPOSITORIES
@@ -168,18 +164,14 @@ class LabelConsumerTests(unittest.TestCase):
             for row in self.manifest["scope"]["repositories"]
             if row["source_labels_absent"]
         }
-        self.assertEqual(set(absent), {
-            "AI-Ascension/aiascension.tech",
-            "AI-Ascension/ascension-watchdog",
-            "AI-Ascension/ascension-map-visualizer",
-        })
+        self.assertEqual(absent, {})
         self.assertTrue(all(values == set(SOURCE_DESTINATIONS) for values in absent.values()))
         self.assertFalse(any(row["repository"] in absent for row in self.manifest["migrations"]))
 
     def test_assignment_counts_and_triage_decision_are_truthful(self):
-        self.assertEqual(self.manifest["counts"]["migration_rows"], 54)
-        self.assertEqual(self.manifest["counts"]["additive_collision_rows"], 18)
-        self.assertEqual(self.manifest["counts"]["stable_id_rename_rows"], 36)
+        self.assertEqual(self.manifest["counts"]["migration_rows"], 66)
+        self.assertEqual(self.manifest["counts"]["additive_collision_rows"], 22)
+        self.assertEqual(self.manifest["counts"]["stable_id_rename_rows"], 44)
         self.assertEqual(self.manifest["counts"]["observed_source_assignments_to_migrate"], 2)
         self.assertEqual(self.manifest["counts"]["observed_open_source_assignments"], 0)
         self.assertEqual(self.manifest["counts"]["observed_closed_source_assignments"], 2)

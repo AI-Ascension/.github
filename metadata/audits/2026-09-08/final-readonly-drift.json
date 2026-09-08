@@ -1,0 +1,1281 @@
+{
+  "mismatches": [
+    {
+      "actual": [
+        "ai-ascension",
+        "community-health"
+      ],
+      "desired": [
+        "ai-ascension",
+        "community-health",
+        "contributing",
+        "github-organization",
+        "governance"
+      ],
+      "kind": "topics",
+      "repository": "AI-Ascension/.github"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Question or investigation that needs evidence before implementation."
+      },
+      "kind": "shared_label",
+      "label": "research",
+      "repository": "AI-Ascension/.github"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "5e564a",
+        "description": "Internal upkeep, tooling, or dependency work."
+      },
+      "kind": "shared_label",
+      "label": "maintenance",
+      "repository": "AI-Ascension/.github"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Curious player or observer path."
+      },
+      "kind": "shared_label",
+      "label": "audience:player",
+      "repository": "AI-Ascension/.github"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Rust or systems contributor path."
+      },
+      "kind": "shared_label",
+      "label": "audience:rust",
+      "repository": "AI-Ascension/.github"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "AI, MCP, or automation builder path."
+      },
+      "kind": "shared_label",
+      "label": "audience:mcp",
+      "repository": "AI-Ascension/.github"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Maintainer or security operator path."
+      },
+      "kind": "shared_label",
+      "label": "audience:security",
+      "repository": "AI-Ascension/.github"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "4e6a8f",
+        "description": "Cross-cutting organization metadata and policy work."
+      },
+      "kind": "shared_label",
+      "label": "area:metadata",
+      "repository": "AI-Ascension/.github"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "5e564a",
+        "description": "Build, test, and continuous-integration work."
+      },
+      "kind": "shared_label",
+      "label": "area:ci",
+      "repository": "AI-Ascension/.github"
+    },
+    {
+      "actual": [],
+      "desired": [
+        "ai-agents",
+        "ai-ascension",
+        "docker-compose",
+        "experiment-tracking",
+        "laminar",
+        "llm-observability",
+        "mlflow",
+        "observability",
+        "opentelemetry",
+        "podman",
+        "self-hosted"
+      ],
+      "kind": "topics",
+      "repository": "AI-Ascension/ai-agent-observability"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Question or investigation that needs evidence before implementation."
+      },
+      "kind": "shared_label",
+      "label": "research",
+      "repository": "AI-Ascension/ai-agent-observability"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "5e564a",
+        "description": "Internal upkeep, tooling, or dependency work."
+      },
+      "kind": "shared_label",
+      "label": "maintenance",
+      "repository": "AI-Ascension/ai-agent-observability"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Curious player or observer path."
+      },
+      "kind": "shared_label",
+      "label": "audience:player",
+      "repository": "AI-Ascension/ai-agent-observability"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Rust or systems contributor path."
+      },
+      "kind": "shared_label",
+      "label": "audience:rust",
+      "repository": "AI-Ascension/ai-agent-observability"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "AI, MCP, or automation builder path."
+      },
+      "kind": "shared_label",
+      "label": "audience:mcp",
+      "repository": "AI-Ascension/ai-agent-observability"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Maintainer or security operator path."
+      },
+      "kind": "shared_label",
+      "label": "audience:security",
+      "repository": "AI-Ascension/ai-agent-observability"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Telemetry and observability work."
+      },
+      "kind": "shared_label",
+      "label": "area:observability",
+      "repository": "AI-Ascension/ai-agent-observability"
+    },
+    {
+      "actual": [
+        "ai-ascension",
+        "github-pages",
+        "static-site"
+      ],
+      "desired": [
+        "ai-ascension",
+        "documentation",
+        "github-pages",
+        "javascript",
+        "reproducible-research",
+        "slay-the-spire-2",
+        "static-site"
+      ],
+      "kind": "topics",
+      "repository": "AI-Ascension/AI-Ascension.github.io"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Question or investigation that needs evidence before implementation."
+      },
+      "kind": "shared_label",
+      "label": "research",
+      "repository": "AI-Ascension/AI-Ascension.github.io"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "5e564a",
+        "description": "Internal upkeep, tooling, or dependency work."
+      },
+      "kind": "shared_label",
+      "label": "maintenance",
+      "repository": "AI-Ascension/AI-Ascension.github.io"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Curious player or observer path."
+      },
+      "kind": "shared_label",
+      "label": "audience:player",
+      "repository": "AI-Ascension/AI-Ascension.github.io"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Rust or systems contributor path."
+      },
+      "kind": "shared_label",
+      "label": "audience:rust",
+      "repository": "AI-Ascension/AI-Ascension.github.io"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "AI, MCP, or automation builder path."
+      },
+      "kind": "shared_label",
+      "label": "audience:mcp",
+      "repository": "AI-Ascension/AI-Ascension.github.io"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Maintainer or security operator path."
+      },
+      "kind": "shared_label",
+      "label": "audience:security",
+      "repository": "AI-Ascension/AI-Ascension.github.io"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Replay, determinism, and artifact work."
+      },
+      "kind": "shared_label",
+      "label": "area:replay",
+      "repository": "AI-Ascension/AI-Ascension.github.io"
+    },
+    {
+      "actual": [],
+      "desired": [
+        "ai-ascension",
+        "map-visualization",
+        "project-planning",
+        "slay-the-spire-2",
+        "specification"
+      ],
+      "kind": "topics",
+      "repository": "AI-Ascension/ascension-map-visualizer"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Question or investigation that needs evidence before implementation."
+      },
+      "kind": "shared_label",
+      "label": "research",
+      "repository": "AI-Ascension/ascension-map-visualizer"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "5e564a",
+        "description": "Internal upkeep, tooling, or dependency work."
+      },
+      "kind": "shared_label",
+      "label": "maintenance",
+      "repository": "AI-Ascension/ascension-map-visualizer"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Curious player or observer path."
+      },
+      "kind": "shared_label",
+      "label": "audience:player",
+      "repository": "AI-Ascension/ascension-map-visualizer"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Rust or systems contributor path."
+      },
+      "kind": "shared_label",
+      "label": "audience:rust",
+      "repository": "AI-Ascension/ascension-map-visualizer"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "AI, MCP, or automation builder path."
+      },
+      "kind": "shared_label",
+      "label": "audience:mcp",
+      "repository": "AI-Ascension/ascension-map-visualizer"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Maintainer or security operator path."
+      },
+      "kind": "shared_label",
+      "label": "audience:security",
+      "repository": "AI-Ascension/ascension-map-visualizer"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Map and route visualization work."
+      },
+      "kind": "shared_label",
+      "label": "area:map",
+      "repository": "AI-Ascension/ascension-map-visualizer"
+    },
+    {
+      "actual": [],
+      "desired": [
+        "ai-ascension",
+        "crash-recovery",
+        "process-supervision",
+        "project-planning",
+        "watchdog"
+      ],
+      "kind": "topics",
+      "repository": "AI-Ascension/ascension-watchdog"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Question or investigation that needs evidence before implementation."
+      },
+      "kind": "shared_label",
+      "label": "research",
+      "repository": "AI-Ascension/ascension-watchdog"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "5e564a",
+        "description": "Internal upkeep, tooling, or dependency work."
+      },
+      "kind": "shared_label",
+      "label": "maintenance",
+      "repository": "AI-Ascension/ascension-watchdog"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Curious player or observer path."
+      },
+      "kind": "shared_label",
+      "label": "audience:player",
+      "repository": "AI-Ascension/ascension-watchdog"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Rust or systems contributor path."
+      },
+      "kind": "shared_label",
+      "label": "audience:rust",
+      "repository": "AI-Ascension/ascension-watchdog"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "AI, MCP, or automation builder path."
+      },
+      "kind": "shared_label",
+      "label": "audience:mcp",
+      "repository": "AI-Ascension/ascension-watchdog"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Maintainer or security operator path."
+      },
+      "kind": "shared_label",
+      "label": "audience:security",
+      "repository": "AI-Ascension/ascension-watchdog"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "a8402f",
+        "description": "Recovery, restart, and uncertainty handling work."
+      },
+      "kind": "shared_label",
+      "label": "area:recovery",
+      "repository": "AI-Ascension/ascension-watchdog"
+    },
+    {
+      "actual": [
+        "ai-ascension",
+        "domain-model",
+        "rust",
+        "validation"
+      ],
+      "desired": [
+        "ai-ascension",
+        "domain-model",
+        "game-logic",
+        "game-state",
+        "rust",
+        "slay-the-spire-2",
+        "validation"
+      ],
+      "kind": "topics",
+      "repository": "AI-Ascension/sts2-game-core"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Question or investigation that needs evidence before implementation."
+      },
+      "kind": "shared_label",
+      "label": "research",
+      "repository": "AI-Ascension/sts2-game-core"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "5e564a",
+        "description": "Internal upkeep, tooling, or dependency work."
+      },
+      "kind": "shared_label",
+      "label": "maintenance",
+      "repository": "AI-Ascension/sts2-game-core"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Curious player or observer path."
+      },
+      "kind": "shared_label",
+      "label": "audience:player",
+      "repository": "AI-Ascension/sts2-game-core"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Rust or systems contributor path."
+      },
+      "kind": "shared_label",
+      "label": "audience:rust",
+      "repository": "AI-Ascension/sts2-game-core"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "AI, MCP, or automation builder path."
+      },
+      "kind": "shared_label",
+      "label": "audience:mcp",
+      "repository": "AI-Ascension/sts2-game-core"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Maintainer or security operator path."
+      },
+      "kind": "shared_label",
+      "label": "audience:security",
+      "repository": "AI-Ascension/sts2-game-core"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "4e6a8f",
+        "description": "Cross-cutting protocol and conformance work."
+      },
+      "kind": "shared_label",
+      "label": "area:protocol",
+      "repository": "AI-Ascension/sts2-game-core"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "5e564a",
+        "description": "Build, test, and continuous-integration work."
+      },
+      "kind": "shared_label",
+      "label": "area:ci",
+      "repository": "AI-Ascension/sts2-game-core"
+    },
+    {
+      "actual": [
+        "ai-ascension",
+        "game-mod",
+        "host-boundary",
+        "rust"
+      ],
+      "desired": [
+        "ai-ascension",
+        "csharp",
+        "dotnet",
+        "ffi",
+        "game-mod",
+        "host-boundary",
+        "modding",
+        "rust",
+        "slay-the-spire-2"
+      ],
+      "kind": "topics",
+      "repository": "AI-Ascension/sts2-game-mod"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Question or investigation that needs evidence before implementation."
+      },
+      "kind": "shared_label",
+      "label": "research",
+      "repository": "AI-Ascension/sts2-game-mod"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "5e564a",
+        "description": "Internal upkeep, tooling, or dependency work."
+      },
+      "kind": "shared_label",
+      "label": "maintenance",
+      "repository": "AI-Ascension/sts2-game-mod"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Curious player or observer path."
+      },
+      "kind": "shared_label",
+      "label": "audience:player",
+      "repository": "AI-Ascension/sts2-game-mod"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Rust or systems contributor path."
+      },
+      "kind": "shared_label",
+      "label": "audience:rust",
+      "repository": "AI-Ascension/sts2-game-mod"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "AI, MCP, or automation builder path."
+      },
+      "kind": "shared_label",
+      "label": "audience:mcp",
+      "repository": "AI-Ascension/sts2-game-mod"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Maintainer or security operator path."
+      },
+      "kind": "shared_label",
+      "label": "audience:security",
+      "repository": "AI-Ascension/sts2-game-mod"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "4e6a8f",
+        "description": "Cross-cutting protocol and conformance work."
+      },
+      "kind": "shared_label",
+      "label": "area:protocol",
+      "repository": "AI-Ascension/sts2-game-mod"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "9c5b12",
+        "description": "Cross-cutting runtime and host integration work."
+      },
+      "kind": "shared_label",
+      "label": "area:runtime",
+      "repository": "AI-Ascension/sts2-game-mod"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Map and route visualization work."
+      },
+      "kind": "shared_label",
+      "label": "area:map",
+      "repository": "AI-Ascension/sts2-game-mod"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "a8402f",
+        "description": "Recovery, restart, and uncertainty handling work."
+      },
+      "kind": "shared_label",
+      "label": "area:recovery",
+      "repository": "AI-Ascension/sts2-game-mod"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "5e564a",
+        "description": "Build, test, and continuous-integration work."
+      },
+      "kind": "shared_label",
+      "label": "area:ci",
+      "repository": "AI-Ascension/sts2-game-mod"
+    },
+    {
+      "actual": [
+        "ai-ascension",
+        "control-plane",
+        "lease-fencing",
+        "rust"
+      ],
+      "desired": [
+        "ai-ascension",
+        "api-gateway",
+        "authentication",
+        "control-plane",
+        "lease-fencing",
+        "request-routing",
+        "rust",
+        "slay-the-spire-2"
+      ],
+      "kind": "topics",
+      "repository": "AI-Ascension/sts2-gateway"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Question or investigation that needs evidence before implementation."
+      },
+      "kind": "shared_label",
+      "label": "research",
+      "repository": "AI-Ascension/sts2-gateway"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "5e564a",
+        "description": "Internal upkeep, tooling, or dependency work."
+      },
+      "kind": "shared_label",
+      "label": "maintenance",
+      "repository": "AI-Ascension/sts2-gateway"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Curious player or observer path."
+      },
+      "kind": "shared_label",
+      "label": "audience:player",
+      "repository": "AI-Ascension/sts2-gateway"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Rust or systems contributor path."
+      },
+      "kind": "shared_label",
+      "label": "audience:rust",
+      "repository": "AI-Ascension/sts2-gateway"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "AI, MCP, or automation builder path."
+      },
+      "kind": "shared_label",
+      "label": "audience:mcp",
+      "repository": "AI-Ascension/sts2-gateway"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Maintainer or security operator path."
+      },
+      "kind": "shared_label",
+      "label": "audience:security",
+      "repository": "AI-Ascension/sts2-gateway"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "4e6a8f",
+        "description": "Cross-cutting protocol and conformance work."
+      },
+      "kind": "shared_label",
+      "label": "area:protocol",
+      "repository": "AI-Ascension/sts2-gateway"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "9c5b12",
+        "description": "Cross-cutting runtime and host integration work."
+      },
+      "kind": "shared_label",
+      "label": "area:runtime",
+      "repository": "AI-Ascension/sts2-gateway"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Map and route visualization work."
+      },
+      "kind": "shared_label",
+      "label": "area:map",
+      "repository": "AI-Ascension/sts2-gateway"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "a8402f",
+        "description": "Recovery, restart, and uncertainty handling work."
+      },
+      "kind": "shared_label",
+      "label": "area:recovery",
+      "repository": "AI-Ascension/sts2-gateway"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "5e564a",
+        "description": "Build, test, and continuous-integration work."
+      },
+      "kind": "shared_label",
+      "label": "area:ci",
+      "repository": "AI-Ascension/sts2-gateway"
+    },
+    {
+      "actual": [
+        "ai-ascension",
+        "evaluation-harness",
+        "replay",
+        "rust"
+      ],
+      "desired": [
+        "agent-harness",
+        "ai-agents",
+        "ai-ascension",
+        "evaluation-harness",
+        "experiment-tracking",
+        "replay",
+        "reproducible-research",
+        "rust",
+        "slay-the-spire-2"
+      ],
+      "kind": "topics",
+      "repository": "AI-Ascension/sts2-harness"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Question or investigation that needs evidence before implementation."
+      },
+      "kind": "shared_label",
+      "label": "research",
+      "repository": "AI-Ascension/sts2-harness"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "5e564a",
+        "description": "Internal upkeep, tooling, or dependency work."
+      },
+      "kind": "shared_label",
+      "label": "maintenance",
+      "repository": "AI-Ascension/sts2-harness"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Curious player or observer path."
+      },
+      "kind": "shared_label",
+      "label": "audience:player",
+      "repository": "AI-Ascension/sts2-harness"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Rust or systems contributor path."
+      },
+      "kind": "shared_label",
+      "label": "audience:rust",
+      "repository": "AI-Ascension/sts2-harness"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "AI, MCP, or automation builder path."
+      },
+      "kind": "shared_label",
+      "label": "audience:mcp",
+      "repository": "AI-Ascension/sts2-harness"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Maintainer or security operator path."
+      },
+      "kind": "shared_label",
+      "label": "audience:security",
+      "repository": "AI-Ascension/sts2-harness"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "4e6a8f",
+        "description": "Cross-cutting protocol and conformance work."
+      },
+      "kind": "shared_label",
+      "label": "area:protocol",
+      "repository": "AI-Ascension/sts2-harness"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "9c5b12",
+        "description": "Cross-cutting runtime and host integration work."
+      },
+      "kind": "shared_label",
+      "label": "area:runtime",
+      "repository": "AI-Ascension/sts2-harness"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Replay, determinism, and artifact work."
+      },
+      "kind": "shared_label",
+      "label": "area:replay",
+      "repository": "AI-Ascension/sts2-harness"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Telemetry and observability work."
+      },
+      "kind": "shared_label",
+      "label": "area:observability",
+      "repository": "AI-Ascension/sts2-harness"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Map and route visualization work."
+      },
+      "kind": "shared_label",
+      "label": "area:map",
+      "repository": "AI-Ascension/sts2-harness"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "a8402f",
+        "description": "Recovery, restart, and uncertainty handling work."
+      },
+      "kind": "shared_label",
+      "label": "area:recovery",
+      "repository": "AI-Ascension/sts2-harness"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "5e564a",
+        "description": "Build, test, and continuous-integration work."
+      },
+      "kind": "shared_label",
+      "label": "area:ci",
+      "repository": "AI-Ascension/sts2-harness"
+    },
+    {
+      "actual": [
+        "ai-ascension",
+        "mcp",
+        "model-context-protocol",
+        "rust"
+      ],
+      "desired": [
+        "ai-agents",
+        "ai-ascension",
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "rust",
+        "slay-the-spire-2",
+        "tool-calling"
+      ],
+      "kind": "topics",
+      "repository": "AI-Ascension/sts2-mcp-server"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Question or investigation that needs evidence before implementation."
+      },
+      "kind": "shared_label",
+      "label": "research",
+      "repository": "AI-Ascension/sts2-mcp-server"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "5e564a",
+        "description": "Internal upkeep, tooling, or dependency work."
+      },
+      "kind": "shared_label",
+      "label": "maintenance",
+      "repository": "AI-Ascension/sts2-mcp-server"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Curious player or observer path."
+      },
+      "kind": "shared_label",
+      "label": "audience:player",
+      "repository": "AI-Ascension/sts2-mcp-server"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Rust or systems contributor path."
+      },
+      "kind": "shared_label",
+      "label": "audience:rust",
+      "repository": "AI-Ascension/sts2-mcp-server"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "AI, MCP, or automation builder path."
+      },
+      "kind": "shared_label",
+      "label": "audience:mcp",
+      "repository": "AI-Ascension/sts2-mcp-server"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Maintainer or security operator path."
+      },
+      "kind": "shared_label",
+      "label": "audience:security",
+      "repository": "AI-Ascension/sts2-mcp-server"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "4e6a8f",
+        "description": "Cross-cutting protocol and conformance work."
+      },
+      "kind": "shared_label",
+      "label": "area:protocol",
+      "repository": "AI-Ascension/sts2-mcp-server"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "9c5b12",
+        "description": "Cross-cutting runtime and host integration work."
+      },
+      "kind": "shared_label",
+      "label": "area:runtime",
+      "repository": "AI-Ascension/sts2-mcp-server"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Map and route visualization work."
+      },
+      "kind": "shared_label",
+      "label": "area:map",
+      "repository": "AI-Ascension/sts2-mcp-server"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "a8402f",
+        "description": "Recovery, restart, and uncertainty handling work."
+      },
+      "kind": "shared_label",
+      "label": "area:recovery",
+      "repository": "AI-Ascension/sts2-mcp-server"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "5e564a",
+        "description": "Build, test, and continuous-integration work."
+      },
+      "kind": "shared_label",
+      "label": "area:ci",
+      "repository": "AI-Ascension/sts2-mcp-server"
+    },
+    {
+      "actual": [
+        "ai-ascension",
+        "conformance",
+        "protocol",
+        "rust"
+      ],
+      "desired": [
+        "ai-ascension",
+        "conformance",
+        "conformance-testing",
+        "json-schema",
+        "protocol",
+        "rust",
+        "schema-validation",
+        "slay-the-spire-2",
+        "specification"
+      ],
+      "kind": "topics",
+      "repository": "AI-Ascension/sts2-protocol"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Question or investigation that needs evidence before implementation."
+      },
+      "kind": "shared_label",
+      "label": "research",
+      "repository": "AI-Ascension/sts2-protocol"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "5e564a",
+        "description": "Internal upkeep, tooling, or dependency work."
+      },
+      "kind": "shared_label",
+      "label": "maintenance",
+      "repository": "AI-Ascension/sts2-protocol"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Curious player or observer path."
+      },
+      "kind": "shared_label",
+      "label": "audience:player",
+      "repository": "AI-Ascension/sts2-protocol"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Rust or systems contributor path."
+      },
+      "kind": "shared_label",
+      "label": "audience:rust",
+      "repository": "AI-Ascension/sts2-protocol"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "AI, MCP, or automation builder path."
+      },
+      "kind": "shared_label",
+      "label": "audience:mcp",
+      "repository": "AI-Ascension/sts2-protocol"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "6f5a94",
+        "description": "Maintainer or security operator path."
+      },
+      "kind": "shared_label",
+      "label": "audience:security",
+      "repository": "AI-Ascension/sts2-protocol"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "4e6a8f",
+        "description": "Cross-cutting protocol and conformance work."
+      },
+      "kind": "shared_label",
+      "label": "area:protocol",
+      "repository": "AI-Ascension/sts2-protocol"
+    },
+    {
+      "actual": null,
+      "desired": {
+        "archived": false,
+        "color": "5e564a",
+        "description": "Build, test, and continuous-integration work."
+      },
+      "kind": "shared_label",
+      "label": "area:ci",
+      "repository": "AI-Ascension/sts2-protocol"
+    }
+  ],
+  "ok": false,
+  "review_status": "reviewed"
+}

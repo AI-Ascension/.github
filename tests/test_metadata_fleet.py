@@ -5,9 +5,9 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'tools'))
 from test_metadata_execution import FakeAPI,REPO
 import metadata
 from metadata_execution import _MetadataWriter
-base=Path(__file__).resolve().parents[1]/'metadata/audits/2026-09-07'
+base=Path(__file__).resolve().parents[1]/'metadata/audits/2026-09-08'
 p=json.loads((base/'fleet-plan.json').read_text())
-snap=metadata.normalize_snapshot(json.loads((base/'public-before.json').read_text()))
+snap=metadata.normalize_snapshot(json.loads((Path(__file__).resolve().parent/'fixtures/metadata-rollout-20260908.json').read_text()))
 class Fleet:
     def __init__(self):
         self.rows={r['full_name']:copy.deepcopy(r) for r in snap['repositories'] if r['full_name'] in {t['repository'] for t in p['targets']}}
@@ -31,7 +31,7 @@ class FleetTests(unittest.TestCase):
         a=Fleet()
         with tempfile.TemporaryDirectory() as temp:
             w=_MetadataWriter(a,Path(temp)/'journal',state_dir=Path(temp)/'keys',minimum_write_interval=0)
-            self.assertEqual(122,w.apply(p,execute=True)['writes'])
+            self.assertEqual(109,w.apply(p,execute=True)['writes'])
             checked=metadata.verify_plan(p,a.snapshot())
             self.assertTrue(checked['ok'],checked)
             from metadata_drift import report
@@ -43,8 +43,8 @@ class FleetTests(unittest.TestCase):
             self.assertEqual(0,w.apply(p,execute=True,resume=True)['writes'])
             rolled=w.rollback(p,execute=True)
             self.assertEqual([],rolled['conflicts'])
-            self.assertEqual(48,rolled['writes'])
-            self.assertEqual(74,len(rolled['retained_labels']))
+            self.assertEqual(55,rolled['writes'])
+            self.assertEqual(54,len(rolled['retained_labels']))
             for name,original in a.rows.items():
                 self.assertEqual(metadata._current_topics(original),a.states[name].topics)
                 self.assertEqual(original['issues'],a.states[name].issues)

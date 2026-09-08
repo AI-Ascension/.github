@@ -19,9 +19,7 @@ and [tagging audit](../docs/TAGGING_AUDIT.md) for source pins, per-repository
 before/after results, validation, and actual application status.
 
 Volatile API snapshots and private issue/repository data remain local by default.
-The public registry includes only the 12 supplied public repositories. An
-additional private discovery is held out pending an owner applicability decision;
-its identity is not published. Pinned public-source manifests remain reproducible
+The registry preserves the 12 historically public repository entries. The 2026-09-08 refresh selects 11 currently public targets; one historical entry is marked unmanaged after visibility drift, preserving its old evidence. An additional private discovery is held out pending an owner applicability decision; its identity and all fresh private evidence remain outside this publication. See [the refreshed review](audits/2026-09-08/README.md). Pinned public-source manifests remain reproducible
 review evidence, not proof of live application or improved gameplay.
 
 `review_status` records preparation/source review. Only an independently recorded

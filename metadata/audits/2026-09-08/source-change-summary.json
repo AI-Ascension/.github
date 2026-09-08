@@ -1,0 +1,2761 @@
+[
+  {
+    "repository": "AI-Ascension/.github",
+    "old_commit": "d8fb867dede3ec1cde424d7f6f6f56e49dc21227",
+    "current_commit": "049f5018ba09328bf2c7deb12ca3130d881e4022",
+    "compare_status": "ahead",
+    "total_commits": 10,
+    "commits": [
+      "Prepare evidence-grounded organization tagging and guarded migration tooling",
+      "Audit publication requirements and preserve executable metadata entrypoint",
+      "Reject incomplete API collections and verify full-fleet drift",
+      "Resolve created label identities when validating rollback effects",
+      "Record independent review and regenerate technically reviewed plans",
+      "docs(profile): record current source candidate boundary",
+      "Merge pull request #12 from AI-Ascension/docs/profile-candidate-status-rebased-20260907",
+      "docs: record the thirteen-repository inventory in STATUS",
+      "Merge pull request #13 from AI-Ascension/review/status-repository-count-20260908",
+      "Merge pull request #11 from AI-Ascension/codex/tagging-review-20260907"
+    ],
+    "files": [
+      {
+        "filename": ".github/ISSUE_TEMPLATE/defect.yml",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 3
+      },
+      {
+        "filename": ".github/workflows/metadata-drift.yml",
+        "status": "added",
+        "additions": 33,
+        "deletions": 0
+      },
+      {
+        "filename": ".github/workflows/metadata-validation.yml",
+        "status": "added",
+        "additions": 37,
+        "deletions": 0
+      },
+      {
+        "filename": ".gitignore",
+        "status": "added",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "CONTRIBUTING.md",
+        "status": "modified",
+        "additions": 30,
+        "deletions": 5
+      },
+      {
+        "filename": "GOVERNANCE.md",
+        "status": "modified",
+        "additions": 27,
+        "deletions": 6
+      },
+      {
+        "filename": "STATUS.md",
+        "status": "modified",
+        "additions": 19,
+        "deletions": 1
+      },
+      {
+        "filename": "docs/TAGGING.md",
+        "status": "added",
+        "additions": 161,
+        "deletions": 0
+      },
+      {
+        "filename": "docs/TAGGING_AUDIT.md",
+        "status": "added",
+        "additions": 32,
+        "deletions": 0
+      },
+      {
+        "filename": "docs/TAGGING_MIGRATION.md",
+        "status": "added",
+        "additions": 137,
+        "deletions": 0
+      },
+      {
+        "filename": "labels.yml",
+        "status": "modified",
+        "additions": 125,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/EXECUTION_BOUNDARIES.md",
+        "status": "added",
+        "additions": 62,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/README.md",
+        "status": "added",
+        "additions": 34,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/RELEASE_TAG_POLICY.md",
+        "status": "added",
+        "additions": 57,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/TOOLING.md",
+        "status": "added",
+        "additions": 37,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/audits/2026-09-07/README.md",
+        "status": "added",
+        "additions": 7,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/audits/2026-09-07/STATUS.md",
+        "status": "added",
+        "additions": 3,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/audits/2026-09-07/canary-plan.json",
+        "status": "added",
+        "additions": 697,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/audits/2026-09-07/canary-plan.md",
+        "status": "added",
+        "additions": 14,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/audits/2026-09-07/consumer-activation.json",
+        "status": "added",
+        "additions": 127,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/audits/2026-09-07/consumer-references.json",
+        "status": "added",
+        "additions": 513,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/audits/2026-09-07/execution-independent-rereview.md",
+        "status": "added",
+        "additions": 204,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/audits/2026-09-07/execution-independent-review.md",
+        "status": "added",
+        "additions": 186,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/audits/2026-09-07/final-independent-review.md",
+        "status": "added",
+        "additions": 14,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/audits/2026-09-07/fleet-plan.json",
+        "status": "added",
+        "additions": 8249,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/audits/2026-09-07/fleet-plan.md",
+        "status": "added",
+        "additions": 176,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/audits/2026-09-07/fleet-synthetic-validation.json",
+        "status": "added",
+        "additions": 19,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/audits/2026-09-07/implementation-sources.json",
+        "status": "added",
+        "additions": 162,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/audits/2026-09-07/open-pr-collisions.json",
+        "status": "added",
+        "additions": 1020,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/audits/2026-09-07/orchestration.json",
+        "status": "added",
+        "additions": 107,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/audits/2026-09-07/public-before.json",
+        "status": "added",
+        "additions": 2683,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/audits/2026-09-07/public-inventory-summary.json",
+        "status": "added",
+        "additions": 675,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/audits/2026-09-07/requirements.md",
+        "status": "added",
+        "additions": 40,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/audits/2026-09-07/source-evidence.json",
+        "status": "added",
+        "additions": 1210,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/audits/2026-09-07/topic-additional-sources.json",
+        "status": "added",
+        "additions": 53,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/audits/2026-09-07/topic-reconciliation.md",
+        "status": "added",
+        "additions": 123,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/audits/2026-09-07/validation.json",
+        "status": "added",
+        "additions": 58,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/history/2026-09-02-description-map.md",
+        "status": "added",
+        "additions": 125,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/history/README.md",
+        "status": "added",
+        "additions": 13,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/inputs/2026-09-07-tagging-specification.md",
+        "status": "added",
+        "additions": 248,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/inputs/README.md",
+        "status": "added",
+        "additions": 7,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/label-migrations.yml",
+        "status": "added",
+        "additions": 1613,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/repositories.yml",
+        "status": "added",
+        "additions": 1441,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/schema/authorization.schema.json",
+        "status": "added",
+        "additions": 27,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/schema/labels.schema.json",
+        "status": "added",
+        "additions": 60,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/schema/migrations.schema.json",
+        "status": "added",
+        "additions": 45,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/schema/plan.schema.json",
+        "status": "added",
+        "additions": 184,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/schema/repositories.schema.json",
+        "status": "added",
+        "additions": 217,
+        "deletions": 0
+      },
+      {
+        "filename": "metadata/schema/snapshot.schema.json",
+        "status": "added",
+        "additions": 129,
+        "deletions": 0
+      },
+      {
+        "filename": "profile/README.md",
+        "status": "modified",
+        "additions": 12,
+        "deletions": 0
+      },
+      {
+        "filename": "tests/test_label_consumers.py",
+        "status": "added",
+        "additions": 201,
+        "deletions": 0
+      },
+      {
+        "filename": "tests/test_metadata.py",
+        "status": "added",
+        "additions": 327,
+        "deletions": 0
+      },
+      {
+        "filename": "tests/test_metadata_execution.py",
+        "status": "added",
+        "additions": 370,
+        "deletions": 0
+      },
+      {
+        "filename": "tests/test_metadata_fleet.py",
+        "status": "added",
+        "additions": 85,
+        "deletions": 0
+      },
+      {
+        "filename": "tests/test_metadata_integration.py",
+        "status": "added",
+        "additions": 157,
+        "deletions": 0
+      },
+      {
+        "filename": "tests/test_metadata_policy.py",
+        "status": "added",
+        "additions": 69,
+        "deletions": 0
+      },
+      {
+        "filename": "tests/test_metadata_transport.py",
+        "status": "added",
+        "additions": 58,
+        "deletions": 0
+      },
+      {
+        "filename": "tools/metadata",
+        "status": "added",
+        "additions": 3,
+        "deletions": 0
+      },
+      {
+        "filename": "tools/metadata.py",
+        "status": "added",
+        "additions": 1887,
+        "deletions": 0
+      },
+      {
+        "filename": "tools/metadata_drift.py",
+        "status": "added",
+        "additions": 57,
+        "deletions": 0
+      },
+      {
+        "filename": "tools/metadata_execution.py",
+        "status": "added",
+        "additions": 951,
+        "deletions": 0
+      },
+      {
+        "filename": "tools/metadata_journal.py",
+        "status": "added",
+        "additions": 122,
+        "deletions": 0
+      }
+    ],
+    "sources": [
+      {
+        "path": "CONTRIBUTING.md",
+        "blob": "78d36cb40a0414d3ab0527aaaa3375ad7f02b51a"
+      },
+      {
+        "path": "GOVERNANCE.md",
+        "blob": "bcdd8a318def14a61054f7b3d6e6fb3fa834e5fe"
+      },
+      {
+        "path": "README.md",
+        "blob": "dd1a017fdd1653f8b8f86a4bfbbe81019730b2dd"
+      }
+    ]
+  },
+  {
+    "repository": "AI-Ascension/ai-agent-observability",
+    "old_commit": "b25880376d3a3334c77f58637267db93581c4c77",
+    "current_commit": "28a48590afb75b07590e1b78ea47dae08f5c3ade",
+    "compare_status": "ahead",
+    "total_commits": 9,
+    "commits": [
+      "Add protected read-only query provisioning path",
+      "Harden query provisioning rollback and migration",
+      "Make ClickHouse user compensation ownership-aware",
+      "Preserve query key row identity during rollback",
+      "Preserve foreign ClickHouse accounts during rollback",
+      "fix(observability): guard query key rotation with row CAS",
+      "fix(observability): reconcile unknown query key commits",
+      "fix(observability): retain unknown rotation evidence",
+      "Merge pull request #14 from AI-Ascension/recovery/observability-20260907"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/ci.yml",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 2
+      },
+      {
+        "filename": "LEDGER-observability.md",
+        "status": "added",
+        "additions": 78,
+        "deletions": 0
+      },
+      {
+        "filename": "deploy/.env.example",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      },
+      {
+        "filename": "deploy/README.md",
+        "status": "modified",
+        "additions": 48,
+        "deletions": 1
+      },
+      {
+        "filename": "deploy/compose.yaml",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 0
+      },
+      {
+        "filename": "deploy/init.sh",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 2
+      },
+      {
+        "filename": "deploy/laminar/provision-query-readonly.sh",
+        "status": "added",
+        "additions": 1058,
+        "deletions": 0
+      },
+      {
+        "filename": "docs/ARCHITECTURE.md",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 1
+      },
+      {
+        "filename": "docs/OPERATIONS.md",
+        "status": "modified",
+        "additions": 55,
+        "deletions": 0
+      },
+      {
+        "filename": "docs/STS2_TELEMETRY_CONTRACT.md",
+        "status": "added",
+        "additions": 111,
+        "deletions": 0
+      },
+      {
+        "filename": "prompts/AI_AGENT_OBSERVABILITY_ORCHESTRATION_PROMPT.md",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 1
+      },
+      {
+        "filename": "tests/query-provision-invariants.sh",
+        "status": "added",
+        "additions": 58,
+        "deletions": 0
+      }
+    ],
+    "sources": [
+      {
+        "path": "README.md",
+        "blob": "89f70d593c58946393ee57202caad30696e27221"
+      }
+    ]
+  },
+  {
+    "repository": "AI-Ascension/AI-Ascension.github.io",
+    "old_commit": "e81dd4e9ff2f8e5f8ffafc8b1a489d1e1cc7ef9f",
+    "current_commit": "1065799de6eea8427ac5ae96e3b9238932ea761f",
+    "compare_status": "ahead",
+    "total_commits": 4,
+    "commits": [
+      "docs: align site bug form wording",
+      "docs(site): record current source candidate boundary",
+      "Merge pull request #14 from AI-Ascension/docs/candidate-status-rebased-20260907",
+      "Merge pull request #13 from AI-Ascension/codex/tagging-label-consumers-20260907"
+    ],
+    "files": [
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 1
+      },
+      {
+        "filename": "contributing.html",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 2
+      },
+      {
+        "filename": "evidence.html",
+        "status": "modified",
+        "additions": 8,
+        "deletions": 0
+      },
+      {
+        "filename": "index.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "repositories.html",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      }
+    ],
+    "sources": [
+      {
+        "path": ".github/workflows/pages.yml",
+        "blob": "0cf4ec0c01c969c58ec2359cdb7b5758497c379e"
+      },
+      {
+        "path": "README.md",
+        "blob": "ef6d668f0911dffd75d89a4f3a258f332c9cc2b0"
+      }
+    ]
+  },
+  {
+    "repository": "AI-Ascension/ascension-map-visualizer",
+    "old_commit": "18915e5571829e582f460bf14b674cc2db39d9c5",
+    "current_commit": "9aded88629436497d22b9e6bb7590d0ec8ae5815",
+    "compare_status": "ahead",
+    "total_commits": 10,
+    "commits": [
+      "Adopt pinned local standards with native CI checks",
+      "Check committed patch whitespace in validation workflows",
+      "Pin refreshed standards bundle with mandatory production lint gate",
+      "Refresh standards pin after companion guidance comparison",
+      "Pin clarified owner-specific Rust check guidance",
+      "Pin supplied rule catalog and style-only exception enforcement",
+      "Pin standards to refreshed accepted upstream inventory",
+      "Pin whitespace-clean canonical standards bundle",
+      "chore(standards): pin refreshed repository inventory",
+      "Merge pull request #3 from AI-Ascension/codex/standards-baseline-20260907"
+    ],
+    "files": [
+      {
+        "filename": ".editorconfig",
+        "status": "added",
+        "additions": 11,
+        "deletions": 0
+      },
+      {
+        "filename": ".github/workflows/standards.yml",
+        "status": "added",
+        "additions": 37,
+        "deletions": 0
+      },
+      {
+        "filename": ".gitignore",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 0
+      },
+      {
+        "filename": "docs/CODING_STANDARDS.md",
+        "status": "added",
+        "additions": 25,
+        "deletions": 0
+      },
+      {
+        "filename": "standards-profile.toml",
+        "status": "added",
+        "additions": 42,
+        "deletions": 0
+      },
+      {
+        "filename": "standards.lock.json",
+        "status": "added",
+        "additions": 164,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/BASELINE.md",
+        "status": "added",
+        "additions": 108,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/MANAGED_DOTNET.md",
+        "status": "added",
+        "additions": 36,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/OPERATIONS.md",
+        "status": "added",
+        "additions": 35,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/RUST.md",
+        "status": "added",
+        "additions": 63,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/TESTING_AND_CI.md",
+        "status": "added",
+        "additions": 28,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/WEB_PHP.md",
+        "status": "added",
+        "additions": 32,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/README.md",
+        "status": "added",
+        "additions": 30,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/invalid-exception-broad-path.yaml",
+        "status": "added",
+        "additions": 13,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/invalid-exception-pending.yaml",
+        "status": "added",
+        "additions": 13,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/invalid-lock-published.json",
+        "status": "added",
+        "additions": 23,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/invalid-lock-stale-digest.json",
+        "status": "added",
+        "additions": 23,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/invalid-lock-traversal.json",
+        "status": "added",
+        "additions": 23,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/invalid-profile-floating.toml",
+        "status": "added",
+        "additions": 40,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/invalid-profile-missing-source.toml",
+        "status": "added",
+        "additions": 38,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/invalid-schema-missing-required.json",
+        "status": "added",
+        "additions": 8,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/invalid-schema-nonobject.json",
+        "status": "added",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/valid-exception.yaml",
+        "status": "added",
+        "additions": 13,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/valid-lock.json",
+        "status": "added",
+        "additions": 24,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/valid-profile.toml",
+        "status": "added",
+        "additions": 40,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/profiles.yaml",
+        "status": "added",
+        "additions": 59,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/repositories.yaml",
+        "status": "added",
+        "additions": 134,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/rules.yaml",
+        "status": "added",
+        "additions": 788,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/schemas/exception.schema.json",
+        "status": "added",
+        "additions": 97,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/schemas/lock.schema.json",
+        "status": "added",
+        "additions": 98,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/schemas/profile.schema.json",
+        "status": "added",
+        "additions": 172,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/schemas/profiles.schema.json",
+        "status": "added",
+        "additions": 12,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/schemas/repositories.schema.json",
+        "status": "added",
+        "additions": 17,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/schemas/rule.schema.json",
+        "status": "added",
+        "additions": 173,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/schemas/rules.schema.json",
+        "status": "added",
+        "additions": 12,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/tools/standards-sync/Cargo.lock",
+        "status": "added",
+        "additions": 318,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/tools/standards-sync/Cargo.toml",
+        "status": "added",
+        "additions": 27,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/tools/standards-sync/README.md",
+        "status": "added",
+        "additions": 57,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/tools/standards-sync/rust-toolchain.toml",
+        "status": "added",
+        "additions": 4,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/tools/standards-sync/src/bootstrap.rs",
+        "status": "added",
+        "additions": 286,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/tools/standards-sync/src/conformance_tests.rs",
+        "status": "added",
+        "additions": 396,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/tools/standards-sync/src/main.rs",
+        "status": "added",
+        "additions": 2662,
+        "deletions": 0
+      }
+    ],
+    "sources": [
+      {
+        "path": "AGENTS.md",
+        "blob": "9b54875b1f62c33e1e8cec53b7be9c3fa5d4faa3"
+      },
+      {
+        "path": "prompts/ASCENSION_MAP_VISUALIZER_ORCHESTRATION_PROMPT.md",
+        "blob": "ebc0db4b0c33b20032fa9d27d0a87f87f5b6eab7"
+      }
+    ]
+  },
+  {
+    "repository": "AI-Ascension/ascension-watchdog",
+    "old_commit": "dc2d20badb9e86c12067316b92d6c8289b2e6995",
+    "current_commit": "bc8ebf2054d2e3d2d74c1c7e5f775ae01952215d",
+    "compare_status": "ahead",
+    "total_commits": 10,
+    "commits": [
+      "Adopt pinned local standards with native CI checks",
+      "Check committed patch whitespace in validation workflows",
+      "Pin refreshed standards bundle with mandatory production lint gate",
+      "Refresh standards pin after companion guidance comparison",
+      "Pin clarified owner-specific Rust check guidance",
+      "Pin supplied rule catalog and style-only exception enforcement",
+      "Pin standards to refreshed accepted upstream inventory",
+      "Pin whitespace-clean canonical standards bundle",
+      "chore(standards): pin refreshed repository inventory",
+      "Merge pull request #4 from AI-Ascension/codex/standards-baseline-20260907"
+    ],
+    "files": [
+      {
+        "filename": ".editorconfig",
+        "status": "added",
+        "additions": 11,
+        "deletions": 0
+      },
+      {
+        "filename": ".github/workflows/standards.yml",
+        "status": "added",
+        "additions": 37,
+        "deletions": 0
+      },
+      {
+        "filename": ".gitignore",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 0
+      },
+      {
+        "filename": "docs/CODING_STANDARDS.md",
+        "status": "added",
+        "additions": 20,
+        "deletions": 0
+      },
+      {
+        "filename": "standards-profile.toml",
+        "status": "added",
+        "additions": 42,
+        "deletions": 0
+      },
+      {
+        "filename": "standards.lock.json",
+        "status": "added",
+        "additions": 164,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/BASELINE.md",
+        "status": "added",
+        "additions": 108,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/MANAGED_DOTNET.md",
+        "status": "added",
+        "additions": 36,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/OPERATIONS.md",
+        "status": "added",
+        "additions": 35,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/RUST.md",
+        "status": "added",
+        "additions": 63,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/TESTING_AND_CI.md",
+        "status": "added",
+        "additions": 28,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/WEB_PHP.md",
+        "status": "added",
+        "additions": 32,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/README.md",
+        "status": "added",
+        "additions": 30,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/invalid-exception-broad-path.yaml",
+        "status": "added",
+        "additions": 13,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/invalid-exception-pending.yaml",
+        "status": "added",
+        "additions": 13,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/invalid-lock-published.json",
+        "status": "added",
+        "additions": 23,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/invalid-lock-stale-digest.json",
+        "status": "added",
+        "additions": 23,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/invalid-lock-traversal.json",
+        "status": "added",
+        "additions": 23,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/invalid-profile-floating.toml",
+        "status": "added",
+        "additions": 40,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/invalid-profile-missing-source.toml",
+        "status": "added",
+        "additions": 38,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/invalid-schema-missing-required.json",
+        "status": "added",
+        "additions": 8,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/invalid-schema-nonobject.json",
+        "status": "added",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/valid-exception.yaml",
+        "status": "added",
+        "additions": 13,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/valid-lock.json",
+        "status": "added",
+        "additions": 24,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/conformance/valid-profile.toml",
+        "status": "added",
+        "additions": 40,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/profiles.yaml",
+        "status": "added",
+        "additions": 59,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/repositories.yaml",
+        "status": "added",
+        "additions": 134,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/rules.yaml",
+        "status": "added",
+        "additions": 788,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/schemas/exception.schema.json",
+        "status": "added",
+        "additions": 97,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/schemas/lock.schema.json",
+        "status": "added",
+        "additions": 98,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/schemas/profile.schema.json",
+        "status": "added",
+        "additions": 172,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/schemas/profiles.schema.json",
+        "status": "added",
+        "additions": 12,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/schemas/repositories.schema.json",
+        "status": "added",
+        "additions": 17,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/schemas/rule.schema.json",
+        "status": "added",
+        "additions": 173,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/schemas/rules.schema.json",
+        "status": "added",
+        "additions": 12,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/tools/standards-sync/Cargo.lock",
+        "status": "added",
+        "additions": 318,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/tools/standards-sync/Cargo.toml",
+        "status": "added",
+        "additions": 27,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/tools/standards-sync/README.md",
+        "status": "added",
+        "additions": 57,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/tools/standards-sync/rust-toolchain.toml",
+        "status": "added",
+        "additions": 4,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/tools/standards-sync/src/bootstrap.rs",
+        "status": "added",
+        "additions": 286,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/tools/standards-sync/src/conformance_tests.rs",
+        "status": "added",
+        "additions": 396,
+        "deletions": 0
+      },
+      {
+        "filename": "standards/tools/standards-sync/src/main.rs",
+        "status": "added",
+        "additions": 2662,
+        "deletions": 0
+      }
+    ],
+    "sources": [
+      {
+        "path": "README.md",
+        "blob": "f24f13fcb6292d24ddc7b93eaba525aa25ecac6a"
+      }
+    ]
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-core",
+    "old_commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+    "current_commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+    "compare_status": "identical",
+    "total_commits": 0,
+    "commits": [],
+    "files": [],
+    "sources": [
+      {
+        "path": "Cargo.toml",
+        "blob": "b8808bd15422ff2c7476b0f178ea3057ffe35ddb"
+      },
+      {
+        "path": "README.md",
+        "blob": "caf160c3e30cd34c5194f6a0a093038e5f5f1d68"
+      },
+      {
+        "path": "crates/core/src/state.rs",
+        "blob": "bf42665b5c4c673670fcca487606bd95ca7acb7b"
+      },
+      {
+        "path": "crates/core/src/validation.rs",
+        "blob": "89118a8b41fd9af3aae3d18230279354102379d5"
+      }
+    ]
+  },
+  {
+    "repository": "AI-Ascension/sts2-game-mod",
+    "old_commit": "8b71150895ea95c0625afc1389bb08e4034d9350",
+    "current_commit": "e162e2490c189672bf168967f06fbf89b88d4010",
+    "compare_status": "ahead",
+    "total_commits": 14,
+    "commits": [
+      "Add native runtime-v4 expert-state producer",
+      "feat(runtime): expose campaign map and potion state",
+      "feat: fence expert potion dispatch and native character unlocks",
+      "feat: add fenced runtime v4 expert gameplay bridge",
+      "test: isolate runtime-v1 source-only probe",
+      "test: isolate host candidate source boundary",
+      "fix: fence expert mutations across runtime profiles",
+      "refactor: split expert admission support",
+      "fix: refresh runtime-v4-expert-action golden from protocol main",
+      "docs: record Runtime-v4 expert routes, intent projection and character unlocks",
+      "docs: place Runtime-v4 changelog entry below the merchant entry",
+      "Merge pull request #52 from AI-Ascension/recovery/gameplay-v4-expert-20260907",
+      "ci: verify every copied protocol artifact inventory",
+      "Merge pull request #60 from AI-Ascension/review/ci-verify-all-profiles-20260908"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/ci.yml",
+        "status": "modified",
+        "additions": 10,
+        "deletions": 0
+      },
+      {
+        "filename": "CHANGELOG.md",
+        "status": "modified",
+        "additions": 12,
+        "deletions": 0
+      },
+      {
+        "filename": "conformance/cases/runtime-v4-expert-action.json",
+        "status": "added",
+        "additions": 7,
+        "deletions": 0
+      },
+      {
+        "filename": "conformance/cases/runtime-v4-expert.json",
+        "status": "added",
+        "additions": 31,
+        "deletions": 0
+      },
+      {
+        "filename": "docs/ARCHITECTURE.md",
+        "status": "modified",
+        "additions": 17,
+        "deletions": 0
+      },
+      {
+        "filename": "docs/COMPATIBILITY.md",
+        "status": "modified",
+        "additions": 11,
+        "deletions": 0
+      },
+      {
+        "filename": "docs/TESTING.md",
+        "status": "modified",
+        "additions": 9,
+        "deletions": 0
+      },
+      {
+        "filename": "docs/decisions/0030-visible-combat-intent-projection.md",
+        "status": "added",
+        "additions": 40,
+        "deletions": 0
+      },
+      {
+        "filename": "docs/decisions/README.md",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "experiments/managed-rust-interop/README.md",
+        "status": "modified",
+        "additions": 12,
+        "deletions": 0
+      },
+      {
+        "filename": "experiments/managed-rust-interop/contract-tests/HostStubs.cs",
+        "status": "modified",
+        "additions": 9,
+        "deletions": 0
+      },
+      {
+        "filename": "experiments/managed-rust-interop/contract-tests/RuntimeContractProbe.csproj",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 0
+      },
+      {
+        "filename": "experiments/managed-rust-interop/game-loader/LiveCampaignStart.cs",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 2
+      },
+      {
+        "filename": "experiments/managed-rust-interop/game-loader/LiveCombatDemo.cs",
+        "status": "modified",
+        "additions": 8,
+        "deletions": 3
+      },
+      {
+        "filename": "experiments/managed-rust-interop/game-loader/LiveCombatSource.Campaign.cs",
+        "status": "modified",
+        "additions": 44,
+        "deletions": 2
+      },
+      {
+        "filename": "experiments/managed-rust-interop/game-loader/LiveCombatSource.CampaignDispatch.cs",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 2
+      },
+      {
+        "filename": "experiments/managed-rust-interop/game-loader/LiveCombatSource.ExpertDispatch.cs",
+        "status": "added",
+        "additions": 105,
+        "deletions": 0
+      },
+      {
+        "filename": "experiments/managed-rust-interop/game-loader/LiveCombatSource.ExpertProfile.cs",
+        "status": "added",
+        "additions": 209,
+        "deletions": 0
+      },
+      {
+        "filename": "experiments/managed-rust-interop/game-loader/LiveCombatSource.ExpertProfileProjection.cs",
+        "status": "added",
+        "additions": 210,
+        "deletions": 0
+      },
+      {
+        "filename": "experiments/managed-rust-interop/game-loader/LiveCombatSource.ExpertProfileReflection.cs",
+        "status": "added",
+        "additions": 90,
+        "deletions": 0
+      },
+      {
+        "filename": "experiments/managed-rust-interop/game-loader/LiveCombatSource.IntentProjection.cs",
+        "status": "added",
+        "additions": 194,
+        "deletions": 0
+      },
+      {
+        "filename": "experiments/managed-rust-interop/game-loader/LiveCombatSource.cs",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 8
+      },
+      {
+        "filename": "experiments/managed-rust-interop/game-loader/RuntimeContract.cs",
+        "status": "modified",
+        "additions": 8,
+        "deletions": 0
+      },
+      {
+        "filename": "experiments/managed-rust-interop/game-loader/RuntimeInterop.cs",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "experiments/managed-rust-interop/game-loader/RuntimeV2Contract.cs",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 1
+      },
+      {
+        "filename": "experiments/managed-rust-interop/game-loader/RuntimeV3GameplayInterop.cs",
+        "status": "modified",
+        "additions": 42,
+        "deletions": 1
+      },
+      {
+        "filename": "experiments/managed-rust-interop/game-loader/RuntimeV4ExpertGameplayCodec.cs",
+        "status": "added",
+        "additions": 259,
+        "deletions": 0
+      },
+      {
+        "filename": "experiments/managed-rust-interop/game-loader/RuntimeV4ExpertGameplayObservation.cs",
+        "status": "added",
+        "additions": 133,
+        "deletions": 0
+      },
+      {
+        "filename": "experiments/managed-rust-interop/game-loader/RuntimeV4ExpertSupport.Admission.cs",
+        "status": "added",
+        "additions": 110,
+        "deletions": 0
+      },
+      {
+        "filename": "experiments/managed-rust-interop/game-loader/RuntimeV4ExpertSupport.Serialization.cs",
+        "status": "added",
+        "additions": 199,
+        "deletions": 0
+      },
+      {
+        "filename": "experiments/managed-rust-interop/game-loader/RuntimeV4ExpertSupport.cs",
+        "status": "added",
+        "additions": 184,
+        "deletions": 0
+      },
+      {
+        "filename": "experiments/managed-rust-interop/host-candidate-tests/HostCandidateProbe.csproj",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1
+      },
+      {
+        "filename": "experiments/managed-rust-interop/host-candidate-tests/InteropSupport.cs",
+        "status": "modified",
+        "additions": 37,
+        "deletions": 0
+      },
+      {
+        "filename": "experiments/managed-rust-interop/host-candidate-tests/Program.cs",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "experiments/managed-rust-interop/host-candidate-tests/SharedGameplayBoundary.cs",
+        "status": "modified",
+        "additions": 18,
+        "deletions": 0
+      },
+      {
+        "filename": "experiments/managed-rust-interop/native/src/runtime.rs",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 5
+      },
+      {
+        "filename": "experiments/managed-rust-interop/native/src/runtime_endpoint_tests.rs",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 0
+      },
+      {
+        "filename": "experiments/managed-rust-interop/native/src/runtime_routes.rs",
+        "status": "modified",
+        "additions": 20,
+        "deletions": 2
+      },
+      {
+        "filename": "experiments/managed-rust-interop/workshop/NegativeCases.cs",
+        "status": "modified",
+        "additions": 4,
+        "deletions": 1
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/README.md",
+        "status": "added",
+        "additions": 9,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/SHA256SUMS",
+        "status": "added",
+        "additions": 6,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/golden/action-request.json",
+        "status": "added",
+        "additions": 10,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/golden/action-settled.json",
+        "status": "added",
+        "additions": 90,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/manifest.json",
+        "status": "added",
+        "additions": 14,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/schema.json",
+        "status": "added",
+        "additions": 78,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert/README.md",
+        "status": "added",
+        "additions": 18,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert/SHA256SUMS",
+        "status": "added",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert/golden/observation.json",
+        "status": "added",
+        "additions": 67,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert/manifest.json",
+        "status": "added",
+        "additions": 21,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert/schema.json",
+        "status": "added",
+        "additions": 312,
+        "deletions": 0
+      },
+      {
+        "filename": "schemas/runtime-v4-expert-action.schema.json",
+        "status": "added",
+        "additions": 78,
+        "deletions": 0
+      },
+      {
+        "filename": "schemas/runtime-v4-expert.schema.json",
+        "status": "added",
+        "additions": 312,
+        "deletions": 0
+      }
+    ],
+    "sources": [
+      {
+        "path": "Cargo.toml",
+        "blob": "d755c7bc619fc937a5b232aa07860b5545f2a8b1"
+      },
+      {
+        "path": "README.md",
+        "blob": "1d2b09e010e36da7ec860b0cf4ddc11932d19dd9"
+      },
+      {
+        "path": "crates/host/src/abi.rs",
+        "blob": "08ba8d3f9edb03d8d11bc284986024be54826162"
+      },
+      {
+        "path": "experiments/managed-rust-interop/README.md",
+        "blob": "9474598bc8f91c6eac2a6b98b2278acb5ed7b7fe"
+      },
+      {
+        "path": "experiments/managed-rust-interop/gameplay-tests/RuntimeV3ValidationProbe.csproj",
+        "blob": "849e1c0cb70e27347754289b4bc14154a32624ef"
+      }
+    ]
+  },
+  {
+    "repository": "AI-Ascension/sts2-gateway",
+    "old_commit": "33ea48f3b549f08e19db80d8c68c1438fa12a60a",
+    "current_commit": "53745dd2a335cdca0d0f8ce9772faef0c2e725c2",
+    "compare_status": "ahead",
+    "total_commits": 16,
+    "commits": [
+      "Add runtime-v4 expert-state gateway route",
+      "Add v4 expert action gateway transport",
+      "chore: complete runtime-v4 expert artifact inventory",
+      "test: preserve native runtime-v4 reconcile transport",
+      "Merge branch 'recovery/gateway-v4-artifact-fix-20260907' into recovery/gateway-v4-combined-20260907",
+      "docs: record runtime-v4 gateway component boundary",
+      "fix: fence settled runtime-v4 expert observations",
+      "docs: record runtime-v4 settlement fencing",
+      "Sync complete Runtime-v4 settlement golden",
+      "Merge pull request #22 from AI-Ascension/recovery/gateway-v4-combined-20260907",
+      "docs: align release readiness with campaign evidence",
+      "Merge pull request #23 from AI-Ascension/docs/release-evidence-20260908",
+      "test: sanitize journal test temp file names for Windows",
+      "ci: verify every copied protocol artifact inventory",
+      "Merge pull request #24 from AI-Ascension/review/ci-verify-all-profiles-20260908",
+      "Merge pull request #25 from AI-Ascension/review/journal-test-windows-path-20260908"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/ci.yml",
+        "status": "modified",
+        "additions": 10,
+        "deletions": 0
+      },
+      {
+        "filename": "CHANGELOG.md",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 0
+      },
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "additions": 8,
+        "deletions": 0
+      },
+      {
+        "filename": "RELEASING.md",
+        "status": "modified",
+        "additions": 25,
+        "deletions": 8
+      },
+      {
+        "filename": "conformance/cases/runtime-v4-expert-action.json",
+        "status": "added",
+        "additions": 7,
+        "deletions": 0
+      },
+      {
+        "filename": "conformance/cases/runtime-v4-expert.json",
+        "status": "added",
+        "additions": 31,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/gateway/src/bin/runtime_support/journal.rs",
+        "status": "modified",
+        "additions": 9,
+        "deletions": 3
+      },
+      {
+        "filename": "crates/gateway/src/bin/runtime_support/mod.rs",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/gateway/src/bin/runtime_support/runtime_v4_expert.rs",
+        "status": "added",
+        "additions": 61,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/gateway/src/bin/runtime_support/runtime_v4_expert_forwarder.rs",
+        "status": "added",
+        "additions": 271,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/gateway/src/bin/runtime_support/runtime_v4_expert_forwarder_tests.rs",
+        "status": "added",
+        "additions": 188,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/gateway/src/bin/runtime_support/service.rs",
+        "status": "modified",
+        "additions": 6,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/gateway/src/bin/runtime_support/service_authorization.rs",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/gateway/src/bin/runtime_support/service_routes.rs",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/gateway/src/bin/runtime_support/service_routes_tests.rs",
+        "status": "modified",
+        "additions": 64,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/gateway/src/bin/runtime_support/service_support_tests.rs",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/gateway/src/bin/runtime_support/service_v4_expert.rs",
+        "status": "added",
+        "additions": 87,
+        "deletions": 0
+      },
+      {
+        "filename": "docs/COMPATIBILITY.md",
+        "status": "modified",
+        "additions": 28,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/README.md",
+        "status": "added",
+        "additions": 9,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/SHA256SUMS",
+        "status": "added",
+        "additions": 6,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/golden/action-request.json",
+        "status": "added",
+        "additions": 10,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/golden/action-settled.json",
+        "status": "added",
+        "additions": 90,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/manifest.json",
+        "status": "added",
+        "additions": 14,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/schema.json",
+        "status": "added",
+        "additions": 78,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert/README.md",
+        "status": "added",
+        "additions": 18,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert/SHA256SUMS",
+        "status": "added",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert/golden/observation.json",
+        "status": "added",
+        "additions": 67,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert/manifest.json",
+        "status": "added",
+        "additions": 21,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert/schema.json",
+        "status": "added",
+        "additions": 312,
+        "deletions": 0
+      },
+      {
+        "filename": "schemas/runtime-v4-expert-action.schema.json",
+        "status": "added",
+        "additions": 78,
+        "deletions": 0
+      },
+      {
+        "filename": "schemas/runtime-v4-expert.schema.json",
+        "status": "added",
+        "additions": 312,
+        "deletions": 0
+      }
+    ],
+    "sources": [
+      {
+        "path": "Cargo.toml",
+        "blob": "a153773193ccee23fcefb3bedbc48b6287cd34e1"
+      },
+      {
+        "path": "README.md",
+        "blob": "9d6c96f3b7c8e63d5b722a38922acb6334c15658"
+      },
+      {
+        "path": "crates/gateway/src/identity.rs",
+        "blob": "69f6e3d1a8393cac613201723f78046a2890a199"
+      }
+    ]
+  },
+  {
+    "repository": "AI-Ascension/sts2-harness",
+    "old_commit": "cb17b6c15262ce9356f1e85fd475af997aedc445",
+    "current_commit": "e5bb677b05b36dd88cc76a5d5b5633be36085838",
+    "compare_status": "ahead",
+    "total_commits": 20,
+    "commits": [
+      "Parse runtime-v4 expert state in harness provider path",
+      "Reject duplicate keys in runtime-v4 expert parser",
+      "feat(runtime): validate expert actions and composite intents",
+      "chore(runtime): package expert action artifacts",
+      "feat(runtime): capture Codex provider accounting",
+      "refactor(harness): split runtime v4 validation modules",
+      "integrate runtime v4 gameplay and telemetry",
+      "feat(harness): run runtime-v4 expert consumer",
+      "refactor(harness): split runtime-v4 expert port modules",
+      "fix(harness): recover transient catalog reads",
+      "Merge remote-tracking branch 'local/g3-92ce' into recovery/harness-v4-g3-current-main-20260907",
+      "Fix CI guard for split sandbox validator",
+      "test(harness): exercise executable runtime-v4 composition",
+      "test(harness): assert executable composition transport methods",
+      "Sync complete Runtime-v4 settlement golden",
+      "Merge pull request #36 from AI-Ascension/recovery/harness-v4-g3-current-main-20260907",
+      "docs: align release readiness with campaign evidence",
+      "Merge pull request #37 from AI-Ascension/docs/release-evidence-20260908",
+      "ci: verify every copied protocol artifact inventory",
+      "Merge pull request #39 from AI-Ascension/review/ci-verify-all-profiles-20260908"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/ci.yml",
+        "status": "modified",
+        "additions": 13,
+        "deletions": 1
+      },
+      {
+        "filename": "RELEASING.md",
+        "status": "modified",
+        "additions": 19,
+        "deletions": 7
+      },
+      {
+        "filename": "conformance/cases/runtime-v4-expert-action.json",
+        "status": "added",
+        "additions": 7,
+        "deletions": 0
+      },
+      {
+        "filename": "conformance/cases/runtime-v4-expert.json",
+        "status": "added",
+        "additions": 31,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/allocation_tests.rs",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/config.rs",
+        "status": "modified",
+        "additions": 8,
+        "deletions": 3
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/mcp_process.rs",
+        "status": "modified",
+        "additions": 12,
+        "deletions": 1
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/mcp_process_tests.rs",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/mod.rs",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 1
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/response_validation.rs",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3.rs",
+        "status": "modified",
+        "additions": 174,
+        "deletions": 160
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_combat_demo.rs",
+        "status": "modified",
+        "additions": 90,
+        "deletions": 23
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_combat_replay.rs",
+        "status": "modified",
+        "additions": 126,
+        "deletions": 105
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_combat_replay_tests.rs",
+        "status": "added",
+        "additions": 154,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_episode.rs",
+        "status": "modified",
+        "additions": 46,
+        "deletions": 10
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_episode_replay.rs",
+        "status": "modified",
+        "additions": 22,
+        "deletions": 11
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_ledger.rs",
+        "status": "modified",
+        "additions": 35,
+        "deletions": 1
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_lifecycle_expert_catalog_runner_test.rs",
+        "status": "added",
+        "additions": 39,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_lifecycle_recovery_test.rs",
+        "status": "added",
+        "additions": 234,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_lifecycle_runner_fixture.rs",
+        "status": "added",
+        "additions": 180,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_lifecycle_runner_test.rs",
+        "status": "added",
+        "additions": 270,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_lifecycle_test.rs",
+        "status": "modified",
+        "additions": 17,
+        "deletions": 84
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_parse_test.rs",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_port.rs",
+        "status": "added",
+        "additions": 297,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_recording.rs",
+        "status": "modified",
+        "additions": 144,
+        "deletions": 50
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_recovery.rs",
+        "status": "modified",
+        "additions": 77,
+        "deletions": 5
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_replay_digest.rs",
+        "status": "added",
+        "additions": 47,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_telemetry.rs",
+        "status": "added",
+        "additions": 16,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_telemetry_render.rs",
+        "status": "added",
+        "additions": 314,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_telemetry_tests.rs",
+        "status": "added",
+        "additions": 386,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_telemetry_types_a.rs",
+        "status": "added",
+        "additions": 318,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_telemetry_types_b.rs",
+        "status": "added",
+        "additions": 147,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_telemetry_types_c.rs",
+        "status": "added",
+        "additions": 314,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_telemetry_types_extra.rs",
+        "status": "added",
+        "additions": 118,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_telemetry_worker.rs",
+        "status": "added",
+        "additions": 129,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_telemetry_worker_http.rs",
+        "status": "added",
+        "additions": 208,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_wait.rs",
+        "status": "modified",
+        "additions": 46,
+        "deletions": 2
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_wire.rs",
+        "status": "modified",
+        "additions": 126,
+        "deletions": 84
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_wire_failure.rs",
+        "status": "added",
+        "additions": 49,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_wire_stage.rs",
+        "status": "added",
+        "additions": 18,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v3_wire_tests.rs",
+        "status": "added",
+        "additions": 94,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v4_expert_port.rs",
+        "status": "added",
+        "additions": 31,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v4_expert_port_composition.rs",
+        "status": "added",
+        "additions": 286,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v4_expert_port_tests.rs",
+        "status": "added",
+        "additions": 223,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v4_expert_port_transport.rs",
+        "status": "added",
+        "additions": 305,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/runtime_support/runtime_v4_expert_port_transport_composition.rs",
+        "status": "added",
+        "additions": 42,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/bin/sts2-astra-bridge.rs",
+        "status": "modified",
+        "additions": 99,
+        "deletions": 13
+      },
+      {
+        "filename": "crates/harness/src/bin/support/bridge_accounting.rs",
+        "status": "added",
+        "additions": 184,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/episode/legal_actions.rs",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/exo/codex_accounting.rs",
+        "status": "added",
+        "additions": 293,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/exo/mod.rs",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/exo/sandbox.rs",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 290
+      },
+      {
+        "filename": "crates/harness/src/exo/sandbox_api.rs",
+        "status": "added",
+        "additions": 99,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/exo/sandbox_validator.rs",
+        "status": "added",
+        "additions": 212,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/lib.rs",
+        "status": "modified",
+        "additions": 23,
+        "deletions": 2
+      },
+      {
+        "filename": "crates/harness/src/runtime_v4_expert.rs",
+        "status": "added",
+        "additions": 30,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/runtime_v4_expert_action.rs",
+        "status": "added",
+        "additions": 21,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/runtime_v4_expert_action_artifact.rs",
+        "status": "added",
+        "additions": 176,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/runtime_v4_expert_action_strict.rs",
+        "status": "added",
+        "additions": 96,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/runtime_v4_expert_action_types.rs",
+        "status": "added",
+        "additions": 187,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/runtime_v4_expert_action_validation.rs",
+        "status": "added",
+        "additions": 188,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/runtime_v4_expert_artifact.rs",
+        "status": "added",
+        "additions": 226,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/runtime_v4_expert_parse.rs",
+        "status": "added",
+        "additions": 209,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/runtime_v4_expert_shape_actions.rs",
+        "status": "added",
+        "additions": 90,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/runtime_v4_expert_shape_collections.rs",
+        "status": "added",
+        "additions": 170,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/runtime_v4_expert_shape_root.rs",
+        "status": "added",
+        "additions": 76,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/runtime_v4_expert_types_a.rs",
+        "status": "added",
+        "additions": 171,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/runtime_v4_expert_types_b.rs",
+        "status": "added",
+        "additions": 152,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/src/runtime_v4_expert_validation.rs",
+        "status": "added",
+        "additions": 284,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/tests/codex_accounting.rs",
+        "status": "added",
+        "additions": 60,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/tests/runtime_v4_executable_composition.rs",
+        "status": "added",
+        "additions": 37,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/tests/runtime_v4_expert_action.rs",
+        "status": "added",
+        "additions": 81,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/tests/runtime_v4_expert_artifact.rs",
+        "status": "added",
+        "additions": 114,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/tests/support/runtime_v4_executable_composition_fixture.rs",
+        "status": "added",
+        "additions": 392,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/harness/tests/support/runtime_v4_executable_composition_process.rs",
+        "status": "added",
+        "additions": 378,
+        "deletions": 0
+      },
+      {
+        "filename": "docs/decisions/0009-seeded-episode-replay.md",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "experiments/live-combat/README.md",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 2
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/README.md",
+        "status": "added",
+        "additions": 9,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/SHA256SUMS",
+        "status": "added",
+        "additions": 6,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/golden/action-request.json",
+        "status": "added",
+        "additions": 10,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/golden/action-settled.json",
+        "status": "added",
+        "additions": 90,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/manifest.json",
+        "status": "added",
+        "additions": 14,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/schema.json",
+        "status": "added",
+        "additions": 78,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert/README.md",
+        "status": "added",
+        "additions": 18,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert/SHA256SUMS",
+        "status": "added",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert/golden/observation.json",
+        "status": "added",
+        "additions": 67,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert/manifest.json",
+        "status": "added",
+        "additions": 21,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert/schema.json",
+        "status": "added",
+        "additions": 312,
+        "deletions": 0
+      },
+      {
+        "filename": "schemas/runtime-v4-expert-action.schema.json",
+        "status": "added",
+        "additions": 78,
+        "deletions": 0
+      },
+      {
+        "filename": "schemas/runtime-v4-expert.schema.json",
+        "status": "added",
+        "additions": 312,
+        "deletions": 0
+      }
+    ],
+    "sources": [
+      {
+        "path": "Cargo.toml",
+        "blob": "613e6be264e38314f76bb67ba39cf4832f6c00ad"
+      },
+      {
+        "path": "README.md",
+        "blob": "8d1b008da81c0f0e8a9d55e5ed918982232bb626"
+      }
+    ]
+  },
+  {
+    "repository": "AI-Ascension/sts2-mcp-server",
+    "old_commit": "eb89ab251665f263c2fe3e6b735eeae3d3e40c83",
+    "current_commit": "655e0c728206c5b6e271d8bf7ed2e4681fa16dd3",
+    "compare_status": "ahead",
+    "total_commits": 16,
+    "commits": [
+      "Consume runtime-v4 expert state in MCP",
+      "feat(runtime): add expert action mapping and protocol artifact",
+      "chore: complete runtime-v4 expert artifact inventory",
+      "refactor: split runtime-v4 MCP projections",
+      "feat(mcp): expose runtime-v4 expert reconciliation",
+      "fix(mcp): preserve expert reconcile authority",
+      "fix(mcp): bind expert responses to requests",
+      "Merge commit '901c9edd94833fca6bfe322e0c515f91c8b2b281' into recovery/mcp-v4-combined-20260907",
+      "docs: record runtime-v4 response binding",
+      "docs: clarify runtime-v4 binding scope",
+      "Sync complete Runtime-v4 settlement golden",
+      "Merge pull request #27 from AI-Ascension/recovery/mcp-v4-combined-20260907",
+      "docs: align release readiness with campaign evidence",
+      "Merge pull request #28 from AI-Ascension/docs/release-evidence-20260908",
+      "ci: verify every copied protocol artifact inventory",
+      "Merge pull request #29 from AI-Ascension/review/ci-verify-all-profiles-20260908"
+    ],
+    "files": [
+      {
+        "filename": ".github/workflows/ci.yml",
+        "status": "modified",
+        "additions": 10,
+        "deletions": 0
+      },
+      {
+        "filename": "CHANGELOG.md",
+        "status": "modified",
+        "additions": 12,
+        "deletions": 0
+      },
+      {
+        "filename": "README.md",
+        "status": "modified",
+        "additions": 14,
+        "deletions": 0
+      },
+      {
+        "filename": "RELEASING.md",
+        "status": "modified",
+        "additions": 19,
+        "deletions": 4
+      },
+      {
+        "filename": "conformance/cases/runtime-v4-expert-action.json",
+        "status": "added",
+        "additions": 7,
+        "deletions": 0
+      },
+      {
+        "filename": "conformance/cases/runtime-v4-expert.json",
+        "status": "added",
+        "additions": 31,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/mcp-server/src/bin/runtime_support/binding.rs",
+        "status": "modified",
+        "additions": 50,
+        "deletions": 3
+      },
+      {
+        "filename": "crates/mcp-server/src/bin/runtime_support/binding_tests.rs",
+        "status": "modified",
+        "additions": 55,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/mcp-server/src/bin/runtime_support/exchange.rs",
+        "status": "modified",
+        "additions": 3,
+        "deletions": 2
+      },
+      {
+        "filename": "crates/mcp-server/src/bin/runtime_support/mod.rs",
+        "status": "modified",
+        "additions": 10,
+        "deletions": 2
+      },
+      {
+        "filename": "crates/mcp-server/src/bin/runtime_support/profiles.rs",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 1
+      },
+      {
+        "filename": "crates/mcp-server/src/catalog.rs",
+        "status": "modified",
+        "additions": 15,
+        "deletions": 1
+      },
+      {
+        "filename": "crates/mcp-server/src/catalog_runtime_v4_expert.rs",
+        "status": "added",
+        "additions": 240,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/mcp-server/src/lib.rs",
+        "status": "modified",
+        "additions": 9,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/mcp-server/src/mapping.rs",
+        "status": "modified",
+        "additions": 17,
+        "deletions": 151
+      },
+      {
+        "filename": "crates/mcp-server/src/mapping_helpers.rs",
+        "status": "added",
+        "additions": 168,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/mcp-server/src/mapping_response.rs",
+        "status": "modified",
+        "additions": 2,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/mcp-server/src/mapping_runtime_v4_expert.rs",
+        "status": "added",
+        "additions": 184,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/mcp-server/src/mapping_runtime_v4_expert_dispatch.rs",
+        "status": "added",
+        "additions": 209,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/mcp-server/src/mapping_runtime_v4_expert_helpers.rs",
+        "status": "added",
+        "additions": 55,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/mcp-server/src/mapping_runtime_v4_expert_state.rs",
+        "status": "added",
+        "additions": 71,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/mcp-server/src/projection.rs",
+        "status": "modified",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/mcp-server/src/projection_runtime_v4_expert.rs",
+        "status": "added",
+        "additions": 194,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/mcp-server/src/projection_runtime_v4_expert_action.rs",
+        "status": "added",
+        "additions": 197,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/mcp-server/src/projection_runtime_v4_expert_state.rs",
+        "status": "added",
+        "additions": 190,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/mcp-server/src/projection_runtime_v4_expert_state_shape.rs",
+        "status": "added",
+        "additions": 240,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/mcp-server/src/protocol_artifact_runtime_v4_expert.rs",
+        "status": "added",
+        "additions": 16,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/mcp-server/tests/runtime_v4_expert_mapping.rs",
+        "status": "added",
+        "additions": 303,
+        "deletions": 0
+      },
+      {
+        "filename": "docs/COMPATIBILITY.md",
+        "status": "modified",
+        "additions": 23,
+        "deletions": 2
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/README.md",
+        "status": "added",
+        "additions": 9,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/SHA256SUMS",
+        "status": "added",
+        "additions": 6,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/golden/action-request.json",
+        "status": "added",
+        "additions": 10,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/golden/action-settled.json",
+        "status": "added",
+        "additions": 90,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/manifest.json",
+        "status": "added",
+        "additions": 14,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert-action/schema.json",
+        "status": "added",
+        "additions": 78,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert/README.md",
+        "status": "added",
+        "additions": 18,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert/SHA256SUMS",
+        "status": "added",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert/golden/observation.json",
+        "status": "added",
+        "additions": 67,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert/manifest.json",
+        "status": "added",
+        "additions": 21,
+        "deletions": 0
+      },
+      {
+        "filename": "protocol-artifact/runtime-v4-expert/schema.json",
+        "status": "added",
+        "additions": 312,
+        "deletions": 0
+      },
+      {
+        "filename": "schemas/runtime-v4-expert-action.schema.json",
+        "status": "added",
+        "additions": 78,
+        "deletions": 0
+      },
+      {
+        "filename": "schemas/runtime-v4-expert.schema.json",
+        "status": "added",
+        "additions": 312,
+        "deletions": 0
+      }
+    ],
+    "sources": [
+      {
+        "path": "Cargo.toml",
+        "blob": "76df27f267b447f33295c458a1ee3f171bbf3700"
+      },
+      {
+        "path": "README.md",
+        "blob": "ecdd4823faf68524ace27dd588565f954bbe170f"
+      }
+    ]
+  },
+  {
+    "repository": "AI-Ascension/sts2-protocol",
+    "old_commit": "8874b0951289fd943c7e14dea36557fa24c401d1",
+    "current_commit": "6d7fb8591d3d4a4be5a7e4cfb055e81c86a2fc6d",
+    "compare_status": "ahead",
+    "total_commits": 5,
+    "commits": [
+      "Add runtime-v4 expert-state protocol artifact",
+      "Add runtime-v4 expert action protocol artifact",
+      "Include runtime-v4 expert action goldens",
+      "Integrate Runtime-v4 artifacts with complete settlement conformance",
+      "Merge pull request #21 from AI-Ascension/integration/protocol-v4-current-main-20260908"
+    ],
+    "files": [
+      {
+        "filename": "artifacts/runtime-v4-expert-action/README.md",
+        "status": "added",
+        "additions": 9,
+        "deletions": 0
+      },
+      {
+        "filename": "artifacts/runtime-v4-expert-action/SHA256SUMS",
+        "status": "added",
+        "additions": 6,
+        "deletions": 0
+      },
+      {
+        "filename": "artifacts/runtime-v4-expert-action/golden/action-request.json",
+        "status": "added",
+        "additions": 10,
+        "deletions": 0
+      },
+      {
+        "filename": "artifacts/runtime-v4-expert-action/golden/action-settled.json",
+        "status": "added",
+        "additions": 90,
+        "deletions": 0
+      },
+      {
+        "filename": "artifacts/runtime-v4-expert-action/manifest.json",
+        "status": "added",
+        "additions": 14,
+        "deletions": 0
+      },
+      {
+        "filename": "artifacts/runtime-v4-expert-action/schema.json",
+        "status": "added",
+        "additions": 78,
+        "deletions": 0
+      },
+      {
+        "filename": "artifacts/runtime-v4-expert/README.md",
+        "status": "added",
+        "additions": 18,
+        "deletions": 0
+      },
+      {
+        "filename": "artifacts/runtime-v4-expert/SHA256SUMS",
+        "status": "added",
+        "additions": 5,
+        "deletions": 0
+      },
+      {
+        "filename": "artifacts/runtime-v4-expert/golden/observation.json",
+        "status": "added",
+        "additions": 67,
+        "deletions": 0
+      },
+      {
+        "filename": "artifacts/runtime-v4-expert/manifest.json",
+        "status": "added",
+        "additions": 21,
+        "deletions": 0
+      },
+      {
+        "filename": "artifacts/runtime-v4-expert/schema.json",
+        "status": "added",
+        "additions": 312,
+        "deletions": 0
+      },
+      {
+        "filename": "conformance/cases/runtime-v4-expert-action.json",
+        "status": "added",
+        "additions": 7,
+        "deletions": 0
+      },
+      {
+        "filename": "conformance/cases/runtime-v4-expert.json",
+        "status": "added",
+        "additions": 31,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/protocol/src/lib.rs",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/protocol/src/runtime_v4_expert.rs",
+        "status": "added",
+        "additions": 16,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/protocol/tests/runtime_v4_expert_action_conformance.rs",
+        "status": "added",
+        "additions": 148,
+        "deletions": 0
+      },
+      {
+        "filename": "crates/protocol/tests/runtime_v4_expert_conformance.rs",
+        "status": "added",
+        "additions": 68,
+        "deletions": 0
+      },
+      {
+        "filename": "docs/decisions/0031-runtime-v4-expert-state-profile.md",
+        "status": "added",
+        "additions": 49,
+        "deletions": 0
+      },
+      {
+        "filename": "schemas/runtime-v4-expert-action.schema.json",
+        "status": "added",
+        "additions": 78,
+        "deletions": 0
+      },
+      {
+        "filename": "schemas/runtime-v4-expert.schema.json",
+        "status": "added",
+        "additions": 312,
+        "deletions": 0
+      }
+    ],
+    "sources": [
+      {
+        "path": "Cargo.toml",
+        "blob": "1dad73da70ded436fb60035924767e75d0b88e57"
+      },
+      {
+        "path": "README.md",
+        "blob": "f7657da19b4ceb3444077ab06dfc63285f16db5d"
+      },
+      {
+        "path": "conformance/cases/neutral-contract-seam.v1.json",
+        "blob": "90a46b7c8275aba3ea3cc52f437d95bf3cdb98f0"
+      },
+      {
+        "path": "schemas/poc-v1.schema.json",
+        "blob": "8da8ce5ecdc1e5f57320b60fb70304e2751fabe9"
+      }
+    ]
+  }
+]

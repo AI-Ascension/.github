@@ -1,0 +1,2115 @@
+{
+  "schema_version": 1,
+  "source": "curated public regression fixture; bodies, API response envelopes and unlabelled rows omitted; not a live snapshot",
+  "repositories": [
+    {
+      "id": 1354377929,
+      "full_name": "AI-Ascension/sts2-game-core",
+      "default_branch": "main",
+      "archived": false,
+      "visibility": "public",
+      "default_commit": "87e0f3d9355c0827e989d9fbc31804440852519b",
+      "topics": {
+        "names": [
+          "domain-model",
+          "rust",
+          "validation",
+          "ai-ascension"
+        ]
+      },
+      "labels": [
+        {
+          "id": 12035540762,
+          "name": "accessibility",
+          "color": "f143ab",
+          "description": "Barrier affecting people with disabilities"
+        },
+        {
+          "id": 12035540769,
+          "name": "bug",
+          "color": "d73a4a",
+          "description": "Something isn't working"
+        },
+        {
+          "id": 12036437686,
+          "name": "contract-observation",
+          "color": "4E6A8F",
+          "description": "An observed behavior of a public contract that the documents should state."
+        },
+        {
+          "id": 12036438035,
+          "name": "defect",
+          "color": "9C5B12",
+          "description": "Behavior or a test that does not match the repository's own documents."
+        },
+        {
+          "id": 12036438108,
+          "name": "docs",
+          "color": "5E564A",
+          "description": "Documentation or public-page clarity."
+        },
+        {
+          "id": 12035540774,
+          "name": "documentation",
+          "color": "0075ca",
+          "description": "Improvements or additions to documentation"
+        },
+        {
+          "id": 12035540779,
+          "name": "duplicate",
+          "color": "cfd3d7",
+          "description": "This issue or pull request already exists"
+        },
+        {
+          "id": 12035540784,
+          "name": "enhancement",
+          "color": "a2eeef",
+          "description": "New feature or request"
+        },
+        {
+          "id": 12036437775,
+          "name": "evidence",
+          "color": "9A7B1C",
+          "description": "A public claim, label, or description that looks wrong, unsupported, or unclear."
+        },
+        {
+          "id": 12036437570,
+          "name": "first-task",
+          "color": "2F7F66",
+          "description": "A bounded first contribution that needs no game, model, or credentials."
+        },
+        {
+          "id": 12035540788,
+          "name": "good first issue",
+          "color": "7057ff",
+          "description": "Good for newcomers"
+        },
+        {
+          "id": 12035540792,
+          "name": "help wanted",
+          "color": "008672",
+          "description": "Extra attention is needed"
+        },
+        {
+          "id": 12035540798,
+          "name": "invalid",
+          "color": "e4e669",
+          "description": "This doesn't seem right"
+        },
+        {
+          "id": 12036437635,
+          "name": "proof-recipe",
+          "color": "9C5B12",
+          "description": "A fixture, runnable check, adapter example, or showcase of a real run."
+        },
+        {
+          "id": 12035540806,
+          "name": "question",
+          "color": "d876e3",
+          "description": "Further information is requested"
+        },
+        {
+          "id": 12036437953,
+          "name": "security",
+          "color": "A8402F",
+          "description": "Security-relevant; details belong in the private channel per SECURITY.md."
+        },
+        {
+          "id": 12036437886,
+          "name": "unverified-claim",
+          "color": "A8402F",
+          "description": "A statement on a public surface whose label may be stronger than its evidence."
+        },
+        {
+          "id": 12036438378,
+          "name": "wedge:mcp",
+          "color": "6F5A94",
+          "description": "AI, MCP, or automation builder path."
+        },
+        {
+          "id": 12036438202,
+          "name": "wedge:player",
+          "color": "6F5A94",
+          "description": "Curious player or observer path."
+        },
+        {
+          "id": 12036438289,
+          "name": "wedge:rust",
+          "color": "6F5A94",
+          "description": "Rust or systems contributor path."
+        },
+        {
+          "id": 12036438459,
+          "name": "wedge:security",
+          "color": "6F5A94",
+          "description": "Maintainer or security operator path."
+        },
+        {
+          "id": 12035540817,
+          "name": "wontfix",
+          "color": "ffffff",
+          "description": "This will not be worked on"
+        }
+      ],
+      "issues": [],
+      "tree": {
+        "truncated": false,
+        "tree": [
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "Cargo.toml",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "crates/core/src/state.rs",
+            "type": "blob"
+          },
+          {
+            "path": "crates/core/src/validation.rs",
+            "type": "blob"
+          }
+        ]
+      },
+      "name": "sts2-game-core"
+    },
+    {
+      "id": 1354377975,
+      "full_name": "AI-Ascension/sts2-game-mod",
+      "default_branch": "main",
+      "archived": false,
+      "visibility": "public",
+      "default_commit": "e162e2490c189672bf168967f06fbf89b88d4010",
+      "topics": {
+        "names": [
+          "ai-ascension",
+          "game-mod",
+          "rust",
+          "host-boundary"
+        ]
+      },
+      "labels": [
+        {
+          "id": 12035541165,
+          "name": "accessibility",
+          "color": "f143ab",
+          "description": "Barrier affecting people with disabilities"
+        },
+        {
+          "id": 12035541187,
+          "name": "bug",
+          "color": "d73a4a",
+          "description": "Something isn't working"
+        },
+        {
+          "id": 12036439010,
+          "name": "contract-observation",
+          "color": "4E6A8F",
+          "description": "An observed behavior of a public contract that the documents should state."
+        },
+        {
+          "id": 12036439379,
+          "name": "defect",
+          "color": "9C5B12",
+          "description": "Behavior or a test that does not match the repository's own documents."
+        },
+        {
+          "id": 12036439454,
+          "name": "docs",
+          "color": "5E564A",
+          "description": "Documentation or public-page clarity."
+        },
+        {
+          "id": 12035541202,
+          "name": "documentation",
+          "color": "0075ca",
+          "description": "Improvements or additions to documentation"
+        },
+        {
+          "id": 12035541216,
+          "name": "duplicate",
+          "color": "cfd3d7",
+          "description": "This issue or pull request already exists"
+        },
+        {
+          "id": 12035541233,
+          "name": "enhancement",
+          "color": "a2eeef",
+          "description": "New feature or request"
+        },
+        {
+          "id": 12036439095,
+          "name": "evidence",
+          "color": "9A7B1C",
+          "description": "A public claim, label, or description that looks wrong, unsupported, or unclear."
+        },
+        {
+          "id": 12036438770,
+          "name": "first-task",
+          "color": "2F7F66",
+          "description": "A bounded first contribution that needs no game, model, or credentials."
+        },
+        {
+          "id": 12035541248,
+          "name": "good first issue",
+          "color": "7057ff",
+          "description": "Good for newcomers"
+        },
+        {
+          "id": 12035541261,
+          "name": "help wanted",
+          "color": "008672",
+          "description": "Extra attention is needed"
+        },
+        {
+          "id": 12035541275,
+          "name": "invalid",
+          "color": "e4e669",
+          "description": "This doesn't seem right"
+        },
+        {
+          "id": 12036438891,
+          "name": "proof-recipe",
+          "color": "9C5B12",
+          "description": "A fixture, runnable check, adapter example, or showcase of a real run."
+        },
+        {
+          "id": 12035541286,
+          "name": "question",
+          "color": "d876e3",
+          "description": "Further information is requested"
+        },
+        {
+          "id": 12036439270,
+          "name": "security",
+          "color": "A8402F",
+          "description": "Security-relevant; details belong in the private channel per SECURITY.md."
+        },
+        {
+          "id": 12036439181,
+          "name": "unverified-claim",
+          "color": "A8402F",
+          "description": "A statement on a public surface whose label may be stronger than its evidence."
+        },
+        {
+          "id": 12036439735,
+          "name": "wedge:mcp",
+          "color": "6F5A94",
+          "description": "AI, MCP, or automation builder path."
+        },
+        {
+          "id": 12036439553,
+          "name": "wedge:player",
+          "color": "6F5A94",
+          "description": "Curious player or observer path."
+        },
+        {
+          "id": 12036439662,
+          "name": "wedge:rust",
+          "color": "6F5A94",
+          "description": "Rust or systems contributor path."
+        },
+        {
+          "id": 12036439817,
+          "name": "wedge:security",
+          "color": "6F5A94",
+          "description": "Maintainer or security operator path."
+        },
+        {
+          "id": 12035541294,
+          "name": "wontfix",
+          "color": "ffffff",
+          "description": "This will not be worked on"
+        }
+      ],
+      "issues": [],
+      "tree": {
+        "truncated": false,
+        "tree": [
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "Cargo.toml",
+            "type": "blob"
+          },
+          {
+            "path": "experiments/managed-rust-interop/gameplay-tests/RuntimeV3ValidationProbe.csproj",
+            "type": "blob"
+          },
+          {
+            "path": "experiments/managed-rust-interop/gameplay-tests/RuntimeV3ValidationProbe.csproj",
+            "type": "blob"
+          },
+          {
+            "path": "experiments/managed-rust-interop/README.md",
+            "type": "blob"
+          },
+          {
+            "path": "crates/host/src/abi.rs",
+            "type": "blob"
+          }
+        ]
+      },
+      "name": "sts2-game-mod"
+    },
+    {
+      "id": 1354378018,
+      "full_name": "AI-Ascension/sts2-gateway",
+      "default_branch": "main",
+      "archived": false,
+      "visibility": "public",
+      "default_commit": "53745dd2a335cdca0d0f8ce9772faef0c2e725c2",
+      "topics": {
+        "names": [
+          "ai-ascension",
+          "control-plane",
+          "rust",
+          "lease-fencing"
+        ]
+      },
+      "labels": [
+        {
+          "id": 12035541607,
+          "name": "accessibility",
+          "color": "f143ab",
+          "description": "Barrier affecting people with disabilities"
+        },
+        {
+          "id": 12035541614,
+          "name": "bug",
+          "color": "d73a4a",
+          "description": "Something isn't working"
+        },
+        {
+          "id": 12036440287,
+          "name": "contract-observation",
+          "color": "4E6A8F",
+          "description": "An observed behavior of a public contract that the documents should state."
+        },
+        {
+          "id": 12036440629,
+          "name": "defect",
+          "color": "9C5B12",
+          "description": "Behavior or a test that does not match the repository's own documents."
+        },
+        {
+          "id": 12036440701,
+          "name": "docs",
+          "color": "5E564A",
+          "description": "Documentation or public-page clarity."
+        },
+        {
+          "id": 12035541626,
+          "name": "documentation",
+          "color": "0075ca",
+          "description": "Improvements or additions to documentation"
+        },
+        {
+          "id": 12035541640,
+          "name": "duplicate",
+          "color": "cfd3d7",
+          "description": "This issue or pull request already exists"
+        },
+        {
+          "id": 12035541653,
+          "name": "enhancement",
+          "color": "a2eeef",
+          "description": "New feature or request"
+        },
+        {
+          "id": 12036440389,
+          "name": "evidence",
+          "color": "9A7B1C",
+          "description": "A public claim, label, or description that looks wrong, unsupported, or unclear."
+        },
+        {
+          "id": 12036440098,
+          "name": "first-task",
+          "color": "2F7F66",
+          "description": "A bounded first contribution that needs no game, model, or credentials."
+        },
+        {
+          "id": 12035541674,
+          "name": "good first issue",
+          "color": "7057ff",
+          "description": "Good for newcomers"
+        },
+        {
+          "id": 12035541689,
+          "name": "help wanted",
+          "color": "008672",
+          "description": "Extra attention is needed"
+        },
+        {
+          "id": 12035541709,
+          "name": "invalid",
+          "color": "e4e669",
+          "description": "This doesn't seem right"
+        },
+        {
+          "id": 12036440198,
+          "name": "proof-recipe",
+          "color": "9C5B12",
+          "description": "A fixture, runnable check, adapter example, or showcase of a real run."
+        },
+        {
+          "id": 12035541726,
+          "name": "question",
+          "color": "d876e3",
+          "description": "Further information is requested"
+        },
+        {
+          "id": 12036440582,
+          "name": "security",
+          "color": "A8402F",
+          "description": "Security-relevant; details belong in the private channel per SECURITY.md."
+        },
+        {
+          "id": 12036440489,
+          "name": "unverified-claim",
+          "color": "A8402F",
+          "description": "A statement on a public surface whose label may be stronger than its evidence."
+        },
+        {
+          "id": 12036440924,
+          "name": "wedge:mcp",
+          "color": "6F5A94",
+          "description": "AI, MCP, or automation builder path."
+        },
+        {
+          "id": 12036440793,
+          "name": "wedge:player",
+          "color": "6F5A94",
+          "description": "Curious player or observer path."
+        },
+        {
+          "id": 12036440856,
+          "name": "wedge:rust",
+          "color": "6F5A94",
+          "description": "Rust or systems contributor path."
+        },
+        {
+          "id": 12036441015,
+          "name": "wedge:security",
+          "color": "6F5A94",
+          "description": "Maintainer or security operator path."
+        },
+        {
+          "id": 12035541742,
+          "name": "wontfix",
+          "color": "ffffff",
+          "description": "This will not be worked on"
+        }
+      ],
+      "issues": [],
+      "tree": {
+        "truncated": false,
+        "tree": [
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "Cargo.toml",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "crates/gateway/src/identity.rs",
+            "type": "blob"
+          }
+        ]
+      },
+      "name": "sts2-gateway"
+    },
+    {
+      "id": 1354378057,
+      "full_name": "AI-Ascension/sts2-mcp-server",
+      "default_branch": "main",
+      "archived": false,
+      "visibility": "public",
+      "default_commit": "655e0c728206c5b6e271d8bf7ed2e4681fa16dd3",
+      "topics": {
+        "names": [
+          "ai-ascension",
+          "mcp",
+          "model-context-protocol",
+          "rust"
+        ]
+      },
+      "labels": [
+        {
+          "id": 12035542010,
+          "name": "accessibility",
+          "color": "f143ab",
+          "description": "Barrier affecting people with disabilities"
+        },
+        {
+          "id": 12035542022,
+          "name": "bug",
+          "color": "d73a4a",
+          "description": "Something isn't working"
+        },
+        {
+          "id": 12036441492,
+          "name": "contract-observation",
+          "color": "4E6A8F",
+          "description": "An observed behavior of a public contract that the documents should state."
+        },
+        {
+          "id": 12036441848,
+          "name": "defect",
+          "color": "9C5B12",
+          "description": "Behavior or a test that does not match the repository's own documents."
+        },
+        {
+          "id": 12036441930,
+          "name": "docs",
+          "color": "5E564A",
+          "description": "Documentation or public-page clarity."
+        },
+        {
+          "id": 12035542034,
+          "name": "documentation",
+          "color": "0075ca",
+          "description": "Improvements or additions to documentation"
+        },
+        {
+          "id": 12035542042,
+          "name": "duplicate",
+          "color": "cfd3d7",
+          "description": "This issue or pull request already exists"
+        },
+        {
+          "id": 12035542051,
+          "name": "enhancement",
+          "color": "a2eeef",
+          "description": "New feature or request"
+        },
+        {
+          "id": 12036441583,
+          "name": "evidence",
+          "color": "9A7B1C",
+          "description": "A public claim, label, or description that looks wrong, unsupported, or unclear."
+        },
+        {
+          "id": 12036441280,
+          "name": "first-task",
+          "color": "2F7F66",
+          "description": "A bounded first contribution that needs no game, model, or credentials."
+        },
+        {
+          "id": 12035542064,
+          "name": "good first issue",
+          "color": "7057ff",
+          "description": "Good for newcomers"
+        },
+        {
+          "id": 12035542071,
+          "name": "help wanted",
+          "color": "008672",
+          "description": "Extra attention is needed"
+        },
+        {
+          "id": 12035542083,
+          "name": "invalid",
+          "color": "e4e669",
+          "description": "This doesn't seem right"
+        },
+        {
+          "id": 12036441374,
+          "name": "proof-recipe",
+          "color": "9C5B12",
+          "description": "A fixture, runnable check, adapter example, or showcase of a real run."
+        },
+        {
+          "id": 12035542092,
+          "name": "question",
+          "color": "d876e3",
+          "description": "Further information is requested"
+        },
+        {
+          "id": 12036441729,
+          "name": "security",
+          "color": "A8402F",
+          "description": "Security-relevant; details belong in the private channel per SECURITY.md."
+        },
+        {
+          "id": 12036441656,
+          "name": "unverified-claim",
+          "color": "A8402F",
+          "description": "A statement on a public surface whose label may be stronger than its evidence."
+        },
+        {
+          "id": 12036442123,
+          "name": "wedge:mcp",
+          "color": "6F5A94",
+          "description": "AI, MCP, or automation builder path."
+        },
+        {
+          "id": 12036441981,
+          "name": "wedge:player",
+          "color": "6F5A94",
+          "description": "Curious player or observer path."
+        },
+        {
+          "id": 12036442050,
+          "name": "wedge:rust",
+          "color": "6F5A94",
+          "description": "Rust or systems contributor path."
+        },
+        {
+          "id": 12036442196,
+          "name": "wedge:security",
+          "color": "6F5A94",
+          "description": "Maintainer or security operator path."
+        },
+        {
+          "id": 12035542107,
+          "name": "wontfix",
+          "color": "ffffff",
+          "description": "This will not be worked on"
+        }
+      ],
+      "issues": [],
+      "tree": {
+        "truncated": false,
+        "tree": [
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "Cargo.toml",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          }
+        ]
+      },
+      "name": "sts2-mcp-server"
+    },
+    {
+      "id": 1354378100,
+      "full_name": "AI-Ascension/sts2-harness",
+      "default_branch": "main",
+      "archived": false,
+      "visibility": "public",
+      "default_commit": "e5bb677b05b36dd88cc76a5d5b5633be36085838",
+      "topics": {
+        "names": [
+          "ai-ascension",
+          "evaluation-harness",
+          "replay",
+          "rust"
+        ]
+      },
+      "labels": [
+        {
+          "id": 12035542432,
+          "name": "accessibility",
+          "color": "f143ab",
+          "description": "Barrier affecting people with disabilities"
+        },
+        {
+          "id": 12035542453,
+          "name": "bug",
+          "color": "d73a4a",
+          "description": "Something isn't working"
+        },
+        {
+          "id": 12036442528,
+          "name": "contract-observation",
+          "color": "4E6A8F",
+          "description": "An observed behavior of a public contract that the documents should state."
+        },
+        {
+          "id": 12036442895,
+          "name": "defect",
+          "color": "9C5B12",
+          "description": "Behavior or a test that does not match the repository's own documents."
+        },
+        {
+          "id": 12036443046,
+          "name": "docs",
+          "color": "5E564A",
+          "description": "Documentation or public-page clarity."
+        },
+        {
+          "id": 12035542467,
+          "name": "documentation",
+          "color": "0075ca",
+          "description": "Improvements or additions to documentation"
+        },
+        {
+          "id": 12035542480,
+          "name": "duplicate",
+          "color": "cfd3d7",
+          "description": "This issue or pull request already exists"
+        },
+        {
+          "id": 12035542497,
+          "name": "enhancement",
+          "color": "a2eeef",
+          "description": "New feature or request"
+        },
+        {
+          "id": 12036442601,
+          "name": "evidence",
+          "color": "9A7B1C",
+          "description": "A public claim, label, or description that looks wrong, unsupported, or unclear."
+        },
+        {
+          "id": 12036442400,
+          "name": "first-task",
+          "color": "2F7F66",
+          "description": "A bounded first contribution that needs no game, model, or credentials."
+        },
+        {
+          "id": 12035542512,
+          "name": "good first issue",
+          "color": "7057ff",
+          "description": "Good for newcomers"
+        },
+        {
+          "id": 12035542533,
+          "name": "help wanted",
+          "color": "008672",
+          "description": "Extra attention is needed"
+        },
+        {
+          "id": 12035542548,
+          "name": "invalid",
+          "color": "e4e669",
+          "description": "This doesn't seem right"
+        },
+        {
+          "id": 12036442458,
+          "name": "proof-recipe",
+          "color": "9C5B12",
+          "description": "A fixture, runnable check, adapter example, or showcase of a real run."
+        },
+        {
+          "id": 12035542566,
+          "name": "question",
+          "color": "d876e3",
+          "description": "Further information is requested"
+        },
+        {
+          "id": 12036442797,
+          "name": "security",
+          "color": "A8402F",
+          "description": "Security-relevant; details belong in the private channel per SECURITY.md."
+        },
+        {
+          "id": 12036442713,
+          "name": "unverified-claim",
+          "color": "A8402F",
+          "description": "A statement on a public surface whose label may be stronger than its evidence."
+        },
+        {
+          "id": 12036443436,
+          "name": "wedge:mcp",
+          "color": "6F5A94",
+          "description": "AI, MCP, or automation builder path."
+        },
+        {
+          "id": 12036443168,
+          "name": "wedge:player",
+          "color": "6F5A94",
+          "description": "Curious player or observer path."
+        },
+        {
+          "id": 12036443344,
+          "name": "wedge:rust",
+          "color": "6F5A94",
+          "description": "Rust or systems contributor path."
+        },
+        {
+          "id": 12036443562,
+          "name": "wedge:security",
+          "color": "6F5A94",
+          "description": "Maintainer or security operator path."
+        },
+        {
+          "id": 12035542585,
+          "name": "wontfix",
+          "color": "ffffff",
+          "description": "This will not be worked on"
+        }
+      ],
+      "issues": [],
+      "tree": {
+        "truncated": false,
+        "tree": [
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "Cargo.toml",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          }
+        ]
+      },
+      "name": "sts2-harness"
+    },
+    {
+      "id": 1354378136,
+      "full_name": "AI-Ascension/sts2-protocol",
+      "default_branch": "main",
+      "archived": false,
+      "visibility": "public",
+      "default_commit": "6d7fb8591d3d4a4be5a7e4cfb055e81c86a2fc6d",
+      "topics": {
+        "names": [
+          "ai-ascension",
+          "conformance",
+          "protocol",
+          "rust"
+        ]
+      },
+      "labels": [
+        {
+          "id": 12035542899,
+          "name": "accessibility",
+          "color": "f143ab",
+          "description": "Barrier affecting people with disabilities"
+        },
+        {
+          "id": 12035542912,
+          "name": "bug",
+          "color": "d73a4a",
+          "description": "Something isn't working"
+        },
+        {
+          "id": 12036444039,
+          "name": "contract-observation",
+          "color": "4E6A8F",
+          "description": "An observed behavior of a public contract that the documents should state."
+        },
+        {
+          "id": 12036444544,
+          "name": "defect",
+          "color": "9C5B12",
+          "description": "Behavior or a test that does not match the repository's own documents."
+        },
+        {
+          "id": 12044408813,
+          "name": "dependencies",
+          "color": "0366d6",
+          "description": "Pull requests that update a dependency file"
+        },
+        {
+          "id": 12036444686,
+          "name": "docs",
+          "color": "5E564A",
+          "description": "Documentation or public-page clarity."
+        },
+        {
+          "id": 12035542926,
+          "name": "documentation",
+          "color": "0075ca",
+          "description": "Improvements or additions to documentation"
+        },
+        {
+          "id": 12035542939,
+          "name": "duplicate",
+          "color": "cfd3d7",
+          "description": "This issue or pull request already exists"
+        },
+        {
+          "id": 12035542951,
+          "name": "enhancement",
+          "color": "a2eeef",
+          "description": "New feature or request"
+        },
+        {
+          "id": 12036444161,
+          "name": "evidence",
+          "color": "9A7B1C",
+          "description": "A public claim, label, or description that looks wrong, unsupported, or unclear."
+        },
+        {
+          "id": 12036443848,
+          "name": "first-task",
+          "color": "2F7F66",
+          "description": "A bounded first contribution that needs no game, model, or credentials."
+        },
+        {
+          "id": 12035542962,
+          "name": "good first issue",
+          "color": "7057ff",
+          "description": "Good for newcomers"
+        },
+        {
+          "id": 12035542983,
+          "name": "help wanted",
+          "color": "008672",
+          "description": "Extra attention is needed"
+        },
+        {
+          "id": 12035543000,
+          "name": "invalid",
+          "color": "e4e669",
+          "description": "This doesn't seem right"
+        },
+        {
+          "id": 12036443925,
+          "name": "proof-recipe",
+          "color": "9C5B12",
+          "description": "A fixture, runnable check, adapter example, or showcase of a real run."
+        },
+        {
+          "id": 12035543019,
+          "name": "question",
+          "color": "d876e3",
+          "description": "Further information is requested"
+        },
+        {
+          "id": 12044408816,
+          "name": "rust",
+          "color": "000000",
+          "description": "Pull requests that update rust code"
+        },
+        {
+          "id": 12036444353,
+          "name": "security",
+          "color": "A8402F",
+          "description": "Security-relevant; details belong in the private channel per SECURITY.md."
+        },
+        {
+          "id": 12036444247,
+          "name": "unverified-claim",
+          "color": "A8402F",
+          "description": "A statement on a public surface whose label may be stronger than its evidence."
+        },
+        {
+          "id": 12036445049,
+          "name": "wedge:mcp",
+          "color": "6F5A94",
+          "description": "AI, MCP, or automation builder path."
+        },
+        {
+          "id": 12036444806,
+          "name": "wedge:player",
+          "color": "6F5A94",
+          "description": "Curious player or observer path."
+        },
+        {
+          "id": 12036444923,
+          "name": "wedge:rust",
+          "color": "6F5A94",
+          "description": "Rust or systems contributor path."
+        },
+        {
+          "id": 12036445204,
+          "name": "wedge:security",
+          "color": "6F5A94",
+          "description": "Maintainer or security operator path."
+        },
+        {
+          "id": 12035543034,
+          "name": "wontfix",
+          "color": "ffffff",
+          "description": "This will not be worked on"
+        }
+      ],
+      "issues": [
+        {
+          "id": 5329551913,
+          "number": 6,
+          "state": "closed",
+          "labels": [
+            {
+              "id": 12044408813,
+              "name": "dependencies"
+            },
+            {
+              "id": 12044408816,
+              "name": "rust"
+            }
+          ],
+          "pull_request": {}
+        }
+      ],
+      "tree": {
+        "truncated": false,
+        "tree": [
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "schemas/poc-v1.schema.json",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "conformance/cases/neutral-contract-seam.v1.json",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "Cargo.toml",
+            "type": "blob"
+          },
+          {
+            "path": "conformance/cases/neutral-contract-seam.v1.json",
+            "type": "blob"
+          }
+        ]
+      },
+      "name": "sts2-protocol"
+    },
+    {
+      "id": 1354466045,
+      "full_name": "AI-Ascension/.github",
+      "default_branch": "main",
+      "archived": false,
+      "visibility": "public",
+      "default_commit": "049f5018ba09328bf2c7deb12ca3130d881e4022",
+      "topics": {
+        "names": [
+          "ai-ascension",
+          "community-health"
+        ]
+      },
+      "labels": [
+        {
+          "id": 12036427908,
+          "name": "accessibility",
+          "color": "f143ab",
+          "description": "Barrier affecting people with disabilities"
+        },
+        {
+          "id": 12036427925,
+          "name": "bug",
+          "color": "d73a4a",
+          "description": "Something isn't working"
+        },
+        {
+          "id": 12036436584,
+          "name": "contract-observation",
+          "color": "4E6A8F",
+          "description": "An observed behavior of a public contract that the documents should state."
+        },
+        {
+          "id": 12036436893,
+          "name": "defect",
+          "color": "9C5B12",
+          "description": "Behavior or a test that does not match the repository's own documents."
+        },
+        {
+          "id": 12036436967,
+          "name": "docs",
+          "color": "5E564A",
+          "description": "Documentation or public-page clarity."
+        },
+        {
+          "id": 12036427936,
+          "name": "documentation",
+          "color": "0075ca",
+          "description": "Improvements or additions to documentation"
+        },
+        {
+          "id": 12036427949,
+          "name": "duplicate",
+          "color": "cfd3d7",
+          "description": "This issue or pull request already exists"
+        },
+        {
+          "id": 12036427967,
+          "name": "enhancement",
+          "color": "a2eeef",
+          "description": "New feature or request"
+        },
+        {
+          "id": 12036436651,
+          "name": "evidence",
+          "color": "9A7B1C",
+          "description": "A public claim, label, or description that looks wrong, unsupported, or unclear."
+        },
+        {
+          "id": 12036436434,
+          "name": "first-task",
+          "color": "2F7F66",
+          "description": "A bounded first contribution that needs no game, model, or credentials."
+        },
+        {
+          "id": 12036427993,
+          "name": "good first issue",
+          "color": "7057ff",
+          "description": "Good for newcomers"
+        },
+        {
+          "id": 12036428008,
+          "name": "help wanted",
+          "color": "008672",
+          "description": "Extra attention is needed"
+        },
+        {
+          "id": 12036428030,
+          "name": "invalid",
+          "color": "e4e669",
+          "description": "This doesn't seem right"
+        },
+        {
+          "id": 12036436502,
+          "name": "proof-recipe",
+          "color": "9C5B12",
+          "description": "A fixture, runnable check, adapter example, or showcase of a real run."
+        },
+        {
+          "id": 12036428046,
+          "name": "question",
+          "color": "d876e3",
+          "description": "Further information is requested"
+        },
+        {
+          "id": 12036436821,
+          "name": "security",
+          "color": "A8402F",
+          "description": "Security-relevant; details belong in the private channel per SECURITY.md."
+        },
+        {
+          "id": 12036436716,
+          "name": "unverified-claim",
+          "color": "A8402F",
+          "description": "A statement on a public surface whose label may be stronger than its evidence."
+        },
+        {
+          "id": 12036437230,
+          "name": "wedge:mcp",
+          "color": "6F5A94",
+          "description": "AI, MCP, or automation builder path."
+        },
+        {
+          "id": 12036437061,
+          "name": "wedge:player",
+          "color": "6F5A94",
+          "description": "Curious player or observer path."
+        },
+        {
+          "id": 12036437133,
+          "name": "wedge:rust",
+          "color": "6F5A94",
+          "description": "Rust or systems contributor path."
+        },
+        {
+          "id": 12036437333,
+          "name": "wedge:security",
+          "color": "6F5A94",
+          "description": "Maintainer or security operator path."
+        },
+        {
+          "id": 12036428059,
+          "name": "wontfix",
+          "color": "ffffff",
+          "description": "This will not be worked on"
+        }
+      ],
+      "issues": [],
+      "tree": {
+        "truncated": false,
+        "tree": [
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "CONTRIBUTING.md",
+            "type": "blob"
+          },
+          {
+            "path": "CONTRIBUTING.md",
+            "type": "blob"
+          },
+          {
+            "path": "GOVERNANCE.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          }
+        ]
+      },
+      "name": ".github"
+    },
+    {
+      "id": 1354473981,
+      "full_name": "AI-Ascension/AI-Ascension.github.io",
+      "default_branch": "main",
+      "archived": false,
+      "visibility": "public",
+      "default_commit": "1065799de6eea8427ac5ae96e3b9238932ea761f",
+      "topics": {
+        "names": [
+          "ai-ascension",
+          "github-pages",
+          "static-site"
+        ]
+      },
+      "labels": [
+        {
+          "id": 12036512446,
+          "name": "accessibility",
+          "color": "f143ab",
+          "description": "Barrier affecting people with disabilities"
+        },
+        {
+          "id": 12036512458,
+          "name": "bug",
+          "color": "d73a4a",
+          "description": "Something isn't working"
+        },
+        {
+          "id": 12036514615,
+          "name": "contract-observation",
+          "color": "4E6A8F",
+          "description": "An observed behavior of a public contract that the documents should state."
+        },
+        {
+          "id": 12036515009,
+          "name": "defect",
+          "color": "9C5B12",
+          "description": "Behavior or a test that does not match the repository's own documents."
+        },
+        {
+          "id": 12036515130,
+          "name": "docs",
+          "color": "5E564A",
+          "description": "Documentation or public-page clarity."
+        },
+        {
+          "id": 12036512467,
+          "name": "documentation",
+          "color": "0075ca",
+          "description": "Improvements or additions to documentation"
+        },
+        {
+          "id": 12036512478,
+          "name": "duplicate",
+          "color": "cfd3d7",
+          "description": "This issue or pull request already exists"
+        },
+        {
+          "id": 12036512488,
+          "name": "enhancement",
+          "color": "a2eeef",
+          "description": "New feature or request"
+        },
+        {
+          "id": 12036514754,
+          "name": "evidence",
+          "color": "9A7B1C",
+          "description": "A public claim, label, or description that looks wrong, unsupported, or unclear."
+        },
+        {
+          "id": 12036514428,
+          "name": "first-task",
+          "color": "2F7F66",
+          "description": "A bounded first contribution that needs no game, model, or credentials."
+        },
+        {
+          "id": 12036512496,
+          "name": "good first issue",
+          "color": "7057ff",
+          "description": "Good for newcomers"
+        },
+        {
+          "id": 12036512505,
+          "name": "help wanted",
+          "color": "008672",
+          "description": "Extra attention is needed"
+        },
+        {
+          "id": 12036512513,
+          "name": "invalid",
+          "color": "e4e669",
+          "description": "This doesn't seem right"
+        },
+        {
+          "id": 12036514515,
+          "name": "proof-recipe",
+          "color": "9C5B12",
+          "description": "A fixture, runnable check, adapter example, or showcase of a real run."
+        },
+        {
+          "id": 12036512519,
+          "name": "question",
+          "color": "d876e3",
+          "description": "Further information is requested"
+        },
+        {
+          "id": 12036514949,
+          "name": "security",
+          "color": "A8402F",
+          "description": "Security-relevant; details belong in the private channel per SECURITY.md."
+        },
+        {
+          "id": 12036514867,
+          "name": "unverified-claim",
+          "color": "A8402F",
+          "description": "A statement on a public surface whose label may be stronger than its evidence."
+        },
+        {
+          "id": 12036515316,
+          "name": "wedge:mcp",
+          "color": "6F5A94",
+          "description": "AI, MCP, or automation builder path."
+        },
+        {
+          "id": 12036515192,
+          "name": "wedge:player",
+          "color": "6F5A94",
+          "description": "Curious player or observer path."
+        },
+        {
+          "id": 12036515252,
+          "name": "wedge:rust",
+          "color": "6F5A94",
+          "description": "Rust or systems contributor path."
+        },
+        {
+          "id": 12036515386,
+          "name": "wedge:security",
+          "color": "6F5A94",
+          "description": "Maintainer or security operator path."
+        },
+        {
+          "id": 12036512525,
+          "name": "wontfix",
+          "color": "ffffff",
+          "description": "This will not be worked on"
+        }
+      ],
+      "issues": [
+        {
+          "id": 5321359320,
+          "number": 2,
+          "state": "closed",
+          "labels": [
+            {
+              "id": 12036514428,
+              "name": "first-task"
+            },
+            {
+              "id": 12036514515,
+              "name": "proof-recipe"
+            },
+            {
+              "id": 12036515316,
+              "name": "wedge:mcp"
+            }
+          ]
+        },
+        {
+          "id": 5321359147,
+          "number": 1,
+          "state": "closed",
+          "labels": [
+            {
+              "id": 12036514428,
+              "name": "first-task"
+            },
+            {
+              "id": 12036514515,
+              "name": "proof-recipe"
+            },
+            {
+              "id": 12036515252,
+              "name": "wedge:rust"
+            }
+          ]
+        }
+      ],
+      "tree": {
+        "truncated": false,
+        "tree": [
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": ".github/workflows/pages.yml",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          }
+        ]
+      },
+      "name": "AI-Ascension.github.io"
+    },
+    {
+      "id": 1357224960,
+      "full_name": "AI-Ascension/ai-agent-observability",
+      "default_branch": "main",
+      "archived": false,
+      "visibility": "public",
+      "default_commit": "28a48590afb75b07590e1b78ea47dae08f5c3ade",
+      "topics": {
+        "names": []
+      },
+      "labels": [
+        {
+          "id": 12064223014,
+          "name": "accessibility",
+          "color": "f143ab",
+          "description": "Barrier affecting people with disabilities"
+        },
+        {
+          "id": 12064223046,
+          "name": "bug",
+          "color": "d73a4a",
+          "description": "Something isn't working"
+        },
+        {
+          "id": 12074363319,
+          "name": "contract-observation",
+          "color": "4E6A8F",
+          "description": "An observed behavior of a public contract that the documents should state."
+        },
+        {
+          "id": 12074363572,
+          "name": "defect",
+          "color": "9C5B12",
+          "description": "Behavior or a test that does not match the repository's own documents."
+        },
+        {
+          "id": 12074363622,
+          "name": "docs",
+          "color": "5E564A",
+          "description": "Documentation or public-page clarity."
+        },
+        {
+          "id": 12064223062,
+          "name": "documentation",
+          "color": "0075ca",
+          "description": "Improvements or additions to documentation"
+        },
+        {
+          "id": 12064223077,
+          "name": "duplicate",
+          "color": "cfd3d7",
+          "description": "This issue or pull request already exists"
+        },
+        {
+          "id": 12064223092,
+          "name": "enhancement",
+          "color": "a2eeef",
+          "description": "New feature or request"
+        },
+        {
+          "id": 12074363379,
+          "name": "evidence",
+          "color": "9A7B1C",
+          "description": "A public claim, label, or description that looks wrong, unsupported, or unclear."
+        },
+        {
+          "id": 12074363205,
+          "name": "first-task",
+          "color": "2F7F66",
+          "description": "A bounded first contribution that needs no game, model, or credentials."
+        },
+        {
+          "id": 12064223104,
+          "name": "good first issue",
+          "color": "7057ff",
+          "description": "Good for newcomers"
+        },
+        {
+          "id": 12064223118,
+          "name": "help wanted",
+          "color": "008672",
+          "description": "Extra attention is needed"
+        },
+        {
+          "id": 12064223131,
+          "name": "invalid",
+          "color": "e4e669",
+          "description": "This doesn't seem right"
+        },
+        {
+          "id": 12074363263,
+          "name": "proof-recipe",
+          "color": "9C5B12",
+          "description": "A fixture, runnable check, adapter example, or showcase of a real run."
+        },
+        {
+          "id": 12064223152,
+          "name": "question",
+          "color": "d876e3",
+          "description": "Further information is requested"
+        },
+        {
+          "id": 12074363500,
+          "name": "security",
+          "color": "A8402F",
+          "description": "Security-relevant; details belong in the private channel per SECURITY.md."
+        },
+        {
+          "id": 12074363439,
+          "name": "unverified-claim",
+          "color": "A8402F",
+          "description": "A statement on a public surface whose label may be stronger than its evidence."
+        },
+        {
+          "id": 12074363763,
+          "name": "wedge:mcp",
+          "color": "6F5A94",
+          "description": "AI, MCP, or automation builder path."
+        },
+        {
+          "id": 12074363666,
+          "name": "wedge:player",
+          "color": "6F5A94",
+          "description": "Curious player or observer path."
+        },
+        {
+          "id": 12074363702,
+          "name": "wedge:rust",
+          "color": "6F5A94",
+          "description": "Rust or systems contributor path."
+        },
+        {
+          "id": 12074363830,
+          "name": "wedge:security",
+          "color": "6F5A94",
+          "description": "Maintainer or security operator path."
+        },
+        {
+          "id": 12064223165,
+          "name": "wontfix",
+          "color": "ffffff",
+          "description": "This will not be worked on"
+        }
+      ],
+      "issues": [],
+      "tree": {
+        "truncated": false,
+        "tree": [
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          }
+        ]
+      },
+      "name": "ai-agent-observability"
+    },
+    {
+      "id": 1359537708,
+      "full_name": "AI-Ascension/ascension-watchdog",
+      "default_branch": "bootstrap",
+      "archived": false,
+      "visibility": "public",
+      "default_commit": "bc8ebf2054d2e3d2d74c1c7e5f775ae01952215d",
+      "topics": {
+        "names": []
+      },
+      "labels": [
+        {
+          "id": 12087461883,
+          "name": "accessibility",
+          "color": "f143ab",
+          "description": "Barrier affecting people with disabilities"
+        },
+        {
+          "id": 12087461895,
+          "name": "bug",
+          "color": "d73a4a",
+          "description": "Something isn't working"
+        },
+        {
+          "id": 12102388666,
+          "name": "contract-observation",
+          "color": "4E6A8F",
+          "description": "An observed behavior of a public contract that the documents should state."
+        },
+        {
+          "id": 12102388998,
+          "name": "defect",
+          "color": "9C5B12",
+          "description": "Behavior or a test that does not match the repository's own documents."
+        },
+        {
+          "id": 12102389075,
+          "name": "docs",
+          "color": "5E564A",
+          "description": "Documentation or public-page clarity."
+        },
+        {
+          "id": 12087461906,
+          "name": "documentation",
+          "color": "0075ca",
+          "description": "Improvements or additions to documentation"
+        },
+        {
+          "id": 12087461913,
+          "name": "duplicate",
+          "color": "cfd3d7",
+          "description": "This issue or pull request already exists"
+        },
+        {
+          "id": 12087461927,
+          "name": "enhancement",
+          "color": "a2eeef",
+          "description": "New feature or request"
+        },
+        {
+          "id": 12102388759,
+          "name": "evidence",
+          "color": "9A7B1C",
+          "description": "A public claim, label, or description that looks wrong, unsupported, or unclear."
+        },
+        {
+          "id": 12102388515,
+          "name": "first-task",
+          "color": "2F7F66",
+          "description": "A bounded first contribution that needs no game, model, or credentials."
+        },
+        {
+          "id": 12087461935,
+          "name": "good first issue",
+          "color": "7057ff",
+          "description": "Good for newcomers"
+        },
+        {
+          "id": 12087461941,
+          "name": "help wanted",
+          "color": "008672",
+          "description": "Extra attention is needed"
+        },
+        {
+          "id": 12087461946,
+          "name": "invalid",
+          "color": "e4e669",
+          "description": "This doesn't seem right"
+        },
+        {
+          "id": 12102388599,
+          "name": "proof-recipe",
+          "color": "9C5B12",
+          "description": "A fixture, runnable check, adapter example, or showcase of a real run."
+        },
+        {
+          "id": 12087461955,
+          "name": "question",
+          "color": "d876e3",
+          "description": "Further information is requested"
+        },
+        {
+          "id": 12102388922,
+          "name": "security",
+          "color": "A8402F",
+          "description": "Security-relevant; details belong in the private channel per SECURITY.md."
+        },
+        {
+          "id": 12102388843,
+          "name": "unverified-claim",
+          "color": "A8402F",
+          "description": "A statement on a public surface whose label may be stronger than its evidence."
+        },
+        {
+          "id": 12102389259,
+          "name": "wedge:mcp",
+          "color": "6F5A94",
+          "description": "AI, MCP, or automation builder path."
+        },
+        {
+          "id": 12102389129,
+          "name": "wedge:player",
+          "color": "6F5A94",
+          "description": "Curious player or observer path."
+        },
+        {
+          "id": 12102389179,
+          "name": "wedge:rust",
+          "color": "6F5A94",
+          "description": "Rust or systems contributor path."
+        },
+        {
+          "id": 12102389308,
+          "name": "wedge:security",
+          "color": "6F5A94",
+          "description": "Maintainer or security operator path."
+        },
+        {
+          "id": 12087461961,
+          "name": "wontfix",
+          "color": "ffffff",
+          "description": "This will not be worked on"
+        }
+      ],
+      "issues": [],
+      "tree": {
+        "truncated": false,
+        "tree": [
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          },
+          {
+            "path": "README.md",
+            "type": "blob"
+          }
+        ]
+      },
+      "name": "ascension-watchdog"
+    },
+    {
+      "id": 1359701124,
+      "full_name": "AI-Ascension/ascension-map-visualizer",
+      "default_branch": "bootstrap",
+      "archived": false,
+      "visibility": "public",
+      "default_commit": "9aded88629436497d22b9e6bb7590d0ec8ae5815",
+      "topics": {
+        "names": []
+      },
+      "labels": [
+        {
+          "id": 12089107586,
+          "name": "accessibility",
+          "color": "f143ab",
+          "description": "Barrier affecting people with disabilities"
+        },
+        {
+          "id": 12089107603,
+          "name": "bug",
+          "color": "d73a4a",
+          "description": "Something isn't working"
+        },
+        {
+          "id": 12102387926,
+          "name": "contract-observation",
+          "color": "4E6A8F",
+          "description": "An observed behavior of a public contract that the documents should state."
+        },
+        {
+          "id": 12102388098,
+          "name": "defect",
+          "color": "9C5B12",
+          "description": "Behavior or a test that does not match the repository's own documents."
+        },
+        {
+          "id": 12102388164,
+          "name": "docs",
+          "color": "5E564A",
+          "description": "Documentation or public-page clarity."
+        },
+        {
+          "id": 12089107620,
+          "name": "documentation",
+          "color": "0075ca",
+          "description": "Improvements or additions to documentation"
+        },
+        {
+          "id": 12089107634,
+          "name": "duplicate",
+          "color": "cfd3d7",
+          "description": "This issue or pull request already exists"
+        },
+        {
+          "id": 12089107647,
+          "name": "enhancement",
+          "color": "a2eeef",
+          "description": "New feature or request"
+        },
+        {
+          "id": 12102387975,
+          "name": "evidence",
+          "color": "9A7B1C",
+          "description": "A public claim, label, or description that looks wrong, unsupported, or unclear."
+        },
+        {
+          "id": 12102387792,
+          "name": "first-task",
+          "color": "2F7F66",
+          "description": "A bounded first contribution that needs no game, model, or credentials."
+        },
+        {
+          "id": 12089107660,
+          "name": "good first issue",
+          "color": "7057ff",
+          "description": "Good for newcomers"
+        },
+        {
+          "id": 12089107670,
+          "name": "help wanted",
+          "color": "008672",
+          "description": "Extra attention is needed"
+        },
+        {
+          "id": 12089107683,
+          "name": "invalid",
+          "color": "e4e669",
+          "description": "This doesn't seem right"
+        },
+        {
+          "id": 12102387851,
+          "name": "proof-recipe",
+          "color": "9C5B12",
+          "description": "A fixture, runnable check, adapter example, or showcase of a real run."
+        },
+        {
+          "id": 12089107693,
+          "name": "question",
+          "color": "d876e3",
+          "description": "Further information is requested"
+        },
+        {
+          "id": 12102388073,
+          "name": "security",
+          "color": "A8402F",
+          "description": "Security-relevant; details belong in the private channel per SECURITY.md."
+        },
+        {
+          "id": 12102388032,
+          "name": "unverified-claim",
+          "color": "A8402F",
+          "description": "A statement on a public surface whose label may be stronger than its evidence."
+        },
+        {
+          "id": 12102388403,
+          "name": "wedge:mcp",
+          "color": "6F5A94",
+          "description": "AI, MCP, or automation builder path."
+        },
+        {
+          "id": 12102388235,
+          "name": "wedge:player",
+          "color": "6F5A94",
+          "description": "Curious player or observer path."
+        },
+        {
+          "id": 12102388317,
+          "name": "wedge:rust",
+          "color": "6F5A94",
+          "description": "Rust or systems contributor path."
+        },
+        {
+          "id": 12102388467,
+          "name": "wedge:security",
+          "color": "6F5A94",
+          "description": "Maintainer or security operator path."
+        },
+        {
+          "id": 12089107705,
+          "name": "wontfix",
+          "color": "ffffff",
+          "description": "This will not be worked on"
+        }
+      ],
+      "issues": [],
+      "tree": {
+        "truncated": false,
+        "tree": [
+          {
+            "path": "prompts/ASCENSION_MAP_VISUALIZER_ORCHESTRATION_PROMPT.md",
+            "type": "blob"
+          },
+          {
+            "path": "prompts/ASCENSION_MAP_VISUALIZER_ORCHESTRATION_PROMPT.md",
+            "type": "blob"
+          },
+          {
+            "path": "prompts/ASCENSION_MAP_VISUALIZER_ORCHESTRATION_PROMPT.md",
+            "type": "blob"
+          },
+          {
+            "path": "prompts/ASCENSION_MAP_VISUALIZER_ORCHESTRATION_PROMPT.md",
+            "type": "blob"
+          },
+          {
+            "path": "AGENTS.md",
+            "type": "blob"
+          }
+        ]
+      },
+      "name": "ascension-map-visualizer"
+    }
+  ]
+}

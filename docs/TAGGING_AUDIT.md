@@ -1,5 +1,11 @@
 # Tagging preparation audit
 
+## Current preparation — 2026-09-08
+
+The implementation PRs are merged. The [refreshed rollout review](../metadata/audits/2026-09-08/README.md) supersedes the dated preparation status below. Fresh source/metadata inspection selects 11 public targets, holds one historical target out after visibility drift, and records one additional private exclusion outside Git. No live metadata application is authorized or performed. The owner must select the canary and approve its exact fresh digest; publication and merge are separate from application.
+
+## Historical preparation — 2026-09-07
+
 The supplied tagging specification is reconciled into a candidate for 12 public repositories. Nothing has been published or applied. Independent technical review passed for the source map and corrected execution logic; external authorization is absent. Both regenerated plans pass the technical review gate, and the CLI still requires actual owner/operator authorization before any write.
 
 The [topic reconciliation](../metadata/audits/2026-09-07/topic-reconciliation.md) records all complete before/after topic sets. The canonical map contains 89 evidence-backed topic entries pinned to default-branch commits. Every existing topic is retained. Planning repositories remain identified as planning. No repository description or role statement is rewritten.
