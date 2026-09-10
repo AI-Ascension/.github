@@ -1176,3 +1176,55 @@ source/component evidence only: no live two-peer action, vote convergence, share
 checksum settlement, or disconnect/rejoin recovery is recorded, and `live_status` remains
 `unverified`. The v0.4.1 source-only release, current observability head, and runtime, provider,
 Workshop, and platform-support limits recorded above remain unchanged.
+
+## Latest native artifact successor — 2026-09-10, 22:27 UTC (protocol PR #38)
+
+This `confirmed` source-only artifact refresh follows protocol PR [#38](https://github.com/AI-Ascension/sts2-protocol/pull/38),
+which merged at `2026-09-10T22:24:58Z`. Protocol `main` is now
+[`f22dd721`](https://github.com/AI-Ascension/sts2-protocol/commit/f22dd7216f65de91a0ffa27f50bc2036be6c8b24)
+with tree [`0e053e68`](https://github.com/AI-Ascension/sts2-protocol/tree/0e053e68d7e2e7411bd77dfe696e0afa859341); its
+[CI 34537328660](https://github.com/AI-Ascension/sts2-protocol/actions/runs/34537328660) and
+[policy 34537328616](https://github.com/AI-Ascension/sts2-protocol/actions/runs/34537328616)
+passed. This successor supersedes the 22:04 UTC artifact identity above while preserving the
+live-runtime boundary.
+
+| Artifact role | Reviewed source commit | Reviewed source tree |
+| --- | --- | --- |
+| Protocol artifact | [`f22dd721`](https://github.com/AI-Ascension/sts2-protocol/commit/f22dd7216f65de91a0ffa27f50bc2036be6c8b24) | [`0e053e68`](https://github.com/AI-Ascension/sts2-protocol/tree/0e053e68d7e2e7411bd77dfe696e0afa859341) |
+| Producer capture input | [`d23ca838`](https://github.com/AI-Ascension/sts2-game-mod/commit/d23ca838a7be875f32242123955b4a27782bac04) | [`23336ca8`](https://github.com/AI-Ascension/sts2-game-mod/tree/23336ca834b5870d15ee6369c101d5c67ff34caf) |
+| Producer current `main` | [`888b067`](https://github.com/AI-Ascension/sts2-game-mod/commit/888b06702021cd2bbd22773b0267733766c3b04) | [`1fec63ba`](https://github.com/AI-Ascension/sts2-game-mod/tree/1fec63bade6f1f4942fb682782ffe107e6230630) |
+| Gateway consumer | [`c8be3a72`](https://github.com/AI-Ascension/sts2-gateway/commit/c8be3a72ba9e304392575a1b2bdbc262e392be21) | [`69b9dc22`](https://github.com/AI-Ascension/sts2-gateway/tree/69b9dc229237fe5db7b7e33461e5e7f89f028ee9) |
+| MCP consumer | [`037d10de`](https://github.com/AI-Ascension/sts2-mcp-server/commit/037d10def1cbcb1c807e136d31b294355a92c010) | [`53013a3f`](https://github.com/AI-Ascension/sts2-mcp-server/tree/53013a3f1b4871129d59198eb90c2499f8557bee) |
+| Harness consumer | [`63dc5636`](https://github.com/AI-Ascension/sts2-harness/commit/63dc563690c93c575e75228f54672c1689d8a879) | [`575a84cc`](https://github.com/AI-Ascension/sts2-harness/tree/575a84ccc7c0cef7c73f34759c5cb6563b0d0433) |
+
+The protocol artifact's conformance record binds the producer capture input
+[`d23ca838`](https://github.com/AI-Ascension/sts2-game-mod/commit/d23ca838a7be875f32242123955b4a27782bac04)
+and the exact gateway, MCP, and harness identities above. The current game-mod `main` is
+[`888b067`](https://github.com/AI-Ascension/sts2-game-mod/commit/888b06702021cd2bbd22773b0267733766c3b04)
+ / tree [`1fec63ba`](https://github.com/AI-Ascension/sts2-game-mod/tree/1fec63bade6f1f4942fb682782ffe107e6230630);
+game-mod PR [#65](https://github.com/AI-Ascension/sts2-game-mod/pull/65) updated `sha2` to 0.11.0
+and its digest helpers, with [CI 34535163545](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/34535163545)
+and [policy 34535163507](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/34535163507) passed.
+That current head is recorded separately from the capture input.
+
+The fresh producer capture [`coop-native-source-only-20260910-r7`](https://github.com/AI-Ascension/sts2-protocol/blob/f22dd7216f65de91a0ffa27f50bc2036be6c8b24/artifacts/coop-native-v1/producer-capture.json)
+remains unchanged: it was captured at `2026-09-10T21:39:58Z`, has `wrapper_count: 9` and
+`projection_match: true`, and retains schema digest
+`2f3bc99e53080fa11b39592b64fb0ab964a16f568719a2622d0b2caf766ab629`. The refreshed
+consumer-conformance record reports `component_serialized_conformance` /
+`source_to_consumer: pass` for the exact producer, gateway, MCP, and harness identities above.
+
+Harness PR [#53](https://github.com/AI-Ascension/sts2-harness/pull/53) added runtime-v4 expert
+catalog/composition/transport coverage and corrected runtime-v3 recovery fixtures; its
+[PR CI 34536315640](https://github.com/AI-Ascension/sts2-harness/actions/runs/34536315640) and
+[PR policy 34536315601](https://github.com/AI-Ascension/sts2-harness/actions/runs/34536315601) passed,
+as did the merged main [CI 34536555216](https://github.com/AI-Ascension/sts2-harness/actions/runs/34536555216)
+and [policy 34536555229](https://github.com/AI-Ascension/sts2-harness/actions/runs/34536555229).
+The protocol refresh records that PR #53 changed no `coop-native` wire or serialization files,
+so no producer recapture was needed.
+
+The capture uses a synthetic `CapturePort` and records `native_session_executed: false`.
+It is source/component evidence only: no live two-peer action, vote convergence, shared effect,
+native checksum settlement, or disconnect/rejoin recovery is recorded, and `live_status` remains
+`unverified`. The v0.4.1 source-only release, current observability head, and runtime, provider,
+Workshop, and platform-support limits recorded above remain unchanged.
