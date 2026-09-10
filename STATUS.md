@@ -285,6 +285,13 @@ recorded refresh time. The separately documented acceptance gates remain partial
 campaign, Linux preflight, co-op actuation, observability, Workshop lifecycle, deployment, and
 release boundaries unresolved.
 
+This documentation correction pass opened draft PRs from the reviewed current heads: protocol #29
+at `0451578c`, MCP #35 at `bc922d11`, harness #48 at `abac06e2`, game-mod #67 at `dd5fb4ef`,
+gateway #32 at `322bfb34`, public site #15 at `1e5dd2c7`, and organization #15 at `8d7d9720`.
+They contain documentation-only updates and remain separate from product runtime, host, provider,
+deployment, release, and gameplay acceptance. Their checks and merge state must be re-queried before
+any merge or publication claim.
+
 The admitted `coop-synchronization-v1` profile is a read-only gateway/MCP coordinator-report
 contract. It carries no action, vote, shared-effect, or host-game authority. The preserved
 `coop-gameplay-v1` action/vote/effect proposal remains unadmitted, and the current source records
