@@ -287,7 +287,7 @@ release boundaries unresolved.
 
 This documentation correction pass opened draft PRs from the reviewed current heads: protocol #29
 at `0451578c`, MCP #35 at `bc922d11`, harness #48 at `abac06e2`, game-mod #67 at `dd5fb4ef`,
-gateway #32 at `322bfb34`, public site #15 at `1e5dd2c7`, and organization #15 at `d614708f`.
+gateway #32 at `322bfb34`, public site #15 at `1e5dd2c7`, and organization #15 at `278b4dfd`.
 They contain documentation-only updates and remain separate from product runtime, host, provider,
 deployment, release, and gameplay acceptance. Their checks and merge state must be re-queried before
 any merge or publication claim.
