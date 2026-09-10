@@ -143,3 +143,21 @@ The requery confirms the documentation merges at `.github` `8336899bb0a154055691
 and site `2ae456c6395c1e62395f79db7f42dc3712a6ab3c`. Native host loading, provider settlement,
 terminal gameplay, native co-op actions and recovery, observability persistence, Workshop lifecycle,
 deployment, and release remain unverified.
+
+## Latest default-main source boundary — 2026-09-10, 03:11 UTC
+
+A read-only GitHub API requery ran from `2026-09-10T03:11:42Z` through `2026-09-10T03:11:44Z` after site PR18 merged. It recorded the nine current default-main heads and 31 open PRs; the [status record](https://github.com/AI-Ascension/.github/blob/main/STATUS.md) contains the exact PR heads, draft/ready states, merge states, and check conclusions. These source records remain separate from native host, provider, gameplay, observability, deployment, Workshop, and release acceptance.
+
+| Repository | Current `main` head | Source/component scope |
+| --- | --- | --- |
+| [`sts2-game-core`](https://github.com/AI-Ascension/sts2-game-core/commit/87e0f3d9355c0827e989d9fbc31804440852519b) | `87e0f3d9355c` | Host-independent semantics and tests. |
+| [`sts2-game-mod`](https://github.com/AI-Ascension/sts2-game-mod/commit/caae865986d2274736d92b4f9be2bbda24bab83d) | `caae865986d2` | Merged seeded-run adapter and Runtime-v4 source/component paths; native expert gameplay, installation, and settlement remain unverified. |
+| [`sts2-gateway`](https://github.com/AI-Ascension/sts2-gateway/commit/2b44bf347f790509c9f13378c89719d09366d45b) | `2b44bf347f79` | Merged seeded-run boundary and Runtime-v4 routes; host settlement and deployment remain unverified. |
+| [`sts2-mcp-server`](https://github.com/AI-Ascension/sts2-mcp-server/commit/b5a9262f1c76da76ea6f84fca0f1ee821ff67001) | `b5a9262f1c76` | Merged seeded-run profile and Runtime-v4 mapping; native MCP-to-game settlement remains unverified. |
+| [`sts2-harness`](https://github.com/AI-Ascension/sts2-harness/commit/3926e5a30ab569612e67d2dfdc6542f1391e95d7) | `3926e5a30ab5` | Merged seeded-run transport and PR41 source; provider, native, host-restart, and gameplay settlement remain unverified. |
+| [`sts2-protocol`](https://github.com/AI-Ascension/sts2-protocol/commit/d3ab5fca7d9d74bb31eeb3e5b343d8024ee44404) | `d3ab5fca7d9d` | Merged seeded-run selection context and Runtime-v4 schemas, artifacts, validators, and conformance cases. |
+| [`ai-agent-observability`](https://github.com/AI-Ascension/ai-agent-observability/commit/28a48590afb75b07590e1b78ea47dae08f5c3ade) | `28a48590afb7` | Source topology and deployment tooling; current-main gameplay ingestion, persistence, and two-backend correlation remain unverified. |
+| [`.github`](https://github.com/AI-Ascension/.github/commit/f948584281f29b4adb1dc0178036d85237b37e20) | `f948584281f2` | Governance and acceptance status records at this capture; no metadata, deployment, or release change is implied. |
+| [`AI-Ascension.github.io`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/d5a11452334aab87dfb63986b8c5fe01c9d619b0) | `d5a11452334a` | Merged PR18 static evidence and repository pages; Pages deployment and runtime evidence remain unverified. |
+
+The release boundary remains unverified: current source and checks do not establish a final installable artifact, host loading, Workshop lifecycle, or public release. The observability boundary remains unverified: current-main source and tooling do not establish gameplay ingestion, persistence, or correlation in both backends. Site PR18 is merged at [`d5a1145`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/d5a11452334aab87dfb63986b8c5fe01c9d619b0).
