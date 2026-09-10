@@ -420,3 +420,29 @@ until refreshed.
 The source-only capture uses a synthetic `CapturePort` and does not execute a native session.
 Live two-peer action, vote, effect, checksum, and disconnect/rejoin recovery remain unverified;
 the v0.4.1 release and current observability/runtime limits remain unchanged.
+
+## Latest native artifact successor — 2026-09-10, 22:04 UTC (protocol PR #36)
+
+Protocol PR [#36](https://github.com/AI-Ascension/sts2-protocol/pull/36) merged at
+`2026-09-10T22:02:17Z`. The current protocol artifact is
+[`b1d1a86a`](https://github.com/AI-Ascension/sts2-protocol/commit/b1d1a86a91af0fd14b7906d2d0d183a093a2e618)
+/ tree [`57478028`](https://github.com/AI-Ascension/sts2-protocol/tree/574780284a1543b4dea76ceb9481c3ce4edabf51), with
+[CI 34535371482](https://github.com/AI-Ascension/sts2-protocol/actions/runs/34535371482) and
+[policy 34535371517](https://github.com/AI-Ascension/sts2-protocol/actions/runs/34535371517)
+passed. This successor supersedes the 21:53 UTC artifact record.
+
+The fresh source-only capture
+[`coop-native-source-only-20260910-r7`](https://github.com/AI-Ascension/sts2-protocol/blob/b1d1a86a91af0fd14b7906d2d0d183a093a2e618/artifacts/coop-native-v1/producer-capture.json)
+remains unchanged: it was captured at `2026-09-10T21:39:58Z`, contains 9 serialized wrapper captures
+with projection matches, and retains schema digest
+`2f3bc99e53080fa11b39592b64fb0ab964a16f568719a2622d0b2caf766ab629`. The refreshed conformance
+record binds producer `sts2-game-mod` `d23ca838` / tree `23336ca8`, gateway `c8be3a72` / `69b9dc22`,
+MCP `037d10de` / `53013a3f`, and current harness `d23b490` / `8dd448e2`, with
+`component_serialized_conformance` and `source_to_consumer: pass`.
+
+Protocol PR #36 pins current harness `main` at `d23b490` / `8dd448e2`; its dependency-only `sha2`
+0.10.9 to 0.11.0 digest API migration leaves the `coop-native` wire and serialization semantics
+unchanged, so no producer recapture was needed. The source-only capture uses a synthetic `CapturePort`
+and does not execute a native session. Live two-peer action, vote, effect, checksum, and
+disconnect/rejoin recovery remain unverified; the v0.4.1 release and current observability/runtime
+limits remain unchanged.
