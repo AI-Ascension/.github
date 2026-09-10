@@ -32,7 +32,7 @@ effects, provider execution, deployment, or release.
 | [`sts2-game-mod`](https://github.com/AI-Ascension/sts2-game-mod/commit/d8b46bccbee9eff108efdab9c8fc9b27dbf2c034) | `d8b46bcc` | Runtime-v4 expert state/action bridge and bounded synthetic route/admission checks; native expert gameplay and settlement remain unverified. |
 | [`sts2-gateway`](https://github.com/AI-Ascension/sts2-gateway/commit/434d8c77fb01895e90c741609e3d2a0ad0e9e8b8) | `434d8c77` | Runtime-v4 expert routes, bounded map route, and copied artifacts; host settlement and deployment remain unverified. |
 | [`sts2-mcp-server`](https://github.com/AI-Ascension/sts2-mcp-server/commit/3b6d71fe9642d27717ca6cfa07b5342b914c044c) | `3b6d71fe` | Runtime-v4 expert mapping and merged REST selector recovery; native MCP-to-game settlement remains unverified. |
-| [`sts2-harness`](https://github.com/AI-Ascension/sts2-harness/commit/ee28096dc722b1e9ef466fc966a79a3422f56ecc) | `ee28096d` | Expert composition, recovery, and bounded synthetic checks; provider, native, host-restart, and gameplay settlement remain unverified. |
+| [`sts2-harness`](https://github.com/AI-Ascension/sts2-harness/commit/b8c50c87db0275f0e08d69892f1ebce275f4acb6) | `b8c50c8` | Expert composition, recovery, and bounded synthetic checks; provider, native, host-restart, and gameplay settlement remain unverified. |
 
 The current source records are component evidence. The separate `coop-synchronization-v1` profile is
 a read-only gateway/MCP coordinator-report contract; it carries no action, vote, shared-effect, or

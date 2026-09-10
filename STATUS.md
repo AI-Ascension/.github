@@ -273,7 +273,7 @@ provider execution, deployment, release, or general compatibility.
 | `sts2-game-mod` | `main` | [`d8b46bcc`](https://github.com/AI-Ascension/sts2-game-mod/commit/d8b46bccbee9eff108efdab9c8fc9b27dbf2c034) | Runtime-v4 expert state/action bridge and bounded synthetic route/admission checks; live expert gameplay and settlement remain unverified. |
 | `sts2-gateway` | `main` | [`434d8c77`](https://github.com/AI-Ascension/sts2-gateway/commit/434d8c77fb01895e90c741609e3d2a0ad0e9e8b8) | Runtime-v4 expert routes, bounded map route, and copied artifacts; host settlement and deployment remain unverified. |
 | `sts2-mcp-server` | `main` | [`3b6d71fe`](https://github.com/AI-Ascension/sts2-mcp-server/commit/3b6d71fe9642d27717ca6cfa07b5342b914c044c) | Runtime-v4 expert mapping and merged REST selector recovery; native MCP-to-game settlement remains unverified. |
-| `sts2-harness` | `main` | [`ee28096d`](https://github.com/AI-Ascension/sts2-harness/commit/ee28096dc722b1e9ef466fc966a79a3422f56ecc) | Expert composition, recovery, and bounded synthetic checks; provider and gameplay settlement remain unverified. |
+| `sts2-harness` | `main` | [`b8c50c8`](https://github.com/AI-Ascension/sts2-harness/commit/b8c50c87db0275f0e08d69892f1ebce275f4acb6) | Expert composition, recovery, and bounded synthetic checks; provider and gameplay settlement remain unverified. |
 | `ai-agent-observability` | `main` | [`28a48590`](https://github.com/AI-Ascension/ai-agent-observability/commit/28a48590afb75b07590e1b78ea47dae08f5c3ade) | Source topology only; current-main gameplay ingestion, persistence, and two-backend correlation remain unverified. |
 | `.github` | `main` | [`dbdc1f19`](https://github.com/AI-Ascension/.github/commit/dbdc1f19b623a5bfe67ab86a8e986b07201c85ca) | Status, profile, and shared policy records; this supplement does not authorize metadata, deployment, or release changes. |
 | `AI-Ascension.github.io` | `main` | [`1065799d`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/1065799de6eea8427ac5ae96e3b9238932ea761f) | Static evidence and repository pages; site source does not establish deployment or runtime evidence. |
@@ -287,7 +287,7 @@ release boundaries unresolved.
 
 This documentation correction pass opened draft PRs from the reviewed current heads: protocol #29
 at `0451578c`, MCP #35 at `bc922d11`, harness #48 at `abac06e2`, game-mod #67 at `dd5fb4ef`,
-gateway #32 at `322bfb34`, public site #15 at `1e5dd2c7`, and organization #15 at `8d7d9720`.
+gateway #32 at `322bfb34`, public site #15 at `1e5dd2c7`, and organization #15 at `d614708f`.
 They contain documentation-only updates and remain separate from product runtime, host, provider,
 deployment, release, and gameplay acceptance. Their checks and merge state must be re-queried before
 any merge or publication claim.
