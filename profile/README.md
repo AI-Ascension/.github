@@ -498,3 +498,21 @@ It is source/component evidence only: no live two-peer action, vote convergence,
 native checksum settlement, or disconnect/rejoin recovery is recorded, and `live_status` remains
 `unverified`. The v0.4.1 source-only release, current observability head, and runtime, provider,
 Workshop, and platform-support limits recorded above remain unchanged.
+
+
+## Current source-head successor — 2026-09-10, 23:48 UTC
+
+After the 22:27 UTC native artifact snapshot, two bounded source changes merged on the current
+default branches:
+
+| Repository | Current `main` commit | Current tree | Merge and completed checks | Scope |
+| --- | --- | --- | --- | --- |
+| `sts2-gateway` | [`8ba5521c`](https://github.com/AI-Ascension/sts2-gateway/commit/8ba5521c2ec8f158d437a7104567592703e53259) | [`afb63ec0`](https://github.com/AI-Ascension/sts2-gateway/tree/afb63ec02ffb6af335dd604e0d4ac82066253dd3) | PR [#34](https://github.com/AI-Ascension/sts2-gateway/pull/34); CI [34543637424](https://github.com/AI-Ascension/sts2-gateway/actions/runs/34543637424) and policy [34543637382](https://github.com/AI-Ascension/sts2-gateway/actions/runs/34543637382) passed | Persisted host-install rows stay historical until a fresh in-memory host grant is acknowledged; restart regression coverage |
+| `sts2-harness` | [`a0ace671`](https://github.com/AI-Ascension/sts2-harness/commit/a0ace6712686cb30d6f0b556cb6814ad4c0721d1) | [`ece08dbf`](https://github.com/AI-Ascension/sts2-harness/tree/ece08dbfdd989f8b22c4520fe64554b5a4026a9d) | PR [#66](https://github.com/AI-Ascension/sts2-harness/pull/66); CI [34542788897](https://github.com/AI-Ascension/sts2-harness/actions/runs/34542788897) and policy [34542788865](https://github.com/AI-Ascension/sts2-harness/actions/runs/34542788865) passed | Authenticated native worker endpoint and durable admission/recovery checks |
+
+The accepted protocol artifact remains the exact source/component record at protocol
+[`f22dd721`](https://github.com/AI-Ascension/sts2-protocol/commit/f22dd7216f65de91a0ffa27f50bc2036be6c8b24);
+its conformance file is bound to gateway `c8be3a72` and harness `63dc5636`. The later gateway
+and harness changes are recorded as current source heads and were not silently substituted into
+that artifact. No live host install, two-peer native action, shared vote/effect settlement,
+disconnect/rejoin recovery, or model-played victory is established by these source checks.
