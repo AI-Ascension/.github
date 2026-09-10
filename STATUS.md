@@ -259,7 +259,7 @@ None of the four has a protected default branch. The twelve shared labels from `
 applied to all four on 2026-09-08. Nothing in this supplement changes a claim above; the STS2
 evidence tables remain scoped to the nine repositories they name.
 
-## Current default-main source supplement — 2026-09-10
+## Earlier current default-main source supplement — 2026-09-10, 00:50 UTC
 
 This dated supplement reconciles the live default-main refresh recorded at
 `CURRENT-REMOTE-REFRESH-20260910.json` with the public source boundaries. It records source and
@@ -296,3 +296,43 @@ The admitted `coop-synchronization-v1` profile is a read-only gateway/MCP coordi
 contract. It carries no action, vote, shared-effect, or host-game authority. The preserved
 `coop-gameplay-v1` action/vote/effect proposal remains unadmitted, and the current source records
 do not establish native peer admission or disconnect/rejoin recovery.
+
+## Live default-main and pull-request refresh — 2026-09-10, 02:22 UTC
+
+This supplement supersedes the earlier 00:50 UTC inventory for current GitHub references. It is a
+read-only source and pull-request snapshot captured from the GitHub API. The exact refs and
+individual check-run records are retained in the acceptance handoff. Source heads and green checks
+remain source/component evidence; they do not establish native host legality, settled gameplay,
+provider execution, deployment, release, Workshop lifecycle, or observability persistence.
+
+| Repository | Current `main` head | Source/component boundary at this snapshot |
+| --- | --- | --- |
+| `sts2-game-core` | [`87e0f3d9355c`](https://github.com/AI-Ascension/sts2-game-core/commit/87e0f3d9355c0827e989d9fbc31804440852519b) | Host-independent semantics and tests. |
+| `sts2-game-mod` | [`c21ddf38bd2b`](https://github.com/AI-Ascension/sts2-game-mod/commit/c21ddf38bd2b540be871f88303078625966270ce) | Runtime-v4 expert bridge, bounded synthetic checks, and documentation boundary; native expert gameplay and settlement remain unverified. |
+| `sts2-gateway` | [`776327aca63c`](https://github.com/AI-Ascension/sts2-gateway/commit/776327aca63c8ff6c6920865cd5c72de83b10c7b) | Runtime-v4 routes, map consumer path, and source checks; host settlement and deployment remain unverified. |
+| `sts2-mcp-server` | [`4787efa1251b`](https://github.com/AI-Ascension/sts2-mcp-server/commit/4787efa1251bcc0eddccc5fea63a8939a8eb06d0) | Runtime-v4 mapping and REST selector recovery; native MCP-to-game settlement remains unverified. |
+| `sts2-harness` | [`f8b5858d0997`](https://github.com/AI-Ascension/sts2-harness/commit/f8b5858d09978edf17c24b81a5ced07847e2bd5d) | Current head includes the documentation merge; the functional PR41 source is merged at [`ee28096dc722`](https://github.com/AI-Ascension/sts2-harness/commit/ee28096dc722b1e9ef466fc966a79a3422f56ecc). Provider, native, host-restart, and gameplay settlement remain unverified. |
+| `sts2-protocol` | [`7fa0d8e82fbc`](https://github.com/AI-Ascension/sts2-protocol/commit/7fa0d8e82fbc245db74187106918d9f1af58c447) | Runtime-v4 schemas, artifacts, validators, and conformance cases. |
+| `ai-agent-observability` | [`28a48590afb7`](https://github.com/AI-Ascension/ai-agent-observability/commit/28a48590afb75b07590e1b78ea47dae08f5c3ade) | Source topology and deployment tooling; current-main gameplay ingestion, persistence, and two-backend correlation remain unverified. |
+| `.github` | [`217c9c10d82f`](https://github.com/AI-Ascension/.github/commit/217c9c10d82fc22e553c9af222a3a3bbb08259fa) | Governance and acceptance status records. PR15 merged at this head; no metadata, deployment, or release change is implied. |
+| `AI-Ascension.github.io` | [`832068b69a44c`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/832068b69a44cca2bbfa7ea35e90190eddc3b35a) | Static evidence and repository pages; site source does not establish deployment or runtime evidence. |
+
+The 36 open pull requests at the capture time were:
+
+| Repository | Open PRs — head, state, and checks at capture |
+| --- | --- |
+| `sts2-game-core` | [#10](https://github.com/AI-Ascension/sts2-game-core/pull/10) `bf077908` ready, checks green; [#9](https://github.com/AI-Ascension/sts2-game-core/pull/9) `9a27a80c` draft, checks green. |
+| `sts2-game-mod` | [#66](https://github.com/AI-Ascension/sts2-game-mod/pull/66) `5096370b` ready, checks green; [#65](https://github.com/AI-Ascension/sts2-game-mod/pull/65) `57cee12e` ready, Rust foundation failed; [#64](https://github.com/AI-Ascension/sts2-game-mod/pull/64) `79fd4c98` ready, checks green; [#63](https://github.com/AI-Ascension/sts2-game-mod/pull/63) `ad927851` draft, checks green; [#59](https://github.com/AI-Ascension/sts2-game-mod/pull/59) `1ec9431d` draft, checks green; [#58](https://github.com/AI-Ascension/sts2-game-mod/pull/58) `f060c564` draft, checks green; [#57](https://github.com/AI-Ascension/sts2-game-mod/pull/57) `b5fb4ada` draft, dirty merge state; [#55](https://github.com/AI-Ascension/sts2-game-mod/pull/55) `7cc0af3c` draft, checks green; [#54](https://github.com/AI-Ascension/sts2-game-mod/pull/54) `089a60dc` draft, dirty merge state. |
+| `sts2-gateway` | [#31](https://github.com/AI-Ascension/sts2-gateway/pull/31) `4411dbfa` ready, checks green; [#30](https://github.com/AI-Ascension/sts2-gateway/pull/30) `193c01a1` ready, checks green; [#29](https://github.com/AI-Ascension/sts2-gateway/pull/29) `9ec73d67` ready, checks green; [#21](https://github.com/AI-Ascension/sts2-gateway/pull/21) `22d780c1` draft, checks green. |
+| `sts2-mcp-server` | [#34](https://github.com/AI-Ascension/sts2-mcp-server/pull/34) `3df1549f` ready, checks green; [#33](https://github.com/AI-Ascension/sts2-mcp-server/pull/33) `f4fc4abc` ready, checks green; [#26](https://github.com/AI-Ascension/sts2-mcp-server/pull/26) `6ad97aae` draft, checks green. |
+| `sts2-harness` | [#45](https://github.com/AI-Ascension/sts2-harness/pull/45) `416826b9` ready, checks green; [#44](https://github.com/AI-Ascension/sts2-harness/pull/44) `78511d27` ready, Rust quality failed; [#42](https://github.com/AI-Ascension/sts2-harness/pull/42) `a8631198` ready, Rust quality failed; [#40](https://github.com/AI-Ascension/sts2-harness/pull/40) `baabf976` draft, dirty merge state; [#35](https://github.com/AI-Ascension/sts2-harness/pull/35) `423d9052` draft, dirty merge state; [#34](https://github.com/AI-Ascension/sts2-harness/pull/34) `d2105005` draft, checks green. |
+| `sts2-protocol` | [#28](https://github.com/AI-Ascension/sts2-protocol/pull/28) `78510509` ready, checks green; [#27](https://github.com/AI-Ascension/sts2-protocol/pull/27) `fa36a49d` ready, checks green; [#26](https://github.com/AI-Ascension/sts2-protocol/pull/26) `c64180b8` ready, checks green; [#25](https://github.com/AI-Ascension/sts2-protocol/pull/25) `b9c25eff` ready, checks green; [#24](https://github.com/AI-Ascension/sts2-protocol/pull/24) `e9199f07` draft, dirty merge state; [#20](https://github.com/AI-Ascension/sts2-protocol/pull/20) `0c39c5a5` draft, checks green. |
+| `ai-agent-observability` | [#16](https://github.com/AI-Ascension/ai-agent-observability/pull/16) `a1267155` draft, deployment check green; [#13](https://github.com/AI-Ascension/ai-agent-observability/pull/13) `f872902e` draft, deployment check green; [#12](https://github.com/AI-Ascension/ai-agent-observability/pull/12) `67f455c0` draft, deployment check green; [#10](https://github.com/AI-Ascension/ai-agent-observability/pull/10) `b3a9fa64` draft, dirty merge state. |
+| `.github` | [#10](https://github.com/AI-Ascension/.github/pull/10) `d8452379` draft, no checks configured. |
+| `AI-Ascension.github.io` | [#12](https://github.com/AI-Ascension/AI-Ascension.github.io/pull/12) `e5153d66` draft, static-and-proof check green, dirty merge state. |
+
+Harness PR41 was independently reviewed at its exact head [`03fdc626`](https://github.com/AI-Ascension/sts2-harness/commit/03fdc6268c1a00e0699e2326b78e340f87228098): its three-dot diff from `e72de4d` contains 179 files, formatting, strict policy, Clippy, and a serial full-workspace result of 285 passed and 5 ignored. A default-parallel rerun exposed one process-start race and is retained in the independent review; the serial rerun passed. PR41's bounded map, replay, REST recovery, and receipt-query source does not establish native gameplay or provider settlement.
+
+The capture records `.github` PR15 already merged at `217c9c10` and site PR15 already merged at
+`832068b6`; neither requires another merge action. Historical snapshots and candidate branches
+remain preserved with their original dates and labels.
