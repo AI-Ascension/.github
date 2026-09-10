@@ -258,3 +258,41 @@ its evidence tables above; this supplement records only what a read-only invento
 None of the four has a protected default branch. The twelve shared labels from `labels.yml` were
 applied to all four on 2026-09-08. Nothing in this supplement changes a claim above; the STS2
 evidence tables remain scoped to the nine repositories they name.
+
+## Current default-main source supplement — 2026-09-10
+
+This dated supplement reconciles the live default-main refresh recorded at
+`CURRENT-REMOTE-REFRESH-20260910.json` with the public source boundaries. It records source and
+component identity only. The current heads do not establish native host legality, settled effects,
+provider execution, deployment, release, or general compatibility.
+
+| Repository | Default branch | Reviewed current head | Bounded source/component record |
+| --- | --- | --- | --- |
+| `sts2-protocol` | `main` | [`f2dac905`](https://github.com/AI-Ascension/sts2-protocol/commit/f2dac90529f584a6511c1760adce9da28f7f910a) | Runtime-v4 expert schemas, copied artifacts, manifests, checksum inventories, typed validators, and conformance cases. |
+| `sts2-game-core` | `main` | [`87e0f3d9`](https://github.com/AI-Ascension/sts2-game-core/commit/87e0f3d9355c0827e989d9fbc31804440852519b) | Host-independent semantics and tests; no native host or provider result. |
+| `sts2-game-mod` | `main` | [`d8b46bcc`](https://github.com/AI-Ascension/sts2-game-mod/commit/d8b46bccbee9eff108efdab9c8fc9b27dbf2c034) | Runtime-v4 expert state/action bridge and bounded synthetic route/admission checks; live expert gameplay and settlement remain unverified. |
+| `sts2-gateway` | `main` | [`434d8c77`](https://github.com/AI-Ascension/sts2-gateway/commit/434d8c77fb01895e90c741609e3d2a0ad0e9e8b8) | Runtime-v4 expert routes, bounded map route, and copied artifacts; host settlement and deployment remain unverified. |
+| `sts2-mcp-server` | `main` | [`3b6d71fe`](https://github.com/AI-Ascension/sts2-mcp-server/commit/3b6d71fe9642d27717ca6cfa07b5342b914c044c) | Runtime-v4 expert mapping and merged REST selector recovery; native MCP-to-game settlement remains unverified. |
+| `sts2-harness` | `main` | [`b8c50c8`](https://github.com/AI-Ascension/sts2-harness/commit/b8c50c87db0275f0e08d69892f1ebce275f4acb6) | Expert composition, recovery, and bounded synthetic checks; provider and gameplay settlement remain unverified. |
+| `ai-agent-observability` | `main` | [`28a48590`](https://github.com/AI-Ascension/ai-agent-observability/commit/28a48590afb75b07590e1b78ea47dae08f5c3ade) | Source topology only; current-main gameplay ingestion, persistence, and two-backend correlation remain unverified. |
+| `.github` | `main` | [`dbdc1f19`](https://github.com/AI-Ascension/.github/commit/dbdc1f19b623a5bfe67ab86a8e986b07201c85ca) | Status, profile, and shared policy records; this supplement does not authorize metadata, deployment, or release changes. |
+| `AI-Ascension.github.io` | `main` | [`1065799d`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/1065799de6eea8427ac5ae96e3b9238932ea761f) | Static evidence and repository pages; site source does not establish deployment or runtime evidence. |
+
+The live refresh recorded gateway PR #28 merged at `434d8c77`, MCP PR #32 merged at `3b6d71fe`,
+and harness PR #41 merged at `ee28096d`. Protocol PR #24 and game-mod PR #66 remained open/draft;
+public-site PR #12 and organization PR #10 remained draft. This state is an inventory at the
+recorded refresh time. The separately documented acceptance gates remain partial, with native
+campaign, Linux preflight, co-op actuation, observability, Workshop lifecycle, deployment, and
+release boundaries unresolved.
+
+This documentation correction pass opened draft PRs from the reviewed current heads: protocol #29
+at `0451578c`, MCP #35 at `bc922d11`, harness #48 at `abac06e2`, game-mod #67 at `dd5fb4ef`,
+gateway #32 at `322bfb34`, public site #15 at `1e5dd2c7`, and organization #15 at `278b4dfd`.
+They contain documentation-only updates and remain separate from product runtime, host, provider,
+deployment, release, and gameplay acceptance. Their checks and merge state must be re-queried before
+any merge or publication claim.
+
+The admitted `coop-synchronization-v1` profile is a read-only gateway/MCP coordinator-report
+contract. It carries no action, vote, shared-effect, or host-game authority. The preserved
+`coop-gameplay-v1` action/vote/effect proposal remains unadmitted, and the current source records
+do not establish native peer admission or disconnect/rejoin recovery.

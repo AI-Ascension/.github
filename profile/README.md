@@ -8,7 +8,7 @@
 
 Start with deterministic, in-memory contract tests you can replay here and re-run with cargo. Later default branches include runtime executables, bounded Windows/Linux Slay the Spire 2 campaign and replay records, and a read-only coordinator-synchronization check. **Model-played Victory, native multiplayer, reliable autonomous coverage, and broader compatibility remain unverified.** See the [dated source/evidence snapshots](https://github.com/AI-Ascension/.github/blob/main/STATUS.md) for exact pins and limits; this profile has not independently reproduced those runtime records.
 
-## Current candidate boundary — 2026-09-07
+## Historical candidate boundary — 2026-09-07
 
 These open candidates provide source and component checks for the Runtime-v4 path. Their checks do not establish a host run, provider settlement, or release.
 
@@ -19,6 +19,26 @@ These open candidates provide source and component checks for the Runtime-v4 pat
 | [`sts2-harness` draft PR #36](https://github.com/AI-Ascension/sts2-harness/pull/36) | `5f17cd6` · based on `cb17b6c` · mergeable · Rust quality and policy checks passed | Catalog-recovery source integration; 223 workspace tests plus separate independent oracles reviewed; provider, native, host-restart, and gameplay settlement remain unverified. |
 
 Native final artifact and installation, model-played Victory, native co-op actions and recovery, Workshop lifecycle, live observability ingestion/correlation, deployment, and release acceptance remain unverified. Refer to the [dated status record](https://github.com/AI-Ascension/.github/blob/main/STATUS.md) for the wider repository matrix and evidence limits.
+
+## Current default-main source boundary — 2026-09-10
+
+The current default branches carry the bounded Runtime-v4 expert source/component paths and the
+merged REST selector recovery. These exact heads do not establish native host legality, settled
+effects, provider execution, deployment, or release.
+
+| Repository | Current default-main head | Source/component scope at this date |
+| --- | --- | --- |
+| [`sts2-protocol`](https://github.com/AI-Ascension/sts2-protocol/commit/f2dac90529f584a6511c1760adce9da28f7f910a) | `f2dac905` | Runtime-v4 expert schemas, artifacts, manifests, checksum inventories, validators, and conformance cases; schema digests `0ee034d5da83f34e9fa0ba23038738d56ef8cfccb1c6e752af3ab63d212c8e42` and `393318bda8c3522c0ecbacc78b95471a9f4dc3f825169d2048f4c74a7b7f2929`. |
+| [`sts2-game-mod`](https://github.com/AI-Ascension/sts2-game-mod/commit/d8b46bccbee9eff108efdab9c8fc9b27dbf2c034) | `d8b46bcc` | Runtime-v4 expert state/action bridge and bounded synthetic route/admission checks; native expert gameplay and settlement remain unverified. |
+| [`sts2-gateway`](https://github.com/AI-Ascension/sts2-gateway/commit/434d8c77fb01895e90c741609e3d2a0ad0e9e8b8) | `434d8c77` | Runtime-v4 expert routes, bounded map route, and copied artifacts; host settlement and deployment remain unverified. |
+| [`sts2-mcp-server`](https://github.com/AI-Ascension/sts2-mcp-server/commit/3b6d71fe9642d27717ca6cfa07b5342b914c044c) | `3b6d71fe` | Runtime-v4 expert mapping and merged REST selector recovery; native MCP-to-game settlement remains unverified. |
+| [`sts2-harness`](https://github.com/AI-Ascension/sts2-harness/commit/b8c50c87db0275f0e08d69892f1ebce275f4acb6) | `b8c50c8` | Expert composition, recovery, and bounded synthetic checks; provider, native, host-restart, and gameplay settlement remain unverified. |
+
+The current source records are component evidence. The separate `coop-synchronization-v1` profile is
+a read-only gateway/MCP coordinator-report contract; it carries no action, vote, shared-effect, or
+host-game authority. Native co-op gameplay and disconnect/rejoin recovery remain unverified.
+Model-played Victory, broad character/seed/branch coverage, observability correlation, Workshop
+lifecycle, deployment, and public release also remain unverified.
 
 **[Run the 45-second proof](https://ai-ascension.github.io/proof.html)** — browser only; no account, no install, no game files, no model.
 
