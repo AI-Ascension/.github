@@ -977,13 +977,13 @@ game runtime, provider settlement, host compatibility, native two-peer settlemen
 persistence, release compatibility, or Workshop lifecycle acceptance.
 
 
-## Latest acceptance successor — 2026-09-10, 20:02 UTC (observability PR #18)
+## Latest observability successor — 2026-09-10, 20:44 UTC (post-PR #19 merge)
 
-This `confirmed` read-only successor rechecked the nine default branches after
-`ai-agent-observability` PR #18 merged at `2026-09-10T20:01:30Z`. It supersedes the
-19:15 UTC table only for the observability repository identity; the other rows and their
-source, component, host, provider, gameplay, release, Pages, and Workshop boundaries
-remain as recorded there.
+This `confirmed` read-only successor rechecked the observability default branch after
+PR [#19](https://github.com/AI-Ascension/ai-agent-observability/pull/19) merged at
+`2026-09-10T20:42:45Z`. It supersedes the earlier 20:02 UTC observability identity;
+the other rows and their source, component, host, provider, gameplay, release, Pages,
+and Workshop boundaries remain as recorded there.
 
 | Repository | Current `main` commit | Current tree | Latest completed checks observed | Boundary |
 | --- | --- | --- | --- | --- |
@@ -993,7 +993,7 @@ remain as recorded there.
 | `sts2-mcp-server` | [`47d63f6`](https://github.com/AI-Ascension/sts2-mcp-server/commit/47d63f6ce41c9efb3431dea6dc31b39fddc5d79a) | [`a6eb009`](https://api.github.com/repos/AI-Ascension/sts2-mcp-server/git/trees/a6eb009912a4f624c49398f6cfc25022da65b563) | [main CI 34516747992](https://github.com/AI-Ascension/sts2-mcp-server/actions/runs/34516747992), [main policy 34516748169](https://github.com/AI-Ascension/sts2-mcp-server/actions/runs/34516748169) passed; [PR #39 CI 34515863120](https://github.com/AI-Ascension/sts2-mcp-server/actions/runs/34515863120) and [policy 34515863070](https://github.com/AI-Ascension/sts2-mcp-server/actions/runs/34515863070) also passed | Native conflict/recovery projection passes at source/component level; live settlement remains `unverified`. |
 | `sts2-harness` | [`0f71c18`](https://github.com/AI-Ascension/sts2-harness/commit/0f71c186bfa7a8c2e5157916fe753eedef9a8bb6) | [`6b8f26d`](https://api.github.com/repos/AI-Ascension/sts2-harness/git/trees/6b8f26d5f236fd4e9639a7ae89a64243dec44193) | [CI 34517781477](https://github.com/AI-Ascension/sts2-harness/actions/runs/34517781477), [policy 34517781500](https://github.com/AI-Ascension/sts2-harness/actions/runs/34517781500) passed | Serialized native consumer conformance; live provider, host, and gameplay execution remain `unverified`. |
 | `sts2-protocol` | [`ed8626c`](https://github.com/AI-Ascension/sts2-protocol/commit/ed8626c2cf30089b4bdf214a2fdcb09b3eca3d29) | [`3681cf2`](https://api.github.com/repos/AI-Ascension/sts2-protocol/git/trees/3681cf21ce1941a3107d2cf9a80ec4257557337b) | [CI 34518325561](https://github.com/AI-Ascension/sts2-protocol/actions/runs/34518325561), [policy 34518323253](https://github.com/AI-Ascension/sts2-protocol/actions/runs/34518323253) passed | `coop-native-v1` artifact binding and checksum conformance; live native support remains `unverified`. |
-| `ai-agent-observability` | [`3867a0b`](https://github.com/AI-Ascension/ai-agent-observability/commit/3867a0bf7bd43ba8ad99a2f5e1d685261bd3c504) | [`484a8ea`](https://api.github.com/repos/AI-Ascension/ai-agent-observability/git/trees/484a8eaf36f8afcd1e4c446944e948a12bae8cd0) | [CI 34523863255](https://github.com/AI-Ascension/ai-agent-observability/actions/runs/34523863255) passed after [PR #18](https://github.com/AI-Ascension/ai-agent-observability/pull/18) merged | Healthcheck retention in Podman build; live ingestion, query, persistence, and two-backend correlation remain `unverified`. Draft [PR #19](https://github.com/AI-Ascension/ai-agent-observability/pull/19) is not merged. |
+| `ai-agent-observability` | [`89539a6e`](https://github.com/AI-Ascension/ai-agent-observability/commit/89539a6e7754b389f8eac148ba8a49c3892cddd8) | [`dd948bdb`](https://github.com/AI-Ascension/ai-agent-observability/tree/dd948bdb68844f83e79e36611faacb945030b618) | [CI 34528007520](https://github.com/AI-Ascension/ai-agent-observability/actions/runs/34528007520) passed after [PR #19](https://github.com/AI-Ascension/ai-agent-observability/pull/19) merged | OTel bind/inode deployment repair is source/component evidence; live ingestion, query, persistence, and two-backend correlation remain `unverified`. |
 | `.github` | [`f32a02c`](https://github.com/AI-Ascension/.github/commit/f32a02c81c5304c60775f9f416d36239c4ae5e23) | [`350b53a`](https://api.github.com/repos/AI-Ascension/.github/git/trees/350b53addc5d9ebc3461ba24707e8d0113548a43) | No hosted check recorded. | Governance and acceptance records only. |
 | `AI-Ascension.github.io` | [`f8b1e8f`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/f8b1e8fedeb6d22e79cd19efb8bdd2e4360cf605) | [`1218f1e`](https://api.github.com/repos/AI-Ascension/AI-Ascension.github.io/git/trees/1218f1e42f6eed422e1d2f1beb81ab46a5fc5720) | [validation 34521517729](https://github.com/AI-Ascension/AI-Ascension.github.io/actions/runs/34521517729), [Pages deploy 34521517811](https://github.com/AI-Ascension/AI-Ascension.github.io/actions/runs/34521517811) passed. | Static publication only. |
 
@@ -1005,3 +1005,101 @@ Laminar query key remain inaccessible, and the live compose, collector, init, an
 hashes differ from merged source. The exact evidence is retained privately at
 `/home/timot/sts2-completion-recovery-20260907/root/windows-d3d12-standard-campaigns-837bcf8f-078a-4457-8941-ab3228cb00cd/run-1788994950716041079-d37feeeacf44fb8444f0f302/final-observability-r2.json`
 (SHA-256 `8e533f8f11b5fa796ced236cee0335a2db882d372cb05788271f46e4e238fd29`).
+
+## Latest acceptance successor — 2026-09-10, 21:27 UTC (post-recovery-fence merges)
+
+This `confirmed` read-only successor records the three native co-op consumer fixes merged
+between 21:20 and 21:21 UTC. It supersedes the 20:02 table only for the gateway, MCP, and
+harness source identities; the protocol artifact, producer snapshot, release, Pages, host,
+provider, gameplay, observability, and Workshop boundaries remain separate.
+
+| Repository | Current `main` commit | Current tree | Latest completed checks observed | Boundary |
+| --- | --- | --- | --- | --- |
+| `sts2-gateway` | [`c8be3a7`](https://github.com/AI-Ascension/sts2-gateway/commit/c8be3a72ba9e304392575a1b2bdbc262e392be21) | [`69b9dc2`](https://github.com/AI-Ascension/sts2-gateway/tree/69b9dc229237fe5db7b7e33461e5e7f89f028ee9) | [CI 34531625729](https://github.com/AI-Ascension/sts2-gateway/actions/runs/34531625729), [policy 34531625767](https://github.com/AI-Ascension/sts2-gateway/actions/runs/34531625767) passed | Recovery response direction and unknown-generation fencing are source/component checks; live host settlement remains `unverified`. |
+| `sts2-mcp-server` | [`037d10d`](https://github.com/AI-Ascension/sts2-mcp-server/commit/037d10def1cbcb1c807e136d31b294355a92c010) | [`53013a3`](https://github.com/AI-Ascension/sts2-mcp-server/tree/53013a3f1b4871129d59198eb90c2499f8557bee) | [CI 34531686950](https://github.com/AI-Ascension/sts2-mcp-server/actions/runs/34531686950), [policy 34531686971](https://github.com/AI-Ascension/sts2-mcp-server/actions/runs/34531686971) passed | Canonical pending-rejoin projection is a source/component check; live MCP-to-game settlement remains `unverified`. |
+| `sts2-harness` | [`682c2b5`](https://github.com/AI-Ascension/sts2-harness/commit/682c2b5ba38010e16d43b04c43d40184bda70106) | [`173be64`](https://github.com/AI-Ascension/sts2-harness/tree/173be6477d81f83dae9ab5ad4e0c670d474e32d5) | [CI 34531656974](https://github.com/AI-Ascension/sts2-harness/actions/runs/34531656974), [policy 34531656898](https://github.com/AI-Ascension/sts2-harness/actions/runs/34531656898) passed | Recovery response generation fencing is serialized source/component evidence; live provider, host, and gameplay execution remain `unverified`. |
+
+### Merged recovery consumer updates
+
+- `confirmed` **Gateway PR #39:** [PR #39](https://github.com/AI-Ascension/sts2-gateway/pull/39)
+  merged at `2026-09-10T21:20:19Z` as [`c8be3a7`](https://github.com/AI-Ascension/sts2-gateway/commit/c8be3a72ba9e304392575a1b2bdbc262e392be21), from head
+  `b1fde46` on base `de1fe72`. It rejects echoed recovery request responses and fences the
+  post-generation field on unknown receipts: same-generation `after` is permitted only for an
+  accepted rejoin receipt; reconcile and unknown recovery outcomes require a null `after`.
+  Main CI and policy passed at the merged head.
+- `confirmed` **Harness PR #62:** [PR #62](https://github.com/AI-Ascension/sts2-harness/pull/62)
+  merged at `2026-09-10T21:20:38Z` as [`682c2b5`](https://github.com/AI-Ascension/sts2-harness/commit/682c2b5ba38010e16d43b04c43d40184bda70106), from head
+  `04fa375` on base `0f71c18`. It fences recovery response generations: an accepted rejoin
+  may carry a same-generation `after`, while reconcile and unknown recovery responses must
+  carry a null `after`; generation drift is rejected. Main CI and policy passed at the merged head.
+- `confirmed` **MCP PR #40:** [PR #40](https://github.com/AI-Ascension/sts2-mcp-server/pull/40)
+  merged at `2026-09-10T21:20:57Z` as [`037d10d`](https://github.com/AI-Ascension/sts2-mcp-server/commit/037d10def1cbcb1c807e136d31b294355a92c010), from head
+  `55cf230` on base `47d63f6`. It accepts the canonical pending-rejoin receipt and
+  rejects reconcile or unknown responses that carry an invalid post-generation. Main CI and
+  policy passed at the merged head.
+
+The accepted `coop-native-v1` artifact in protocol [`ed8626c`](https://github.com/AI-Ascension/sts2-protocol/commit/ed8626c2cf30089b4bdf214a2fdcb09b3eca3d29)
+remains bound to its recorded producer `ab702db`, gateway `de1fe723`, MCP `47d63f6`,
+and harness H0 `a2cb481` snapshots. Its schema digest
+`2f3bc99e53080fa11b39592b64fb0ab964a16f568719a2622d0b2caf766ab629` and serialized
+`source_to_consumer: pass` record are unchanged. These later fixes are source/component
+corrections and have not refreshed that artifact's consumer-conformance identities. A new
+artifact capture and conformance refresh is required before the three current heads can be
+described as the accepted artifact's reviewed consumers.
+
+### Acceptance boundaries
+
+- `confirmed` **Recovery source boundary:** the gateway, MCP, and harness merged heads pass
+  their declared CI and policy checks, and their focused native co-op checks were independently
+  reviewed at the exact PR heads (gateway 9 passed, harness 8 passed, MCP mapping 16 passed).
+- `unverified` **Native co-op runtime gate:** no live two-peer model-controlled action, vote
+  convergence, shared effect, native checksum settlement, or disconnect/rejoin recovery trace
+  is recorded. The source fixes do not establish host loading, live peer identity, or gameplay.
+- `unverified` **Model-played terminal evidence:** no model-controlled Victory or replay of a
+  model-controlled Victory is recorded. The named Windows and Linux replays are bounded Defeat
+  campaigns; forced Victory fixtures bypass ordinary play.
+- `unverified` **Observability persistence:** the final r2 query remains
+  `overall_state=backend_unavailable`; MLflow has one exact identity/trace match with 124
+  allowlisted spans and no terminal outcome, while Laminar remains credential-unavailable with
+  no query rows or restart-persistence proof.
+- `confirmed` **Release and Workshop boundary:** the two published source-only prereleases
+  are `sts2-game-mod-v0.4.1` (current) and `sts2-game-mod-v0.4.0` (historical); no compiled
+  runtime, Workshop upload, Steam legal agreement, entitlement, item/content visibility,
+  subscription/discovery/loading, update, or rollback is verified.
+
+## Latest release successor — 2026-09-10, 21:32 UTC (v0.4.1 source-only prerelease)
+
+This `confirmed` release refresh follows the publication of the second game-mod source-only
+prerelease. The release inventory now contains two published, non-draft prereleases in
+`sts2-game-mod`; `v0.4.0` remains the historical first release and `v0.4.1` is the current
+release record below. Neither release is a compiled runtime distribution or proof of host
+compatibility.
+
+The current [`sts2-game-mod-v0.4.1` tag/release](https://github.com/AI-Ascension/sts2-game-mod/releases/tag/sts2-game-mod-v0.4.1)
+was published at `2026-09-10T21:32:09Z` and points to source commit
+[`d23ca838`](https://github.com/AI-Ascension/sts2-game-mod/commit/d23ca838a7be875f32242123955b4a27782bac04)
+and source tree [`23336ca`](https://github.com/AI-Ascension/sts2-game-mod/tree/23336ca834b5870d15ee6369c101d5c67ff34caf).
+The source-release workflow [34532717805](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/34532717805),
+continuous integration [34532510095](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/34532510095),
+and repository policy [34532510190](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/34532510190)
+passed at that commit.
+
+| Platform source archive | SHA-256 |
+| --- | --- |
+| [Windows x86-64 archive](https://github.com/AI-Ascension/sts2-game-mod/releases/download/sts2-game-mod-v0.4.1/ai-ascension-sts2-game-mod-0.4.1-windows-x86_64-source.tar.gz) | `58fdaaf9a6fa243e8a18398bc0d2b90f78eddb228626fbff7b3b5255c3117050` |
+| [Linux x86-64 archive](https://github.com/AI-Ascension/sts2-game-mod/releases/download/sts2-game-mod-v0.4.1/ai-ascension-sts2-game-mod-0.4.1-linux-x86_64-source.tar.gz) | `174bb1551e26d7693c707f5f9f8989dc0f0d9b83ac34e7e6b9b337c2f03fa78b` |
+
+The release manifest records source-policy SHA-256
+`89a62d755af6c23e09af72768326116a7155a15833b4b61f7295922a52cd561e` and included-content
+digest `1ad28d36b8526dc73da126abc5fe8b3457e809f503daa18d9f09b34b7f6d6b08`. Both downloaded
+platform archives and their sidecars passed strict checksum verification and clean archive
+listing during this review. The source-only bundles contain no compiled mod, managed/native
+runtime payload, proprietary STS2 files, saves, profiles, credentials, machine-specific files,
+Workshop package, installer operation, or game launch; runtime compatibility and platform support
+remain `unverified`.
+
+The historical [`sts2-game-mod-v0.4.0` release](https://github.com/AI-Ascension/sts2-game-mod/releases/tag/sts2-game-mod-v0.4.0)
+remains published and non-draft at [`a70a5e5`](https://github.com/AI-Ascension/sts2-game-mod/commit/a70a5e5bb2fa89fade7e16dbb4a58ed80e31355b)
+/ tree `0b16693`; its earlier source-policy, content, and archive hashes remain recorded in
+the 16:25 UTC historical section above. The other eight repositories still have zero tags and
+zero GitHub releases, and no stable release or Workshop lifecycle is established.
