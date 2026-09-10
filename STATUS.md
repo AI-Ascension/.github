@@ -834,7 +834,7 @@ remain separate.
 | `sts2-game-core` | [`f9db577`](https://github.com/AI-Ascension/sts2-game-core/commit/f9db577530a4d159b066d3facbd780d61c044eb0) | [`8cb53ed`](https://github.com/AI-Ascension/sts2-game-core/tree/8cb53ed999a247c2f8a0edf6f8e622c4de2633e3) | [CI 34494626667](https://github.com/AI-Ascension/sts2-game-core/actions/runs/34494626667), [policy 34494626737](https://github.com/AI-Ascension/sts2-game-core/actions/runs/34494626737) passed | Host-independent semantics and tests; no host or game claim. |
 | `sts2-game-mod` | [`a70a5e5`](https://github.com/AI-Ascension/sts2-game-mod/commit/a70a5e5bb2fa89fade7e16dbb4a58ed80e31355b) | [`0b16693`](https://github.com/AI-Ascension/sts2-game-mod/tree/0b16693e5d5383d88f09e4a88119b6bb207fd88a) | [CI 34498220756](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/34498220756), [policy 34498220893](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/34498220893), [source release 34501301708](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/34501301708) passed | Source-only prerelease; host loading and settled gameplay remain `unverified`. |
 | `sts2-gateway` | [`de1fe72`](https://github.com/AI-Ascension/sts2-gateway/commit/de1fe72345ea972d56c05d30837da5327e5f1655) | [`cbf10ca`](https://github.com/AI-Ascension/sts2-gateway/tree/cbf10caa6775ca06adf7fe1e9d6cc98be6453a66) | [CI 34510770121](https://github.com/AI-Ascension/sts2-gateway/actions/runs/34510770121), [policy 34510770071](https://github.com/AI-Ascension/sts2-gateway/actions/runs/34510770071) passed | `coop-native-v1` route/forwarder and receipt validation are source/component conformance; live host settlement remains `unverified`. |
-| `sts2-mcp-server` | [`47d63f6`](https://github.com/AI-Ascension/sts2-mcp-server/commit/47d63f6ce41c9efb3431dea6dc31b39fddc5d79a) | [`a6eb009`](https://github.com/AI-Ascension/sts2-mcp-server/tree/a6eb009912a4f624c49398f6cfc25022da65b563) | [CI 34516747992](https://github.com/AI-Ascension/sts2-mcp-server/actions/runs/34516747992), [policy 34516748169](https://github.com/AI-Ascension/sts2-mcp-server/actions/runs/34516748169) passed | Native conflict/recovery projection is source/component conformance; live MCP-to-game settlement remains `unverified`. |
+| `sts2-mcp-server` | [`47d63f6`](https://github.com/AI-Ascension/sts2-mcp-server/commit/47d63f6ce41c9efb3431dea6dc31b39fddc5d79a) | [`a6eb009`](https://github.com/AI-Ascension/sts2-mcp-server/tree/a6eb009912a4f624c49398f6cfc25022da65b563) | [PR CI 34515863120](https://github.com/AI-Ascension/sts2-mcp-server/actions/runs/34515863120), [PR policy 34515863070](https://github.com/AI-Ascension/sts2-mcp-server/actions/runs/34515863070) passed | Native conflict/recovery projection is source/component conformance; live MCP-to-game settlement remains `unverified`. |
 | `sts2-harness` | [`0f71c18`](https://github.com/AI-Ascension/sts2-harness/commit/0f71c186bfa7a8c2e5157916fe753eedef9a8bb6) | [`6b8f26d`](https://github.com/AI-Ascension/sts2-harness/tree/6b8f26d5f236fd4e9639a7ae89a64243dec44193) | [CI 34517781477](https://github.com/AI-Ascension/sts2-harness/actions/runs/34517781477), [policy 34517781500](https://github.com/AI-Ascension/sts2-harness/actions/runs/34517781500) passed | Native consumer conformance is serialized source/component evidence; live provider, host, and gameplay execution remain `unverified`. |
 | `sts2-protocol` | [`ed8626c`](https://github.com/AI-Ascension/sts2-protocol/commit/ed8626c2cf30089b4bdf214a2fdcb09b3eca3d29) | [`3681cf2`](https://github.com/AI-Ascension/sts2-protocol/tree/3681cf21ce1941a3107d2cf9a80ec4257557337b) | [CI 34518325561](https://github.com/AI-Ascension/sts2-protocol/actions/runs/34518325561), [policy 34518323253](https://github.com/AI-Ascension/sts2-protocol/actions/runs/34518323253) passed | `coop-native-v1` consumer binding and checksum conformance pass at component level; live native support remains `unverified`. |
 | `ai-agent-observability` | [`d7e79e1`](https://github.com/AI-Ascension/ai-agent-observability/commit/d7e79e1a9663601013e513048caea7063b0de9ae) | [`179eab4`](https://github.com/AI-Ascension/ai-agent-observability/tree/179eab492dca72d3c5ef162c30a9ca44861e1756) | [CI 34493891085](https://github.com/AI-Ascension/ai-agent-observability/actions/runs/34493891085) passed | Telemetry topology/tooling is source evidence; live ingestion, query, persistence, and two-backend correlation remain `unverified`. |
@@ -949,3 +949,29 @@ the live r11 file SHA-256 baselines were `evidence.html`
 and `README.md` `08c3976d4a62a1368055faac9ac1afb3c8a67003c5fbddae7f1bd4a44bc00fe7`.
 This is static publication evidence only; the r12 successor is not deployed until its
 site PR merges.
+
+## Latest publication successor — 2026-09-10, 19:26 UTC (post-merge Pages verification)
+
+This `confirmed` follow-up verifies publication of the site successor recorded in the
+preceding 19:15 UTC section. It updates the Pages and live-byte state while preserving the
+source, component, release, native co-op, runtime, observability, and Workshop boundaries
+already recorded above.
+
+The site default branch is
+[`64de240`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/64de240fe7f93e4660d6e3e53a0844257d6827f8)
+with tree `530c3f7819b92699bb266add9ef703477fde73d5`. Site validation
+[34520369933](https://github.com/AI-Ascension/AI-Ascension.github.io/actions/runs/34520369933)
+and Pages deployment
+[34520369905](https://github.com/AI-Ascension/AI-Ascension.github.io/actions/runs/34520369905)
+both passed at that head. Deployment record `6379445687` reached `success` with status
+`18174374935` at `2026-09-10T19:26:33Z`.
+
+Cache-busted HTTPS requests to <https://ai-ascension.github.io/> returned HTTP 200 and matched
+the merged site tree byte for byte. The observed SHA-256 values are `README.md`
+`9c4a5589bc35e41b71bb1ef26154b1c35e67f57d1f36e5f0e7b399ac51150dc3`, `evidence.html`
+`a2851de73896a6a2d19e91692043b9eaae028984baca273eeefc6b823e97fd8e`, and
+`repositories.html`
+`46ac34bd073bc1db8294dee97a649685fa958c4ff027ce3054298af4776a4ecc`. The responses contain
+the dated 19:15 successor markers. This confirms static publication only; it does not establish
+game runtime, provider settlement, host compatibility, native two-peer settlement, observability
+persistence, release compatibility, or Workshop lifecycle acceptance.
