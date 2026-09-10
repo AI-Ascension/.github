@@ -653,3 +653,77 @@ and Pages deployment run [34498419971](https://github.com/AI-Ascension/AI-Ascens
 succeeded. The Pages deployment record `6375647948` reached `success` for
 `https://ai-ascension.github.io/`; this is static publication evidence only. The successor
 documentation in this draft branch is not deployed until its PR is merged.
+
+## Latest acceptance successor — 2026-09-10, 16:13 UTC (post-16:03 merge)
+
+This `confirmed` read-only refresh follows the merge of harness PR #51 at
+`2026-09-10T16:03:56Z`. It supersedes the 15:54+ table above only for current
+default-branch identity and preserves that table as history. The refresh rechecked
+all nine default branches and their latest completed hosted checks. Source and check
+records remain separate from native host legality, model/provider execution, settled
+gameplay, observability persistence, Workshop publication, and release acceptance.
+
+| Repository | Current `main` head (`confirmed`) | Checks observed (`confirmed`) | Source boundary (`source-derived`) |
+| --- | --- | --- | --- |
+| `sts2-game-core` | [`f9db577`](https://github.com/AI-Ascension/sts2-game-core/commit/f9db577530a4d159b066d3facbd780d61c044eb0) | [CI 34494626667](https://github.com/AI-Ascension/sts2-game-core/actions/runs/34494626667), [policy 34494626737](https://github.com/AI-Ascension/sts2-game-core/actions/runs/34494626737) passed | Host-independent semantics and tests; no host or game claim. |
+| `sts2-game-mod` | [`a70a5e5`](https://github.com/AI-Ascension/sts2-game-mod/commit/a70a5e5bb2fa89fade7e16dbb4a58ed80e31355b) | [CI 34498220756](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/34498220756), [policy 34498220893](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/34498220893) passed | PR #71 source-policy and copied REST artifact parity merge; host loading and settled gameplay remain `unverified`. |
+| `sts2-gateway` | [`2cf9127`](https://github.com/AI-Ascension/sts2-gateway/commit/2cf9127bfe5b7f1f271dd1b2889d92a09f042f83) | [CI 34494472113](https://github.com/AI-Ascension/sts2-gateway/actions/runs/34494472113), [policy 34494472141](https://github.com/AI-Ascension/sts2-gateway/actions/runs/34494472141) passed | Bounded gateway/control-plane source; host settlement and deployment remain `unverified`. |
+| `sts2-mcp-server` | [`8b6b738`](https://github.com/AI-Ascension/sts2-mcp-server/commit/8b6b73862494488fdd16fa5423fdf90a953260f4) | [CI 34494670041](https://github.com/AI-Ascension/sts2-mcp-server/actions/runs/34494670041), [policy 34494670273](https://github.com/AI-Ascension/sts2-mcp-server/actions/runs/34494670273) passed | Transport and gateway mapping source; native game settlement remains `unverified`. |
+| `sts2-harness` | [`780f2d5`](https://github.com/AI-Ascension/sts2-harness/commit/780f2d521508a2aadc76c4d779544d967955f102) | PR #51 [CI 34499698232](https://github.com/AI-Ascension/sts2-harness/actions/runs/34499698232) and [policy 34499698312](https://github.com/AI-Ascension/sts2-harness/actions/runs/34499698312), then main [CI 34499708670](https://github.com/AI-Ascension/sts2-harness/actions/runs/34499708670) and [policy 34499708793](https://github.com/AI-Ascension/sts2-harness/actions/runs/34499708793), passed | PR #51 context-capture source/component wiring; native provider receipt, worker execution, host behavior, and gameplay settlement remain `unverified`. |
+| `sts2-protocol` | [`997de2a`](https://github.com/AI-Ascension/sts2-protocol/commit/997de2aec7590dc0f362dce71814431add624e98) | [CI 34492025822](https://github.com/AI-Ascension/sts2-protocol/actions/runs/34492025822), [policy 34492025836](https://github.com/AI-Ascension/sts2-protocol/actions/runs/34492025836) passed | Schemas, artifacts, validators, and conformance source; native co-op consumer admission remains `unverified`. |
+| `ai-agent-observability` | [`d7e79e1`](https://github.com/AI-Ascension/ai-agent-observability/commit/d7e79e1a9663601013e513048caea7063b0de9ae) | [CI 34493891085](https://github.com/AI-Ascension/ai-agent-observability/actions/runs/34493891085) passed | Telemetry topology and deployment tooling; live ingestion, query, persistence, and two-backend correlation remain `unverified`. |
+| `.github` | [`c2b1771`](https://github.com/AI-Ascension/.github/commit/c2b17712e3d88b0e291893d067c809ff5c7fc426) | No hosted check recorded for this governance repository in this refresh. | Governance and acceptance records only; no metadata, deployment, or release change is implied. |
+| `AI-Ascension.github.io` | [`457f002`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/457f0027981a16ffe223767fb78acaf4be591790) | [site validation 34499991425](https://github.com/AI-Ascension/AI-Ascension.github.io/actions/runs/34499991425), [Pages deploy 34499991509](https://github.com/AI-Ascension/AI-Ascension.github.io/actions/runs/34499991509) passed | Static evidence pages; Pages publication is confirmed separately and does not establish product runtime or release. |
+
+### Harness PR #51 source/component boundary
+
+`confirmed` **Harness PR #51:** [PR #51](https://github.com/AI-Ascension/sts2-harness/pull/51)
+merged at [`780f2d5`](https://github.com/AI-Ascension/sts2-harness/commit/780f2d521508a2aadc76c4d779544d967955f102)
+from head `280fd39` on base [`4342789`](https://github.com/AI-Ascension/sts2-harness/commit/4342789de4bf5a5f23aee85be273db9a263c9c31).
+It adds bounded `CapturePort` modes and identities, ordered component manifests,
+lifecycle capture, queue/private-vault gates, and parity/failure-fidelity tests; the
+capture path is wired through direct `ExoSession::decide`, the generic `ProviderPort`
+route, Astra's final CLI handoff, and Ollama's final serialized HTTP write. A successful
+outbound body write is recorded as completion; response, malformed, timeout, and
+partial-write failures remain indeterminate and are not receipts. The PR checks and
+post-merge main checks passed. The PR body also records its final validation at
+[`f95e8bc`](https://github.com/AI-Ascension/sts2-harness/commit/f95e8bcf1d248837dc983537a45335a036f3560e),
+production capture source [`316c8bd`](https://github.com/AI-Ascension/sts2-harness/commit/316c8bd1814d9f9762a08c534898ec827365c91a),
+and fidelity artifact SHA-256 `2b6b8dd5509801fe0e9d104cb97f669d59c6f0ac302ac5b19da116334fcbbcd6`.
+Those are source/component and synthetic differential evidence. No real provider, game, or external service was called; the fake downstream
+comparisons do not establish a provider receipt, game action, browser run, native
+platform behavior, or an integrated producer/store demonstration. The native preflight
+reached root → lead only; coordinator/specialist ancestry remains `unverified` because
+the child had no collaboration tools.
+
+### Acceptance boundaries
+
+- `unverified` **Model-played terminal evidence:** no model-controlled Victory or replay of a
+  model-controlled Victory is recorded. The named Windows and Linux replays are bounded Defeat
+  campaigns; forced Victory fixtures bypass ordinary play and do not establish a model-played
+  Victory.
+- `unverified` **Native co-op settlement and recovery:** no live two-peer model-controlled action,
+  vote convergence, shared effect, checksum settlement, or disconnect/rejoin recovery trace is
+  recorded. Current source and synchronization records do not establish an admitted native co-op
+  consumer path.
+- `confirmed` **Observability query boundary:** MLflow returned HTTP 200 for a failed run containing
+  124 spans but no terminal outcome. Laminar health returned HTTP 200, while its query returned
+  HTTP 401 with zero rows/pages. No controlled-restart persistence result is recorded. `unverified`
+  acceptance still needs rootful Podman/host access and a valid Laminar operator credential/path,
+  followed by real terminal campaign queries before and after restart.
+- `confirmed` **Release inventory:** the read-only refresh found zero tags and zero GitHub releases
+  across all nine repositories at capture. No public release is established.
+- `unverified` **Workshop lifecycle:** package validators and staging sources do not establish an
+  uploaded Workshop item. Steam legal agreement acceptance, entitlement, item and content
+  visibility, subscription/discovery/loading, update, and rollback remain unverified.
+
+### Pages publication
+
+At this capture, site `main` was [`457f002`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/457f0027981a16ffe223767fb78acaf4be591790).
+Site validation run [34499991425](https://github.com/AI-Ascension/AI-Ascension.github.io/actions/runs/34499991425)
+and Pages deployment run [34499991509](https://github.com/AI-Ascension/AI-Ascension.github.io/actions/runs/34499991509)
+succeeded. Deployment `6375923984` reached `success`; a live request to
+`https://ai-ascension.github.io/evidence.html` returned HTTP 200 with SHA-256
+`e67ec29a894e37194e6d93fe298107013ecdac797f261975f325566452dfbf3a` and the 15:54,
+`a70a5e5`, and `4342789` markers. This is static publication evidence only; the r10
+successor documentation is not deployed until its site PR merges.
