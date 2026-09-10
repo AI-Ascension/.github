@@ -949,3 +949,29 @@ the live r11 file SHA-256 baselines were `evidence.html`
 and `README.md` `08c3976d4a62a1368055faac9ac1afb3c8a67003c5fbddae7f1bd4a44bc00fe7`.
 This is static publication evidence only; the r12 successor is not deployed until its
 site PR merges.
+
+## Latest publication successor — 2026-09-10, 19:26 UTC (post-merge Pages verification)
+
+This `confirmed` follow-up verifies publication of the site successor recorded in the
+preceding 19:15 UTC section. It updates the Pages and live-byte state while preserving the
+source, component, release, native co-op, runtime, observability, and Workshop boundaries
+already recorded above.
+
+The site default branch is
+[`64de240`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/64de240fe7f93e4660d6e3e53a0844257d6827f8)
+with tree `530c3f7819b92699bb266add9ef703477fde73d5`. Site validation
+[34520369933](https://github.com/AI-Ascension/AI-Ascension.github.io/actions/runs/34520369933)
+and Pages deployment
+[34520369905](https://github.com/AI-Ascension/AI-Ascension.github.io/actions/runs/34520369905)
+both passed at that head. Deployment record `6379445687` reached `success` with status
+`18174374935` at `2026-09-10T19:26:33Z`.
+
+Cache-busted HTTPS requests to <https://ai-ascension.github.io/> returned HTTP 200 and matched
+the merged site tree byte for byte. The observed SHA-256 values are `README.md`
+`9c4a5589bc35e41b71bb1ef26154b1c35e67f57d1f36e5f0e7b399ac51150dc3`, `evidence.html`
+`a2851de73896a6a2d19e91692043b9eaae028984baca273eeefc6b823e97fd8e`, and
+`repositories.html`
+`46ac34bd073bc1db8294dee97a649685fa958c4ff027ce3054298af4776a4ecc`. The responses contain
+the dated 19:15 successor markers. This confirms static publication only; it does not establish
+game runtime, provider settlement, host compatibility, native two-peer settlement, observability
+persistence, release compatibility, or Workshop lifecycle acceptance.
