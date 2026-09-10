@@ -1103,3 +1103,41 @@ remains published and non-draft at [`a70a5e5`](https://github.com/AI-Ascension/s
 / tree `0b16693`; its earlier source-policy, content, and archive hashes remain recorded in
 the 16:25 UTC historical section above. The other eight repositories still have zero tags and
 zero GitHub releases, and no stable release or Workshop lifecycle is established.
+
+## Latest native artifact successor — 2026-09-10, 21:53 UTC (protocol PR #35)
+
+This `confirmed` source-only artifact refresh follows protocol PR [#35](https://github.com/AI-Ascension/sts2-protocol/pull/35),
+which merged at `2026-09-10T21:51:44Z`. Protocol `main` is now
+[`d930110b`](https://github.com/AI-Ascension/sts2-protocol/commit/d930110b98f3eb10b6db0bccfb50e9daa775c939)
+with tree [`aef7ce55`](https://github.com/AI-Ascension/sts2-protocol/tree/aef7ce550f2561eae5bca9b666ce4cc60d155f0a); its
+[Rust quality gates 34534444584](https://github.com/AI-Ascension/sts2-protocol/actions/runs/34534444584)
+and [policy 34534444476](https://github.com/AI-Ascension/sts2-protocol/actions/runs/34534444476)
+passed. This successor supersedes the 21:27 UTC artifact identity below while preserving the
+live-runtime boundary.
+
+| Artifact role | Reviewed source commit | Reviewed source tree |
+| --- | --- | --- |
+| Protocol artifact | [`d930110b`](https://github.com/AI-Ascension/sts2-protocol/commit/d930110b98f3eb10b6db0bccfb50e9daa775c939) | [`aef7ce55`](https://github.com/AI-Ascension/sts2-protocol/tree/aef7ce550f2561eae5bca9b666ce4cc60d155f0a) |
+| Producer `sts2-game-mod` | [`d23ca838`](https://github.com/AI-Ascension/sts2-game-mod/commit/d23ca838a7be875f32242123955b4a27782bac04) | [`23336ca8`](https://github.com/AI-Ascension/sts2-game-mod/tree/23336ca834b5870d15ee6369c101d5c67ff34caf) |
+| Gateway consumer | [`c8be3a72`](https://github.com/AI-Ascension/sts2-gateway/commit/c8be3a72ba9e304392575a1b2bdbc262e392be21) | [`69b9dc22`](https://github.com/AI-Ascension/sts2-gateway/tree/69b9dc229237fe5db7b7e33461e5e7f89f028ee9) |
+| MCP consumer | [`037d10de`](https://github.com/AI-Ascension/sts2-mcp-server/commit/037d10def1cbcb1c807e136d31b294355a92c010) | [`53013a3f`](https://github.com/AI-Ascension/sts2-mcp-server/tree/53013a3f1b4871129d59198eb90c2499f8557bee) |
+| Harness consumer snapshot | [`682c2b5b`](https://github.com/AI-Ascension/sts2-harness/commit/682c2b5ba38010e16d43b04c43d40184bda70106) | [`173be647`](https://github.com/AI-Ascension/sts2-harness/tree/173be6477d81f83dae9ab5ad4e0c670d474e32d5) |
+| Harness current main | [`d23b490`](https://github.com/AI-Ascension/sts2-harness/commit/d23b490493c61ff8ea0161ec70f8ab800b2a9b32) | [`8dd448e2`](https://github.com/AI-Ascension/sts2-harness/tree/8dd448e284893fb2d144160efcab14eaa2ce67f0) |
+
+The fresh producer capture [`coop-native-source-only-20260910-r7`](https://github.com/AI-Ascension/sts2-protocol/blob/d930110b98f3eb10b6db0bccfb50e9daa775c939/artifacts/coop-native-v1/producer-capture.json)
+was captured at `2026-09-10T21:39:58Z` with the source-only producer probe. It contains 9
+serialized wrapper captures, all with projection matches, and the consumer-conformance record
+reports `component_serialized_conformance` / `source_to_consumer: pass` for the exact producer,
+gateway, MCP, and harness snapshot identities above. The schema digest remains
+`2f3bc99e53080fa11b39592b64fb0ab964a16f568719a2622d0b2caf766ab629`. Harness `main` later
+advanced through dependency-only [PR #44](https://github.com/AI-Ascension/sts2-harness/pull/44) to
+[`d23b490`](https://github.com/AI-Ascension/sts2-harness/commit/d23b490493c61ff8ea0161ec70f8ab800b2a9b32) /
+tree [`8dd448e2`](https://github.com/AI-Ascension/sts2-harness/tree/8dd448e284893fb2d144160efcab14eaa2ce67f0),
+with [main CI 34534240707](https://github.com/AI-Ascension/sts2-harness/actions/runs/34534240707) and [policy 34534240680](https://github.com/AI-Ascension/sts2-harness/actions/runs/34534240680) passed; the capture remains explicitly bound to
+consumer snapshot `682c2b5b` / tree `173be647` until refreshed.
+
+The capture uses a synthetic `CapturePort` and records `native_session_executed: false`. It is
+source/component evidence only: no live two-peer action, vote convergence, shared effect, native
+checksum settlement, or disconnect/rejoin recovery is recorded, and `live_status` remains
+`unverified`. The v0.4.1 source-only release, current observability head, and runtime, provider,
+Workshop, and platform-support limits recorded above remain unchanged.

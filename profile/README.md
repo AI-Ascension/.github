@@ -395,3 +395,28 @@ no host compatibility or platform support. The historical
 [`sts2-game-mod-v0.4.0` release](https://github.com/AI-Ascension/sts2-game-mod/releases/tag/sts2-game-mod-v0.4.0)
 remains published at `a70a5e5` / tree `0b16693`, with its earlier hashes retained in the dated
 16:25 UTC record above.
+
+## Latest native artifact successor — 2026-09-10, 21:53 UTC (protocol PR #35)
+
+Protocol PR [#35](https://github.com/AI-Ascension/sts2-protocol/pull/35) merged at
+`2026-09-10T21:51:44Z`. The current protocol artifact is
+[`d930110b`](https://github.com/AI-Ascension/sts2-protocol/commit/d930110b98f3eb10b6db0bccfb50e9daa775c939)
+/ tree [`aef7ce55`](https://github.com/AI-Ascension/sts2-protocol/tree/aef7ce550f2561eae5bca9b666ce4cc60d155f0a), with
+[CI 34534444584](https://github.com/AI-Ascension/sts2-protocol/actions/runs/34534444584) and
+[policy 34534444476](https://github.com/AI-Ascension/sts2-protocol/actions/runs/34534444476)
+passed. The fresh source-only capture
+[`coop-native-source-only-20260910-r7`](https://github.com/AI-Ascension/sts2-protocol/blob/d930110b98f3eb10b6db0bccfb50e9daa775c939/artifacts/coop-native-v1/producer-capture.json)
+contains 9 serialized wrapper captures with projection matches.
+
+Its capture-bound component identities are producer `sts2-game-mod` `d23ca838` / tree `23336ca8`,
+gateway `c8be3a72` / `69b9dc22`, MCP `037d10de` / `53013a3f`, and harness consumer snapshot
+`682c2b5b` / `173be647`. The conformance record reports `component_serialized_conformance` and
+`source_to_consumer: pass`; the schema digest is
+`2f3bc99e53080fa11b39592b64fb0ab964a16f568719a2622d0b2caf766ab629`. Harness `main` later advanced
+through dependency-only PR #44 to `d23b490` / tree `8dd448e2`, with main CI `34534240707` and policy
+`34534240680` passed; the artifact remains explicitly bound to the `682c2b5b` / `173be647` snapshot
+until refreshed.
+
+The source-only capture uses a synthetic `CapturePort` and does not execute a native session.
+Live two-peer action, vote, effect, checksum, and disconnect/rejoin recovery remain unverified;
+the v0.4.1 release and current observability/runtime limits remain unchanged.
