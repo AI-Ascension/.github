@@ -271,3 +271,25 @@ support, handoff/store, completion, execution, and control-test modules. Worker 
 `unverified` until that graph is wired and tested or the superseded files are removed or archived.
 See the [full dated status record](https://github.com/AI-Ascension/.github/blob/main/STATUS.md) for
 check-run links, native co-op scope, observability observations, and Pages evidence.
+
+## Latest acceptance successor — 2026-09-10, 15:54+ UTC
+
+The `confirmed` successor refresh rechecked all nine default branches after game-mod PR [#71](https://github.com/AI-Ascension/sts2-game-mod/pull/71)
+and harness PR [#58](https://github.com/AI-Ascension/sts2-harness/pull/58) merged. Game-mod `main`
+is [`a70a5e5`](https://github.com/AI-Ascension/sts2-game-mod/commit/a70a5e5bb2fa89fade7e16dbb4a58ed80e31355b),
+where the source-distribution policy and copied REST artifact parity are synchronized. Harness
+`main` is [`4342789`](https://github.com/AI-Ascension/sts2-harness/commit/4342789de4bf5a5f23aee85be273db9a263c9c31),
+where the `worker_handoff`, `worker_runtime`, and `worker_runtime_store` graph is wired through
+the crate root with the watchdog-worker-v1 schema, fixtures, command mapping, and restart/recovery
+tests. These are source/component and CI records; they do not establish native worker execution,
+host loading, provider execution, or gameplay settlement. The full nine-head table and check links
+are in the [dated status record](https://github.com/AI-Ascension/.github/blob/main/STATUS.md).
+
+The acceptance blockers remain exact: no model-controlled Victory or replay of a model-controlled
+Victory; no native two-peer action/effect/checksum settlement or disconnect/rejoin recovery; no
+usable Laminar operator query credential/path or rootful Podman/host acceptance for
+restart-persistent telemetry; zero tags and zero GitHub releases across the nine repositories; and
+no verified Workshop upload, Steam legal agreement, entitlement, item/content visibility,
+subscription, discovery, loading, update, or rollback. Site `main` is [`a451a70`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/a451a700d52befa73499c09bb4bc6ae4878d2cde),
+with validation run `34498420048` and Pages deployment run `34498419971` successful; that confirms
+static publication only.
