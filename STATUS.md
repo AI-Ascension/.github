@@ -727,3 +727,94 @@ succeeded. Deployment `6375923984` reached `success`; a live request to
 `e67ec29a894e37194e6d93fe298107013ecdac797f261975f325566452dfbf3a` and the 15:54,
 `a70a5e5`, and `4342789` markers. This is static publication evidence only; the r10
 successor documentation is not deployed until its site PR merges.
+
+## Latest acceptance successor — 2026-09-10, 16:25 UTC (post-16:20 merges)
+
+This `confirmed` read-only refresh follows gateway PR #37 merging at
+`2026-09-10T16:20:43Z`, harness PR #59 merging at `2026-09-10T16:21:05Z`, and
+the game-mod source-only prerelease being published at `2026-09-10T16:20:06Z`.
+It supersedes the 16:13 r10 table above only for current default-branch and
+release identity while preserving r10 as history. All nine default branches,
+their latest completed hosted checks, and the release/tag inventory were
+rechecked. Source, component, and release records remain separate from native
+host legality, model/provider execution, settled gameplay, observability
+persistence, Workshop publication, and general release acceptance.
+
+| Repository | Current `main` head (`confirmed`) | Checks observed (`confirmed`) | Source/release boundary (`source-derived`) |
+| --- | --- | --- | --- |
+| `sts2-game-core` | [`f9db577`](https://github.com/AI-Ascension/sts2-game-core/commit/f9db577530a4d159b066d3facbd780d61c044eb0) | [CI 34494626667](https://github.com/AI-Ascension/sts2-game-core/actions/runs/34494626667), [policy 34494626737](https://github.com/AI-Ascension/sts2-game-core/actions/runs/34494626737) passed | Host-independent semantics and tests; no host or game claim. |
+| `sts2-game-mod` | [`a70a5e5`](https://github.com/AI-Ascension/sts2-game-mod/commit/a70a5e5bb2fa89fade7e16dbb4a58ed80e31355b) | [CI 34498220756](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/34498220756), [policy 34498220893](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/34498220893) passed; [source release 34501301708](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/34501301708) passed | PR #71 source-policy and copied REST artifact parity merge; tag/release `sts2-game-mod-v0.4.0` is a source-only prerelease targeting this commit; host loading and settled gameplay remain `unverified`. |
+| `sts2-gateway` | [`5f3eadab`](https://github.com/AI-Ascension/sts2-gateway/commit/5f3eadabede9954bc834a62e3c4c1003444826ca) | [CI 34501500166](https://github.com/AI-Ascension/sts2-gateway/actions/runs/34501500166), [policy 34501500201](https://github.com/AI-Ascension/sts2-gateway/actions/runs/34501500201) passed | PR #37 test-only malformed-settled-receipt regression; no live host execution. |
+| `sts2-mcp-server` | [`8b6b738`](https://github.com/AI-Ascension/sts2-mcp-server/commit/8b6b73862494488fdd16fa5423fdf90a953260f4) | [CI 34494670041](https://github.com/AI-Ascension/sts2-mcp-server/actions/runs/34494670041), [policy 34494670273](https://github.com/AI-Ascension/sts2-mcp-server/actions/runs/34494670273) passed | Transport and gateway mapping source; native game settlement remains `unverified`. |
+| `sts2-harness` | [`5cc486a6`](https://github.com/AI-Ascension/sts2-harness/commit/5cc486a66b6f11930675af06f7426cd91c609983) | [CI 34501538192](https://github.com/AI-Ascension/sts2-harness/actions/runs/34501538192), [policy 34501538262](https://github.com/AI-Ascension/sts2-harness/actions/runs/34501538262) passed | PR #59 rejects conflicting provider completion retries using result reference/digest identity; no live provider or game execution. |
+| `sts2-protocol` | [`997de2a`](https://github.com/AI-Ascension/sts2-protocol/commit/997de2aec7590dc0f362dce71814431add624e98) | [CI 34492025822](https://github.com/AI-Ascension/sts2-protocol/actions/runs/34492025822), [policy 34492025836](https://github.com/AI-Ascension/sts2-protocol/actions/runs/34492025836) passed | Schemas, artifacts, validators, and conformance source; native co-op consumer admission remains `unverified`. |
+| `ai-agent-observability` | [`d7e79e1`](https://github.com/AI-Ascension/ai-agent-observability/commit/d7e79e1a9663601013e513048caea7063b0de9ae) | [CI 34493891085](https://github.com/AI-Ascension/ai-agent-observability/actions/runs/34493891085) passed | Telemetry topology and deployment tooling; live ingestion, query, persistence, and two-backend correlation remain `unverified`. |
+| `.github` | [`1c55e44`](https://github.com/AI-Ascension/.github/commit/1c55e446d8fa3cc1c5e10ba021b4f5b1024c8481) | No hosted check recorded for this governance repository in this refresh. | Governance and acceptance records only; no metadata, deployment, or release change is implied. |
+| `AI-Ascension.github.io` | [`a161730`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/a16173001177f11545398a71fd050df30df95b24) | [site validation 34501507191](https://github.com/AI-Ascension/AI-Ascension.github.io/actions/runs/34501507191), [Pages deploy 34501507182](https://github.com/AI-Ascension/AI-Ascension.github.io/actions/runs/34501507182) passed | Static evidence pages; Pages publication is confirmed separately and does not establish product runtime or release. |
+
+### Merged reliability updates
+
+- `confirmed` **Gateway PR #37:** [PR #37](https://github.com/AI-Ascension/sts2-gateway/pull/37)
+  merged at [`5f3eadab`](https://github.com/AI-Ascension/sts2-gateway/commit/5f3eadabede9954bc834a62e3c4c1003444826ca)
+  from head `0524b67e` on base `2cf9127`. The test-only regression treats a malformed host
+  `SETTLED` receipt missing its ticket/witness as explicit `receipt_missing` `UNKNOWN` with
+  HTTP 503, and verifies an identical retry replays the retained outcome without redispatch or
+  catalog consultation. CI and policy passed; the PR claims no live host execution.
+- `confirmed` **Harness PR #59:** [PR #59](https://github.com/AI-Ascension/sts2-harness/pull/59)
+  merged at [`5cc486a6`](https://github.com/AI-Ascension/sts2-harness/commit/5cc486a66b6f11930675af06f7426cd91c609983)
+  from head `fcd1f681` on base `780f2d5`. It binds idempotent provider completion retries to
+  result-reference and digest metadata, rejects conflicting retries instead of returning a
+  false duplicate success, and extends payload-integrity regression coverage at the integration
+  boundary. CI and policy passed; the PR claims no live provider or game execution.
+
+### Source-only prerelease state
+
+`confirmed`: [tag `sts2-game-mod-v0.4.0`](https://github.com/AI-Ascension/sts2-game-mod/releases/tag/sts2-game-mod-v0.4.0)
+points to [`a70a5e5`](https://github.com/AI-Ascension/sts2-game-mod/commit/a70a5e5bb2fa89fade7e16dbb4a58ed80e31355b),
+and the GitHub release is published, non-draft, and marked `prerelease`. The source-release
+workflow [34501301708](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/34501301708)
+succeeded. It publishes reviewed Windows and Linux source bundles with source tree
+`0b16693e5d5383d88f09e4a88119b6bb207fd88a`, source-policy SHA-256
+`f8fea839e28902843d1ea02db2589337ff36ec8214765d548c42177514fe3ba8`, included-content digest
+`54b56ad89e813b1d250bf8d3a318b377ccae26db7d7122f534b4adccfee2dbbe`, and archive digests
+Windows `acdf792a359cdf4f7f078967371317a995aea7c8194415800a00efb40db10362` and Linux
+`5670d7992d3e1276f4f8de1f3735f0d7e1595e7900990e7e9d7f1ef5ca5a77cf`. The release contains no
+compiled mod addon, managed/native runtime payload, proprietary assemblies/assets, saves,
+profiles, credentials, machine-specific files, Workshop package, Steam item update, installer
+operation, or game launch. It does not establish STS2 discovery/load compatibility, host ABI
+compatibility, live gameplay, live rest-site settlement, provider operation, Workshop publication,
+or platform support.
+
+### Acceptance boundaries
+
+- `unverified` **Model-played terminal evidence:** no model-controlled Victory or replay of a
+  model-controlled Victory is recorded. The named Windows and Linux replays are bounded Defeat
+  campaigns; forced Victory fixtures bypass ordinary play and do not establish a model-played
+  Victory.
+- `unverified` **Native co-op settlement and recovery:** no live two-peer model-controlled action,
+  vote convergence, shared effect, checksum settlement, or disconnect/rejoin recovery trace is
+  recorded. Current source and synchronization records do not establish an admitted native co-op
+  consumer path.
+- `confirmed` **Observability query boundary:** MLflow returned HTTP 200 for a failed run containing
+  124 spans but no terminal outcome. Laminar health returned HTTP 200, while its query returned
+  HTTP 401 with zero rows/pages. No controlled-restart persistence result is recorded. `unverified`
+  acceptance still needs rootful Podman/host access and a valid Laminar operator credential/path,
+  followed by real terminal campaign queries before and after restart.
+- `confirmed` **Release inventory:** the read-only refresh found one tag and one GitHub release,
+  both `sts2-game-mod-v0.4.0`, in `sts2-game-mod`; it is a source-only prerelease. The other eight
+  repositories have zero tags and zero GitHub releases. No stable release or runtime distribution
+  is established.
+- `unverified` **Workshop lifecycle:** the source prerelease and package validators do not establish
+  an uploaded Workshop item. Steam legal agreement acceptance, entitlement, item and content
+  visibility, subscription/discovery/loading, update, and rollback remain unverified.
+
+### Pages publication
+
+At this capture, site `main` was [`a161730`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/a16173001177f11545398a71fd050df30df95b24).
+Site validation run [34501507191](https://github.com/AI-Ascension/AI-Ascension.github.io/actions/runs/34501507191)
+and Pages deployment run [34501507182](https://github.com/AI-Ascension/AI-Ascension.github.io/actions/runs/34501507182)
+succeeded. Deployment `6376193182` reached `success`; live SHA-256 values were
+`evidence.html` `7a59171bf9bada17dd4214ad525f58ad4b15fc8babc4e20580743af259bdf94f`,
+`repositories.html` `a4a4f1c60f578515d716de9a38412acebff287b184b25776ab0afb5fc60740a2`, and
+`README.md` `f32b4f42505f53c5e9812b1a72faff46ccad7b30b8c9fbaa012119fb4f0c9a2a`. The r11
+successor documentation is not deployed until its site PR merges.
