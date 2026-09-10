@@ -20,7 +20,7 @@ These open candidates provide source and component checks for the Runtime-v4 pat
 
 Native final artifact and installation, model-played Victory, native co-op actions and recovery, Workshop lifecycle, live observability ingestion/correlation, deployment, and release acceptance remain unverified. Refer to the [dated status record](https://github.com/AI-Ascension/.github/blob/main/STATUS.md) for the wider repository matrix and evidence limits.
 
-## Current default-main source boundary — 2026-09-10
+## Earlier current default-main source boundary — 2026-09-10, 00:50 UTC
 
 The current default branches carry the bounded Runtime-v4 expert source/component paths and the
 merged REST selector recovery. These exact heads do not establish native host legality, settled
@@ -39,6 +39,32 @@ a read-only gateway/MCP coordinator-report contract; it carries no action, vote,
 host-game authority. Native co-op gameplay and disconnect/rejoin recovery remain unverified.
 Model-played Victory, broad character/seed/branch coverage, observability correlation, Workshop
 lifecycle, deployment, and public release also remain unverified.
+
+## Live default-main source boundary — 2026-09-10, 02:22 UTC
+
+A fresh GitHub REST refresh re-checked all nine default branches and their open pull requests.
+The exact current heads are below; they establish source/component identity only. The [status
+record](https://github.com/AI-Ascension/.github/blob/main/STATUS.md) retains the 36 open PRs with
+their heads, draft/ready state, mergeability, and check conclusions.
+
+| Repository | Current `main` head | Bounded scope at this refresh |
+| --- | --- | --- |
+| [`sts2-game-core`](https://github.com/AI-Ascension/sts2-game-core/commit/87e0f3d9355c0827e989d9fbc31804440852519b) | `87e0f3d9355c` | Host-independent semantics and tests. |
+| [`sts2-game-mod`](https://github.com/AI-Ascension/sts2-game-mod/commit/c21ddf38bd2b540be871f88303078625966270ce) | `c21ddf38bd2b` | Runtime-v4 expert bridge and bounded synthetic checks; native expert gameplay remains unverified. |
+| [`sts2-gateway`](https://github.com/AI-Ascension/sts2-gateway/commit/776327aca63c8ff6c6920865cd5c72de83b10c7b) | `776327aca63c` | Runtime-v4 routes and map consumer path; host settlement remains unverified. |
+| [`sts2-mcp-server`](https://github.com/AI-Ascension/sts2-mcp-server/commit/4787efa1251bcc0eddccc5fea63a8939a8eb06d0) | `4787efa1251` | Runtime-v4 mapping and REST selector recovery; native MCP-to-game settlement remains unverified. |
+| [`sts2-harness`](https://github.com/AI-Ascension/sts2-harness/commit/f8b5858d09978edf17c24b81a5ced07847e2bd5d) | `f8b5858d0997` | Documentation merge on top of the merged PR41 functional source; provider and gameplay settlement remain unverified. |
+| [`sts2-protocol`](https://github.com/AI-Ascension/sts2-protocol/commit/7fa0d8e82fbc245db74187106918d9f1af58c447) | `7fa0d8e82fbc` | Runtime-v4 schemas, artifacts, validators, and conformance cases. |
+| [`ai-agent-observability`](https://github.com/AI-Ascension/ai-agent-observability/commit/28a48590afb75b07590e1b78ea47dae08f5c3ade) | `28a48590afb7` | Source topology and deployment tooling; current-main gameplay ingestion and persistence remain unverified. |
+| [`.github`](https://github.com/AI-Ascension/.github/commit/217c9c10d82fc22e553c9af222a3a3bbb08259fa) | `217c9c10d82f` | Governance and acceptance status records. |
+| [`AI-Ascension.github.io`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/832068b69a44cca2bbfa7ea35e90190eddc3b35a) | `832068b69a44c` | Static evidence and repository pages; deployment remains unverified. |
+
+The independent review of [harness PR41](https://github.com/AI-Ascension/sts2-harness/pull/41)
+confirmed its exact merged source head `03fdc626`, formatting, repository policy, Clippy, and a
+serial workspace result of 285 passed and 5 ignored. Its bounded map, replay, REST recovery, and
+receipt-query source does not establish native gameplay or provider settlement. Native host
+legality, model-played Victory, multiplayer actions and recovery, observability persistence,
+Workshop lifecycle, deployment, and release remain unverified.
 
 **[Run the 45-second proof](https://ai-ascension.github.io/proof.html)** — browser only; no account, no install, no game files, no model.
 
