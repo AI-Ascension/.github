@@ -1005,3 +1005,64 @@ Laminar query key remain inaccessible, and the live compose, collector, init, an
 hashes differ from merged source. The exact evidence is retained privately at
 `/home/timot/sts2-completion-recovery-20260907/root/windows-d3d12-standard-campaigns-837bcf8f-078a-4457-8941-ab3228cb00cd/run-1788994950716041079-d37feeeacf44fb8444f0f302/final-observability-r2.json`
 (SHA-256 `8e533f8f11b5fa796ced236cee0335a2db882d372cb05788271f46e4e238fd29`).
+
+## Latest acceptance successor — 2026-09-10, 21:27 UTC (post-recovery-fence merges)
+
+This `confirmed` read-only successor records the three native co-op consumer fixes merged
+between 21:20 and 21:21 UTC. It supersedes the 20:02 table only for the gateway, MCP, and
+harness source identities; the protocol artifact, producer snapshot, release, Pages, host,
+provider, gameplay, observability, and Workshop boundaries remain separate.
+
+| Repository | Current `main` commit | Current tree | Latest completed checks observed | Boundary |
+| --- | --- | --- | --- | --- |
+| `sts2-gateway` | [`c8be3a7`](https://github.com/AI-Ascension/sts2-gateway/commit/c8be3a72ba9e304392575a1b2bdbc262e392be21) | [`69b9dc2`](https://github.com/AI-Ascension/sts2-gateway/tree/69b9dc229237fe5db7b7e33461e5e7f89f028ee9) | [CI 34531625729](https://github.com/AI-Ascension/sts2-gateway/actions/runs/34531625729), [policy 34531625767](https://github.com/AI-Ascension/sts2-gateway/actions/runs/34531625767) passed | Recovery response direction and unknown-generation fencing are source/component checks; live host settlement remains `unverified`. |
+| `sts2-mcp-server` | [`037d10d`](https://github.com/AI-Ascension/sts2-mcp-server/commit/037d10def1cbcb1c807e136d31b294355a92c010) | [`53013a3`](https://github.com/AI-Ascension/sts2-mcp-server/tree/53013a3f1b4871129d59198eb90c2499f8557bee) | [CI 34531686950](https://github.com/AI-Ascension/sts2-mcp-server/actions/runs/34531686950), [policy 34531686971](https://github.com/AI-Ascension/sts2-mcp-server/actions/runs/34531686971) passed | Canonical pending-rejoin projection is a source/component check; live MCP-to-game settlement remains `unverified`. |
+| `sts2-harness` | [`682c2b5`](https://github.com/AI-Ascension/sts2-harness/commit/682c2b5ba38010e16d43b04c43d40184bda70106) | [`173be64`](https://github.com/AI-Ascension/sts2-harness/tree/173be6477d81f83dae9ab5ad4e0c670d474e32d5) | [CI 34531656974](https://github.com/AI-Ascension/sts2-harness/actions/runs/34531656974), [policy 34531656898](https://github.com/AI-Ascension/sts2-harness/actions/runs/34531656898) passed | Recovery response generation fencing is serialized source/component evidence; live provider, host, and gameplay execution remain `unverified`. |
+
+### Merged recovery consumer updates
+
+- `confirmed` **Gateway PR #39:** [PR #39](https://github.com/AI-Ascension/sts2-gateway/pull/39)
+  merged at `2026-09-10T21:20:19Z` as [`c8be3a7`](https://github.com/AI-Ascension/sts2-gateway/commit/c8be3a72ba9e304392575a1b2bdbc262e392be21), from head
+  `b1fde46` on base `de1fe72`. It rejects echoed recovery request responses and fences the
+  post-generation field on unknown receipts: same-generation `after` is permitted only for an
+  accepted rejoin receipt; reconcile and unknown recovery outcomes require a null `after`.
+  Main CI and policy passed at the merged head.
+- `confirmed` **Harness PR #62:** [PR #62](https://github.com/AI-Ascension/sts2-harness/pull/62)
+  merged at `2026-09-10T21:20:38Z` as [`682c2b5`](https://github.com/AI-Ascension/sts2-harness/commit/682c2b5ba38010e16d43b04c43d40184bda70106), from head
+  `04fa375` on base `0f71c18`. It fences recovery response generations: an accepted rejoin
+  may carry a same-generation `after`, while reconcile and unknown recovery responses must
+  carry a null `after`; generation drift is rejected. Main CI and policy passed at the merged head.
+- `confirmed` **MCP PR #40:** [PR #40](https://github.com/AI-Ascension/sts2-mcp-server/pull/40)
+  merged at `2026-09-10T21:20:57Z` as [`037d10d`](https://github.com/AI-Ascension/sts2-mcp-server/commit/037d10def1cbcb1c807e136d31b294355a92c010), from head
+  `55cf230` on base `47d63f6`. It accepts the canonical pending-rejoin receipt and
+  rejects reconcile or unknown responses that carry an invalid post-generation. Main CI and
+  policy passed at the merged head.
+
+The accepted `coop-native-v1` artifact in protocol [`ed8626c`](https://github.com/AI-Ascension/sts2-protocol/commit/ed8626c2cf30089b4bdf214a2fdcb09b3eca3d29)
+remains bound to its recorded producer `ab702db`, gateway `de1fe723`, MCP `47d63f6`,
+and harness H0 `a2cb481` snapshots. Its schema digest
+`2f3bc99e53080fa11b39592b64fb0ab964a16f568719a2622d0b2caf766ab629` and serialized
+`source_to_consumer: pass` record are unchanged. These later fixes are source/component
+corrections and have not refreshed that artifact's consumer-conformance identities. A new
+artifact capture and conformance refresh is required before the three current heads can be
+described as the accepted artifact's reviewed consumers.
+
+### Acceptance boundaries
+
+- `confirmed` **Recovery source boundary:** the gateway, MCP, and harness merged heads pass
+  their declared CI and policy checks, and their focused native co-op checks were independently
+  reviewed at the exact PR heads (gateway 9 passed, harness 8 passed, MCP mapping 16 passed).
+- `unverified` **Native co-op runtime gate:** no live two-peer model-controlled action, vote
+  convergence, shared effect, native checksum settlement, or disconnect/rejoin recovery trace
+  is recorded. The source fixes do not establish host loading, live peer identity, or gameplay.
+- `unverified` **Model-played terminal evidence:** no model-controlled Victory or replay of a
+  model-controlled Victory is recorded. The named Windows and Linux replays are bounded Defeat
+  campaigns; forced Victory fixtures bypass ordinary play.
+- `unverified` **Observability persistence:** the final r2 query remains
+  `overall_state=backend_unavailable`; MLflow has one exact identity/trace match with 124
+  allowlisted spans and no terminal outcome, while Laminar remains credential-unavailable with
+  no query rows or restart-persistence proof.
+- `confirmed` **Release and Workshop boundary:** the one published
+  `sts2-game-mod-v0.4.0` artifact remains a source-only prerelease; no compiled runtime,
+  Workshop upload, Steam legal agreement, entitlement, item/content visibility,
+  subscription/discovery/loading, update, or rollback is verified.

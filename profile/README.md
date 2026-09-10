@@ -346,3 +346,23 @@ payload, proprietary game files, Workshop package, installer operation, or game 
 compatibility, live gameplay, provider operation, Workshop publication, and platform support
 remain unverified. The other eight repositories have zero tags and releases. The full nine-head
 table, release details, and blockers are in the [dated status record](https://github.com/AI-Ascension/.github/blob/main/STATUS.md).
+
+## Latest source successor — 2026-09-10, 21:27 UTC (recovery-fence fixes)
+
+The current gateway, MCP, and harness default branches include three merged native co-op
+recovery corrections. These are source/component records with passed main CI and policy checks;
+they do not establish a live host, provider, or gameplay run.
+
+| Repository | Current `main` | Source correction | Checks |
+| --- | --- | --- | --- |
+| [`sts2-gateway`](https://github.com/AI-Ascension/sts2-gateway/commit/c8be3a72ba9e304392575a1b2bdbc262e392be21) | `c8be3a7` / tree `69b9dc2` | Rejects echoed recovery request responses and fences unknown receipt generations. | [CI 34531625729](https://github.com/AI-Ascension/sts2-gateway/actions/runs/34531625729) / [policy 34531625767](https://github.com/AI-Ascension/sts2-gateway/actions/runs/34531625767) |
+| [`sts2-mcp-server`](https://github.com/AI-Ascension/sts2-mcp-server/commit/037d10def1cbcb1c807e136d31b294355a92c010) | `037d10d` / tree `53013a3` | Accepts the canonical pending-rejoin receipt and rejects invalid post-generations on reconcile or unknown responses. | [CI 34531686950](https://github.com/AI-Ascension/sts2-mcp-server/actions/runs/34531686950) / [policy 34531686971](https://github.com/AI-Ascension/sts2-mcp-server/actions/runs/34531686971) |
+| [`sts2-harness`](https://github.com/AI-Ascension/sts2-harness/commit/682c2b5ba38010e16d43b04c43d40184bda70106) | `682c2b5` / tree `173be64` | Fences recovery response generations; only accepted rejoin can carry same-generation `after`; reconcile and unknown require null `after`. | [CI 34531656974](https://github.com/AI-Ascension/sts2-harness/actions/runs/34531656974) / [policy 34531656898](https://github.com/AI-Ascension/sts2-harness/actions/runs/34531656898) |
+
+The accepted `coop-native-v1` artifact remains a bounded snapshot at protocol
+[`ed8626c`](https://github.com/AI-Ascension/sts2-protocol/commit/ed8626c2cf30089b4bdf214a2fdcb09b3eca3d29):
+its consumer record still binds gateway `de1fe723`, MCP `47d63f6`, and harness H0
+`a2cb481`, with producer `ab702db`. The later fixes have not refreshed those artifact
+identities. Native two-peer action, vote, effect, checksum, and disconnect/rejoin recovery
+remain unverified; a new artifact capture/conformance refresh is required before the current
+heads are called accepted artifact consumers.
