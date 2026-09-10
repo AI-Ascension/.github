@@ -238,3 +238,36 @@ A read-only GitHub CLI API requery ran from `2026-09-10T08:32:26.062924Z` throug
 | [`AI-Ascension.github.io`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/d0d8087e80c974a8901d0e85bc192652faeb6d42) | `d0d8087e80c9` | Merged static evidence and repository pages; Pages deployment is separately reported and runtime/release evidence remain unverified. |
 
 Game-mod PR [#69](https://github.com/AI-Ascension/sts2-game-mod/pull/69) merged at [`b9754b8`](https://github.com/AI-Ascension/sts2-game-mod/commit/b9754b803cbff79836143d5c115146f65b55184c) from head `ab702db`, with its Rust foundation, policy, and managed source-only checks successful. Its source contracts and probes do not establish exact-host loading, live two-peer gameplay, model-controlled action settlement, vote convergence, checksum settlement, or disconnect/rejoin recovery. The native candidate cleanup remains storage evidence only. Native install/load, provider settlement, model-played terminal gameplay, multiplayer, Workshop lifecycle, deployment, release, and current-main gameplay observability in both backends remain unverified. The public site PR19 is merged at [`d0d8087`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/d0d8087e80c974a8901d0e85bc192652faeb6d42); validation and Pages deployment succeeded.
+
+## Latest acceptance snapshot — 2026-09-10, 15:34–15:38 UTC
+
+A `confirmed` read-only refresh checked the nine default branches and the public Pages result.
+The exact heads below identify source and check state at capture; they do not establish native host
+legality, provider execution, settled gameplay, observability persistence, Workshop publication, or
+release acceptance.
+
+| Repository | Current `main` head | Source/check boundary |
+| --- | --- | --- |
+| [`sts2-game-core`](https://github.com/AI-Ascension/sts2-game-core/commit/f9db577530a4d159b066d3facbd780d61c044eb0) | `f9db577` | CI and policy passed; host-independent semantics only. |
+| [`sts2-game-mod`](https://github.com/AI-Ascension/sts2-game-mod/commit/e532f4d9186e367bd3dc045d2377a2bd3ac9e4e5) | `e532f4d` | CI and policy passed; adapter source/probes only, live settlement remains `unverified`. |
+| [`sts2-gateway`](https://github.com/AI-Ascension/sts2-gateway/commit/2cf9127bfe5b7f1f271dd1b2889d92a09f042f83) | `2cf9127` | CI and policy passed; bounded control-plane source, host settlement remains `unverified`. |
+| [`sts2-mcp-server`](https://github.com/AI-Ascension/sts2-mcp-server/commit/8b6b73862494488fdd16fa5423fdf90a953260f4) | `8b6b738` | CI and policy passed; transport/mapping source, native game settlement remains `unverified`. |
+| [`sts2-harness`](https://github.com/AI-Ascension/sts2-harness/commit/e5029f1023f8a4df676e537298b1efc19ef00e6c) | `e5029f1` | CI and policy passed; provider, worker, native restart, and gameplay acceptance remain `unverified`. |
+| [`sts2-protocol`](https://github.com/AI-Ascension/sts2-protocol/commit/997de2aec7590dc0f362dce71814431add624e98) | `997de2a` | CI and policy passed; native co-op consumer admission remains `unverified`. |
+| [`ai-agent-observability`](https://github.com/AI-Ascension/ai-agent-observability/commit/d7e79e1a9663601013e513048caea7063b0de9ae) | `d7e79e1` | CI passed; live two-backend ingestion/query/persistence remains `unverified`. |
+| [`.github`](https://github.com/AI-Ascension/.github/commit/fec27b97b5920466aaebe2b97c8a54ab71468cda) | `fec27b9` | Governance source only. |
+| [`AI-Ascension.github.io`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/3935679ceb378da60237e764ec615a8eb2b05527) | `3935679` | Static source; validation and Pages publication are separate confirmed results. |
+
+The current blockers are `unverified`: no model-controlled Victory or replay of a model-controlled
+Victory; no native two-peer action/effect/checksum settlement or disconnect/rejoin recovery; no
+usable Laminar operator query credential/path or rootful Podman/host acceptance for restart-persistent
+telemetry; zero tags and GitHub releases across the nine repositories; and no verified Workshop
+upload, Steam legal agreement, entitlement, item/content visibility, subscription, discovery, loading,
+update, or rollback.
+
+The harness worker files also remain outside the compiled module graph at `e5029f1`: `lib.rs` has no
+`worker_command` or `worker_runtime` module declaration, while the worker sources reference missing
+support, handoff/store, completion, execution, and control-test modules. Worker acceptance remains
+`unverified` until that graph is wired and tested or the superseded files are removed or archived.
+See the [full dated status record](https://github.com/AI-Ascension/.github/blob/main/STATUS.md) for
+check-run links, native co-op scope, observability observations, and Pages evidence.
