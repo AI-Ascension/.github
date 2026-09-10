@@ -320,3 +320,29 @@ across the nine repositories; and no verified Workshop upload, Steam legal agree
 entitlement, item/content visibility, subscription, discovery, loading, update, or rollback.
 At capture, the static site was `457f002`, with validation `34499991425` and Pages deployment
 `34499991509` successful; that confirms publication only.
+
+## Latest acceptance successor — 2026-09-10, 16:25 UTC (post-16:20 merges)
+
+The `confirmed` refresh follows gateway PR [#37](https://github.com/AI-Ascension/sts2-gateway/pull/37)
+merging at `2026-09-10T16:20:43Z` and harness PR [#59](https://github.com/AI-Ascension/sts2-harness/pull/59)
+merging at `2026-09-10T16:21:05Z`. Gateway `main` is now
+[`5f3eadab`](https://github.com/AI-Ascension/sts2-gateway/commit/5f3eadabede9954bc834a62e3c4c1003444826ca),
+with CI `34501500166` and policy `34501500201` passed. Harness `main` is now
+[`5cc486a6`](https://github.com/AI-Ascension/sts2-harness/commit/5cc486a66b6f11930675af06f7426cd91c609983),
+with CI `34501538192` and policy `34501538262` passed.
+
+Gateway PR #37 is a test-only regression for malformed host `SETTLED` receipts: missing
+ticket/witness becomes explicit `receipt_missing` `UNKNOWN` with HTTP 503, and an identical
+retry replays the retained outcome without redispatch or catalog consultation. Harness PR #59
+rejects conflicting provider completion retries using result-reference and digest metadata.
+These are reliability source/component checks; they do not establish live host, provider, or
+game execution.
+
+The game-mod now has one published, non-draft source-only prerelease:
+[`sts2-game-mod-v0.4.0`](https://github.com/AI-Ascension/sts2-game-mod/releases/tag/sts2-game-mod-v0.4.0),
+targeting [`a70a5e5`](https://github.com/AI-Ascension/sts2-game-mod/commit/a70a5e5bb2fa89fade7e16dbb4a58ed80e31355b).
+Its source-release workflow `34501301708` passed. The bundles contain no compiled mod, runtime
+payload, proprietary game files, Workshop package, installer operation, or game launch, so host
+compatibility, live gameplay, provider operation, Workshop publication, and platform support
+remain unverified. The other eight repositories have zero tags and releases. The full nine-head
+table, release details, and blockers are in the [dated status record](https://github.com/AI-Ascension/.github/blob/main/STATUS.md).
