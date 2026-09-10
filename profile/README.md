@@ -4,7 +4,29 @@
   <img src="https://raw.githubusercontent.com/AI-Ascension/.github/main/profile/assets/banner-light.svg" alt="AI-Ascension — Inspect how AI requests to a game get fenced, one Rust contract at a time. Runtime: unverified. Deterministic tests: confirmed." width="100%">
 </picture>
 
-## Inspect how AI requests to a game get fenced, one Rust contract at a time.
+# AI Ascension
+
+**Ascension** is the flagship toolkit for recorded, controlled game-playing
+experiments. **The Climb — by AI Ascension** is the recurring series where each
+run is presented with its evidence and limits in view.
+
+## How far can an AI climb?
+
+We build open tools for game-playing agents, starting with Slay the Spire 2.
+The latest dated Linux report records Astra reaching **Defeat on floor 24**,
+with 431 settled operations and one controller restart on 2026-09-06.
+[Read that run report](https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/docs/evidence/linux-seeded-campaign-20260906.md)
+or [build with Ascension](https://github.com/AI-Ascension/sts2-harness).
+This is a source-owner report; no public playable video accompanies this link.
+
+Four useful places to start:
+
+- [Read a recorded run](https://github.com/AI-Ascension/sts2-harness/blob/cb17b6c15262ce9356f1e85fd475af997aedc445/docs/evidence/linux-seeded-campaign-20260906.md).
+- [Try the developer toolkit](https://github.com/AI-Ascension/sts2-harness).
+- [Inspect the historical contract proof](https://ai-ascension.github.io/proof.html).
+- [Choose a contribution](https://github.com/AI-Ascension/.github/blob/main/CONTRIBUTING.md).
+
+### What the evidence supports
 
 Start with deterministic, in-memory contract tests you can replay here and re-run with cargo. Later default branches include runtime executables, bounded Windows/Linux Slay the Spire 2 campaign and replay records, and a read-only coordinator-synchronization check. **Model-played Victory, native multiplayer, reliable autonomous coverage, and broader compatibility remain unverified.** See the [dated source/evidence snapshots](https://github.com/AI-Ascension/.github/blob/main/STATUS.md) for exact pins and limits; this profile has not independently reproduced those runtime records.
 
