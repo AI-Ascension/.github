@@ -293,3 +293,30 @@ no verified Workshop upload, Steam legal agreement, entitlement, item/content vi
 subscription, discovery, loading, update, or rollback. Site `main` is [`a451a70`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/a451a700d52befa73499c09bb4bc6ae4878d2cde),
 with validation run `34498420048` and Pages deployment run `34498419971` successful; that confirms
 static publication only.
+
+## Latest acceptance successor — 2026-09-10, 16:13 UTC (post-16:03 merge)
+
+The `confirmed` refresh follows harness PR [#51](https://github.com/AI-Ascension/sts2-harness/pull/51)
+merging at `2026-09-10T16:03:56Z`. Harness `main` is now
+[`780f2d5`](https://github.com/AI-Ascension/sts2-harness/commit/780f2d521508a2aadc76c4d779544d967955f102)
+on the earlier `4342789` base. PR checks `34499698232` and `34499698312`, followed by
+main checks `34499708670` and `34499708793`, passed.
+
+PR #51 adds bounded context-capture source/component wiring through `ExoSession::decide`,
+the generic `ProviderPort` route, Astra's final CLI handoff, and Ollama's final serialized
+HTTP write, with lifecycle, identity, manifest, queue, vault, and failure-fidelity tests.
+These records are source/component and synthetic differential evidence. No real provider,
+game, or external service was called; they do not establish a provider receipt, game action,
+browser run, native platform behavior, integrated producer/store demo, or gameplay settlement.
+Native preflight reached root → lead only, so coordinator/specialist ancestry remains
+`unverified`. The full nine-head table and check links are in the
+[dated status record](https://github.com/AI-Ascension/.github/blob/main/STATUS.md).
+
+The acceptance blockers remain exact: no model-controlled Victory or replay of a
+model-controlled Victory; no native two-peer action/effect/checksum settlement or
+disconnect/rejoin recovery; no usable Laminar operator query credential/path or rootful
+Podman/host acceptance for restart-persistent telemetry; zero tags and zero GitHub releases
+across the nine repositories; and no verified Workshop upload, Steam legal agreement,
+entitlement, item/content visibility, subscription, discovery, loading, update, or rollback.
+At capture, the static site was `457f002`, with validation `34499991425` and Pages deployment
+`34499991509` successful; that confirms publication only.
