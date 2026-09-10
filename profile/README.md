@@ -40,7 +40,7 @@ host-game authority. Native co-op gameplay and disconnect/rejoin recovery remain
 Model-played Victory, broad character/seed/branch coverage, observability correlation, Workshop
 lifecycle, deployment, and public release also remain unverified.
 
-## Live default-main source boundary — 2026-09-10, 02:22 UTC
+## Earlier live default-main source boundary — 2026-09-10, 02:22 UTC
 
 A fresh GitHub REST refresh re-checked all nine default branches and their open pull requests.
 The exact current heads are below; they establish source/component identity only. The [status
@@ -117,3 +117,29 @@ Historical proof stamp: `confirmed` for the deterministic in-memory tests at the
 Start with [CONTRIBUTING.md](https://github.com/AI-Ascension/.github/blob/main/CONTRIBUTING.md) (boundary rules, first safe tasks, how to run the recipe) and the site's [contributing page](https://ai-ascension.github.io/contributing.html). Report defects, contract observations, doubtful labels, and proof recipes through the [issue forms](https://github.com/AI-Ascension/.github/issues/new/choose). Security concerns go through [SECURITY.md](https://github.com/AI-Ascension/.github/blob/main/SECURITY.md), never a public issue. Decisions and roles are in [GOVERNANCE.md](https://github.com/AI-Ascension/.github/blob/main/GOVERNANCE.md). Stars and shares are never required.
 
 AI-Ascension is an independent project. It is not affiliated with or endorsed by Mega Crit or Valve and grants no rights to game files, assets, or marks. No game files are stored or distributed.
+
+
+## Latest default-main source boundary — 2026-09-10, 02:36 UTC
+
+After the 02:22 UTC documentation refresh, a read-only requery recorded the latest default-main
+heads below. It found 31 open PRs; the [status record](https://github.com/AI-Ascension/.github/blob/main/STATUS.md)
+retains their exact heads, draft/ready states, mergeability, and check conclusions. These source
+records remain separate from native host, provider, gameplay, observability, deployment, Workshop,
+and release acceptance.
+
+| Repository | Current `main` head | Source/component scope |
+| --- | --- | --- |
+| `sts2-game-core` | [`87e0f3d9355c`](https://github.com/AI-Ascension/sts2-game-core/commit/87e0f3d9355c0827e989d9fbc31804440852519b) | Host-independent semantics and tests. |
+| `sts2-game-mod` | [`caae865986d2`](https://github.com/AI-Ascension/sts2-game-mod/commit/caae865986d2274736d92b4f9be2bbda24bab83d) | Merged seeded-run adapter and Runtime-v4 source/component paths; native expert gameplay and settlement remain unverified. |
+| `sts2-gateway` | [`2b44bf347f79`](https://github.com/AI-Ascension/sts2-gateway/commit/2b44bf347f790509c9f13378c89719d09366d45b) | Merged seeded-run boundary and Runtime-v4 routes; host settlement and deployment remain unverified. |
+| `sts2-mcp-server` | [`b5a9262f1c76`](https://github.com/AI-Ascension/sts2-mcp-server/commit/b5a9262f1c76da76ea6f84fca0f1ee821ff67001) | Merged seeded-run profile and Runtime-v4 mapping; native MCP-to-game settlement remains unverified. |
+| `sts2-harness` | [`3926e5a30ab5`](https://github.com/AI-Ascension/sts2-harness/commit/3926e5a30ab569612e67d2dfdc6542f1391e95d7) | Merged seeded-run transport and PR41 source; provider, native, host-restart, and gameplay settlement remain unverified. |
+| `sts2-protocol` | [`d3ab5fca7d9d`](https://github.com/AI-Ascension/sts2-protocol/commit/d3ab5fca7d9d74bb31eeb3e5b343d8024ee44404) | Merged seeded-run selection context and Runtime-v4 schemas, artifacts, validators, and conformance cases. |
+| `ai-agent-observability` | [`28a48590afb7`](https://github.com/AI-Ascension/ai-agent-observability/commit/28a48590afb75b07590e1b78ea47dae08f5c3ade) | Source topology and deployment tooling; current-main gameplay ingestion, persistence, and two-backend correlation remain unverified. |
+| `.github` | [`8336899bb0a1`](https://github.com/AI-Ascension/.github/commit/8336899bb0a154055691225f7e59d92e8acf2190) | Governance and acceptance status records. |
+| `AI-Ascension.github.io` | [`2ae456c6395c`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/2ae456c6395c1e62395f79db7f42dc3712a6ab3c) | Static evidence and repository pages; deployment remains unverified. |
+
+The requery confirms the documentation merges at `.github` `8336899bb0a154055691225f7e59d92e8acf2190`
+and site `2ae456c6395c1e62395f79db7f42dc3712a6ab3c`. Native host loading, provider settlement,
+terminal gameplay, native co-op actions and recovery, observability persistence, Workshop lifecycle,
+deployment, and release remain unverified.
