@@ -18,31 +18,27 @@ organization-wide compatibility claim is admitted by this document.
 `org-governance` consumes dated technical evidence and records organization-level
 limits. It must link an exact contract artifact or commit only after one exists.
 
-## Admission gate
+## Admission evidence and ownership
 
 Implementation and review may proceed against an exact pinned candidate before
 admission. Candidate implementation does not require a merged contract or an
 admitted digest; it must be revalidated whenever the candidate changes.
 
-A proposed recorded-run contract may be called admitted only when all of these
-evidence items name the same exact contract bytes and digest:
+The protocol owner's `docs/recorded-run-admission.md` defines technical admission
+and release gates. Governance summarizes those gates; it introduces no separate
+approval process or merge-before-testing requirement. The workflow-owned
+`integration/recorded-run-matrix.md` is the authoritative shared compatibility
+matrix. The coordinator's deployment ledger supplies dated host evidence.
 
-1. `sts2-protocol` has merged its versioned schema, profile rules, package and
-   extraction rules, compatibility behavior, valid and invalid vectors, and a
-   reproducible conformance command.
-2. `sts2-harness` has a bounded deterministic exporter for a detected source
-   format, an allowlisted mapping, and a reconciliation of emitted, filtered,
-   unsupported, malformed-tail, and rejected records.
-3. Workflow Studio and `ai-agent-observability` have independently validated
-   and processed the identical artifact, with their capability and duplicate
-   behavior recorded.
-4. Evidence covers integrity, unsafe and colliding archive entries, resource
-   bounds, unsupported required versions, unknown optional profiles, malformed
-   or truncated records, omission/redaction, distinct identity namespaces, and
-   lossless nanosecond handling.
-5. A maintainer has accepted the technical admission in the owning protocol
-   repository. Governance documentation may then cite that decision and its
-   scoped consumer evidence.
+For candidate 3, the owner requires corrected harness export and source
+reconciliation, validation and consumption of identical real-source bytes by
+both consumers, resolution of applicable review findings, and browser/tracking
+integration evidence. Protocol maintainers then record technical admission
+against the exact source commit, schema/inventory pins, consumer evidence and
+migration classification. Candidate status and empty admitted-consumer metadata
+remain truthful until that decision. Release/version publication follows the
+owner's existing release policy separately; task-specific agent permissions
+are not compatibility requirements.
 
 Passing a schema validator, a synthetic fixture, a component test, or one
 consumer import alone does not satisfy this gate. An admitted artifact does not
@@ -51,8 +47,8 @@ release readiness, or organization-wide compatibility.
 
 ## Version and digest policy
 
-The inspected protocol candidate is `1.0.0-candidate.2`, which supersedes
-`1.0.0-candidate.1`. The protocol owner's candidate requires exact wire-version
+The inspected protocol candidate is `1.0.0-candidate.3`, which supersedes
+candidates 1 and 2. The protocol owner's candidate requires exact wire-version
 matching; a shared major number alone does not imply compatibility between
 candidates or with a future release. A wire or semantic change requires a new
 candidate revision, fresh pins, and producer/consumer revalidation. Published
@@ -94,31 +90,77 @@ authenticity or successful gameplay.
 
 ## Current boundary
 
-Source-derived snapshot, 2026-09-11: concrete candidate schema, artifact copy,
-semantic/package rules, fixtures, checksum inventory, validator and proposed
-ADR 0034 now exist in the protocol integration worktree. They are unadmitted
-candidate files; no candidate commit or release is cited here because the
-inspected files are uncommitted. The local review locations are
-`worktrees/recorded-run-sts2-protocol/artifacts/recorded-run-bundle-v1/` and
-`recorded-run-integration/sts2-protocol.md` in the coordination workspace.
+Source-derived snapshot, 2026-09-11: candidate 3 exists at local, unpublished
+protocol commit `6cdcf0995b25185e59c57d21b1e7a23c2d9b5f8a`. Its sources are
+`schemas/recorded-run-bundle-v1-candidate3.schema.json`,
+`artifacts/recorded-run-bundle-v1-candidate3/`, ADR 0035, and
+`docs/recorded-run-admission.md`. The older unsuffixed artifact directory still
+contains candidate 2; it must not supply candidate 3 pins. No tag or release
+is asserted.
 
 | Review pin at this snapshot | SHA-256 |
 | --- | --- |
-| Candidate 2 schema | `d5098e5f969d99707d3ad1d97acdbc803285b93f1eb1dcfe5dc3f63c534192af` |
-| Candidate 2 artifact inventory (`SHA256SUMS`) | `a43f4ee6a93973aa0cf60dd8e4de70520b9c3214d1ed772fdb66610054773d64` |
+| Candidate 3 schema | `a6c32127290f4d5e670d8863f97a74a7b8e3e411e735d81394b51fe1578b4eb6` |
+| Candidate 3 artifact inventory (`SHA256SUMS`) | `580c1cf3be4bb3e4eb37b9acd9166808b7386b0eb84286cc0798a0d88e35bb35` |
 
-The coordinator records protocol, harness, Studio, observability and workflow
-implementation in progress. Candidate 1 references in earlier handoffs are
-historical and require migration/revalidation against the agreed successor.
-This governance snapshot does not establish agreement on those pins.
+Studio's local unpublished commit is
+`ad9f764c5caf6a7208b55d380e4f79f7ad8e6455`; observability's is
+`3f611e52c96cfbef6d37b0e1a553eaa8184010b1`, including import edge fixes
+`6c5ee3fd7aecda4fd641931d990daef57367a5ee` and a separate baseline rollback
+correction. These revisions exist locally; publication is not claimed.
 
-Pending evidence gates remain: producer/two-consumer agreement and independent
-review; required repository and conformance checks; deterministic real-source
-export with source preservation and count/omission reconciliation; identical
-artifact import in Studio and observability with identity, evidence, accounting
-and retry comparisons; browser import and authoring/contrast checks; verified
-LAN deployment with tested asset digests, explicit lifetime and rollback; and
-the workflow-owned scoped matrix and maintainer admission decision. The
-coordinator's receipt of all ten discovery handoffs is discovery coverage only.
-The organization disposition remains `unverified` for portable recorded-run
-compatibility.
+The current workflow matrix records eight valid and 25 invalid candidate 3
+vectors passing all three implementations, matching summaries/payloads, and
+duplicate import retaining one revision. Protocol and Studio independent
+review findings are closed within their reviewed scope. Observability final
+edge/baseline review and harness corrected immutable binary remain pending.
+Local Chromium and synthetic tracking results do not fill the fresh Train gate.
+
+The coordinator records real candidate 2 Train export/import (8 events and
+1 accounting record), 240 source rows reconciled as 9 emitted and 231 filtered,
+and nine unchanged source fingerprints. Actual candidate 2 disposable
+Collector-to-MLflow evidence includes 19 persisted spans, one revision, retry
+and restart checks. Laminar and fresh candidate 3 actual tracking remain
+unverified.
+
+The deployed LAN preview at `http://192.168.1.146:4173/` is the privacy-patched
+candidate 2 release
+`f5722374a5de4e7bd3393b42a64479b43c78cd7a0889d71f629e8d0885f3ca35`.
+Coordinator evidence verifies served bytes, enabled user-service lifetime,
+rollback to the prior release and restoration, and VM-origin Chromium actual
+Train/privacy/duplicate/authoring checks. This is dated evidence, not a live
+status probe by governance. Candidate 3 deployment and an independent physical
+LAN-client check remain unverified. Historical candidate 2 results must retain
+their original pins and scope.
+
+## Migration commands and next outcomes
+
+From the protocol worktree, with Node 24, validate an existing candidate 3 ZIP:
+
+```sh
+node tools/recorded-run/validate.mjs /path/to/candidate3.zip
+```
+
+From the workflow worktree, after building its documented runner binaries,
+run the pinned ordered consumer plan into a new output directory:
+
+```sh
+cargo run --locked --manifest-path tools/recorded-run-driver/Cargo.toml -- \
+  integration/recorded-run-candidate3-consume-plan.json \
+  /path/to/candidate3.zip .local/candidate3-consume-new
+```
+
+Use workflow's `conformance/recorded-run.md` for build, vector and deeper
+payload/persistence comparison commands. A golden ZIP demonstrates synthetic
+conformance only. Runner exit 0 means the scoped comparison passed, exit 1 a
+failed gate, and exit 2 missing required pins. Do not relabel candidate 2 ZIPs
+or remove a candidate suffix; re-export with the corrected producer and re-pin
+all affected consumers. Preserve historical tooling and a last-known-good pin.
+
+Fresh Train candidate 3 evidence entry: **pending** corrected exporter
+source/binary pin, fresh bundle byte/semantic digests, unchanged-source
+reconciliation, both consumer and actual tracking results, browser/deployed
+asset/rollback evidence, and final review dispositions in the workflow matrix.
+Its full export plan intentionally has no exporter pin yet. Formal protocol
+admission remains pending those owner-defined gates; organization-wide
+recorded-run compatibility remains `unverified`.
