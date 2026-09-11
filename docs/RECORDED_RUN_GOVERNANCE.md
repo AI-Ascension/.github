@@ -105,33 +105,77 @@ is asserted.
 
 Studio's local unpublished commit is
 `ad9f764c5caf6a7208b55d380e4f79f7ad8e6455`; observability's is
-`3f611e52c96cfbef6d37b0e1a553eaa8184010b1`, including import edge fixes
-`6c5ee3fd7aecda4fd641931d990daef57367a5ee` and a separate baseline rollback
-correction. These revisions exist locally; publication is not claimed.
+`f6861dffb0f45cdc01f122c027f219437f4773fd`, including import edge fixes
+and descriptor-based extended-metadata rollback corrections. Harness's final
+local commit is `a065fe5187afefa9deccba2355ed5c1f00ba20ac`, correcting seed
+identity validation against the source contract. These revisions exist locally;
+publication is not claimed.
 
 The current workflow matrix records eight valid and 25 invalid candidate 3
 vectors passing all three implementations, matching summaries/payloads, and
 duplicate import retaining one revision. Protocol and Studio independent
-review findings are closed within their reviewed scope. Observability final
-edge/baseline review and harness corrected immutable binary remain pending.
-Local Chromium and synthetic tracking results do not fill the fresh Train gate.
+review findings are closed within their reviewed scope. Coordinator evidence
+also records independent observability consumer and metadata-rollback closure.
+Harness reports 656 tests passed, zero failed and five ignored at its final
+revision, plus formatting, Clippy, strict policy and build checks. These are
+owner/coordinator results, not product tests rerun by governance.
 
-The coordinator records real candidate 2 Train export/import (8 events and
-1 accounting record), 240 source rows reconciled as 9 emitted and 231 filtered,
-and nine unchanged source fingerprints. Actual candidate 2 disposable
-Collector-to-MLflow evidence includes 19 persisted spans, one revision, retry
-and restart checks. Laminar and fresh candidate 3 actual tracking remain
-unverified.
+The independent harness reviewer closed the original findings and named
+follow-ups after rerunning all five review-2 cases and validating the actual
+Train review-2 artifact. The closure verifies source-schema seed identity
+handling, three affected rows for raw-seed omissions, and invalid versus
+unsupported accounting dispositions. It reports no new defect within that
+bounded scope; it is not an exhaustive source-format or filesystem audit.
+Evidence: `recorded-run-integration/reviews/harness-independent.md`.
 
-The deployed LAN preview at `http://192.168.1.146:4173/` is the privacy-patched
-candidate 2 release
-`f5722374a5de4e7bd3393b42a64479b43c78cd7a0889d71f629e8d0885f3ca35`.
-Coordinator evidence verifies served bytes, enabled user-service lifetime,
-rollback to the prior release and restoration, and VM-origin Chromium actual
-Train/privacy/duplicate/authoring checks. This is dated evidence, not a live
-status probe by governance. Candidate 3 deployment and an independent physical
-LAN-client check remain unverified. Historical candidate 2 results must retain
-their original pins and scope.
+### Actual Train candidate 3, review 2
+
+The corrected exporter produced the same 11,506-byte ZIP twice from the existing
+Train recording. Its byte SHA-256 is
+`fe10fe2d9674493469f17a51f59d2b01f07b4cbd1c5179e061148e97bf476317`;
+semantic digest is
+`e5bd1aaac5209573192861c81f3bbac6b6356c24f48c129b52e93e508454b686`.
+The executed transport binary SHA-256 is
+`48a4ff28886dfbeaba9de0bcb03f1325434952023e9a775eec9b9b6dbbc14fb3`.
+All nine recorded source fingerprints (sizes, hashes and modification times)
+are unchanged. Reconciliation remains 240 source rows: 9 emitted and 231
+filtered, yielding 8 events and 1 accounting record.
+
+The protocol, Studio and observability CLIs accepted those exact bytes.
+Cross-consumer evidence compares events, accounting, omissions, identities,
+provenance and evidence exactly; retry retains one revision. Seed start is
+record-scoped settled/observed. Process exit remains failed, gameplay remains
+`episode_failed`, and two action outcomes remain unknown. Seed settlement does
+not establish settled gameplay actions, game defeat or successful gameplay.
+The exported completeness remains partial with source_snapshot unverified;
+unchanged fingerprints do not rewrite that conservative producer assertion.
+
+Actual disposable Collector 0.160.0 → MLflow 3.16.0 proof records 19 persisted
+spans and one revision, exact accounting/identity/evidence/stream values, stable
+duplicate and restart behavior, and unchanged input artifact. Laminar remains
+unverified; Docker image builds were not run.
+
+The coordinator records active LAN preview `http://192.168.1.146:4173/` at
+candidate 3 Studio package
+`52891bfb9614672cba058e1527b5c653b55e0c321f7a5aef6f8461569c77a821`.
+Review-2 VM-origin Chromium evidence verifies actual import, numeric observations
+and reported usage, six privacy rejection cases preserving prior state,
+duplicate no-op, six readable designer nodes, no page errors or unexpected
+requests, and all four served file hashes. Activation/reconnect records establish
+enabled service lifetime; the earlier candidate 2 rollback exercise remains
+historical procedure evidence, not a newly exercised candidate 3 rollback.
+An independent physical LAN-client check remains unverified. Governance inspected
+the reports locally and did not probe the host or repeat browser/backend runs.
+
+Evidence locations in the coordination workspace are
+`recorded-run-integration/train-candidate3-review2-export-result.json`,
+`train-candidate3-review2-seed-evidence.json`,
+`train-candidate3-review2-cross-consumer.json`,
+`train-candidate3-review2-backend.json`, and
+`train-lan-candidate3-review2.json` in that same directory. The workflow matrix
+remains authoritative for the shared acceptance ledger. At this inspection its
+review-1 rows still awaited these review-2 results; this dated evidence update
+does not silently relabel those historical rows or constitute admission.
 
 ## Migration commands and next outcomes
 
@@ -157,10 +201,10 @@ failed gate, and exit 2 missing required pins. Do not relabel candidate 2 ZIPs
 or remove a candidate suffix; re-export with the corrected producer and re-pin
 all affected consumers. Preserve historical tooling and a last-known-good pin.
 
-Fresh Train candidate 3 evidence entry: **pending** corrected exporter
-source/binary pin, fresh bundle byte/semantic digests, unchanged-source
-reconciliation, both consumer and actual tracking results, browser/deployed
-asset/rollback evidence, and final review dispositions in the workflow matrix.
-Its full export plan intentionally has no exporter pin yet. Formal protocol
-admission remains pending those owner-defined gates; organization-wide
-recorded-run compatibility remains `unverified`.
+Fresh Train candidate 3 review-2 round-trip evidence is now recorded above.
+Workflow owns propagation of its exact producer/bundle pins and evidence into
+the shared plans and matrix; old review-1 plans must not be treated as review-2
+reproductions. Formal protocol admission remains pending the owner's recorded
+decision and final evidence consolidation. No merge, tag, release publication
+or organization-wide compatibility is claimed. Docker image builds, Laminar
+and an independent physical LAN-client check retain their stated limitations.
