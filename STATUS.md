@@ -1246,3 +1246,39 @@ its conformance file is bound to gateway `c8be3a72` and harness `63dc5636`. The 
 and harness changes are recorded as current source heads and were not silently substituted into
 that artifact. No live host install, two-peer native action, shared vote/effect settlement,
 disconnect/rejoin recovery, or model-played victory is established by these source checks.
+
+## Current source-head successor — 2026-09-11, 02:02 UTC
+
+A fresh read-only GitHub refresh at `2026-09-11T02:02:14Z` records the current default-branch
+heads after the 23:48 UTC source snapshot. These are source/component and CI records; they do not
+extend the accepted native artifact's conformance result to the later heads.
+
+| Repository | Current `main` commit | Current tree | Current-main checks | Scope since the prior snapshot |
+| --- | --- | --- | --- | --- |
+| `sts2-protocol` | [`0bc689ea`](https://github.com/AI-Ascension/sts2-protocol/commit/0bc689eabc5542ede2b09b030d9ea32daa8a73e7) | [`6d91bcf4`](https://github.com/AI-Ascension/sts2-protocol/tree/6d91bcf46aadfcd611ae38c78885de0dadf5c074) | PR [#20](https://github.com/AI-Ascension/sts2-protocol/pull/20) merged at `2026-09-11T00:36:59Z`; CI [34547243872](https://github.com/AI-Ascension/sts2-protocol/actions/runs/34547243872) and policy [34547243877](https://github.com/AI-Ascension/sts2-protocol/actions/runs/34547243877) passed | README-only presentation update; the accepted artifact files and digest remain unchanged from protocol `f22dd721` |
+| `sts2-gateway` | [`f5582995`](https://github.com/AI-Ascension/sts2-gateway/commit/f5582995da2ac9b4ba7f66602062a62c48648537) | [`9f5f25f0`](https://github.com/AI-Ascension/sts2-gateway/tree/9f5f25f00309909581e239d4a3ee6c6ea0ab78ba) | PR [#21](https://github.com/AI-Ascension/sts2-gateway/pull/21) merged at `2026-09-11T00:36:54Z`; CI [34547237851](https://github.com/AI-Ascension/sts2-gateway/actions/runs/34547237851) and policy [34547237849](https://github.com/AI-Ascension/sts2-gateway/actions/runs/34547237849) passed | README-only presentation update atop the previously recorded gateway source fixes |
+| `sts2-game-mod` | [`bd8e9054`](https://github.com/AI-Ascension/sts2-game-mod/commit/bd8e90542dfc89366f820150c5c755e32716b1b0) | [`54ffc38e`](https://github.com/AI-Ascension/sts2-game-mod/tree/54ffc38e7accded92b79cfd666dbb3133b3628a2) | PR [#55](https://github.com/AI-Ascension/sts2-game-mod/pull/55) merged at `2026-09-11T00:40:52Z`; CI [34547520887](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/34547520887) and policy [34547520864](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/34547520864) passed, including the managed source-only boundary | README-only presentation update; current `main` remains distinct from capture input `d23ca838` |
+| `sts2-harness` | [`787c5dce`](https://github.com/AI-Ascension/sts2-harness/commit/787c5dcea7455f5abf2587935afb91ab8c66c10e) | [`2d0fd1f9`](https://github.com/AI-Ascension/sts2-harness/tree/2d0fd1f940bca40880cae76d785ce51fd6b0c319) | PR [#67](https://github.com/AI-Ascension/sts2-harness/pull/67) merged at `2026-09-11T01:57:44Z`; current CI [34552750699](https://github.com/AI-Ascension/sts2-harness/actions/runs/34552750699) and policy [34552750723](https://github.com/AI-Ascension/sts2-harness/actions/runs/34552750723) passed | PR [#60](https://github.com/AI-Ascension/sts2-harness/pull/60) bounded context-memory policy, PR [#65](https://github.com/AI-Ascension/sts2-harness/pull/65) added user-selected Ollama models, and PR #67 preserves provisional `Unknown` evidence during repeated recovery; its PR CI [34552479720](https://github.com/AI-Ascension/sts2-harness/actions/runs/34552479720) and policy [34552479649](https://github.com/AI-Ascension/sts2-harness/actions/runs/34552479649) passed |
+
+The accepted native artifact remains protocol
+[`f22dd721`](https://github.com/AI-Ascension/sts2-protocol/commit/f22dd7216f65de91a0ffa27f50bc2036be6c8b24)
+/ tree [`0e053e68`](https://github.com/AI-Ascension/sts2-protocol/tree/0e053e68d7e2e7411bd77dfe696e0afa859341). Its
+conformance file remains bound to producer capture input
+[`d23ca838`](https://github.com/AI-Ascension/sts2-game-mod/commit/d23ca838a7be875f32242123955b4a27782bac04),
+gateway [`c8be3a72`](https://github.com/AI-Ascension/sts2-gateway/commit/c8be3a72ba9e304392575a1b2bdbc262e392be21),
+MCP [`037d10de`](https://github.com/AI-Ascension/sts2-mcp-server/commit/037d10def1cbcb1c807e136d31b294355a92c010),
+and harness [`63dc5636`](https://github.com/AI-Ascension/sts2-harness/commit/63dc563690c93c575e75228f54672c1689d8a879).
+The current heads above are source-only pointers and were not substituted into that
+`source_to_consumer: pass` record.
+
+The producer capture [`coop-native-source-only-20260910-r7`](https://github.com/AI-Ascension/sts2-protocol/blob/f22dd7216f65de91a0ffa27f50bc2036be6c8b24/artifacts/coop-native-v1/producer-capture.json)
+remains unchanged: it was captured at `2026-09-10T21:39:58Z`, has `wrapper_count: 9` and
+`projection_match: true`, and retains schema digest
+`2f3bc99e53080fa11b39592b64fb0ab964a16f568719a2622d0b2caf766ab629`. It uses a synthetic
+`CapturePort` and records `native_session_executed: false`; `live_status` remains
+`unverified`.
+
+The presentation merges and harness source changes establish no live host install, provider
+execution, model-played victory, two-peer native action, shared vote/effect settlement, native
+checksum settlement, or disconnect/rejoin recovery. A fresh producer capture or current-head
+native conformance result is not recorded by this source refresh.
