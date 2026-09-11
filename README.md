@@ -22,6 +22,7 @@ as the organization profile at <https://github.com/AI-Ascension>.
 | [`STATUS.md`](STATUS.md) | Dated current-source pointers and the limits of historical host evidence. |
 | [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) | Expected conduct and how to report a concern. |
 | [`GOVERNANCE.md`](GOVERNANCE.md) | Authority order, roles, evidence promotion, description synchronization. |
+| [`docs/RECORDED_RUN_GOVERNANCE.md`](docs/RECORDED_RUN_GOVERNANCE.md) | Proposed ownership and admission gates for portable recorded-run compatibility. |
 | [`SUPPORT.md`](SUPPORT.md) | Where to ask and what to include. |
 | `.github/ISSUE_TEMPLATE/` | Issue forms: defect, contract observation, evidence, proof recipe; plus `config.yml`. |
 | [`PULL_REQUEST_TEMPLATE.md`](PULL_REQUEST_TEMPLATE.md) | Default pull-request template for every repository. |

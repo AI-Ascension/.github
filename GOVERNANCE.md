@@ -78,3 +78,11 @@ expand agent authority in the roles above.
 ## Changing this file
 
 By pull request, merged by a maintainer, like everything else.
+
+## Recorded-run compatibility
+
+The portable recorded-run envelope, profiles, schemas, conformance vectors,
+and their admitted digests belong to `sts2-protocol`. This repository records
+organization-level ownership, evidence limits, and admission gates; it does not
+define or relocate the technical contract. The proposed gates and the current
+non-admission boundary are in [recorded-run governance](docs/RECORDED_RUN_GOVERNANCE.md).
