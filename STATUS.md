@@ -1282,3 +1282,29 @@ The presentation merges and harness source changes establish no live host instal
 execution, model-played victory, two-peer native action, shared vote/effect settlement, native
 checksum settlement, or disconnect/rejoin recovery. A fresh producer capture or current-head
 native conformance result is not recorded by this source refresh.
+
+## Source-delivery checkpoint — 2026-09-11, 08:50 UTC
+
+A fresh read-only remote-ref snapshot supersedes the 02:02 UTC **current-source
+pointer table**. It records identities only; it does not reassert CI status or
+alter the accepted artifact/conformance inputs above.
+
+| Repository | Current `main` commit | Current tree |
+| --- | --- | --- |
+| `sts2-game-core` | [`f5daf69f`](https://github.com/AI-Ascension/sts2-game-core/commit/f5daf69f4f2c43fddbb04e7799d32503f7066110) | [`033258f3`](https://github.com/AI-Ascension/sts2-game-core/tree/033258f367bfc6db842920255f4556b8845c89a5) |
+| `sts2-game-mod` | [`a4f69f7e`](https://github.com/AI-Ascension/sts2-game-mod/commit/a4f69f7e4149217a10b61aa5f60bd08e6273341d) | [`480b3aea`](https://github.com/AI-Ascension/sts2-game-mod/tree/480b3aead685d2782704bd30078fc6568cb1622e) |
+| `sts2-gateway` | [`89e378ed`](https://github.com/AI-Ascension/sts2-gateway/commit/89e378edf47a10c38b61d3c0efed9539047122b1) | [`45db9126`](https://github.com/AI-Ascension/sts2-gateway/tree/45db9126d21abc774759f146d95782400364537b) |
+| `sts2-mcp-server` | [`30398bcb`](https://github.com/AI-Ascension/sts2-mcp-server/commit/30398bcb7a066e3641e5baaa41cb48dcaefaf65b) | [`b8c9803f`](https://github.com/AI-Ascension/sts2-mcp-server/tree/b8c9803f0f3345fb2f9ef57ce6b4e0d41821de0d) |
+| `sts2-harness` | [`e70fce12`](https://github.com/AI-Ascension/sts2-harness/commit/e70fce12afebb38503a450c8bd242bd8ad532817) | [`64de7dc2`](https://github.com/AI-Ascension/sts2-harness/tree/64de7dc248c44702dc77d0596e0b94e4206cbf4c) |
+| `sts2-protocol` | [`58a158c7`](https://github.com/AI-Ascension/sts2-protocol/commit/58a158c7c4a722f33b0d11d8760d4a6eec03dc98) | [`3cbfd05b`](https://github.com/AI-Ascension/sts2-protocol/tree/3cbfd05b6d041a469fb9a01ca65d68646489efd0) |
+| `ai-agent-observability` | [`c309c8e5`](https://github.com/AI-Ascension/ai-agent-observability/commit/c309c8e532574754609d9491f0a10be584f83a83) | [`7028a3b7`](https://github.com/AI-Ascension/ai-agent-observability/tree/7028a3b76581a4ac7e65bc9b282212ac9342aae9) |
+| `.github` | [`e6ec1675`](https://github.com/AI-Ascension/.github/commit/e6ec1675751c231c49407f913c8fe46c8c054595) | [`a1912ad0`](https://github.com/AI-Ascension/.github/tree/a1912ad01293ea1631a4da40fb469f46065a1e9d) |
+| `AI-Ascension.github.io` | [`87e3c849`](https://github.com/AI-Ascension/AI-Ascension.github.io/commit/87e3c849ff97af4d5b53bbcdb913b1049bed6062) | [`3e87ae28`](https://github.com/AI-Ascension/AI-Ascension.github.io/tree/3e87ae280ddac640f9a9c8c9f831f3086ee155fd) |
+
+This source identity is not runtime acceptance. The native-runner source
+follow-up still needs closed MCP/product-provider interoperability and a local
+real-executable synthetic gate before it can be accepted; game-mod follow-ups
+remain owner-reviewed and merged source work. The user deferred new gameplay,
+replay, VM-install, host-deployment, service-replacement, public-binary-release,
+and Workshop operations. Those runtime outcomes are unverified and deferred,
+not externalized by this checkpoint.

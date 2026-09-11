@@ -517,29 +517,12 @@ and harness changes are recorded as current source heads and were not silently s
 that artifact. No live host install, two-peer native action, shared vote/effect settlement,
 disconnect/rejoin recovery, or model-played victory is established by these source checks.
 
-## Current source-head successor — 2026-09-11, 02:02 UTC
+## Source-delivery status — 2026-09-11, 08:50 UTC
 
-A fresh read-only refresh at `2026-09-11T02:02:14Z` records the current default-branch heads
-after the 23:48 UTC snapshot. These are source/component and CI records; they do not extend the
-accepted native artifact's conformance result to later heads.
-
-| Repository | Current `main` | Tree | Current-main checks and scope |
-| --- | --- | --- | --- |
-| [`sts2-protocol`](https://github.com/AI-Ascension/sts2-protocol/commit/0bc689eabc5542ede2b09b030d9ea32daa8a73e7) | `0bc689ea` | [`6d91bcf4`](https://github.com/AI-Ascension/sts2-protocol/tree/6d91bcf46aadfcd611ae38c78885de0dadf5c074) | PR [#20](https://github.com/AI-Ascension/sts2-protocol/pull/20) README-only presentation merge; CI [34547243872](https://github.com/AI-Ascension/sts2-protocol/actions/runs/34547243872) and policy [34547243877](https://github.com/AI-Ascension/sts2-protocol/actions/runs/34547243877) passed. |
-| [`sts2-gateway`](https://github.com/AI-Ascension/sts2-gateway/commit/f5582995da2ac9b4ba7f66602062a62c48648537) | `f5582995` | [`9f5f25f0`](https://github.com/AI-Ascension/sts2-gateway/tree/9f5f25f00309909581e239d4a3ee6c6ea0ab78ba) | PR [#21](https://github.com/AI-Ascension/sts2-gateway/pull/21) README-only presentation merge; CI [34547237851](https://github.com/AI-Ascension/sts2-gateway/actions/runs/34547237851) and policy [34547237849](https://github.com/AI-Ascension/sts2-gateway/actions/runs/34547237849) passed. |
-| [`sts2-game-mod`](https://github.com/AI-Ascension/sts2-game-mod/commit/bd8e90542dfc89366f820150c5c755e32716b1b0) | `bd8e9054` | [`54ffc38e`](https://github.com/AI-Ascension/sts2-game-mod/tree/54ffc38e7accded92b79cfd666dbb3133b3628a2) | PR [#55](https://github.com/AI-Ascension/sts2-game-mod/pull/55) README-only presentation merge; CI [34547520887](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/34547520887), policy [34547520864](https://github.com/AI-Ascension/sts2-game-mod/actions/runs/34547520864), and managed source-only boundary passed. |
-| [`sts2-harness`](https://github.com/AI-Ascension/sts2-harness/commit/787c5dcea7455f5abf2587935afb91ab8c66c10e) | `787c5dce` | [`2d0fd1f9`](https://github.com/AI-Ascension/sts2-harness/tree/2d0fd1f940bca40880cae76d785ce51fd6b0c319) | Current CI [34552750699](https://github.com/AI-Ascension/sts2-harness/actions/runs/34552750699) and policy [34552750723](https://github.com/AI-Ascension/sts2-harness/actions/runs/34552750723) passed after PR [#67](https://github.com/AI-Ascension/sts2-harness/pull/67); the intervening PRs [#60](https://github.com/AI-Ascension/sts2-harness/pull/60), [#65](https://github.com/AI-Ascension/sts2-harness/pull/65), and #67 cover bounded context memory, user-selected Ollama models, and provisional `Unknown` recovery evidence. |
-
-The accepted native artifact remains protocol
-[`f22dd721`](https://github.com/AI-Ascension/sts2-protocol/commit/f22dd7216f65de91a0ffa27f50bc2036be6c8b24)
-/ tree [`0e053e68`](https://github.com/AI-Ascension/sts2-protocol/tree/0e053e68d7e2e7411bd77dfe696e0afa859341),
-bound to producer capture input `d23ca838`, gateway `c8be3a72`, MCP `037d10de`, and harness
-`63dc5636`. The current heads above are source-only pointers and were not substituted into that
-`source_to_consumer: pass` record.
-
-The capture [`coop-native-source-only-20260910-r7`](https://github.com/AI-Ascension/sts2-protocol/blob/f22dd7216f65de91a0ffa27f50bc2036be6c8b24/artifacts/coop-native-v1/producer-capture.json)
-remains unchanged: it was captured at `2026-09-10T21:39:58Z`, has 9 serialized wrapper captures
-with `projection_match: true`, and retains schema digest
-`2f3bc99e53080fa11b39592b64fb0ab964a16f568719a2622d0b2caf766ab629`. It uses a synthetic
-`CapturePort` with `native_session_executed: false`; live native co-op and model/provider
-settlement remain `unverified`.
+The dated 02:02 UTC source table was superseded by the current canonical
+[status record](../STATUS.md#source-delivery-checkpoint--2026-09-11-0850-utc),
+which holds the exact commits, trees, and scope limits. The user deferred new
+gameplay, replay, VM-install, host-deployment, service-replacement,
+public-binary-release, and Workshop operations; those runtime outcomes remain
+unverified. Native-runner and game-mod follow-ups remain owner-reviewed source
+work pending their exact reviewed trees and local gates.
