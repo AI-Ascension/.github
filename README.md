@@ -30,6 +30,8 @@ as the organization profile at <https://github.com/AI-Ascension>.
 | `workflow-templates/` | Starter workflows (link check, repository policy) offered in each repository's Actions tab. |
 | [`templates/dependabot.yml`](templates/dependabot.yml) | Dependabot configuration to copy into a repository. |
 | [`labels.yml`](labels.yml) | The shared label set as data; maintainers apply it per repository. |
+| [`metadata/standards-adoption.json`](metadata/standards-adoption.json) | Public consumer locks, local deltas, and visible exception state. |
+| [`docs/POLICY_TEMPLATE_EXCEPTIONS.md`](docs/POLICY_TEMPLATE_EXCEPTIONS.md) | Why starter templates are not active policy and how their exceptions are handled. |
 
 The public site is <https://ai-ascension.github.io/>. The proof it links to is a deterministic
 replay of `sts2-gateway` tests at a pinned commit, not a live game demonstration. Later bounded

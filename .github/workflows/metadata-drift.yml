@@ -29,5 +29,25 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python tools/metadata.py snapshot --org AI-Ascension --output "$RUNNER_TEMP/live-metadata.json"
+      - name: Check out public standards consumer locks
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        with:
+          repository: AI-Ascension/aiascension.tech
+          path: ${{ runner.temp }}/consumers/aiascension.tech
+          persist-credentials: false
+      - name: Check out public Map standards consumer lock
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        with:
+          repository: AI-Ascension/ascension-map-visualizer
+          path: ${{ runner.temp }}/consumers/ascension-map-visualizer
+          persist-credentials: false
+      - name: Check out public Watchdog standards consumer lock
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        with:
+          repository: AI-Ascension/ascension-watchdog
+          path: ${{ runner.temp }}/consumers/ascension-watchdog
+          persist-credentials: false
       - name: Report identity, source-pin, topic, and shared-label drift
         run: python tools/metadata_drift.py --metadata metadata/repositories.yml --labels labels.yml --snapshot "$RUNNER_TEMP/live-metadata.json"
+      - name: Check public standards-adoption locks
+        run: python tools/standards_adoption.py --ledger metadata/standards-adoption.json --workspace-root "$RUNNER_TEMP/consumers"

@@ -1,0 +1,28 @@
+name: Reusable CI pilot
+
+on:
+  workflow_call:
+    inputs:
+      producer-command:
+        required: true
+        type: string
+      consumer-command:
+        required: true
+        type: string
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  local-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        with:
+          persist-credentials: false
+      - name: Run producer receipt command
+        run: ${{ inputs.producer-command || 'bash reusable-ci/pilot/producer.sh "$RUNNER_TEMP/receipt.json"' }}
+      - name: Run consumer verification command
+        run: ${{ inputs.consumer-command || 'bash reusable-ci/pilot/consumer.sh "$RUNNER_TEMP/receipt.json"' }}

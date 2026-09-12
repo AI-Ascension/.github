@@ -1,0 +1,20 @@
+name: Reusable CI pilot consumer
+
+on:
+  pull_request:
+    paths:
+      - 'reusable-ci/**'
+      - '.github/workflows/reusable-ci-pilot*.yml'
+  push:
+    branches: [ci/release-compatibility]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  consume-local-pilot:
+    uses: ./.github/workflows/reusable-ci-pilot.yml
+    with:
+      producer-command: 'bash reusable-ci/pilot/producer.sh "$RUNNER_TEMP/receipt.json"'
+      consumer-command: 'bash reusable-ci/pilot/consumer.sh "$RUNNER_TEMP/receipt.json"'
