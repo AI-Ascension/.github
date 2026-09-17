@@ -107,8 +107,6 @@ def main():
         result = report(read_document(args.metadata), read_document(args.labels), read_document(args.snapshot))
     except (MetadataError, OSError, json.JSONDecodeError) as exc:
         result = {"ok": False, "mismatches": [{"kind": "invalid_or_stale_input", "reason": str(exc)}]}
-        print(json.dumps(result, indent=2, sort_keys=True))
-        return 1
     payload = json.dumps(result, indent=2, sort_keys=True)
     print(payload)
     if args.output:

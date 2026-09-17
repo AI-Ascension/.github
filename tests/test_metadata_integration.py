@@ -168,6 +168,18 @@ class IntegrationTests(unittest.TestCase):
         written = json.loads(paths["report.json"].read_text())
         self.assertEqual(["source_pin"], [x["kind"] for x in written["mismatches"]])
 
+    def test_drift_cli_writes_report_for_unreadable_input(self):
+        """A missing input is itself a reportable result, not a silent abort."""
+        import contextlib
+        report = self.root / "report.json"
+        argv = ["--metadata", str(self.root / "absent.json"), "--labels", str(self.root / "absent-labels.json"),
+                "--snapshot", str(self.root / "absent-snapshot.json"), "--output", str(report)]
+        with patch.object(sys, "argv", ["metadata_drift.py", *argv]), contextlib.redirect_stdout(io.StringIO()):
+            code = metadata_drift.main()
+        self.assertEqual(1, code)
+        written = json.loads(report.read_text())
+        self.assertEqual(["invalid_or_stale_input"], [x["kind"] for x in written["mismatches"]])
+
     def test_cli_rejects_wrong_authenticated_operator_before_executor(self):
         snapshot = self.snapshot()
         snapshot["tree"] = {"truncated": False, "tree": [{"path": "README.md", "type": "blob"}]}
