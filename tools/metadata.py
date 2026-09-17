@@ -467,7 +467,14 @@ def normalize_snapshot(snapshot: Any) -> dict[str, Any]:
     if isinstance(snapshot, Mapping) and snapshot.get("schema_version") == SCHEMA_VERSION and "repositories" in snapshot:
         root = dict(snapshot)
     else:
+        # Carry recorded applicability exclusions across both input shapes.  A
+        # bare list, or a mapping written before the schema version was added,
+        # must not silently lose the decisions that explain unlisted
+        # repositories: dropping them would turn a reviewed exclusion into
+        # apparent drift.
         root = {"schema_version": SCHEMA_VERSION, "repositories": _snapshot_repos(snapshot)}
+        if isinstance(snapshot, Mapping) and "applicability_exclusions" in snapshot:
+            root["applicability_exclusions"] = snapshot["applicability_exclusions"]
     root["schema_version"] = SCHEMA_VERSION
     root["repositories"] = _snapshot_repos(root)
     # Observational timestamps are useful audit data but must not make plan
@@ -755,15 +762,17 @@ def _label_applicability(metadata, labels):
             raise MetadataError("label applicability names an unknown repository ID")
 
 
-def _inventory_applicability(metadata: Mapping[str, Any], snapshot: Mapping[str, Any]) -> None:
-    """Unlisted discoveries require a recorded exclusion, never silent omission.
+def applicability_exclusions(metadata: Mapping[str, Any], snapshot: Mapping[str, Any]) -> set[str]:
+    """Validate the recorded exclusion records and return their repository IDs.
 
     Exclusions stay in the local snapshot so private identities need not enter
     the public registry. They cannot authorize a write to an excluded target.
+    Coverage is deliberately *not* required here: this only proves that every
+    record is well formed, observed, unique, and non-overlapping.
     """
     known = {str(row["id"]) for row in metadata["repositories"]}
     observed = {str(row["id"]) for row in snapshot["repositories"]}
-    excluded = set()
+    excluded: set[str] = set()
     for row in _as_list(snapshot.get("applicability_exclusions", []), "snapshot.applicability_exclusions"):
         item = _as_mapping(row, "applicability exclusion")
         identifier = str(item.get("repository_id", ""))
@@ -772,6 +781,15 @@ def _inventory_applicability(metadata: Mapping[str, Any], snapshot: Mapping[str,
                 or not isinstance(item.get("reason"), str) or not item["reason"].strip()):
             raise MetadataError("invalid, overlapping, or unexplained repository exclusion")
         excluded.add(identifier)
+    return excluded
+
+
+def _inventory_applicability(metadata: Mapping[str, Any], snapshot: Mapping[str, Any]) -> None:
+    """Planning/apply require a recorded exclusion for every unlisted discovery."""
+
+    known = {str(row["id"]) for row in metadata["repositories"]}
+    observed = {str(row["id"]) for row in snapshot["repositories"]}
+    excluded = applicability_exclusions(metadata, snapshot)
     if observed - known - excluded:
         raise MetadataError("unlisted repositories require an explicit applicability decision in the local snapshot")
 

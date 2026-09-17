@@ -81,5 +81,53 @@ class FleetTests(unittest.TestCase):
                         self.assertRegex(step['uses'],r'^[^@]+@[0-9a-f]{40}$')
                     self.assertNotIn('--execute',step.get('run',''))
 
+    def test_scheduled_workflows_check_out_only_workspace_relative_consumers(self):
+        """actions/checkout rejects any `path` outside $GITHUB_WORKSPACE.
+
+        The scheduled drift job previously passed `${{ runner.temp }}/...` as
+        the checkout path, which fails the whole job before any report runs.
+        Also assert that every scheduled consumer lock corresponds to the
+        ledger's listed consumers, so a checkout cannot silently drift away
+        from the set the validator actually reads.
+        """
+        import yaml
+        root=Path(__file__).resolve().parents[1]
+        listed={row['repository'].rsplit('/',1)[1] for row in
+                json.loads((root/'metadata/standards-adoption.json').read_text())['consumers']}
+        checked=set()
+        for name in ('metadata-validation.yml','metadata-drift.yml'):
+            workflow=yaml.load((root/'.github/workflows'/name).read_text(),Loader=yaml.BaseLoader)
+            for job in workflow['jobs'].values():
+                for step in job['steps']:
+                    path=step.get('with',{}).get('path')
+                    if path is None:
+                        continue
+                    self.assertNotIn('runner.temp',path,name)
+                    self.assertFalse(path.startswith('/'),name)
+                    self.assertNotIn('..',path.split('/'),name)
+                    checked.add(path.rsplit('/',1)[1])
+        self.assertTrue(checked <= listed, checked-listed)
+
+    def test_drift_job_reports_every_signal_even_when_the_first_check_fails(self):
+        """One failing report must not hide the others.
+
+        `metadata_drift.py` intentionally exits nonzero when it finds drift.
+        Without `if: always()` the default step gating would skip the
+        standards-adoption check after it, so a scheduled run would reveal
+        only the first signal. The job stays red because the drift step keeps
+        its exit status; it just must not mask the remaining checks.
+        """
+        import yaml
+        root=Path(__file__).resolve().parents[1]
+        workflow=yaml.load((root/'.github/workflows/metadata-drift.yml').read_text(),Loader=yaml.BaseLoader)
+        steps=[step for job in workflow['jobs'].values() for step in job['steps']]
+        runs=[i for i,step in enumerate(steps) if 'run' in step]
+        self.assertTrue(runs,'the drift job must run a check')
+        drift=max(i for i in runs if 'metadata_drift.py' in steps[i]['run'])
+        later=[steps[i] for i in runs if i>drift]
+        self.assertTrue(later,'expected a check after the drift report')
+        for step in later:
+            self.assertEqual('always()',step.get('if'),step.get('name'))
+
 if __name__=='__main__':
     unittest.main()

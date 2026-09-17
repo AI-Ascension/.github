@@ -4,6 +4,7 @@ import copy
 import io
 import json
 from pathlib import Path
+import sys
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -11,6 +12,7 @@ from unittest.mock import patch
 from test_metadata import metadata, metadata_map, repo_snapshot
 from test_metadata_execution import FakeAPI, REPO, SHA
 from metadata_execution import _MetadataWriter as MetadataWriter
+import metadata_drift
 from metadata_drift import report
 
 
@@ -105,6 +107,66 @@ class IntegrationTests(unittest.TestCase):
         result = report(self.desired, [], self.snapshot())
         self.assertEqual(["topics"], [x["kind"] for x in result["mismatches"]])
         self.assertEqual([], self.api.writes)
+
+    def test_drift_reports_unlisted_repository_as_a_finding_not_an_input_error(self):
+        """A discovered repository is drift to report, not a reason to abort.
+
+        The scheduled monitor must enumerate every difference in one run, so an
+        unrecorded repository cannot collapse the whole report into a single
+        ``invalid_or_stale_input`` error. Planning keeps its stricter gate, which
+        is asserted separately by the policy tests.
+        """
+        extra = repo_snapshot(rid=8, full="AI-Ascension/unlisted-fixture")
+        extra["visibility"] = "public"
+        result = report(self.desired, [], {"repositories": [self.snapshot(), extra]})
+        self.assertFalse(result["ok"])
+        self.assertEqual(
+            [{"kind": "unmapped_repository", "repository": "AI-Ascension/unlisted-fixture"}],
+            result["mismatches"],
+        )
+
+    def test_drift_reports_stale_source_pin_and_default_branch(self):
+        """The step advertises source-pin reporting; it must actually appear."""
+        snapshot = self.snapshot()
+        newer = "c" * 40
+        snapshot["default_commit"] = newer
+        result = report(self.desired, [], snapshot)
+        self.assertEqual(["source_pin"], [x["kind"] for x in result["mismatches"]])
+        self.assertEqual({"actual": newer, "desired": SHA, "repository": REPO, "kind": "source_pin"},
+                         result["mismatches"][0])
+        snapshot = self.snapshot()
+        snapshot["default_branch"] = "bootstrap"
+        result = report(self.desired, [], snapshot)
+        self.assertEqual(["default_branch"], [x["kind"] for x in result["mismatches"]])
+
+    def test_drift_records_a_valid_exclusion_and_rejects_a_malformed_one(self):
+        extra = repo_snapshot(rid=8, full="AI-Ascension/excluded-fixture")
+        extra["visibility"] = "private"
+        snapshot = {"repositories": [self.snapshot(), extra]}
+        snapshot["applicability_exclusions"] = [
+            {"repository_id": "8", "decision": "excluded-pending-owner", "reason": "Owner applicability decision pending."}
+        ]
+        self.assertTrue(report(self.desired, [], snapshot)["ok"])
+        snapshot["applicability_exclusions"][0]["reason"] = "   "
+        result = report(self.desired, [], snapshot)
+        self.assertEqual(["invalid_or_stale_input"], [x["kind"] for x in result["mismatches"]])
+
+    def test_drift_cli_can_write_its_report_and_signals_drift_with_a_nonzero_exit(self):
+        """A report is still produced, and drift keeps the monitor's teeth."""
+        import contextlib
+        snapshot = self.snapshot()
+        snapshot["default_commit"] = "c" * 40
+        paths = {name: self.root / name for name in ("metadata.json", "labels.json", "snapshot.json", "report.json")}
+        paths["metadata.json"].write_text(json.dumps(self.desired))
+        paths["labels.json"].write_text("[]")
+        paths["snapshot.json"].write_text(json.dumps(snapshot))
+        argv = ["--metadata", str(paths["metadata.json"]), "--labels", str(paths["labels.json"]),
+                "--snapshot", str(paths["snapshot.json"]), "--output", str(paths["report.json"])]
+        with patch.object(sys, "argv", ["metadata_drift.py", *argv]), contextlib.redirect_stdout(io.StringIO()):
+            code = metadata_drift.main()
+        self.assertEqual(1, code)
+        written = json.loads(paths["report.json"].read_text())
+        self.assertEqual(["source_pin"], [x["kind"] for x in written["mismatches"]])
 
     def test_cli_rejects_wrong_authenticated_operator_before_executor(self):
         snapshot = self.snapshot()

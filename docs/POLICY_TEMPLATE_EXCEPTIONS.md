@@ -7,9 +7,13 @@ template, selects its own checks, and records a standards-adoption row or an
 owner-approved exception.
 
 The scheduled standards report deliberately excludes `st2-project-planning` and
-all private or evidence-only material. It reads only the three named public
-consumer locks in `metadata/standards-adoption.json`; a missing lock, changed
-digest, changed source state, or an attempt to add a planning/private row fails.
+all private or evidence-only material. It reads only the named public consumer
+locks in `metadata/standards-adoption.json`; a missing lock, changed digest,
+changed source state, or an attempt to add a planning/private row fails. The
+scheduled workflow checks out exactly that listed set, because a consumer lock
+is only read from the workspace and an unlisted repository is never validated.
+`aiascension.tech` is not listed: it became private, so the workflow's
+repository-scoped token cannot read it.
 
 The current source bundle is the recorded local distribution at
 `eed9921b5c5d5c41380655bded84f9e2d0aab599`. It is not published. The local
