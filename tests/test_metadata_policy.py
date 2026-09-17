@@ -27,6 +27,22 @@ class ManagementTests(unittest.TestCase):
         with self.assertRaises(metadata.MetadataError):
             metadata.make_plan(desired, snapshot, labels=[], migrations=[], repository_ids=[2])
 
+    def test_recorded_exclusions_survive_snapshot_normalization(self):
+        """A reviewed exclusion must not be dropped just because a snapshot
+        omits ``schema_version``; losing it would turn an owner decision into
+        apparent unlisted-repository drift."""
+        exclusion = {"repository_id": "2", "decision": "excluded-pending-owner",
+                     "reason": "Synthetic private repository excluded pending owner scope."}
+        extra = repo_snapshot(rid=2, full="AI-Ascension/private-fixture")
+        extra["visibility"] = "private"
+        for snapshot in (
+            {"repositories": [repo_snapshot(), extra], "applicability_exclusions": [exclusion]},
+            {"schema_version": 1, "repositories": [repo_snapshot(), extra], "applicability_exclusions": [exclusion]},
+        ):
+            normalized = metadata.validate_snapshot(snapshot)
+            self.assertEqual([exclusion], normalized["applicability_exclusions"])
+            self.assertTrue(metadata.make_plan(metadata_map(), normalized, labels=[], migrations=[])["selection"])
+
     def test_managed_false_cannot_be_selected(self):
         desired = metadata_map()
         excluded = copy.deepcopy(desired["repositories"][0])
