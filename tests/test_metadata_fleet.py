@@ -129,5 +129,23 @@ class FleetTests(unittest.TestCase):
         for step in later:
             self.assertEqual('always()',step.get('if'),step.get('name'))
 
+    def test_validation_suite_reads_the_checked_out_consumers(self):
+        """The credential-free suite must see the consumer locks it needs.
+
+        `test_standards_adoption` falls back to the checkout's parent when
+        STANDARDS_CONSUMER_ROOT is unset. The hosted consumer checkouts live
+        at `<workspace>/consumers`, so the discovery step must point there;
+        otherwise the suite errors out before asserting anything.
+        """
+        import yaml
+        root=Path(__file__).resolve().parents[1]
+        workflow=yaml.load((root/'.github/workflows/metadata-validation.yml').read_text(),Loader=yaml.BaseLoader)
+        steps=[step for job in workflow['jobs'].values() for step in job['steps']]
+        discover=[step for step in steps if 'run' in step and 'unittest discover' in step['run']]
+        self.assertEqual(1,len(discover),'expected exactly one suite step')
+        env=discover[0].get('env',{})
+        self.assertIn('STANDARDS_CONSUMER_ROOT',env)
+        self.assertIn('github.workspace',env['STANDARDS_CONSUMER_ROOT'])
+
 if __name__=='__main__':
     unittest.main()
