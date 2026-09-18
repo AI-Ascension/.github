@@ -1,0 +1,57 @@
+{
+  "python_tests": {
+    "passed": 112,
+    "failed": 0,
+    "consumer_root_supplied": true,
+    "note": "Without STANDARDS_CONSUMER_ROOT the four test_standards_adoption cases error on absent consumer checkouts; that is environmental and identical to the pre-change baseline."
+  },
+  "link_regression": {
+    "passed": 15,
+    "failed": 0
+  },
+  "metadata_validation": {
+    "ok": true,
+    "repository_count": 16,
+    "snapshot_present": true
+  },
+  "source_pin_refresh": {
+    "observed_at": "2026-09-18",
+    "managed_pins_bumped_in_second_pass": 6,
+    "evidence_paths_modified_in_range": 0,
+    "note": "Each advanced repository's full previous...new commit range was inspected; no cited evidence path appears in any change set, so every evidence pin re-point is byte-identical evidence at the new commit."
+  },
+  "self_reference_proof": {
+    "post_merge_without_self_pin": {"ok": true, "mismatches": 0},
+    "post_merge_with_self_pin": {"ok": false, "mismatches": 1, "kind": "source_pin", "repository": "AI-Ascension/.github"},
+    "topics_change_still_reported": {"ok": false, "kind": "topics", "repository": "AI-Ascension/.github"}
+  },
+  "drift_report": {
+    "ok": true,
+    "mismatches": 0,
+    "review_status": "reviewed",
+    "exit_code": 0
+  },
+  "standards_adoption": {
+    "ok": true,
+    "checked_consumers": 2,
+    "findings": 0
+  },
+  "deterministic_regeneration": true,
+  "synthetic_fleet": {
+    "first_apply_writes": 109,
+    "verified": true,
+    "drift_mismatches": 0,
+    "second_apply_writes": 0,
+    "resume_writes": 0,
+    "rollback_writes": 55,
+    "retained_definitions": 54,
+    "rollback_conflicts": 0
+  },
+  "live_metadata": {
+    "writes_performed": 0,
+    "canary_apply": "not-authorized",
+    "independent_post_apply_readback": "not-run",
+    "second_apply_writes": null
+  },
+  "limitation": "Synthetic and local read-only results are not live GitHub write evidence."
+}

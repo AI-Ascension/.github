@@ -5,9 +5,9 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'tools'))
 from test_metadata_execution import FakeAPI,REPO
 import metadata
 from metadata_execution import _MetadataWriter
-base=Path(__file__).resolve().parents[1]/'metadata/audits/2026-09-08'
+base=Path(__file__).resolve().parents[1]/'metadata/audits/2026-09-17'
 p=json.loads((base/'fleet-plan.json').read_text())
-snap=metadata.normalize_snapshot(json.loads((Path(__file__).resolve().parent/'fixtures/metadata-rollout-20260908.json').read_text()))
+snap=metadata.normalize_snapshot(json.loads((Path(__file__).resolve().parent/'fixtures/metadata-rollout-20260917.json').read_text()))
 class Fleet:
     def __init__(self):
         self.rows={r['full_name']:copy.deepcopy(r) for r in snap['repositories'] if r['full_name'] in {t['repository'] for t in p['targets']}}
@@ -63,6 +63,42 @@ class FleetTests(unittest.TestCase):
             operations=next(t['operations'] for t in p['targets'] if t['repository']==row['full_name'])
             after=before|{op['after']['name'] for op in operations if op['kind']=='create_label'}
             self.assertFalse(names-after,(row['full_name'],names-after))
+
+    def test_coordination_repository_does_not_assert_its_own_head(self):
+        """The registry lives inside AI-Ascension/.github, so its `.github` row
+        can never record the head of the branch that contains it: the commit
+        that wrote the pin would itself move the head. Asserting one made the
+        scheduled drift report red after every merge, permanently.
+
+        This locks in the reason, not just the current value: a `default_commit`
+        here would be a value that cannot be true at the commit containing it.
+        Removing the pin must not remove the teeth -- topics, labels, default
+        branch, visibility and archive state for this repository stay checked.
+        """
+        import copy
+        from metadata_drift import report as drift_report
+        root=Path(__file__).resolve().parents[1]
+        registry=metadata.read_document(root/'metadata/repositories.yml')
+        row=next(r for r in registry['repositories'] if r['full_name']=='AI-Ascension/.github')
+        self.assertNotIn('default_commit',row,
+                         'the coordination registry cannot assert the head of its own branch')
+        self.assertIn('self_reference_note',row)
+        # The other monitored fields are still present, so the check keeps teeth.
+        self.assertEqual('main',row['default_branch'])
+        self.assertEqual('public',row['visibility'])
+        self.assertFalse(row['archived'])
+        self.assertTrue(row['topics'])
+        labels=metadata.read_document(root/'labels.yml')
+        # Dropping the self-pin must not blind the monitor to this repository.
+        # Keep the row valid (the brand topic is mandatory) but change the
+        # observed topic set so a real difference remains reportable.
+        drifted=copy.deepcopy(registry)
+        for candidate in drifted['repositories']:
+            if candidate['full_name']=='AI-Ascension/.github':
+                candidate['topics']=[candidate['topics'][0]]
+        result=drift_report(drifted,labels,snap)
+        self.assertTrue(result['ok'] is False,result)
+        self.assertIn('AI-Ascension/.github',{m['repository'] for m in result['mismatches']})
 
     def test_metadata_workflows_have_read_only_credentials_and_no_secret_inputs(self):
         import yaml
