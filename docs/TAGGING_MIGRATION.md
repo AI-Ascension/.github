@@ -2,7 +2,7 @@
 
 ## Current preparation — 2026-09-08
 
-The implementation PRs are merged. The [refreshed rollout review](../metadata/audits/2026-09-08/README.md) supersedes the dated preparation status below. Fresh source/metadata inspection selects 11 public targets, holds one historical target out after visibility drift, and records one additional private exclusion outside Git. No live metadata application is authorized or performed. The owner must select the canary and approve its exact fresh digest; publication and merge are separate from application.
+The implementation PRs are merged. The [2026-09-17 rollout review](../metadata/audits/2026-09-17/README.md) supersedes the dated preparation status below and refreshes the source pins; the [2026-09-08 review](../metadata/audits/2026-09-08/README.md) is retained as historical evidence. Fresh source/metadata inspection selects 11 public targets, holds one historical target out after visibility drift, records four new first-party repositories as `managed: false` pending an owner applicability decision, and records two private exclusions outside Git. The `.github` row asserts no `default_commit`, because a registry stored inside that repository cannot record the head of the branch that contains it. No live metadata application is authorized or performed. The owner must select the canary and approve its exact fresh digest; publication and merge are separate from application.
 
 ## Historical preparation — 2026-09-07
 

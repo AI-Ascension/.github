@@ -1,6 +1,6 @@
 # Organization tagging operations
 
-Status: the implementation tooling is merged. The [2026-09-08 rollout review](../metadata/audits/2026-09-08/README.md) records refreshed inputs and exact proposed plans. Local preparation, source review, owner authorization, publication, API application, and independent live verification remain separate states. No live metadata write is authorized by this document.
+Status: the implementation tooling is merged. The [2026-09-17 rollout review](../metadata/audits/2026-09-17/README.md) records refreshed source pins, the applicability recording for four new repositories, and exact proposed plans; the [2026-09-08 review](../metadata/audits/2026-09-08/README.md) remains the historical evidence. Local preparation, source review, owner authorization, publication, API application, and independent live verification remain separate states. No live metadata write is authorized by this document.
 
 ## Maintained inputs
 
