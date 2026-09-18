@@ -21,15 +21,15 @@
     ]
   },
   "brand_topic": "ai-ascension",
-  "digest": "a09fb7136abd14f100f460dfdf2ba0f6f3e923cf3dc54882a3c204a2ad45eb0b",
+  "digest": "2010428908e10bd4fae3d58cdc4e026d1012d467337bf704a1966c866b8c6408",
   "inputs": {
     "labels_digest": "0b80c523b8d49331122d8cc2f8b2b91e4796f5df3fde87ccd3a9625cff70eca2",
-    "metadata_digest": "e045e941ffbd246bb15ad9ab4a3a47627d5fbea0392909f3d5baafd36c91453f",
+    "metadata_digest": "273b0e57c809751dcb9073dff45008b13e34fb7440d7d4c5f14b12eb06de45d7",
     "migrations_digest": "447f26e16729019c1552e4d2a403d6c605c4edddb9b4e9306c0b5f55b42c86cd",
     "selection_digest": "c9263b04067a74e0c4279be1b310519fec3efe015d28f87da6dbb36f3f0578e9",
-    "snapshot_digest": "95e984c604e28832680c9b5e988c055f0e78f848bef1b55d84a98b536c865a4b"
+    "snapshot_digest": "e729869523e6912b65352f9b7c2bc6cf9d357f1ca75d512386fb8b92450227a9"
   },
-  "manifest_revision": "sha256:e045e941ffbd246bb15ad9ab4a3a47627d5fbea0392909f3d5baafd36c91453f",
+  "manifest_revision": "sha256:273b0e57c809751dcb9073dff45008b13e34fb7440d7d4c5f14b12eb06de45d7",
   "organization": "AI-Ascension",
   "review": {
     "applicable": true,
@@ -6928,7 +6928,7 @@
     {
       "archived": false,
       "default_branch": "bootstrap",
-      "default_commit": "9fc213dde7d46b152c64b4c7751d6eff4e034091",
+      "default_commit": "de8e42164c87f19d4c997dc6ff5d357af3ffab14",
       "operations": [
         {
           "after": [
@@ -6948,7 +6948,7 @@
               "change": "add",
               "evidence": {
                 "classification": "source-derived",
-                "commit": "9fc213dde7d46b152c64b4c7751d6eff4e034091",
+                "commit": "de8e42164c87f19d4c997dc6ff5d357af3ffab14",
                 "line": 3,
                 "path": "README.md",
                 "repository": "AI-Ascension/ascension-watchdog"
@@ -6962,7 +6962,7 @@
               "change": "add",
               "evidence": {
                 "classification": "source-derived",
-                "commit": "9fc213dde7d46b152c64b4c7751d6eff4e034091",
+                "commit": "de8e42164c87f19d4c997dc6ff5d357af3ffab14",
                 "line": 3,
                 "path": "README.md",
                 "repository": "AI-Ascension/ascension-watchdog"
@@ -6976,7 +6976,7 @@
               "change": "add",
               "evidence": {
                 "classification": "source-derived",
-                "commit": "9fc213dde7d46b152c64b4c7751d6eff4e034091",
+                "commit": "de8e42164c87f19d4c997dc6ff5d357af3ffab14",
                 "line": 9,
                 "path": "README.md",
                 "repository": "AI-Ascension/ascension-watchdog"
@@ -6990,7 +6990,7 @@
               "change": "add",
               "evidence": {
                 "classification": "source-derived",
-                "commit": "9fc213dde7d46b152c64b4c7751d6eff4e034091",
+                "commit": "de8e42164c87f19d4c997dc6ff5d357af3ffab14",
                 "line": 3,
                 "path": "README.md",
                 "repository": "AI-Ascension/ascension-watchdog"
@@ -7004,7 +7004,7 @@
               "change": "add",
               "evidence": {
                 "classification": "source-derived",
-                "commit": "9fc213dde7d46b152c64b4c7751d6eff4e034091",
+                "commit": "de8e42164c87f19d4c997dc6ff5d357af3ffab14",
                 "line": 5,
                 "path": "README.md",
                 "repository": "AI-Ascension/ascension-watchdog"
@@ -7032,7 +7032,7 @@
           "precondition": {
             "archived": false,
             "default_branch": "bootstrap",
-            "default_commit": "9fc213dde7d46b152c64b4c7751d6eff4e034091",
+            "default_commit": "de8e42164c87f19d4c997dc6ff5d357af3ffab14",
             "topics_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
             "visibility": "public"
           },

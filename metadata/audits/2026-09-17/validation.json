@@ -17,8 +17,19 @@
   "source_pin_refresh": {
     "observed_at": "2026-09-18",
     "managed_pins_bumped_in_second_pass": 6,
+    "managed_pins_bumped_after_production_run": 1,
     "evidence_paths_modified_in_range": 0,
-    "note": "Each advanced repository's full previous...new commit range was inspected; no cited evidence path appears in any change set, so every evidence pin re-point is byte-identical evidence at the new commit."
+    "note": "Each advanced repository's full previous...new commit range was inspected; no cited evidence path appears in any change set, so every evidence pin re-point is byte-identical evidence at the new commit. The post-merge advance (ascension-watchdog) was a clean fast-forward touching only docs/evidence/single-deployment-soak-prerequisite-20260917.md, with the cited README.md blob byte-identical (7a798913...) at both commits."
+  },
+  "production_drift_run": {
+    "run_id": 35290957115,
+    "head": "4a1e61261e62dad2ee1c38257d35d3b95a2f7362",
+    "conclusion": "failure",
+    "mismatches": 1,
+    "kinds": ["source_pin"],
+    "github_self_pin_mismatches": 0,
+    "unmapped_repository_mismatches": 0,
+    "note": "The only remaining signal was a genuine live fast-forward of ascension-watchdog that landed after the refresh read it. Zero AI-Ascension/.github mismatches proves the self-pin defect is resolved; zero unmapped_repository mismatches proves the four new repositories are now recorded."
   },
   "self_reference_proof": {
     "post_merge_without_self_pin": {"ok": true, "mismatches": 0},

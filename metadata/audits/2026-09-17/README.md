@@ -13,6 +13,18 @@ The recorded pins were re-verified against the live default branches immediately
 2026-09-18; six managed heads had advanced again since the first pass (see
 [Source pins refreshed](#source-pins-refreshed)).
 
+After that merge landed (`4a1e6126`), the monitor was re-dispatched and reported **one** remaining
+mismatch: `ascension-watchdog` advanced `9fc213dd…` → `de8e4216…` at 2026-09-18T00:13:46Z, thirteen
+minutes after the refresh read it. The advance is a clean fast-forward (`ahead_by: 1`, `behind_by: 0`)
+touching only `docs/evidence/single-deployment-soak-prerequisite-20260917.md`; the cited `README.md` blob
+is byte-identical (`7a798913…`) at both commits, so the evidence pin was re-pointed honestly. That single
+pin is refreshed here.
+
+The same production run is the strongest available proof that the two substantive fixes work: across
+16 repositories it reported **zero** `AI-Ascension/.github` mismatches (the self-pin defect is gone) and
+**zero** `unmapped_repository` mismatches (the four new repositories are now recorded). The only signal
+left was the genuine live advance above.
+
 ## The source pin is a moving target
 
 `source_pin` is a strict-equality check between the recorded commit and the live default-branch head. This
@@ -34,6 +46,28 @@ durable fix is an owner decision, because the two candidate semantics disagree:
 The second option requires a change to `tools/metadata_drift.py`, which this lane is explicitly not
 authorized to make to turn the check green. The decision and its rationale are recorded here for the owner
 rather than being pre-empted.
+
+### A second manifestation of the same defect class
+
+`metadata.py validate --snapshot` and `metadata.py plan --snapshot` additionally require every topic's
+`evidence.commit` to equal the snapshot's current head. For `AI-Ascension/.github` that requirement has
+the same self-referential shape as the removed `default_commit`: the registry is stored inside the
+repository whose head it must name, so the evidence pins can only match at the commit that wrote them and
+must mismatch at every later head. Observed directly after the merge:
+
+```
+metadata: error: AI-Ascension/.github topic 'ai-ascension' evidence commit
+  'bbd2e7366f0b…' does not match audited source commit '4a1e6126…' for AI-Ascension/.github
+```
+
+This is the documented plan-binding behavior, not a new defect: a plan is bound to the exact bytes it was
+reviewed against, so a later merge correctly invalidates a *live-snapshot* plan. It does not affect the
+scheduled monitor — `tools/metadata_drift.py` never calls `_validate_evidence_against_snapshot`, and the
+hosted `Metadata validation` job runs `validate` **without** a snapshot, exactly as the lane requires. The
+evidence *content* is stable; only the commit pointer moves. The three cited files (`README.md`,
+`CONTRIBUTING.md`, `GOVERNANCE.md`) have identical blobs (`6fff11a9…`, `c0068e71…`, `f1ea9c1f…`) at both
+the pre- and post-merge heads. A cleaner model — cite the commit where evidence was observed rather than
+requiring equality with the live head — is part of the same owner decision recorded above.
 
 ## What actually drifted
 
@@ -100,7 +134,7 @@ All eleven were re-verified against the live default branch on 2026-09-17.
 | AI-Ascension/AI-Ascension.github.io | 1354473981 | `main` | `1065799d…` | `42ad0609e648aaf5d0ee59039c458cd724fd2731` |
 | AI-Ascension/ai-agent-observability | 1357224960 | `main` | `28a48590…` | `3d147ae1fd3e55f96748b7c1a0e6b729ff95e60c` |
 | AI-Ascension/ascension-map-visualizer | 1359701124 | `bootstrap` | `9aded886…` | `3370db162be8a0618da1c846327be3facf86dd2b` |
-| AI-Ascension/ascension-watchdog | 1359537708 | `bootstrap` | `bc8ebf20…` | `9fc213dde7d46b152c64b4c7751d6eff4e034091` |
+| AI-Ascension/ascension-watchdog | 1359537708 | `bootstrap` | `bc8ebf20…` | `de8e42164c87f19d4c997dc6ff5d357af3ffab14` |
 | AI-Ascension/sts2-game-core | 1354377929 | `main` | `87e0f3d9…` | `4b51ec24297a39c8626a666001b5eb2fcbdccaec` |
 | AI-Ascension/sts2-game-mod | 1354377975 | `main` | `e162e249…` | `9ebc779bf6ac0997f57dff63f01fab8b17b7a274` |
 | AI-Ascension/sts2-gateway | 1354378018 | `main` | `53745dd2…` | `2f7490d72e262378d5a55c920b6ca6355e21ef68` |
@@ -142,10 +176,10 @@ Two **private** repositories discovered by the same refresh, `st2-project-planni
 
 See [complete topic sets and operation diff](fleet-plan.md) and [machine-readable fleet plan](fleet-plan.json).
 
-- Plan digest: `a09fb7136abd14f100f460dfdf2ba0f6f3e923cf3dc54882a3c204a2ad45eb0b`.
-- Manifest revision: `sha256:e045e941ffbd246bb15ad9ab4a3a47627d5fbea0392909f3d5baafd36c91453f`.
+- Plan digest: `2010428908e10bd4fae3d58cdc4e026d1012d467337bf704a1966c866b8c6408`.
+- Manifest revision: `sha256:273b0e57c809751dcb9073dff45008b13e34fb7440d7d4c5f14b12eb06de45d7`.
 - Migrations digest: `447f26e16729019c1552e4d2a403d6c605c4edddb9b4e9306c0b5f55b42c86cd`.
-- Snapshot digest: `95e984c604e28832680c9b5e988c055f0e78f848bef1b55d84a98b536c865a4b`.
+- Snapshot digest: `e729869523e6912b65352f9b7c2bc6cf9d357f1ca75d512386fb8b92450227a9`.
 
 The proposal is the reviewed 2026-09-08 operation sequence regenerated against the refreshed registry:
 11 complete topic replacements, 44 stable-ID `wedge:*` → `audience:*` renames, 22 additive `defect` →
