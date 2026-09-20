@@ -176,10 +176,10 @@ Two **private** repositories discovered by the same refresh, `st2-project-planni
 
 See [complete topic sets and operation diff](fleet-plan.md) and [machine-readable fleet plan](fleet-plan.json).
 
-- Plan digest: `2010428908e10bd4fae3d58cdc4e026d1012d467337bf704a1966c866b8c6408`.
-- Manifest revision: `sha256:273b0e57c809751dcb9073dff45008b13e34fb7440d7d4c5f14b12eb06de45d7`.
+- Plan digest: `fcc8b17650db65e8f4395f1c91771add5061ec9d3765f78c29395b599fec52d1`.
+- Manifest revision: `sha256:f4634209781a3c6a875020b74f39b7994d73b94c094e58ad714cc990e72c76c0`.
 - Migrations digest: `447f26e16729019c1552e4d2a403d6c605c4edddb9b4e9306c0b5f55b42c86cd`.
-- Snapshot digest: `e729869523e6912b65352f9b7c2bc6cf9d357f1ca75d512386fb8b92450227a9`.
+- Snapshot digest: `d5d2264030c6d878fb04a430c43617268755ef7d81018d8278e141979c8a7fa7`.
 
 The proposal is the reviewed 2026-09-08 operation sequence regenerated against the refreshed registry:
 11 complete topic replacements, 44 stable-ID `wedge:*` → `audience:*` renames, 22 additive `defect` →
@@ -224,6 +224,67 @@ bash tests/link-check-template.sh
 The four `test_standards_adoption` errors that appear without `STANDARDS_CONSUMER_ROOT` are environmental
 (the consumer checkouts are absent locally) and are identical before and after this change; the hosted
 `Metadata validation` job supplies that root. The full suite is otherwise byte-identical to the baseline.
+
+## Second managed-pin refresh — 2026-09-20
+
+The six managed pins recorded above were re-observed against the live default branches at
+`2026-09-20T21:21:07Z` and had all advanced:
+
+| repository | recorded | observed |
+| --- | --- | --- |
+| `ascension-map-visualizer` | `3370db16…` | `c8e7c88c…` |
+| `ascension-watchdog` | `de8e4216…` | `0e4bf177…` |
+| `sts2-game-mod` | `9ebc779b…` | `d82cdc52…` |
+| `sts2-gateway` | `2f7490d7…` | `2d7f758b…` |
+| `sts2-harness` | `67de2007…` | `ba2fccdb…` |
+| `sts2-mcp-server` | `65cb4056…` | `c468e761…` |
+
+Each advance was checked to be a clean fast-forward (`behind_by: 0`) before any pin was re-pointed, and
+every cited evidence path was compared at both commits by blob SHA rather than assumed. 42 of the 44
+re-pointed evidence commits are byte-identical evidence: the cited `README.md`, `Cargo.toml`, Map prompt
+and `AGENTS.md` blobs are unchanged at both commits. The one exception is `sts2-game-mod`'s `csharp` and
+`dotnet` evidence,
+`experiments/managed-rust-interop/gameplay-tests/RuntimeV3ValidationProbe.csproj`, which changed
+`152e9262…` → `cd5152e8…` by one added
+`<Compile Include="../game-loader/LaunchContractRefusal.cs" …>` item. Its cited lines 1 and 4 are above
+that insertion, so the file still substantiates both topics.
+
+`sts2-harness` advanced twice during this pass (`67de2007…` → `acd06d7e…` at 19:53Z → `ba2fccdb…` at
+21:14Z); the table records the head observed at the freeze timestamp. This is the moving target described
+above, not a new defect: the repository is under active concurrent development and a further merge re-reds
+the scheduled report. The durable fix remains the owner decision recorded above, and this refresh does not
+pre-empt it.
+
+Local checks at the prepared head, run as CI runs them:
+
+```
+python3 tools/metadata_drift.py --metadata metadata/repositories.yml --labels labels.yml \
+  --snapshot <public-only snapshot, no local exclusions>
+  -> {"mismatches": [], "ok": true, "review_status": "reviewed"}                              exit 0
+
+python3 tools/standards_adoption.py --ledger metadata/standards-adoption.json \
+  --workspace-root .../consumers
+  -> {"checked_consumers": 2, "findings": [], "ok": true}                                     exit 0
+
+python3 tools/metadata.py validate --metadata metadata/repositories.yml --labels labels.yml
+  -> {"labels_present": true, "ok": true, "repository_count": 16, "snapshot_present": false}   exit 0
+
+bash tests/link-check-template.sh
+  -> 15 PASS, 0 FAIL                                                                          exit 0
+
+python3 -m unittest discover -s tests
+  -> Ran 112 tests ... OK
+```
+
+The fleet plan was regenerated from the refreshed inputs rather than hand-edited. The regeneration is
+deterministic — `make_plan` reproduces the pre-change plan from the pre-change inputs — and changes only
+the target source pins and the four digest fields recorded above. The reviewed operation sequence
+(11 topic replacements, 44 stable-ID renames, 22 migrations, 54 label creations, 109 writes) is unchanged.
+
+Deliberately not refreshed: the two stale `managed: false` pins, `aiascension.tech` (`4e2d99c9…` →
+`34aedf3c…`) and `ascension-workflow-studio` (`996a38ea…` → `28513217…`). The monitor skips unmanaged rows,
+and each row's `management_reason` holds its identity and evidence unchanged pending the owner
+applicability decision.
 
 ## Remaining gates
 
