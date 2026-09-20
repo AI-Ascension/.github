@@ -31,6 +31,28 @@
     "unmapped_repository_mismatches": 0,
     "note": "The only remaining signal was a genuine live fast-forward of ascension-watchdog that landed after the refresh read it. Zero AI-Ascension/.github mismatches proves the self-pin defect is resolved; zero unmapped_repository mismatches proves the four new repositories are now recorded."
   },
+  "source_pin_refresh_20260920": {
+    "observed_at": "2026-09-20T21:21:07Z",
+    "managed_pins_bumped": 6,
+    "repositories": ["ascension-map-visualizer", "ascension-watchdog", "sts2-game-mod", "sts2-gateway", "sts2-harness", "sts2-mcp-server"],
+    "all_advances_fast_forward": true,
+    "evidence_commits_repointed": 44,
+    "evidence_commits_byte_identical": 42,
+    "evidence_commits_on_modified_paths": 2,
+    "modified_evidence_paths": ["experiments/managed-rust-interop/gameplay-tests/RuntimeV3ValidationProbe.csproj"],
+    "unmanaged_pins_refreshed": 0,
+    "note": "Every advance was verified as a clean fast-forward (behind_by: 0) before any pin was re-pointed, and each cited evidence path was compared at both commits by blob SHA. The single modified path gained one <Compile Include> item below its cited lines 1 and 4, so it still substantiates the sts2-game-mod csharp and dotnet topics. The two stale managed:false pins were deliberately left unchanged pending the owner applicability decision.",
+    "checks_at_prepared_head": {
+      "drift_ci_shape": {"ok": true, "mismatches": 0},
+      "standards_adoption": {"ok": true, "findings": 0, "checked_consumers": 2},
+      "metadata_validation": {"ok": true, "repository_count": 16, "snapshot_present": false},
+      "link_regression": {"passed": 15, "failed": 0},
+      "python_tests": {"passed": 112, "failed": 0}
+    },
+    "plan_regenerated_deterministically": true,
+    "plan_digest": "fcc8b17650db65e8f4395f1c91771add5061ec9d3765f78c29395b599fec52d1",
+    "still_transient": "sts2-harness advanced twice during this pass (67de2007 -> acd06d7e -> ba2fccdb); a further merge re-reds the scheduled report, and the durable fix remains the owner decision recorded in the README."
+  },
   "self_reference_proof": {
     "post_merge_without_self_pin": {"ok": true, "mismatches": 0},
     "post_merge_with_self_pin": {"ok": false, "mismatches": 1, "kind": "source_pin", "repository": "AI-Ascension/.github"},

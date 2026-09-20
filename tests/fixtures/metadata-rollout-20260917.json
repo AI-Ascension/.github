@@ -188,7 +188,7 @@
     {
       "archived": false,
       "default_branch": "main",
-      "default_commit": "9ebc779bf6ac0997f57dff63f01fab8b17b7a274",
+      "default_commit": "d82cdc52f318097a0cb31a810a5565f826ca8f99",
       "full_name": "AI-Ascension/sts2-game-mod",
       "id": 1354377975,
       "issues": [],
@@ -381,7 +381,7 @@
     {
       "archived": false,
       "default_branch": "main",
-      "default_commit": "2f7490d72e262378d5a55c920b6ca6355e21ef68",
+      "default_commit": "2d7f758b8a64744b0b83a2598f1028267d73b3a9",
       "full_name": "AI-Ascension/sts2-gateway",
       "id": 1354378018,
       "issues": [],
@@ -570,7 +570,7 @@
     {
       "archived": false,
       "default_branch": "main",
-      "default_commit": "65cb405616ecddfb7bf7b76edf341be30a442ca2",
+      "default_commit": "c468e76192f0c9046bb82806c2b7c99cbd12b9ba",
       "full_name": "AI-Ascension/sts2-mcp-server",
       "id": 1354378057,
       "issues": [],
@@ -759,7 +759,7 @@
     {
       "archived": false,
       "default_branch": "main",
-      "default_commit": "67de2007b35bea4bb4e9f2bb65b1eaeadc90a2b5",
+      "default_commit": "ba2fccdb6e0ec1f53602262c44a2302f8f98fb21",
       "full_name": "AI-Ascension/sts2-harness",
       "id": 1354378100,
       "issues": [],
@@ -1768,7 +1768,7 @@
     {
       "archived": false,
       "default_branch": "bootstrap",
-      "default_commit": "de8e42164c87f19d4c997dc6ff5d357af3ffab14",
+      "default_commit": "0e4bf177208f8ea0129924ae7dc14696257447ae",
       "full_name": "AI-Ascension/ascension-watchdog",
       "id": 1359537708,
       "issues": [],
@@ -1940,7 +1940,7 @@
     {
       "archived": false,
       "default_branch": "bootstrap",
-      "default_commit": "3370db162be8a0618da1c846327be3facf86dd2b",
+      "default_commit": "c8e7c88c4f6bc404b10bdd0634454fe022b3e6d7",
       "full_name": "AI-Ascension/ascension-map-visualizer",
       "id": 1359701124,
       "issues": [],
