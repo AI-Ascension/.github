@@ -295,3 +295,72 @@ same-plan second-apply write count, journals, and rollout completion remain unpe
 desired state is claimed beyond the drift report's own scope: topics, labels, default branch, visibility
 and archive state for the eleven selected repositories, plus identity coverage for every discovered
 repository.
+
+## Third managed-pin refresh — 2026-09-21
+
+The scheduled `Metadata drift (read only)` run for 2026-09-21 would have been red: two managed source
+pins had advanced since the 2026-09-20 refresh. The heads were read live at `2026-09-21T00:20:30Z` and
+every evidence path was compared at both commits by blob SHA rather than assumed. `sts2-harness` then
+merged PR #384 at `2026-09-21T00:31:27Z` and its head moved again, so the harness head was re-read at
+`2026-09-21T00:37:34Z` and re-pointed to that newer head. `sts2-game-mod` was re-read at the same instant
+and had not moved, so its pin was left exactly as the earlier read recorded it.
+
+| repository | recorded pin | observed head | fast-forward |
+| --- | --- | --- | --- |
+| `sts2-game-mod` | `d82cdc52…` | `00b9351478a14298f3dcfdb877051cd0827551ea` (read `2026-09-21T00:20:30Z`, unchanged at `2026-09-21T00:37:34Z`) | `ahead_by: 2`, `behind_by: 0` |
+| `sts2-harness` | `ba2fccdb…` | `822d3f1af7bd605e7eba2218cecfc3b97e9fe153` (read `2026-09-21T00:20:30Z`) | `ahead_by: 8`, `behind_by: 0` |
+| `sts2-harness` | `822d3f1af7bd605e7eba2218cecfc3b97e9fe153` | `a63713212acf41fbd32ced31fecd5abdd1e18321` (read `2026-09-21T00:37:34Z`) | `ahead_by: 1`, `behind_by: 0` |
+
+Every advance is a clean fast-forward, so the recorded pins were re-pointed. The harness re-point is one
+commit with `behind_by: 0`, and the final head is `ahead_by: 9`, `behind_by: 0` from the pre-refresh
+`ba2fccdb…`. Every cited evidence path is byte-identical at the old pin and the final head:
+
+| repository | cited path | blob SHA (old = new) | result |
+| --- | --- | --- | --- |
+| `sts2-game-mod` | `README.md` | `dd59aae00ca81011d21c2a6915da9cbbcf05ac7d` | SAME |
+| `sts2-game-mod` | `Cargo.toml` | `484fcd9fe4053b7811e8ff42f79465618926e856` | SAME |
+| `sts2-game-mod` | `crates/host/src/abi.rs` | `08ba8d3f9edb03d8d11bc284986024be54826162` | SAME |
+| `sts2-game-mod` | `experiments/managed-rust-interop/README.md` | `f0af0d93356e7c64f4d9f9929ffda9c9fd44c168` | SAME |
+| `sts2-game-mod` | `experiments/managed-rust-interop/gameplay-tests/RuntimeV3ValidationProbe.csproj` | `cd5152e872db43aeb5d90e12731322dceca7bebd` | SAME |
+| `sts2-harness` | `README.md` | `a8ea36aa733ab33e67989481bb445a7b129df8d7` | SAME |
+| `sts2-harness` | `Cargo.toml` | `beeeaf19e914c01aac9588d27b77fe1a698d0d3a` | SAME |
+
+Neither harness cited path appears in PR #384's 28-file change set, and the two blob SHAs read at
+`822d3f1a…` and `a6371321…` agree, so each harness re-point is byte-identical evidence at the new commit.
+Both rows' `default_commit` and every topic `evidence.commit` now record the final observed head. The
+registry `observed_at` now records the second-precision instant `2026-09-21T00:37:34Z` (it previously
+carried a date without a time, `2026-09-20`) and the `scope_note` verification date was advanced from
+`2026-09-18` to `2026-09-21`; no other registry field changed, and the recorded owner decision text is
+untouched. The `tests/fixtures/metadata-rollout-20260917.json` snapshot pins for the two repositories
+were refreshed to the same commits so the fixture drift check stays truthful.
+
+Local checks at the prepared head, run exactly as the CI `Metadata validation` job runs them:
+
+```
+python3 tools/metadata_drift.py --metadata metadata/repositories.yml --labels labels.yml \
+  --snapshot <fresh public-only snapshot>           -> {"mismatches": [], "ok": true}          exit 0
+python3 tools/metadata_drift.py --metadata metadata/repositories.yml --labels labels.yml \
+  --snapshot <fresh 18-repository snapshot>         -> 2 unmapped_repository (both private)   exit 1
+python3 tools/metadata.py validate --metadata metadata/repositories.yml --labels labels.yml \
+                                                     -> {"ok": true, "repository_count": 16}  exit 0
+python3 -m unittest discover -s tests -p 'test_*.py' -> Ran 112 tests ... OK                  exit 0
+python3 -m unittest tests/test_standards_adoption.py -> Ran 4 tests ... OK                   exit 0
+bash tests/link-check-template.sh                    -> 15 PASS, 0 FAIL                        exit 0
+```
+
+The fleet plan was regenerated from the refreshed inputs rather than hand-edited, after first proving
+determinism: `make_plan` reproduces the committed plan byte-for-byte from the unmodified inputs. The
+refreshed plan moves only the two target pins, their `replace_topics` evidence/preconditions, and the
+four digest fields; the reviewed operation sequence (11 topic replacements, 44 stable-ID renames,
+22 migrations, 54 label creations, 109 writes) is unchanged. Relative to the `main` plan: before digest
+`fcc8b176…`, manifest revision `sha256:f4634209…`, snapshot digest `d5d22640…`; after digest `762344cc…`,
+manifest revision `sha256:0e95fa52…`, snapshot digest `8775b06e…`. Re-pointing the harness pin alone
+moved the plan from `732b6e1a…` to `762344cc…`.
+
+This restores a truthful green at the reviewed commit. It does **not** make the monitor durable: both
+repositories are under active concurrent development, so any later merge re-reds the scheduled report.
+The durable fix is still the owner decision recorded under
+[The source pin is a moving target](#the-source-pin-is-a-moving-target); this lane changed no drift
+check, exit status, filter, schedule or protection. The stale `managed: false` pins are again left
+unchanged pending the owner applicability decision. No live write, apply, publication, or production run
+is claimed.
