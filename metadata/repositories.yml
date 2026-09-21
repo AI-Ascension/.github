@@ -5,9 +5,9 @@
   "review_status": "reviewed",
   "blockers": [],
   "authorization_state": "not-recorded",
-  "observed_at": "2026-09-20",
+  "observed_at": "2026-09-21T00:37:34Z",
   "ownership": "AI-Ascension/.github CODEOWNERS; maintainer review required",
-  "scope_note": "Refreshed inventory reconciles the canonical map with the live organization: all managed source pins advanced to their verified default-branch heads (re-verified 2026-09-18; live heads move continuously in this active organization, so the scheduled drift report is expected to name any source that advanced after this observation). Four first-party repositories created after the 2026-09-08 refresh (ascension-brand-overhaul, ascension-workflow, ascension-context-console, ascension-workflow-studio) are recorded with managed=false pending an owner applicability decision. One historical target remains held out after visibility drift. Private discoveries stay in the local snapshot and are not recorded here. Application authorization is separate and absent.",
+  "scope_note": "Refreshed inventory reconciles the canonical map with the live organization: all managed source pins advanced to their verified default-branch heads (re-verified 2026-09-21; live heads move continuously in this active organization, so the scheduled drift report is expected to name any source that advanced after this observation). Four first-party repositories created after the 2026-09-08 refresh (ascension-brand-overhaul, ascension-workflow, ascension-context-console, ascension-workflow-studio) are recorded with managed=false pending an owner applicability decision. One historical target remains held out after visibility drift. Private discoveries stay in the local snapshot and are not recorded here. Application authorization is separate and absent.",
   "historical_evidence": "metadata/history/2026-09-02-description-map.md",
   "shared_labels": "labels.yml",
   "repositories": [
@@ -765,7 +765,7 @@
       "id": 1354377975,
       "full_name": "AI-Ascension/sts2-game-mod",
       "default_branch": "main",
-      "default_commit": "d82cdc52f318097a0cb31a810a5565f826ca8f99",
+      "default_commit": "00b9351478a14298f3dcfdb877051cd0827551ea",
       "visibility": "public",
       "archived": false,
       "kind": "implementation",
@@ -778,7 +778,7 @@
           "reason": "Retain valid existing topic supported by pinned default-branch source.",
           "evidence": {
             "repository": "AI-Ascension/sts2-game-mod",
-            "commit": "d82cdc52f318097a0cb31a810a5565f826ca8f99",
+            "commit": "00b9351478a14298f3dcfdb877051cd0827551ea",
             "path": "README.md",
             "line": 8,
             "classification": "source-derived"
@@ -792,7 +792,7 @@
           "reason": "Add seed topic supported by pinned default-branch source.",
           "evidence": {
             "repository": "AI-Ascension/sts2-game-mod",
-            "commit": "d82cdc52f318097a0cb31a810a5565f826ca8f99",
+            "commit": "00b9351478a14298f3dcfdb877051cd0827551ea",
             "path": "README.md",
             "line": 8,
             "classification": "source-derived"
@@ -806,7 +806,7 @@
           "reason": "Add seed topic supported by pinned default-branch source.",
           "evidence": {
             "repository": "AI-Ascension/sts2-game-mod",
-            "commit": "d82cdc52f318097a0cb31a810a5565f826ca8f99",
+            "commit": "00b9351478a14298f3dcfdb877051cd0827551ea",
             "path": "README.md",
             "line": 17,
             "classification": "source-derived"
@@ -820,7 +820,7 @@
           "reason": "Retain valid existing topic supported by pinned default-branch source.",
           "evidence": {
             "repository": "AI-Ascension/sts2-game-mod",
-            "commit": "d82cdc52f318097a0cb31a810a5565f826ca8f99",
+            "commit": "00b9351478a14298f3dcfdb877051cd0827551ea",
             "path": "README.md",
             "line": 8,
             "classification": "source-derived"
@@ -834,7 +834,7 @@
           "reason": "Retain valid existing topic supported by pinned default-branch source.",
           "evidence": {
             "repository": "AI-Ascension/sts2-game-mod",
-            "commit": "d82cdc52f318097a0cb31a810a5565f826ca8f99",
+            "commit": "00b9351478a14298f3dcfdb877051cd0827551ea",
             "path": "Cargo.toml",
             "line": 1,
             "classification": "source-derived"
@@ -848,7 +848,7 @@
           "reason": "Add seed topic supported by pinned default-branch source.",
           "evidence": {
             "repository": "AI-Ascension/sts2-game-mod",
-            "commit": "d82cdc52f318097a0cb31a810a5565f826ca8f99",
+            "commit": "00b9351478a14298f3dcfdb877051cd0827551ea",
             "path": "experiments/managed-rust-interop/gameplay-tests/RuntimeV3ValidationProbe.csproj",
             "line": 1,
             "classification": "source-derived"
@@ -862,7 +862,7 @@
           "reason": "Add seed topic supported by pinned default-branch source.",
           "evidence": {
             "repository": "AI-Ascension/sts2-game-mod",
-            "commit": "d82cdc52f318097a0cb31a810a5565f826ca8f99",
+            "commit": "00b9351478a14298f3dcfdb877051cd0827551ea",
             "path": "experiments/managed-rust-interop/gameplay-tests/RuntimeV3ValidationProbe.csproj",
             "line": 4,
             "classification": "source-derived"
@@ -876,7 +876,7 @@
           "reason": "Add seed topic supported by pinned default-branch source.",
           "evidence": {
             "repository": "AI-Ascension/sts2-game-mod",
-            "commit": "d82cdc52f318097a0cb31a810a5565f826ca8f99",
+            "commit": "00b9351478a14298f3dcfdb877051cd0827551ea",
             "path": "experiments/managed-rust-interop/README.md",
             "line": 5,
             "classification": "source-derived"
@@ -890,7 +890,7 @@
           "reason": "Retain valid existing topic supported by pinned default-branch source.",
           "evidence": {
             "repository": "AI-Ascension/sts2-game-mod",
-            "commit": "d82cdc52f318097a0cb31a810a5565f826ca8f99",
+            "commit": "00b9351478a14298f3dcfdb877051cd0827551ea",
             "path": "crates/host/src/abi.rs",
             "line": 3,
             "classification": "source-derived"
@@ -1033,7 +1033,7 @@
       "id": 1354378100,
       "full_name": "AI-Ascension/sts2-harness",
       "default_branch": "main",
-      "default_commit": "ba2fccdb6e0ec1f53602262c44a2302f8f98fb21",
+      "default_commit": "a63713212acf41fbd32ced31fecd5abdd1e18321",
       "visibility": "public",
       "archived": false,
       "kind": "implementation",
@@ -1046,7 +1046,7 @@
           "reason": "Retain valid existing topic supported by pinned default-branch source.",
           "evidence": {
             "repository": "AI-Ascension/sts2-harness",
-            "commit": "ba2fccdb6e0ec1f53602262c44a2302f8f98fb21",
+            "commit": "a63713212acf41fbd32ced31fecd5abdd1e18321",
             "path": "README.md",
             "line": 8,
             "classification": "source-derived"
@@ -1060,7 +1060,7 @@
           "reason": "Add seed topic supported by pinned default-branch source.",
           "evidence": {
             "repository": "AI-Ascension/sts2-harness",
-            "commit": "ba2fccdb6e0ec1f53602262c44a2302f8f98fb21",
+            "commit": "a63713212acf41fbd32ced31fecd5abdd1e18321",
             "path": "README.md",
             "line": 8,
             "classification": "source-derived"
@@ -1074,7 +1074,7 @@
           "reason": "Add seed topic supported by pinned default-branch source.",
           "evidence": {
             "repository": "AI-Ascension/sts2-harness",
-            "commit": "ba2fccdb6e0ec1f53602262c44a2302f8f98fb21",
+            "commit": "a63713212acf41fbd32ced31fecd5abdd1e18321",
             "path": "README.md",
             "line": 39,
             "classification": "source-derived"
@@ -1088,7 +1088,7 @@
           "reason": "Retain valid existing topic supported by pinned default-branch source.",
           "evidence": {
             "repository": "AI-Ascension/sts2-harness",
-            "commit": "ba2fccdb6e0ec1f53602262c44a2302f8f98fb21",
+            "commit": "a63713212acf41fbd32ced31fecd5abdd1e18321",
             "path": "README.md",
             "line": 39,
             "classification": "source-derived"
@@ -1102,7 +1102,7 @@
           "reason": "Add seed topic supported by pinned default-branch source.",
           "evidence": {
             "repository": "AI-Ascension/sts2-harness",
-            "commit": "ba2fccdb6e0ec1f53602262c44a2302f8f98fb21",
+            "commit": "a63713212acf41fbd32ced31fecd5abdd1e18321",
             "path": "README.md",
             "line": 20,
             "classification": "source-derived"
@@ -1116,7 +1116,7 @@
           "reason": "Retain valid existing topic supported by pinned default-branch source.",
           "evidence": {
             "repository": "AI-Ascension/sts2-harness",
-            "commit": "ba2fccdb6e0ec1f53602262c44a2302f8f98fb21",
+            "commit": "a63713212acf41fbd32ced31fecd5abdd1e18321",
             "path": "Cargo.toml",
             "line": 1,
             "classification": "source-derived"
@@ -1130,7 +1130,7 @@
           "reason": "Retain valid existing topic supported by pinned default-branch source.",
           "evidence": {
             "repository": "AI-Ascension/sts2-harness",
-            "commit": "ba2fccdb6e0ec1f53602262c44a2302f8f98fb21",
+            "commit": "a63713212acf41fbd32ced31fecd5abdd1e18321",
             "path": "README.md",
             "line": 41,
             "classification": "source-derived"
@@ -1144,7 +1144,7 @@
           "reason": "Add seed topic supported by pinned default-branch source.",
           "evidence": {
             "repository": "AI-Ascension/sts2-harness",
-            "commit": "ba2fccdb6e0ec1f53602262c44a2302f8f98fb21",
+            "commit": "a63713212acf41fbd32ced31fecd5abdd1e18321",
             "path": "README.md",
             "line": 26,
             "classification": "source-derived"
@@ -1158,7 +1158,7 @@
           "reason": "Add seed topic supported by pinned default-branch source.",
           "evidence": {
             "repository": "AI-Ascension/sts2-harness",
-            "commit": "ba2fccdb6e0ec1f53602262c44a2302f8f98fb21",
+            "commit": "a63713212acf41fbd32ced31fecd5abdd1e18321",
             "path": "README.md",
             "line": 39,
             "classification": "source-derived"

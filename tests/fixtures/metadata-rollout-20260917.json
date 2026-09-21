@@ -188,7 +188,7 @@
     {
       "archived": false,
       "default_branch": "main",
-      "default_commit": "d82cdc52f318097a0cb31a810a5565f826ca8f99",
+      "default_commit": "00b9351478a14298f3dcfdb877051cd0827551ea",
       "full_name": "AI-Ascension/sts2-game-mod",
       "id": 1354377975,
       "issues": [],
@@ -759,7 +759,7 @@
     {
       "archived": false,
       "default_branch": "main",
-      "default_commit": "ba2fccdb6e0ec1f53602262c44a2302f8f98fb21",
+      "default_commit": "a63713212acf41fbd32ced31fecd5abdd1e18321",
       "full_name": "AI-Ascension/sts2-harness",
       "id": 1354378100,
       "issues": [],
