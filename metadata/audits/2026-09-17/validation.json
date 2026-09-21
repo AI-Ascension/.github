@@ -119,5 +119,109 @@
     "independent_post_apply_readback": "not-run",
     "second_apply_writes": null
   },
-  "limitation": "Synthetic and local read-only results are not live GitHub write evidence."
+  "limitation": "Synthetic and local read-only results are not live GitHub write evidence.",
+ "source_pin_refresh_20260921b": {
+ "observed_at": "2026-09-21T04:27:12Z",
+ "managed_pins_bumped": 1,
+ "repositories": [
+  "sts2-harness"
+ ],
+ "all_advances_fast_forward": true,
+ "fast_forward": {
+  "sts2-harness": {
+   "ahead_by": 3,
+   "behind_by": 0
+  }
+ },
+ "fast_forward_basis": "ahead_by/behind_by measured from the pin recorded on main (a6371321) to the live head read at 2026-09-21T04:27:12Z (eaf1eeee).",
+ "advance_cause": "The prior lane's own squash merges, sts2-harness#393 (56de55388ea9) and #392 (eaf1eeeeef58), advanced main. The pin recorded by that lane was therefore stale the moment it landed, and this pass re-points it.",
+ "range_files_changed": 23,
+ "cited_evidence_paths": [
+  "README.md",
+  "Cargo.toml"
+ ],
+ "cited_evidence_paths_modified": 0,
+ "evidence_commits_repointed": 9,
+ "evidence_commits_byte_identical": 9,
+ "evidence_commits_on_modified_paths": 0,
+ "modified_evidence_paths": [],
+ "evidence_path_blob_shas": {
+  "README.md": "a8ea36aa733ab33e67989481bb445a7b129df8d7",
+  "Cargo.toml": "beeeaf19e914c01aac9588d27b77fe1a698d0d3a"
+ },
+ "unmanaged_pins_refreshed": 0,
+ "note": "Neither cited evidence path appears in the 23-file a6371321...eaf1eeee change set, and both blob SHAs are identical at the old pin and the new head, so each of the nine evidence re-points is byte-identical evidence at the new commit and no cite needs disclosure. All nine topics of the row share those two paths. The stale managed:false pins (aiascension.tech, ascension-workflow-studio) were deliberately left unchanged pending the owner applicability decision; the drift monitor skips managed:false rows.",
+ "checks_at_prepared_head": {
+  "drift_ci_shape_public_only": {
+   "ok": true,
+   "mismatches": 0,
+   "repository_count": 15,
+   "exit_code": 0,
+   "command": "python3 tools/metadata_drift.py --metadata metadata/repositories.yml --labels labels.yml --snapshot <fresh public-only snapshot>"
+  },
+  "drift_broad_18": {
+   "ok": false,
+   "mismatches": 2,
+   "kinds": [
+    "unmapped_repository"
+   ],
+   "repositories": [
+    "AI-Ascension/st2-project-planning",
+    "AI-Ascension/obs-vm-setup"
+   ],
+   "exit_code": 1,
+   "note": "Both are private and invisible to the repo-scoped CI token; the recorded scope_note keeps private discoveries out of the registry. This is the same residual the prior passes recorded, not new drift."
+  },
+  "metadata_validation": {
+   "ok": true,
+   "repository_count": 16,
+   "snapshot_present": true,
+   "exit_code": 0
+  },
+  "plan_validation": {
+   "ok": true,
+   "plan_digest": "c8ea6154e870f302ef34c0df17a4d465988d1baa624cb21939c794d628f24616",
+   "exit_code": 0
+  },
+  "python_tests": {
+   "passed": 112,
+   "failed": 0,
+   "exit_code": 0
+  },
+  "standards_adoption_tests": {
+   "passed": 4,
+   "failed": 0,
+   "exit_code": 0
+  },
+  "link_regression": {
+   "passed": 15,
+   "failed": 0,
+   "exit_code": 0
+  }
+ },
+ "plan_regenerated_deterministically": true,
+ "determinism_proof": "Regenerating the plan from the UNMODIFIED main inputs at 4bd4609 reproduces the committed metadata/audits/2026-09-17/fleet-plan.json byte-for-byte (cmp clean, digest 762344cc800464eac7e05c476eb371b3d41d4b148b11214084068ee05337daae), so the refreshed plan below is the generator's output and not a hand edit.",
+ "plan_digest_before": "762344cc800464eac7e05c476eb371b3d41d4b148b11214084068ee05337daae",
+ "plan_digest_after": "c8ea6154e870f302ef34c0df17a4d465988d1baa624cb21939c794d628f24616",
+ "manifest_revision_before": "sha256:0e95fa523017184189a3ebbbe92d514e54fe07ea2f8d3a9fb0f7f8d69a5f81be",
+ "manifest_revision_after": "sha256:3fa9efff542ab2ccb1bcd4c913db19fa1cd348c3bacfd9bafebe007c5502f370",
+ "snapshot_digest_before": "8775b06e4387a5f30ff98fa88d93d53349356fe44374021f8b92282f68f00169",
+ "snapshot_digest_after": "615b3683d3005b01f516bf7fcb8333e791d234ba3d13804d7e72a752d0794d23",
+ "plan_delta_scope": "Only the harness target's default_commit, its nine replace_topics evidence commits and its precondition default_commit move, plus the four digest fields (digest, metadata_digest, snapshot_digest, manifest_revision). labels_digest, migrations_digest and selection_digest are unchanged.",
+ "operation_sequence_unchanged": {
+  "replace_topics": 11,
+  "rename_label": 44,
+  "additive_label_migration": 22,
+  "create_label": 54,
+  "writes": 109
+ },
+ "fleet_plan_markdown_unchanged": true,
+ "fleet_plan_markdown_note": "metadata/audits/2026-09-17/fleet-plan.md embeds no commit SHAs, so the regenerated diff output is byte-identical to the committed file.",
+ "still_transient": "The refresh was made redundant by merges that landed in the same hour as the pin it replaced. The organization merges continuously, so any later merge re-reds the scheduled report; the durable fix remains the owner decision recorded in the README.",
+ "live_metadata": {
+  "writes_performed": 0,
+  "published": false,
+  "production_run": "not-run"
+ }
+}
 }

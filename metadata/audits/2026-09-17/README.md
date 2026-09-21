@@ -364,3 +364,63 @@ The durable fix is still the owner decision recorded under
 check, exit status, filter, schedule or protection. The stale `managed: false` pins are again left
 unchanged pending the owner applicability decision. No live write, apply, publication, or production run
 is claimed.
+
+## Fourth managed-pin refresh — harness only, 2026-09-21T04:27:12Z
+
+The harness pin recorded by the third refresh above was stale within the hour, and by this lane's own
+merges rather than by anyone else's: the two open PRs it verified, `sts2-harness#393` (squash
+`56de55388ea9`) and `#392` (squash `eaf1eeeeef58`), advanced `main` `d1fd07af` → `eaf1eeeeef58`. The
+scheduled report is a strict-equality check against the live head, so recording a pin is a claim that
+expires as soon as the next merge lands. This pass re-points it once, and only for harness; the other
+thirteen managed rows were read at the same instant and matched.
+
+The advance is a clean fast-forward (`ahead_by: 3`, `behind_by: 0`) over a 23-file change set. The
+method is the same one used for every earlier refresh, and it is deliberately not a pin-only edit: a
+pin-only refresh would pass PR CI but leave the row's topic evidence asserting a commit that is no
+longer the head, which is the specific dishonesty this audit's validation catches.
+
+| check | result |
+| --- | --- |
+| cited evidence paths in the change set | none (`README.md`, `Cargo.toml` both absent) |
+| cited evidence blob SHAs at old pin and new head | identical (`README.md` `a8ea36aa…`, `Cargo.toml` `beeeaf19…`) |
+| topic evidence commits re-pointed | 9 of 9, all byte-identical |
+| evidence paths needing disclosure | 0 |
+
+All nine harness topics cite those same two paths, so the byte-identity result covers every cite in the
+row. The registry's `observed_at` advanced to the second-precision instant `2026-09-21T04:27:12Z` and
+the `scope_note` verification date moved with it; no other registry field, and no owner-decision text,
+changed.
+
+Determinism was proven before the plan was regenerated, not after: `make_plan` run from the
+**unmodified** `main` inputs at `4bd4609` reproduces the committed `fleet-plan.json` byte-for-byte
+(`cmp` clean, digest `762344cc…`). The refreshed plan is therefore generator output. Relative to `main`
+the plan moves only the harness target's `default_commit`, its nine `replace_topics` evidence commits
+and its `precondition.default_commit`, plus the four digest fields — digest `762344cc…` → `c8ea6154…`,
+manifest revision `sha256:0e95fa52…` → `sha256:3fa9efff…`, snapshot digest `8775b06e…` → `615b3683…`,
+metadata digest `0e95fa52…` → `3fa9efff…`. `labels_digest`, `migrations_digest` and `selection_digest`
+are unchanged, and the reviewed 109-write operation sequence (11 topic replacements, 44 stable-ID
+renames, 22 migrations, 54 label creations) is unchanged. `fleet-plan.md` embeds no commit SHAs, so its
+regenerated diff output is byte-identical and was left alone.
+
+Local checks at the prepared head, run as the CI jobs run them:
+
+```
+python3 tools/metadata_drift.py --metadata metadata/repositories.yml --labels labels.yml \
+  --snapshot <fresh public-only snapshot>            -> {"mismatches": [], "ok": true}   exit 0
+python3 tools/metadata_drift.py --metadata metadata/repositories.yml --labels labels.yml \
+  --snapshot <fresh 18-repository snapshot>          -> 2 unmapped_repository (both private) exit 1
+python3 tools/metadata.py validate --metadata metadata/repositories.yml --labels labels.yml \
+  --snapshot tests/fixtures/metadata-rollout-20260917.json
+                                                     -> {"ok": true, "repository_count": 16} exit 0
+python3 tools/metadata.py validate --plan metadata/audits/2026-09-17/fleet-plan.json \
+  --snapshot tests/fixtures/metadata-rollout-20260917.json -> {"ok": true}              exit 0
+python3 -m unittest discover -s tests -p 'test_*.py' -> Ran 112 tests ... OK             exit 0
+python3 -m unittest tests/test_standards_adoption.py -> Ran 4 tests ... OK               exit 0
+bash tests/link-check-template.sh                    -> 15 PASS, 0 FAIL                   exit 0
+```
+
+This restores a truthful green at the reviewed commit and nothing more. It does not make the monitor
+durable, and it is the fourth such refresh: the durable fix is still the owner decision recorded under
+[The source pin is a moving target](#the-source-pin-is-a-moving-target). This lane changed no drift
+check, exit status, filter, schedule or protection, refreshed no `managed: false` pin, and performed no
+live write, apply, publication or production run.
