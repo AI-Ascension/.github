@@ -21,15 +21,15 @@
     ]
   },
   "brand_topic": "ai-ascension",
-  "digest": "c8ea6154e870f302ef34c0df17a4d465988d1baa624cb21939c794d628f24616",
+  "digest": "8c524047c2b224e3703e72b5a368ba4c43a935ca27bf946c42e18cc46b853c3b",
   "inputs": {
     "labels_digest": "0b80c523b8d49331122d8cc2f8b2b91e4796f5df3fde87ccd3a9625cff70eca2",
-    "metadata_digest": "3fa9efff542ab2ccb1bcd4c913db19fa1cd348c3bacfd9bafebe007c5502b9a0",
+    "metadata_digest": "63dbc790a7f43ac1ba223c406848d3eeacab6e53f2ae9c2cf80e18034b737b5b",
     "migrations_digest": "447f26e16729019c1552e4d2a403d6c605c4edddb9b4e9306c0b5f55b42c86cd",
     "selection_digest": "c9263b04067a74e0c4279be1b310519fec3efe015d28f87da6dbb36f3f0578e9",
-    "snapshot_digest": "615b3683d3005b01f516bf7fcb8333e791d234ba3d13804d7e72a752d0790728"
+    "snapshot_digest": "826c74a25073f8e8c13532162a53e9a30ab7dd2208e665ce75989fdd026e97b2"
   },
-  "manifest_revision": "sha256:3fa9efff542ab2ccb1bcd4c913db19fa1cd348c3bacfd9bafebe007c5502b9a0",
+  "manifest_revision": "sha256:63dbc790a7f43ac1ba223c406848d3eeacab6e53f2ae9c2cf80e18034b737b5b",
   "organization": "AI-Ascension",
   "review": {
     "applicable": true,
@@ -3210,7 +3210,7 @@
     {
       "archived": false,
       "default_branch": "main",
-      "default_commit": "eaf1eeeeef58b0e2a29a1f1926de207ed69bebb8",
+      "default_commit": "f8a75b88e4dc86dc81b4c9a13e4dd0d1bca8067a",
       "operations": [
         {
           "after": [
@@ -3239,7 +3239,7 @@
               "change": "retain",
               "evidence": {
                 "classification": "source-derived",
-                "commit": "eaf1eeeeef58b0e2a29a1f1926de207ed69bebb8",
+                "commit": "f8a75b88e4dc86dc81b4c9a13e4dd0d1bca8067a",
                 "line": 8,
                 "path": "README.md",
                 "repository": "AI-Ascension/sts2-harness"
@@ -3253,7 +3253,7 @@
               "change": "add",
               "evidence": {
                 "classification": "source-derived",
-                "commit": "eaf1eeeeef58b0e2a29a1f1926de207ed69bebb8",
+                "commit": "f8a75b88e4dc86dc81b4c9a13e4dd0d1bca8067a",
                 "line": 8,
                 "path": "README.md",
                 "repository": "AI-Ascension/sts2-harness"
@@ -3267,7 +3267,7 @@
               "change": "add",
               "evidence": {
                 "classification": "source-derived",
-                "commit": "eaf1eeeeef58b0e2a29a1f1926de207ed69bebb8",
+                "commit": "f8a75b88e4dc86dc81b4c9a13e4dd0d1bca8067a",
                 "line": 39,
                 "path": "README.md",
                 "repository": "AI-Ascension/sts2-harness"
@@ -3281,7 +3281,7 @@
               "change": "retain",
               "evidence": {
                 "classification": "source-derived",
-                "commit": "eaf1eeeeef58b0e2a29a1f1926de207ed69bebb8",
+                "commit": "f8a75b88e4dc86dc81b4c9a13e4dd0d1bca8067a",
                 "line": 39,
                 "path": "README.md",
                 "repository": "AI-Ascension/sts2-harness"
@@ -3295,7 +3295,7 @@
               "change": "add",
               "evidence": {
                 "classification": "source-derived",
-                "commit": "eaf1eeeeef58b0e2a29a1f1926de207ed69bebb8",
+                "commit": "f8a75b88e4dc86dc81b4c9a13e4dd0d1bca8067a",
                 "line": 20,
                 "path": "README.md",
                 "repository": "AI-Ascension/sts2-harness"
@@ -3309,7 +3309,7 @@
               "change": "retain",
               "evidence": {
                 "classification": "source-derived",
-                "commit": "eaf1eeeeef58b0e2a29a1f1926de207ed69bebb8",
+                "commit": "f8a75b88e4dc86dc81b4c9a13e4dd0d1bca8067a",
                 "line": 1,
                 "path": "Cargo.toml",
                 "repository": "AI-Ascension/sts2-harness"
@@ -3323,7 +3323,7 @@
               "change": "retain",
               "evidence": {
                 "classification": "source-derived",
-                "commit": "eaf1eeeeef58b0e2a29a1f1926de207ed69bebb8",
+                "commit": "f8a75b88e4dc86dc81b4c9a13e4dd0d1bca8067a",
                 "line": 41,
                 "path": "README.md",
                 "repository": "AI-Ascension/sts2-harness"
@@ -3337,7 +3337,7 @@
               "change": "add",
               "evidence": {
                 "classification": "source-derived",
-                "commit": "eaf1eeeeef58b0e2a29a1f1926de207ed69bebb8",
+                "commit": "f8a75b88e4dc86dc81b4c9a13e4dd0d1bca8067a",
                 "line": 26,
                 "path": "README.md",
                 "repository": "AI-Ascension/sts2-harness"
@@ -3351,7 +3351,7 @@
               "change": "add",
               "evidence": {
                 "classification": "source-derived",
-                "commit": "eaf1eeeeef58b0e2a29a1f1926de207ed69bebb8",
+                "commit": "f8a75b88e4dc86dc81b4c9a13e4dd0d1bca8067a",
                 "line": 39,
                 "path": "README.md",
                 "repository": "AI-Ascension/sts2-harness"
@@ -3388,7 +3388,7 @@
           "precondition": {
             "archived": false,
             "default_branch": "main",
-            "default_commit": "eaf1eeeeef58b0e2a29a1f1926de207ed69bebb8",
+            "default_commit": "f8a75b88e4dc86dc81b4c9a13e4dd0d1bca8067a",
             "topics_digest": "1213c7682f195eee32ec3b592ec27b5aee214c59532252ff610a4268435d6171",
             "visibility": "public"
           },
