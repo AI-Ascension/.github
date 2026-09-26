@@ -14,7 +14,15 @@ on:
       number:
         description: Pull request number to evaluate
         required: true
-        type: string
+        # `number`, not `string`. GitHub coerces this to an integer before the
+        # workflow runs, so a value like `$(echo ...` cannot reach the `run:`
+        # block below as text. `run:` interpolates `${{ }}` into a shell
+        # script, and surrounding double quotes do NOT neutralise `$(...)` or
+        # backticks. With `type: string` a workflow_dispatch caller could
+        # inject shell into a job that holds a token. `workflow_dispatch`
+        # already requires write access, so the practical severity was low --
+        # but the input does not need to be a string, so it should not be one.
+        type: number
 
 permissions:
   contents: read
@@ -27,6 +35,22 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
+          # Run the gate from the DEFAULT BRANCH, never from the pull request.
+          #
+          # The gate reads the head SHA and the review list from the API; it
+          # needs no code from the pull request at all. Checking out the PR head
+          # would mean executing code the pull request controls, with a token
+          # in the job -- so a PR that edits both `tools/review_gate.py` and
+          # `tests/test_review_gate.py` could make the gate pass itself with
+          # zero reviews. Pinning the checkout removes that class entirely and
+          # costs nothing: everything the gate evaluates comes from the API.
+          #
+          # This is legal on `pull_request` (unlike `pull_request_target`),
+          # which is why the gate is not guarded by the
+          # `github.ref == default_branch` condition that `metadata-drift.yml`
+          # uses -- that workflow only reports, so it can wait for a trusted
+          # ref, while this one must answer on every pull request.
+          ref: ${{ github.event.repository.default_branch }}
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:

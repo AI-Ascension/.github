@@ -200,13 +200,20 @@ class CheckTests(unittest.TestCase):
     def test_check_uses_all_reviews_not_just_latest(self):
         # Regression for the unpinned/earliest-review audit note: reading only
         # the latest review must not be how the gate decides.
+        #
+        # The pinned review is deliberately FIRST and the later review is the
+        # unpinned one. A `reviews[-1:]` implementation -- look only at the
+        # latest -- sees the unpinned review, decides "no review of record,"
+        # and fails. Only an implementation that reads the whole list finds
+        # the pin at index 0. With the pinned review last, this test could not
+        # tell those two implementations apart and would pass either way.
         class LatestOnly:
             def head_sha(self, repository, number):
                 return HEAD
 
             def reviews(self, repository, number):
-                return [review(commit_id=OTHER, rid=5, submitted="2026-09-26T09:00:00Z"),
-                        review(rid=1, submitted="2026-09-26T01:00:00Z")]
+                return [review(rid=1, submitted="2026-09-26T01:00:00Z"),
+                        review(commit_id=OTHER, rid=5, submitted="2026-09-26T09:00:00Z")]
 
         result = check("AI-Ascension/.github", 1, runner=LatestOnly())
         self.assertTrue(result["ok"])
