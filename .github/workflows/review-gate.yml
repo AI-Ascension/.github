@@ -61,9 +61,50 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      - name: Resolve the trusted gate source
+        # A reusable call and a direct trigger have to read DIFFERENT
+        # repositories, and getting this wrong is the exact failure the
+        # `workflow_call` rollout hit on its first live run.
+        #
+        # Called from a sibling: the gate's code must come from THIS
+        # repository, at the commit the caller pinned in its `uses:`. The
+        # caller's own `main` does not have `tools/review_gate.py` or
+        # `tests/test_review_gate.py` at all, so a checkout of the caller
+        # fails at `ModuleNotFoundError: No module named
+        # 'tests/test_review_gate'` -- measured on
+        # ascension-context-console#43, 2026-09-28.
+        #
+        # Direct trigger (this repository's own pull requests): the default
+        # branch IS this repository, so the same answer falls out.
+        #
+        # `github.workflow_sha` is the commit of the workflow file, which for
+        # a called workflow is the pinned `uses:` ref. The guard below is
+        # load-bearing: `&&`/`||` fall through to the caller's default branch
+        # when `workflow_sha` is empty, and that is precisely the checkout the
+        # gate must never trust. An unresolved source is a hard failure
+        # rather than a fallback.
+        env:
+          CALLED: ${{ github.event_name == 'workflow_call' }}
+          WORKFLOW_SHA: ${{ github.workflow_sha }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          WORKFLOW_REF: ${{ github.workflow_ref }}
+        run: |
+          set -eu
+          if [ "$CALLED" = "true" ] && [ -z "${WORKFLOW_SHA:-}" ]; then
+            echo "::error::a reusable call must resolve github.workflow_sha; refusing to fall back to the caller's default branch"
+            exit 1
+          fi
+          echo "event=${{ github.event_name }}"
+          echo "workflow_ref=$WORKFLOW_REF"
+          echo "workflow_sha=$WORKFLOW_SHA"
+          echo "default_branch=$DEFAULT_BRANCH"
+          {
+            echo "GATE_REPOSITORY=AI-Ascension/.github"
+            echo "GATE_REF=$WORKFLOW_SHA"
+          } >> "$GITHUB_ENV"
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
-          # Run the gate from the DEFAULT BRANCH, never from the pull request.
+          # Run the gate from TRUSTED code, never from the pull request.
           #
           # The gate reads the head SHA and the review list from the API; it
           # needs no code from the pull request at all. Checking out the PR head
@@ -73,12 +114,19 @@ jobs:
           # zero reviews. Pinning the checkout removes that class entirely and
           # costs nothing: everything the gate evaluates comes from the API.
           #
+          # For a `workflow_call` the trusted code is this repository at the
+          # commit the caller pinned, so `repository` and `ref` come from the
+          # step above rather than from the caller's context. For a direct
+          # trigger the step above resolves to this repository's own default
+          # branch, which is the original behaviour.
+          #
           # This is legal on `pull_request` (unlike `pull_request_target`),
           # which is why the gate is not guarded by the
           # `github.ref == default_branch` condition that `metadata-drift.yml`
           # uses -- that workflow only reports, so it can wait for a trusted
           # ref, while this one must answer on every pull request.
-          ref: ${{ github.event.repository.default_branch }}
+          repository: ${{ env.GATE_REPOSITORY }}
+          ref: ${{ env.GATE_REF }}
           persist-credentials: false
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
