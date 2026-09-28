@@ -41,6 +41,20 @@ def triggers(workflow):
     raise AssertionError("workflow declares no trigger block")
 
 
+def executable_lines(path):
+    """The file with its comments stripped.
+
+    These workflows carry a lot of prose explaining *why* a spelling is
+    wrong, and that prose necessarily contains the wrong spelling. A
+    substring assertion over the raw file would therefore fail against the
+    documentation of the very defect it is checking for, so the checks that
+    assert an expression is ABSENT run over this instead.
+    """
+    return "\n".join(
+        line for line in path.read_text().split("\n") if not line.lstrip().startswith("#")
+    )
+
+
 class ReusableReferenceTest(unittest.TestCase):
     def test_reference_accepts_workflow_call(self):
         # Without this the sibling's `uses:` never resolves, and the required
@@ -93,13 +107,46 @@ class ReusableReferenceTest(unittest.TestCase):
         self.assertIn("persist-credentials: false", text)
 
     def test_unresolved_gate_source_fails_closed(self):
-        # The resolution step writes GATE_REF from `github.workflow_sha`. If
-        # that is empty on a reusable call, the checkout must NOT fall through
-        # to the caller's default branch -- that is precisely the untrusted
-        # checkout. It is a hard error instead.
+        # A caller that supplies no `gate-sha` gets this repository's own
+        # default branch, which is correct for a direct trigger and WRONG for a
+        # reusable call -- so a supplied-but-malformed value must be a hard
+        # error rather than falling through to that default.
         text = REFERENCE.read_text()
-        self.assertIn("refusing to fall back to the caller's default branch", text)
+        self.assertIn("resolved=reusable-call", text)
+        self.assertIn("resolved=direct-trigger", text)
         self.assertIn("exit 1", text)
+
+    def test_gate_source_comes_from_caller_supplied_inputs(self):
+        # A called workflow INHERITS the caller's event. Measured on
+        # ascension-context-console#43: inside the gate, `github.event_name`
+        # was `pull_request` and `github.workflow_sha` was the CALLER's merge
+        # commit. So neither can identify the caller's pinned reference, and a
+        # caller must state it. This asserts the inputs exist and that the
+        # resolution step reads them.
+        call = triggers(yaml.safe_load(REFERENCE.read_text()))["workflow_call"]
+        self.assertIn("gate-repository", call["inputs"])
+        self.assertIn("gate-sha", call["inputs"])
+        text = executable_lines(REFERENCE)
+        self.assertIn("${{ inputs.gate-sha }}", text)
+        self.assertIn("${{ inputs.gate-repository }}", text)
+        # And the event-derived spellings must be gone, so the wrong signal
+        # cannot creep back in. Asserting their absence is what makes this
+        # test a regression guard rather than a description. The check is on
+        # executable lines only: the file documents why these spellings are
+        # wrong, and a naive substring check would flag its own explanation.
+        self.assertNotIn("github.event_name == 'workflow_call'", text)
+        self.assertNotIn("${{ github.workflow_sha }}", text)
+
+    def test_gate_sha_is_validated_before_use(self):
+        # `gate-sha` is a `string` input, so unlike `workflow_dispatch`'s
+        # `number` it is NOT coerced by GitHub. It is interpolated into a
+        # shell block, so an unvalidated value would be an injection surface.
+        # The step must reject anything that is not a 40-character hex SHA
+        # before it reaches the checkout.
+        text = executable_lines(REFERENCE)
+        self.assertIn("gate-sha must be a 40-character commit SHA", text)
+        self.assertIn('*[!0-9a-f]*', text)
+        self.assertIn('-ne 40', text)
 
     def test_dispatch_input_is_not_a_string(self):
         # A `string` input would let a `workflow_dispatch` caller interpolate
