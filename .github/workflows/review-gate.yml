@@ -36,21 +36,35 @@ on:
   # (#713, re-introduced by #719). A shared reference has no per-repo port to
   # drift.
   #
-  # Two properties make the caller's answer the reference's answer:
+  # The caller states WHERE the gate implementation lives, as `gate-repository`
+  # and `gate-sha`, and those are the two values it named in its own `uses:`.
+  # The gate code and its unit tests are therefore read from the reference at a
+  # pinned commit -- never from the pull request's head, and never from the
+  # caller's repository. A PR that edits its own review gate still cannot make
+  # the gate pass itself, because the caller has no gate code to edit.
   #
-  # 1. The job checks out `github.event.repository.default_branch` -- the
-  #    CALLER's default branch -- so the gate code and its unit tests are the
-  #    caller's trusted `main`, never the pull request's head. A PR that edits
-  # its own `tools/review_gate.py` still cannot make the gate pass itself.
-  # 2. The gate reads the head SHA and the review list from the API, so it
-  #    needs no repository content at all. The checkout is for the gate's own
-  #    code and tests only.
-  #
-  # `workflow_call` takes no inputs. The pull-request number and repository are
-  # read from the caller's own event context, exactly as they are for the
-  # direct triggers above, so a caller cannot pass a different PR number than
+  # The pull-request number and repository are NOT inputs. They are read from
+  # the caller's own event context, exactly as they are for the direct triggers
+  # above, so a caller cannot point the gate at a different pull request than
   # the one being gated.
   workflow_call:
+    inputs:
+      gate-repository:
+        type: string
+        default: 'AI-Ascension/.github'
+        description: >-
+          Repository holding the gate implementation to run. Defaults to this
+          repository; a caller passes the same value it named in its `uses:`.
+      gate-sha:
+        type: string
+        default: ''
+        description: >-
+          The exact commit of `gate-repository` to run. A caller passes the
+          same commit it pinned in its `uses:`. Empty means "this
+          repository's default branch", which is correct for a direct trigger
+          and wrong for a reusable call, so an empty value on a call is caught
+          by the test that asserts this input is required rather than
+          defaulted.
 
 permissions:
   contents: read
@@ -63,45 +77,73 @@ jobs:
     steps:
       - name: Resolve the trusted gate source
         # A reusable call and a direct trigger have to read DIFFERENT
-        # repositories, and getting this wrong is the exact failure the
-        # `workflow_call` rollout hit on its first live run.
+        # repositories, and getting this wrong is what the `workflow_call`
+        # rollout hit on its first live run.
         #
         # Called from a sibling: the gate's code must come from THIS
-        # repository, at the commit the caller pinned in its `uses:`. The
-        # caller's own `main` does not have `tools/review_gate.py` or
-        # `tests/test_review_gate.py` at all, so a checkout of the caller
-        # fails at `ModuleNotFoundError: No module named
-        # 'tests/test_review_gate'` -- measured on
+        # repository, at the commit the caller pinned. The caller's own `main`
+        # does not have `tools/review_gate.py` or `tests/test_review_gate.py`
+        # at all, so checking out the caller fails at `ModuleNotFoundError: No
+        # module named 'tests/test_review_gate'` -- measured on
         # ascension-context-console#43, 2026-09-28.
         #
-        # Direct trigger (this repository's own pull requests): the default
-        # branch IS this repository, so the same answer falls out.
+        # Direct trigger (this repository's own pull requests): the inputs are
+        # absent, the defaults apply, and the answer is this repository's own
+        # default branch -- the original behaviour.
         #
-        # `github.workflow_sha` is the commit of the workflow file, which for
-        # a called workflow is the pinned `uses:` ref. The guard below is
-        # load-bearing: `&&`/`||` fall through to the caller's default branch
-        # when `workflow_sha` is empty, and that is precisely the checkout the
-        # gate must never trust. An unresolved source is a hard failure
-        # rather than a fallback.
+        # WHY THE CALLER STATES THE PIN AS INPUTS, rather than this step
+        # deriving it from the event context. An earlier attempt used
+        # `github.event_name == 'workflow_call'` and `github.workflow_sha`.
+        # Both are wrong, and the same pilot run measured why: a called
+        # workflow INHERITS the caller's event, so inside this job
+        # `github.event_name` was `pull_request` and `github.workflow_sha` was
+        # the CALLER's merge commit (`4045d5a3`, per the run log). Deriving the
+        # trusted source from the event context therefore resolves to the
+        # repository the gate is least allowed to trust.
+        #
+        # An explicit input is the honest fix: the caller already names both
+        # values in its `uses:`, and passing them again makes the trusted
+        # source visible in the caller's own workflow file, where a review can
+        # read it.
         env:
-          CALLED: ${{ github.event_name == 'workflow_call' }}
-          WORKFLOW_SHA: ${{ github.workflow_sha }}
+          GATE_REPOSITORY_IN: ${{ inputs.gate-repository }}
+          GATE_SHA_IN: ${{ inputs.gate-sha }}
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          EVENT: ${{ github.event_name }}
           WORKFLOW_REF: ${{ github.workflow_ref }}
         run: |
           set -eu
-          if [ "$CALLED" = "true" ] && [ -z "${WORKFLOW_SHA:-}" ]; then
-            echo "::error::a reusable call must resolve github.workflow_sha; refusing to fall back to the caller's default branch"
-            exit 1
-          fi
-          echo "event=${{ github.event_name }}"
+          echo "event=$EVENT"
           echo "workflow_ref=$WORKFLOW_REF"
-          echo "workflow_sha=$WORKFLOW_SHA"
+          echo "gate_repository_in=${GATE_REPOSITORY_IN:-<unset>}"
+          echo "gate_sha_in=${GATE_SHA_IN:-<unset>}"
           echo "default_branch=$DEFAULT_BRANCH"
-          {
-            echo "GATE_REPOSITORY=AI-Ascension/.github"
-            echo "GATE_REF=$WORKFLOW_SHA"
-          } >> "$GITHUB_ENV"
+          if [ -n "${GATE_SHA_IN:-}" ]; then
+            # A reusable call: use exactly what the caller pinned.
+            case "$GATE_SHA_IN" in
+              *[!0-9a-f]*|"")
+                echo "::error::gate-sha must be a 40-character commit SHA, got: $GATE_SHA_IN"
+                exit 1
+                ;;
+            esac
+            if [ "${#GATE_SHA_IN}" -ne 40 ]; then
+              echo "::error::gate-sha must be a 40-character commit SHA, got ${#GATE_SHA_IN} characters"
+              exit 1
+            fi
+            {
+              echo "GATE_REPOSITORY=$GATE_REPOSITORY_IN"
+              echo "GATE_REF=$GATE_SHA_IN"
+            } >> "$GITHUB_ENV"
+            echo "resolved=reusable-call"
+          else
+            # A direct trigger in this repository. There is no pin to honour,
+            # and the trusted source is this repository's own default branch.
+            {
+              echo "GATE_REPOSITORY=AI-Ascension/.github"
+              echo "GATE_REF=$DEFAULT_BRANCH"
+            } >> "$GITHUB_ENV"
+            echo "resolved=direct-trigger"
+          fi
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           # Run the gate from TRUSTED code, never from the pull request.
