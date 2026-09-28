@@ -1,0 +1,60 @@
+name: Review of record (reusable reference)
+
+# The consumer half of the cross-repository review gate, for .github#49.
+#
+# A repository that wants the org's review rule enforced adds exactly one file:
+# this wrapper, which delegates to the canonical gate in this repository. It
+# does not vendor `tools/review_gate.py` and it does not port the gate into
+# whatever language the caller happens to use. The reference is called by a
+# pinned ref, so the call is reproducible and reviewable on its own.
+#
+# Why a shared reference rather than a per-repository copy: `sts2-harness`
+# ported the gate to Rust and carries the port, and the two copies had already
+# diverged in mechanism before this wrapper existed -- the harness copy was
+# reported failing when only the direct child was killed (fixed in #702 and
+# #718), and its test helpers leaked a temp directory (#713, re-introduced by
+# #719). A port per repository is a drift generator with a CI cost attached;
+# there is no reason for the gate to be one.
+#
+# The `uses:` ref below is a commit, not a branch, so a change to the reference
+# gate cannot alter a caller's required check without a review of the caller's
+# own bump. To upgrade, open a pull request in the CALLING repository that
+# moves this one line to a newer reviewed commit of the reference.
+on:
+  pull_request:
+    # Re-run whenever the head moves, so a push after the last review unpins
+    # that review and turns the check red again on the head that would merge.
+    types: [opened, synchronize, reopened, ready_for_review, edited]
+  pull_request_review:
+    # Re-run when a review lands, so a PR that opened with no review of record
+    # turns green when it gets one instead of waiting for the next push.
+    types: [submitted, edited, dismissed]
+  workflow_dispatch:
+    inputs:
+      number:
+        description: Pull request number to evaluate
+        required: true
+        # `number`, not `string`, for the reason the reference gate documents:
+        # a string input would let a `workflow_dispatch` caller interpolate
+        # `$(...)` into a `run:` block that holds a token.
+        type: number
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  review-of-record:
+    # The JOB name is the check context. A required status check ruleset names
+    # the context, not the file, so the key here must stay `review-of-record`
+    # in the calling repository too -- it is the same word on both sides, which
+    # is what lets one ruleset template be applied org-wide.
+    name: review-of-record
+    uses: AI-Ascension/.github/.github/workflows/review-gate.yml@dc0777e892af4b725d2a234a8174c1e763201f35
+    # A called workflow cannot be given more permissions than the caller has,
+    # so the caller's top-level `permissions` is the ceiling. Both are declared
+    # read-only above and the reference asks for the same two, so the gate runs
+    # with a token that can read the pull request and nothing more.
+    permissions:
+      contents: read
+      pull-requests: read
