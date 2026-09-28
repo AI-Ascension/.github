@@ -208,3 +208,4 @@ reproductions. Formal protocol admission remains pending the owner's recorded
 decision and final evidence consolidation. No merge, tag, release publication
 or organization-wide compatibility is claimed. Docker image builds, Laminar
 and an independent physical LAN-client check retain their stated limitations.
+<!-- probe: temporary, will be reverted -->
