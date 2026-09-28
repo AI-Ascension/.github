@@ -80,9 +80,26 @@ class ReusableReferenceTest(unittest.TestCase):
         # controls, in a job that holds a token -- so a PR editing the gate
         # could pass itself with zero reviews. This is asserted, not trusted,
         # because it is the single property the whole gate exists to provide.
+        #
+        # The checkout reads `GATE_REPOSITORY`/`GATE_REF` from the environment
+        # rather than from `github.event.repository`, because for a
+        # `workflow_call` those are the reference repository and the pinned
+        # commit -- the caller's context would name the caller's `main`, which
+        # has no gate in it at all.
         text = REFERENCE.read_text()
-        self.assertIn("ref: ${{ github.event.repository.default_branch }}", text)
+        self.assertIn("repository: ${{ env.GATE_REPOSITORY }}", text)
+        self.assertIn("ref: ${{ env.GATE_REF }}", text)
+        self.assertNotIn("ref: ${{ github.event.repository.default_branch }}", text)
         self.assertIn("persist-credentials: false", text)
+
+    def test_unresolved_gate_source_fails_closed(self):
+        # The resolution step writes GATE_REF from `github.workflow_sha`. If
+        # that is empty on a reusable call, the checkout must NOT fall through
+        # to the caller's default branch -- that is precisely the untrusted
+        # checkout. It is a hard error instead.
+        text = REFERENCE.read_text()
+        self.assertIn("refusing to fall back to the caller's default branch", text)
+        self.assertIn("exit 1", text)
 
     def test_dispatch_input_is_not_a_string(self):
         # A `string` input would let a `workflow_dispatch` caller interpolate
