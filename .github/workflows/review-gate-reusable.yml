@@ -24,6 +24,11 @@ on:
   pull_request:
     # Re-run whenever the head moves, so a push after the last review unpins
     # that review and turns the check red again on the head that would merge.
+    #
+    # This trigger is EXPECTED to be red on a head that has no review yet, and
+    # a consumer that makes this check required will see that red run pin the
+    # rule. See "Required status checks" below before concluding a ruleset is
+    # broken -- the remedy is to re-run this workflow, not to loosen the rule.
     types: [opened, synchronize, reopened, ready_for_review, edited]
   pull_request_review:
     # Re-run when a review lands, so a PR that opened with no review of record
@@ -58,3 +63,36 @@ jobs:
     permissions:
       contents: read
       pull-requests: read
+
+# Required status checks
+#
+# A consumer that wants this gate to *block* rather than merely report needs a
+# ruleset on its default branch. Two details are load-bearing, and both were
+# established by observation rather than by reading the documentation:
+#
+# 1. THE CONTEXT STRING IS NOT `review-of-record`. A required status check names
+#    the context GitHub reports, and a job invoked through `workflow_call` is
+#    reported as `<caller workflow file> / <job name>` -- here
+#    `review-of-record / review-of-record`. Only a direct trigger in `.github`
+#    reports the bare `review-of-record`. Naming the bare string in a
+#    consumer's ruleset produces a rule that can never be satisfied, so it
+#    blocks every merge forever instead of none. The unreviewed case blocks
+#    either way, so a one-sided test passes with the wrong string; check the
+#    REVIEWED case too.
+#
+# 2. A FAILING RUN OF THAT NAME PINS THE RULE, EVEN A STALE ONE. The gate is
+#    fail-closed, so its `pull_request` run is red on any head that has no
+#    review *yet* -- it fires before a review can exist, and that red is the
+#    gate working. GitHub treats a required check as satisfied only when no run
+#    of that name is failing on the head, so that earlier red run holds the
+#    ruleset unsatisfied even after a review turns a later run green.
+#
+#    The remedy is to re-run the workflow, which supersedes the red in place:
+#      POST /repos/<owner>/<repo>/actions/runs/<run-id>/rerun
+#    or re-run the job from the Actions UI. Do NOT "fix" this by renaming or
+#    removing the required context: that removes the only control standing
+#    between an unreviewed merge and the default branch.
+#
+# Verified on sts2-protocol#70: an unreviewed head is refused with
+# `the base branch policy prohibits the merge`; after a review of record the
+# gate goes green and the merge succeeds.
