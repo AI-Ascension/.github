@@ -47,7 +47,12 @@ jobs:
           repository: AI-Ascension/ascension-watchdog
           path: consumers/ascension-watchdog
           persist-credentials: false
+      # Ancestry needs the same read-only token as the snapshot step: an
+      # unauthenticated `gh api` would measure nothing, and the monitor would
+      # then report every moved pin as an unmeasurable mismatch.
       - name: Report identity, source-pin, topic, and shared-label drift
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           python tools/metadata_drift.py --metadata metadata/repositories.yml \
             --labels labels.yml --snapshot "$RUNNER_TEMP/live-metadata.json" \

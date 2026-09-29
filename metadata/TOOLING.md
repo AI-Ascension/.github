@@ -35,3 +35,24 @@ are under `tests/test_metadata*.py`; consumer transitions have separate tests.
 
 No live apply, rollback, publication, or hosted workflow result is implied by a
 local test pass. The dated audit records the exact checks actually executed.
+
+## Source pins and ancestry
+
+`tools/metadata_drift.py` reports a recorded `default_commit` that no longer
+matches the live default-branch head. In an active organization the head moves
+continuously, so that condition alone cannot tell ordinary movement apart from
+a registry that has lost the source it was reviewed against. By default the
+monitor therefore asks GitHub how the two revisions relate and separates the
+two cases:
+
+- `source_pin_advanced` is informational. The live branch still contains the
+  recorded baseline, so the source moved forward without diverging from what
+  was reviewed. The registry is left unchanged: advancing a baseline to a new
+  head remains a separate, reviewed owner decision.
+- `source_pin` remains a red mismatch when the live branch is behind the pin,
+  has diverged from it, or the relation cannot be measured.
+
+The monitor fails closed. An unmeasurable pin is never assumed contained, and
+`--no-ancestry` restores strict live-head equality for callers that need it.
+Ancestry is read one field at a time because the compare endpoint embeds
+user-controlled commit text, which can make the whole response invalid JSON.

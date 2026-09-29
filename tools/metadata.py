@@ -46,6 +46,14 @@ SHA_RE = re.compile(r"^[0-9a-fA-F]{40}$")
 LABEL_MAX_LENGTH = 50
 HEX_COLOR_RE = re.compile(r"^[0-9a-fA-F]{6}$")
 SAFE_REPO_RE = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
+# A branch or tag name usable as one path segment of a compare request.
+REVISION_RE = re.compile(r"^[A-Za-z0-9_.-]{1,100}$")
+# The relations the compare endpoint can report.
+COMPARE_RELATIONS = frozenset({"ahead", "behind", "diverged", "identical", "unknown"})
+# Bound on how much of a compare body is inspected for its top-level relation.
+# The relation is emitted before the commit list, so this is a safety limit on
+# a pathological body rather than a working window.
+COMPARE_SCAN_LIMIT = 1 << 20
 
 # These labels carry project policy rather than generic taxonomy.  A rename
 # would silently change the meaning of existing contribution, proof, or
@@ -120,6 +128,71 @@ def digest(value: Any) -> str:
 
 def file_digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _top_level_string(body: str, key: str) -> str | None:
+    """Return a top-level string field without parsing the whole document.
+
+    The scanner tracks bracket depth and string state, so a ``key`` that only
+    appears inside a nested object, or inside a string, is never mistaken for
+    the real field.  It deliberately does not interpret escape sequences: the
+    documents this exists for are invalid JSON precisely because an embedded
+    commit message contains a malformed ``\\u`` escape, and the requested field
+    is a bare token that carries no escapes of its own.
+    """
+    needle = f'"{key}"'
+    depth = 0
+    in_string = False
+    escaped = False
+    index = 0
+    length = len(body)
+    while index < length:
+        char = body[index]
+        if in_string:
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == '"':
+                in_string = False
+            index += 1
+            continue
+        if char == '"':
+            # Only a key at the top level of the object can be the answer.
+            if depth == 1 and body.startswith(needle, index):
+                after = body[index + len(needle):].lstrip()
+                if after.startswith(":"):
+                    after = after[1:].lstrip()
+                    if after.startswith('"'):
+                        value, end = _scan_bare_string(after[1:])
+                        if value is not None:
+                            return value
+            in_string = True
+        elif char in "{[":
+            depth += 1
+        elif char in "}]":
+            depth -= 1
+        index += 1
+    return None
+
+
+def _scan_bare_string(text: str) -> tuple[str | None, int]:
+    """Read a JSON string body that is known to contain no escape sequences."""
+    end = text.find('"', 0)
+    if end < 0:
+        return None, len(text)
+    return text[:end], end + 1
+
+
+def _is_revision(value: str) -> bool:
+    """Accept a full commit SHA or a plain branch or tag name.
+
+    The compare endpoint takes a revision on either side, and the drift monitor
+    passes the recorded pin as a SHA and the live head as a branch name.  Both
+    are interpolated into a request path, so both are restricted to characters
+    that cannot alter the path.
+    """
+    return bool(SHA_RE.match(value)) or bool(REVISION_RE.match(value))
 
 
 def read_document(path: Path) -> Any:
@@ -1456,6 +1529,33 @@ class GitHubClient:
         pages = self._run(f"orgs/{urllib.parse.quote(organization, safe='')}/repos?per_page=100&type=all", paginate=True)
         rows = self._object_pages(pages, "organization repositories")
         return sorted((dict(x) for x in rows), key=lambda x: (str(x.get("id")), str(x.get("full_name"))))
+
+    def compare_status(self, full_name: str, base: str, head: str) -> str | None:
+        """Return only the relation GitHub reports between two commits.
+
+        The compare endpoint embeds full commit messages, which are
+        user-controlled: a commit message in this organization contains a
+        literal ``\\u00"`` sequence that makes the entire response invalid
+        JSON.  A strict parse of the body therefore fails for a reason that has
+        nothing to do with ancestry, and neither ``gh --jq`` nor
+        ``gh --template`` helps, because both evaluate against that same
+        malformed document.  ``per_page`` does not help either, since the
+        offending commit is still the one being described.
+
+        This reads only the top-level ``status`` field and ignores the rest.
+        Reading it by depth means a ``"status"`` key inside a commit message or
+        diff cannot be mistaken for the real answer, which would invert the
+        finding.  A comparison that cannot be measured returns ``None`` so the
+        caller can fail closed rather than assume containment.
+        """
+        if not SAFE_REPO_RE.match(full_name) or not _is_revision(base) or not _is_revision(head):
+            return None
+        owner, name = full_name.split("/", 1)
+        endpoint = (f"repos/{urllib.parse.quote(owner, safe='')}/{urllib.parse.quote(name, safe='')}"
+                    f"/compare/{base}...{head}?per_page=1")
+        raw = self.runner.run(["gh", "api", endpoint], timeout=self.timeout)
+        relation = _top_level_string(raw[:COMPARE_SCAN_LIMIT], "status")
+        return relation if relation in COMPARE_RELATIONS else None
 
     def snapshot(self, organization: str) -> dict[str, Any]:
         repositories = []

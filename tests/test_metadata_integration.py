@@ -11,6 +11,7 @@ from unittest.mock import patch
 
 from test_metadata import metadata, metadata_map, repo_snapshot
 from test_metadata_execution import FakeAPI, REPO, SHA
+from metadata import APIError, GitHubClient, _top_level_string
 from metadata_execution import _MetadataWriter as MetadataWriter
 import metadata_drift
 from metadata_drift import report
@@ -138,6 +139,147 @@ class IntegrationTests(unittest.TestCase):
         snapshot["default_branch"] = "bootstrap"
         result = report(self.desired, [], snapshot)
         self.assertEqual(["default_branch"], [x["kind"] for x in result["mismatches"]])
+
+    def test_drift_reports_a_pin_the_live_branch_no_longer_contains(self):
+        """Advancing past a baseline is movement; losing the baseline is drift.
+
+        Live-head equality cannot tell those apart: both look like "pin != head".
+        A registry whose pin is still reachable from the live head is informational,
+        while a pin the live branch has moved off -- behind, or onto another line --
+        must still be reported, or the monitor would go green on a diverged source.
+        """
+        snapshot = self.snapshot()
+        newer = "c" * 40
+        snapshot["default_commit"] = newer
+
+        contained = report(self.desired, [], snapshot, {REPO: "ahead"})
+        self.assertTrue(contained["ok"], contained)
+        self.assertEqual([], contained["mismatches"])
+        self.assertEqual(
+            [{"baseline": SHA, "kind": "source_pin_advanced", "observed": newer, "repository": REPO}],
+            contained["advanced"],
+        )
+
+        for relation in ("behind", "diverged", "identical", None):
+            with self.subTest(relation=relation):
+                drifted = report(self.desired, [], snapshot, {} if relation is None else {REPO: relation})
+                self.assertFalse(drifted["ok"], drifted)
+                self.assertEqual(["source_pin"], [x["kind"] for x in drifted["mismatches"]])
+                self.assertEqual([], drifted["advanced"])
+
+    def test_drift_measures_ancestry_only_for_pins_that_no_longer_match(self):
+        """A settled registry must not spend compare calls on every repository."""
+        requested = []
+
+        class CompareAPI:
+            def compare_status(self, full_name, base, head):
+                requested.append((full_name, base, head))
+                return "ahead"
+
+        client = CompareAPI()
+        snapshot = self.snapshot()
+        self.assertEqual({}, metadata_drift._pin_ancestry(self.desired, snapshot, client))
+        self.assertEqual([], requested)
+
+        snapshot["default_commit"] = "c" * 40
+        relations = metadata_drift._pin_ancestry(self.desired, snapshot, client)
+        self.assertEqual({REPO: "ahead"}, relations)
+        self.assertEqual([(REPO, SHA, "c" * 40)], requested)
+
+    def test_drift_ancestry_lookup_fails_closed_when_a_pin_cannot_be_measured(self):
+        """An unmeasurable pin must stay a mismatch, never be assumed contained."""
+        class Unreachable:
+            def compare_status(self, full_name, base, head):
+                raise APIError("GitHub returned non-JSON response for compare", "api")
+
+        snapshot = self.snapshot()
+        snapshot["default_commit"] = "c" * 40
+        self.assertEqual({}, metadata_drift._pin_ancestry(self.desired, snapshot, Unreachable()))
+        result = report(self.desired, [], snapshot, {})
+        self.assertFalse(result["ok"])
+        self.assertEqual(["source_pin"], [x["kind"] for x in result["mismatches"]])
+
+    def test_compare_reads_only_the_relation_so_a_malformed_body_cannot_break_it(self):
+        """A commit message can make the whole compare body invalid JSON.
+
+        The full response embeds user-controlled commit text, and this
+        organization has a commit whose body contains a literal ``\\u00"`` that
+        makes the document unparseable.  A strict parse fails, and ``jq``
+        cannot rescue it because it parses the same bytes.  The monitor must
+        therefore read only the leading relation field, or one repository's
+        commit text would turn an unrelated source into a reported mismatch.
+        """
+        malformed = (
+            '{"url":"https://api.github.com/x","html_url":"https://github.com/x",'
+            '"status":"ahead","ahead_by":3,"commits":[{"commit":{"message":'
+            '"fix \\u00" in the body"'
+            '}}]}'
+        )
+
+        class Runner:
+            def __init__(self):
+                self.calls = []
+
+            def run(self, args, *, input_text=None, timeout=60):
+                self.calls.append(list(args))
+                return malformed
+
+        runner = Runner()
+        client = GitHubClient(runner=runner)
+        self.assertEqual("ahead", client.compare_status(REPO, "a" * 40, "b" * 40))
+        self.assertEqual(
+            [["gh", "api", f"repos/AI-Ascension/example/compare/{'a' * 40}...{'b' * 40}?per_page=1"]],
+            runner.calls,
+        )
+
+    def test_compare_ignores_a_status_key_that_comes_from_commit_text(self):
+        """The relation is read from the top of the body only.
+
+        A commit message can contain a `"status":"behind"` string.  The read
+        stops at the first nested object, so a status key that only appears
+        inside the commit payload is not mistaken for GitHub's own answer,
+        which would invert the finding.
+        """
+        class Runner:
+            def __init__(self, body):
+                self.body = body
+
+            def run(self, args, *, input_text=None, timeout=60):
+                return self.body
+
+        spoofed = '{"url":"u","status":"ahead","commits":[{"commit":{"message":"\\"status\\":\\"behind\\""}}]}'
+        self.assertEqual("ahead", GitHubClient(runner=Runner(spoofed)).compare_status(REPO, "a" * 40, "b" * 40))
+        nested_only = '{"url":"u","commits":[{"commit":{"message":"\\"status\\":\\"behind\\""}}],"total_commits":1}'
+        self.assertIsNone(GitHubClient(runner=Runner(nested_only)).compare_status(REPO, "a" * 40, "b" * 40))
+        self.assertIsNone(GitHubClient(runner=Runner("not json at all")).compare_status(REPO, "a" * 40, "b" * 40))
+
+    def test_top_level_read_finds_the_relation_behind_a_nested_payload(self):
+        """The relation follows the commit list, so a prefix match cannot work.
+
+        The compare body puts the scalar relation after the embedded commits.
+        A scan that stops at the first nested object would report nothing, so
+        the reader must track depth across the whole document and still refuse
+        a value that only appears inside a string or a nested object.
+        """
+        real = ('{"url":"u","html_url":"h","commits":[{"sha":"a","commit":{"message":"x"}}],'
+                '"status":"behind","behind_by":2,"total_commits":1}')
+        self.assertEqual("behind", _top_level_string(real, "status"))
+        self.assertIsNone(_top_level_string('{"a":{"status":"diverged"}}', "status"))
+        self.assertIsNone(_top_level_string('{"a":"\\"status\\":\\"diverged\\""}', "status"))
+        self.assertIsNone(_top_level_string('{"a":1}', "status"))
+        self.assertEqual("ahead", _top_level_string('{"a":1,"status":"ahead"}', "status"))
+
+    def test_compare_refuses_untrusted_input_and_unmeasured_relations(self):
+        """Only a real relation counts; anything else stays unmeasured."""
+        class Runner:
+            def run(self, args, *, input_text=None, timeout=60):
+                return '{"url":"u","status":"nonsense"}'
+
+        client = GitHubClient(runner=Runner())
+        self.assertIsNone(client.compare_status(REPO, "not-a-sha", "b" * 40))
+        self.assertIsNone(client.compare_status("../../etc", "a" * 40, "b" * 40))
+        self.assertIsNone(client.compare_status("owner/name/extra", "a" * 40, "b" * 40))
+        self.assertIsNone(client.compare_status(REPO, "a" * 40, "b" * 40))
 
     def test_drift_records_a_valid_exclusion_and_rejects_a_malformed_one(self):
         extra = repo_snapshot(rid=8, full="AI-Ascension/excluded-fixture")
