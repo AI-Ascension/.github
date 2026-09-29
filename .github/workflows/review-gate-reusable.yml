@@ -26,9 +26,10 @@ on:
     # that review and turns the check red again on the head that would merge.
     #
     # This trigger is EXPECTED to be red on a head that has no review yet, and
-    # a consumer that makes this check required will see that red run pin the
-    # rule. See "Required status checks" below before concluding a ruleset is
-    # broken -- the remedy is to re-run this workflow, not to loosen the rule.
+    # a consumer that makes this check required will see that red hold the rule
+    # until it is re-run. See "Required status checks" below before concluding
+    # a ruleset is broken -- the remedy is to re-run this workflow, not to
+    # loosen the rule.
     types: [opened, synchronize, reopened, ready_for_review, edited]
   pull_request_review:
     # Re-run when a review lands, so a PR that opened with no review of record
@@ -80,18 +81,53 @@ jobs:
 #    either way, so a one-sided test passes with the wrong string; check the
 #    REVIEWED case too.
 #
-# 2. A FAILING RUN OF THAT NAME PINS THE RULE, EVEN A STALE ONE. The gate is
-#    fail-closed, so its `pull_request` run is red on any head that has no
-#    review *yet* -- it fires before a review can exist, and that red is the
-#    gate working. GitHub treats a required check as satisfied only when no run
-#    of that name is failing on the head, so that earlier red run holds the
-#    ruleset unsatisfied even after a review turns a later run green.
+# 2. THE REQUIRED CHECK RESOLVES PER (CONTEXT, EVENT), SO A GREEN REVIEW RUN
+#    DOES NOT CLEAR A RED PUSH RUN. The gate is fail-closed, so its
+#    `pull_request` run is red on any head that has no review *yet* -- it fires
+#    before a review can exist, and that red is the gate working. A later
+#    `pull_request_review` run of the SAME context turning green does NOT
+#    satisfy the ruleset, and neither does a third, fourth, or fifth green.
 #
-#    The remedy is to re-run the workflow, which supersedes the red in place:
+#    THE CONTROLLED TEST (#738, head 99d1c307, all on main). One head, one
+#    completed red, then three later greens of the same context:
+#
+#      109042000852  failure  17:07:55Z  event=pull_request         (run 36455890941)
+#      109042978838  success  17:11:13Z  event=pull_request_review
+#      109044866037  success  17:15:10Z  event=pull_request_review
+#      109045381854  success  17:16:28Z  event=pull_request_review
+#
+#    `mergeStateStatus` was BLOCKED throughout. Three greens did not clear one
+#    red. So the red is not merely "the newest run" -- resolving per event is
+#    what keeps it standing.
+#
+#    The remedy is to re-run the failing WORKFLOW RUN, which rewrites THAT run
+#    in place and takes the red out of the resolution set:
 #      POST /repos/<owner>/<repo>/actions/runs/<run-id>/rerun
-#    or re-run the job from the Actions UI. Do NOT "fix" this by renaming or
-#    removing the required context: that removes the only control standing
-#    between an unreviewed merge and the default branch.
+#      gh run rerun --failed <run-id>
+#
+#    TWO ID SPACES, AND GETTING THEM MIXED UP IS HOW THIS WAS MISDIAGNOSED.
+#    The id above is a WORKFLOW-run id, which `gh run list` prints. It is not a
+#    check-run id, which `gh api .../commits/<sha>/check-runs` prints. The two
+#    are different integers and neither endpoint accepts the other:
+#
+#      POST /check-runs/<check-run-id>/rerequest        -> 404, always
+#      POST /actions/runs/<check-run-id>/rerun         -> 404, wrong id space
+#      POST /actions/runs/<workflow-run-id>/rerun      -> 200 {}
+#
+#    So "rerun does not work" is almost always "the wrong id". To map one to
+#    the other, `gh api repos/<o>/<r>/actions/runs/<id>` resolves a workflow
+#    run, and the run id appears in the Actions UI URL for any check run.
+#
+#    The gate is still CORRECT in the direction that matters: an unreviewed
+#    head is refused. It is the reviewed case that needs a manual rerun, which
+#    is hostile but not unsafe.
+#
+#    Do NOT "fix" this by renaming or removing the required context: that
+#    removes the only control standing between an unreviewed merge and the
+#    default branch. A rename is worse than a rename's absence -- see
+#    `tests/test_review_gate_reusable.py`, which pins this job key to the
+#    string every installed ruleset already names, precisely because a rename
+#    that outruns the ruleset rollout detaches the gate and fails OPEN.
 #
 # Verified on sts2-protocol#70: an unreviewed head is refused with
 # `the base branch policy prohibits the merge`; after a review of record the

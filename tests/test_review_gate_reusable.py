@@ -157,6 +157,61 @@ class ReusableReferenceTest(unittest.TestCase):
             self.assertIsNotNone(dispatch, path.name)
             self.assertEqual(dispatch["inputs"]["number"]["type"], "number", path.name)
 
+    def test_documented_remedy_uses_the_workflow_run_endpoint(self):
+        # The consumer file tells operators how to clear a red required check.
+        # That advice was wrong in a way that cost a real diagnosis: it was
+        # right about the remedy, so a reader who tested the wrong endpoint
+        # concluded the remedy did not exist. See `.github#49` -- a draft
+        # toggle was reported as the only thing that worked, when
+        # `POST /actions/runs/<workflow-run-id>/rerun` does.
+        #
+        # Two distinct id spaces are involved and neither endpoint accepts the
+        # other's id:
+        #
+        #   POST /check-runs/<check-run-id>/rerequest    -> 404, always
+        #   POST /actions/runs/<check-run-id>/rerun     -> 404, wrong id space
+        #   POST /actions/runs/<workflow-run-id>/rerun  -> 200 {}
+        #
+        # So the file must name the workflow-run route and must NOT name the
+        # check-run route, which has no such route at all. Asserting the
+        # absence of the bad endpoint is what makes this a regression guard:
+        # it fails if a future edit documents the 404 endpoint as the remedy.
+        text = CONSUMER.read_text()
+        self.assertIn("/actions/runs/<run-id>/rerun", text)
+        self.assertNotIn("check-runs/<id>/rerequest", text)
+        self.assertNotIn("check-runs/{id}/rerequest", text)
+
+    def test_red_run_guidance_does_not_contradict_its_own_remedy(self):
+        # The file claimed a failing run "pins the rule, even a stale one" and
+        # then recommended a remedy that lifts the pin. Those two paragraphs
+        # contradict each other, and the first is the sentence a reader acts
+        # on. Measured on #738 (head 99d1c307): one red plus three greens of
+        # the same context left `mergeStateStatus` BLOCKED, and only a rerun of
+        # the failing WORKFLOW run took the red out of the resolution set.
+        #
+        # The rule this pins: the documented remedy must not be introduced as
+        # a way around an absolute claim that no other run can satisfy. Either
+        # the claim is scoped (per context AND event, clearable by a rerun) or
+        # the remedy is dropped -- never both stated flatly.
+        text = CONSUMER.read_text()
+        for absolute in (
+            "pins the rule, even a stale one",
+            "PINS THE RULE, EVEN A STALE ONE",
+            # The trigger comment, which is where a reader debugging a blocked
+            # PR actually lands first: it says the red run "pin the rule" and
+            # sends them onward without saying the pin lifts.
+            "will see that red run pin the",
+        ):
+            self.assertNotIn(
+                absolute,
+                text,
+                "the consumer file asserts an unbreakable red that its own "
+                "remedy paragraph contradicts: %r" % (absolute,),
+            )
+        # And the scoped statement must actually be present, so this test
+        # cannot pass by simply deleting the whole paragraph.
+        self.assertIn("RESOLVES PER (CONTEXT, EVENT)", text)
+
 
 if __name__ == "__main__":
     unittest.main()
