@@ -105,8 +105,9 @@ sha256sum out.json fixture.json                       # Linux, macOS, Git Bash
 Get-FileHash out.json, fixture.json -Algorithm SHA256 # PowerShell 7
 ```
 
-Both hashes must be `1115b6f6fab379ddf161614d783c65f92be11f2fbcfcc41d3b12fc648fa6695d`. Use a
-plain `>` redirect; `Out-File` rewrites line endings. The program reads no environment variables,
+Both hashes must be `68f8180b2110b92bdcc283bcbbaf4461bda4ba66e9a7bce78151b6409dcdc769`,
+the SHA-256 of the [canonical fixture at site commit `cb02cdc5`](https://github.com/AI-Ascension/AI-Ascension.github.io/blob/cb02cdc539249ca7e7b225d757af2bd8b299a6b2/recipes/gateway-lease-fence/fixture.json).
+Use a plain `>` redirect; `Out-File` rewrites line endings. The program reads no environment variables,
 writes nothing but stdout, and involves no model or provider. Mode: deterministic replay of
 repository tests, not live game compatibility.
 
