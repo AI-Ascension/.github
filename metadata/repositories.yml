@@ -7,7 +7,7 @@
   "authorization_state": "not-recorded",
   "observed_at": "2026-09-21T22:51:47Z",
   "ownership": "AI-Ascension/.github CODEOWNERS; maintainer review required",
-  "scope_note": "Refreshed inventory reconciles the canonical map with the live organization: all managed source pins advanced to their verified default-branch heads (re-verified 2026-09-21T22:51:47Z). Live heads move continuously in this active organization, so a recorded pin that the live branch has since moved past is reported by the scheduled drift monitor as an informational source_pin_advanced finding rather than as drift; only a pin the live branch has lost (behind, diverged, or unmeasurable) is a red source_pin mismatch. The recorded baselines are reviewed state and are not advanced by the monitor. Four first-party repositories created after the 2026-09-08 refresh (ascension-brand-overhaul, ascension-workflow, ascension-context-console, ascension-workflow-studio) are recorded with managed=false pending an owner applicability decision. One historical target remains held out after visibility drift. Private discoveries stay in the local snapshot and are not recorded here. Application authorization is separate and absent.",
+  "scope_note": "Refreshed inventory reconciles the canonical map with the live organization: all managed source pins advanced to their verified default-branch heads (re-verified 2026-09-21T22:51:47Z). Live heads move continuously in this active organization, so a recorded pin that the live branch has since moved past is reported by the scheduled drift monitor as an informational source_pin_advanced finding rather than as drift; only a pin the live branch has lost (behind, diverged, or unmeasurable) is a red source_pin mismatch. The recorded baselines are reviewed state and are not advanced by the monitor. Four first-party repositories created after the 2026-09-08 refresh (ascension-brand-overhaul, ascension-workflow, ascension-context-console, ascension-workflow-studio) are recorded with managed=false pending an owner applicability decision. One historical target remains held out after visibility drift. Private discoveries stay in the local snapshot and are not recorded here. Application authorization is separate and absent. On 2026-10-26, two additional public discoveries (STS2MCP and jev-factorio-agent) were recorded with managed=false pending owner applicability; this inventory-only addition does not refresh the earlier source pins or authorize application.",
   "historical_evidence": "metadata/history/2026-09-02-description-map.md",
   "shared_labels": "labels.yml",
   "repositories": [
@@ -1554,6 +1554,68 @@
             "path": "README.md",
             "line": 1,
             "classification": "source-derived"
+          }
+        }
+      ]
+    },
+    {
+      "id": 1192832633,
+      "full_name": "AI-Ascension/STS2MCP",
+      "default_branch": "main",
+      "default_commit": "4431b1e5a5c2e34fcc7dbcf5617236602e334f49",
+      "visibility": "public",
+      "archived": true,
+      "kind": "implementation",
+      "topic_removals": [],
+      "name": "STS2MCP",
+      "managed": false,
+      "observed_at": "2026-10-26T16:44:00Z",
+      "applicability_reason": "Public repository discovered outside the canonical map; owner applicability decision required before any live topic or label write.",
+      "management_reason": "Inventory only, held out of live application pending owner review. Archived repository; metadata writes are forbidden.",
+      "topics": [
+        {
+          "name": "ai-ascension",
+          "meaning": "Proposed organization-membership topic; not an assertion of existing public branding.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Required registry brand-topic proposal for an unmanaged public organization member. Not observed live; no application authorized. Pinned README supports implementation classification only.",
+          "evidence": {
+            "repository": "AI-Ascension/STS2MCP",
+            "commit": "4431b1e5a5c2e34fcc7dbcf5617236602e334f49",
+            "path": "README.md",
+            "line": 7,
+            "classification": "proposed"
+          }
+        }
+      ]
+    },
+    {
+      "id": 1379060982,
+      "full_name": "AI-Ascension/jev-factorio-agent",
+      "default_branch": "main",
+      "default_commit": "b1a8dd180d95968b95278e7c2d2ff5b930d6eae5",
+      "visibility": "public",
+      "archived": false,
+      "kind": "implementation",
+      "topic_removals": [],
+      "name": "jev-factorio-agent",
+      "managed": false,
+      "observed_at": "2026-10-26T16:44:00Z",
+      "applicability_reason": "Public repository discovered outside the canonical map; owner applicability decision required before any live topic or label write.",
+      "management_reason": "Inventory only, held out of live application pending owner review.",
+      "topics": [
+        {
+          "name": "ai-ascension",
+          "meaning": "Proposed organization-membership topic; not an assertion of existing public branding.",
+          "subject": "implementation",
+          "change": "add",
+          "reason": "Required registry brand-topic proposal for an unmanaged public organization member. Not observed live; no application authorized. Pinned README supports implementation classification only.",
+          "evidence": {
+            "repository": "AI-Ascension/jev-factorio-agent",
+            "commit": "b1a8dd180d95968b95278e7c2d2ff5b930d6eae5",
+            "path": "README.md",
+            "line": 7,
+            "classification": "proposed"
           }
         }
       ]
