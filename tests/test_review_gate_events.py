@@ -17,8 +17,10 @@ WORKFLOW = ROOT / '.github/workflows/review-gate.yml'
 
 
 class ReviewGateEventsTest(unittest.TestCase):
+    workflow_path = WORKFLOW
+
     def setUp(self):
-        self.workflow = yaml.safe_load(WORKFLOW.read_text())
+        self.workflow = yaml.safe_load(self.workflow_path.read_text())
         self.step = self.workflow['jobs']['review-of-record']['steps'][-1]
 
     def run_event(self, name, event, inputs=None, exit_code=0):
@@ -117,6 +119,15 @@ class ReviewGateEventsTest(unittest.TestCase):
                         if step.get('uses', '').startswith('actions/checkout@'))
         self.assertEqual(checkout['with'], {'repository': '${{ env.GATE_REPOSITORY }}',
                                           'ref': '${{ env.GATE_REF }}', 'persist-credentials': False})
+
+
+class PinnedReviewGateEventsTest(ReviewGateEventsTest):
+    """Run the same safety cases against the actual immutable caller target."""
+    def setUp(self):
+        caller = yaml.safe_load((ROOT / '.github/workflows/review-gate-reusable.yml').read_text())
+        pin = caller['jobs']['review-of-record']['uses'].split('@', 1)[1]
+        self.workflow_path = ROOT / 'tests/fixtures/review-gate' / f'{pin}.yml'
+        super().setUp()
 
 
 if __name__ == '__main__':
