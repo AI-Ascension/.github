@@ -12,6 +12,7 @@ Two things about it are load-bearing and neither is checkable by running it:
    ruleset that was written against the old name, and nothing fails.
 """
 
+import hashlib
 import unittest
 from pathlib import Path
 
@@ -20,6 +21,8 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 REFERENCE = ROOT / ".github" / "workflows" / "review-gate.yml"
 CONSUMER = ROOT / ".github" / "workflows" / "review-gate-reusable.yml"
+PIN = "7e5e885835ddb09cd7927412f61c63f4c42bb57a"
+PINNED_REFERENCE = ROOT / "tests" / "fixtures" / "review-gate" / f"{PIN}.yml"
 
 # The check context every installed ruleset names. Kept as a constant so a
 # future change to either side fails one assertion instead of quietly
@@ -56,6 +59,33 @@ def executable_lines(path):
 
 
 class ReusableReferenceTest(unittest.TestCase):
+    def test_actual_pinned_callee_and_trusted_checkout_agree(self):
+        # Inspect the actual reviewed historical source, not today's reference.
+        # Offline fixture provenance and the refresh procedure are alongside it.
+        raw = PINNED_REFERENCE.read_bytes()
+        blob = hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\0" + raw).hexdigest()
+        self.assertEqual(blob, "262df6486dfe25f62c4599e0f1da768dd396bc02")
+        callee = yaml.safe_load(raw)
+        call_inputs = triggers(callee)["workflow_call"]["inputs"]
+        job = yaml.safe_load(CONSUMER.read_text())["jobs"][CHECK_CONTEXT]
+        self.assertEqual(
+            job["uses"], f"AI-Ascension/.github/.github/workflows/review-gate.yml@{PIN}"
+        )
+        self.assertEqual(job["with"], {
+            "gate-repository": "AI-Ascension/.github", "gate-sha": PIN,
+        })
+        self.assertTrue(set(job["with"]).issubset(call_inputs))
+        for workflow in (callee, yaml.safe_load(CONSUMER.read_text())):
+            self.assertEqual(workflow["permissions"], {
+                "contents": "read", "pull-requests": "read",
+            })
+        checkout = next(step for step in callee["jobs"][CHECK_CONTEXT]["steps"]
+                        if step.get("uses", "").startswith("actions/checkout@"))
+        self.assertEqual(checkout["with"], {
+            "repository": "${{ env.GATE_REPOSITORY }}",
+            "ref": "${{ env.GATE_REF }}", "persist-credentials": False,
+        })
+
     def test_reference_accepts_workflow_call(self):
         # Without this the sibling's `uses:` never resolves, and the required
         # check it was supposed to register does not exist.
