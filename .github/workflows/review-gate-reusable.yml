@@ -56,7 +56,12 @@ jobs:
     # in the calling repository too -- it is the same word on both sides, which
     # is what lets one ruleset template be applied org-wide.
     name: review-of-record
-    uses: AI-Ascension/.github/.github/workflows/review-gate.yml@dc0777e892af4b725d2a234a8174c1e763201f35
+    uses: AI-Ascension/.github/.github/workflows/review-gate.yml@7e5e885835ddb09cd7927412f61c63f4c42bb57a
+    # Keep the implementation checkout identical to the reviewed callee.
+    # A reusable workflow inherits the caller's event, not its own repository.
+    with:
+      gate-repository: AI-Ascension/.github
+      gate-sha: 7e5e885835ddb09cd7927412f61c63f4c42bb57a
     # A called workflow cannot be given more permissions than the caller has,
     # so the caller's top-level `permissions` is the ceiling. Both are declared
     # read-only above and the reference asks for the same two, so the gate runs
