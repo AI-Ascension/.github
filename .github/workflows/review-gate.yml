@@ -14,14 +14,8 @@ on:
       number:
         description: Pull request number to evaluate
         required: true
-        # `number`, not `string`. GitHub coerces this to an integer before the
-        # workflow runs, so a value like `$(echo ...` cannot reach the `run:`
-        # block below as text. `run:` interpolates `${{ }}` into a shell
-        # script, and surrounding double quotes do NOT neutralise `$(...)` or
-        # backticks. With `type: string` a workflow_dispatch caller could
-        # inject shell into a job that holds a token. `workflow_dispatch`
-        # already requires write access, so the practical severity was low --
-        # but the input does not need to be a string, so it should not be one.
+        # Keep the UI numeric; the evaluator step independently validates the
+        # event value as data, including when inherited from a reusable caller.
         type: number
   # The cross-repository form of this gate, added for .github#49.
   #
@@ -181,24 +175,35 @@ jobs:
         # `github.token` on a `pull_request` event is a read-only token scoped
         # to the pull request, which is all this read needs.
         #
-        # The PR number is read from `github.event.pull_request.number` on
-        # `pull_request`, and from `github.event.review.pull_request.number` on
-        # `pull_request_review` -- that event has no `github.event.pull_request`
-        # context at all. Resolving both here keeps the trigger honest: without
-        # the second expression this step would pass an empty `--number` and
-        # argparse would exit 2 on every review submission.
-        #
-        # `--number` is parsed as int by argparse, so an unresolved value is a
-        # hard error rather than a silent zero. If the number cannot be
-        # resolved the job fails, which is the intended fail-closed direction.
+        # Both automatic events carry top-level pull_request.number. Ignore
+        # dispatch inputs on those events, so they cannot redirect the gate.
+        # A reusable workflow inherits the caller's github event, but its
+        # inputs context contains only workflow_call inputs. Read the original
+        # dispatch payload, not inputs.number, for direct AND reusable dispatch.
+        # Values enter via env, never shell-source interpolation: a caller may
+        # declare its dispatch input as a string despite our numeric UI.
         env:
           GH_TOKEN: ${{ github.token }}
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_PR_NUMBER: ${{ github.event.pull_request.number }}
+          DISPATCH_NUMBER: ${{ github.event.inputs.number }}
+          BASE_REPOSITORY: ${{ github.repository }}
         run: |
-          number="${{ inputs.number || github.event.pull_request.number || github.event.review.pull_request.number }}"
-          if [ -z "$number" ]; then
-            echo "::error::could not resolve a pull-request number from this event"
-            exit 1
-          fi
+          set -eu
+          case "$EVENT_NAME" in
+            pull_request|pull_request_review) number="$EVENT_PR_NUMBER" ;;
+            workflow_dispatch) number="$DISPATCH_NUMBER" ;;
+            *)
+              echo "::error::unsupported review-gate event"
+              exit 1
+              ;;
+          esac
+          case "$number" in
+            ''|0*|*[!0-9]*)
+              echo "::error::pull-request number must be a positive decimal integer"
+              exit 1
+              ;;
+          esac
           python tools/review_gate.py \
-            --repository "${{ github.repository }}" \
+            --repository "$BASE_REPOSITORY" \
             --number "$number"

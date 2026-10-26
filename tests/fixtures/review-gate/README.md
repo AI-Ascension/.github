@@ -21,3 +21,33 @@ pinned callee does not accept a `number` workflow-call input, so the wrapper's
 existing manual dispatch does not forward its number and remains fail-closed.
 Manual-dispatch support requires a separate canonical contract change before
 a consumer pin update; this fixture is not evidence that dispatch is repaired.
+
+## Canonical dispatch contract (not the historical pin)
+
+`source-derived`: GitHub's [reusable-workflow context reference](https://docs.github.com/en/actions/reference/workflows-and-actions/reusing-workflow-configurations#github-context)
+associates `github` with the caller, whereas its [inputs reference](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#inputs-context)
+defines reusable `inputs` from `workflow_call` and the caller's `with` block.
+The [dispatch event reference](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#workflow_dispatch)
+also exposes manual inputs in `github.event.inputs`. Both automatic events
+supply top-level `pull_request` in their [webhook payload](https://docs.github.com/en/webhooks/webhook-events-and-payloads#pull_request_review).
+
+The current canonical workflow therefore selects `github.event.inputs.number`
+only when the inherited event name is `workflow_dispatch`; `pull_request` and
+`pull_request_review` exclusively select `github.event.pull_request.number`.
+It accepts a positive decimal integer without leading zeroes, rejects missing
+or malformed values and unsupported events, and passes context values as env
+data rather than interpolating them into shell source. No callable `number`
+or repository-identity override is added; `gate-repository` and `gate-sha`
+remain implementation-location inputs, not the PR identity.
+
+`confirmed` by `python -m unittest tests/test_review_gate_events.py -v`: local
+modeled-context tests execute the canonical shell for direct/reusable dispatch,
+automatic events, conflicting inputs, malformed numbers, injection-like text,
+and evaluator failure. These are not hosted Actions tests or proof of a live
+manual dispatch. Live dispatch remains `unverified`.
+
+This canonical change alone does not repair the wrapper's historical pin.
+After the canonical change lands and its resulting immutable commit is
+reviewed, update the consumer's `uses` SHA and `gate-sha` together, exporting
+that commit's exact workflow fixture and updating its blob assertion. No
+consumer pin is advanced in the canonical repair.
