@@ -21,7 +21,7 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 REFERENCE = ROOT / ".github" / "workflows" / "review-gate.yml"
 CONSUMER = ROOT / ".github" / "workflows" / "review-gate-reusable.yml"
-PIN = "7e5e885835ddb09cd7927412f61c63f4c42bb57a"
+PIN = "9a92f68d06a6c7c2dbc9ab6723198bde457a1902"
 PINNED_REFERENCE = ROOT / "tests" / "fixtures" / "review-gate" / f"{PIN}.yml"
 
 # The check context every installed ruleset names. Kept as a constant so a
@@ -64,7 +64,7 @@ class ReusableReferenceTest(unittest.TestCase):
         # Offline fixture provenance and the refresh procedure are alongside it.
         raw = PINNED_REFERENCE.read_bytes()
         blob = hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\0" + raw).hexdigest()
-        self.assertEqual(blob, "262df6486dfe25f62c4599e0f1da768dd396bc02")
+        self.assertEqual(blob, "e01bf4204e772e4dc0cf46c861c9241caaf0cabb")
         callee = yaml.safe_load(raw)
         call_inputs = triggers(callee)["workflow_call"]["inputs"]
         job = yaml.safe_load(CONSUMER.read_text())["jobs"][CHECK_CONTEXT]

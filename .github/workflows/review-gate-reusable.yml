@@ -19,7 +19,7 @@ name: Review of record (reusable reference)
 # The `uses:` ref below is a commit, not a branch, so a change to the reference
 # gate cannot alter a caller's required check without a review of the caller's
 # own bump. To upgrade, open a pull request in the CALLING repository that
-# moves this one line to a newer reviewed commit of the reference.
+# moves both `uses` and `gate-sha` to the same reviewed reference commit.
 on:
   pull_request:
     # Re-run whenever the head moves, so a push after the last review unpins
@@ -56,12 +56,12 @@ jobs:
     # in the calling repository too -- it is the same word on both sides, which
     # is what lets one ruleset template be applied org-wide.
     name: review-of-record
-    uses: AI-Ascension/.github/.github/workflows/review-gate.yml@7e5e885835ddb09cd7927412f61c63f4c42bb57a
+    uses: AI-Ascension/.github/.github/workflows/review-gate.yml@9a92f68d06a6c7c2dbc9ab6723198bde457a1902
     # Keep the implementation checkout identical to the reviewed callee.
     # A reusable workflow inherits the caller's event, not its own repository.
     with:
       gate-repository: AI-Ascension/.github
-      gate-sha: 7e5e885835ddb09cd7927412f61c63f4c42bb57a
+      gate-sha: 9a92f68d06a6c7c2dbc9ab6723198bde457a1902
     # A called workflow cannot be given more permissions than the caller has,
     # so the caller's top-level `permissions` is the ceiling. Both are declared
     # read-only above and the reference asks for the same two, so the gate runs
